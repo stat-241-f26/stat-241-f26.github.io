@@ -1,0 +1,239 @@
+---
+pagetitle: "Joining and Reshaping Data"
+editor: source
+format: 
+  revealjs:
+    html-math-method: mathjax
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      fig.retina = 3, fig.align = 'center',
+                      fig.asp = 0.75, fig.width = 8)
+library(knitr)
+library(tidyverse)
+# 
+# options(htmltools.preserve.raw = FALSE)
+theme_update(text = element_text(size = 20))
+```
+
+::::: columns
+::: {.column .center width="60%"}
+![](img/r-hex.jpg){width="90%"}
+:::
+
+::: {.column .center width="40%"}
+<br>
+
+[Joining Data Activity]{.custom-title}
+
+<br> <br> <br> <br> <br> 
+
+[Grayson White]{.custom-subtitle}
+
+[Math 241 <br> Week 4 \| Spring 2026]{.custom-subtitle}
+:::
+:::::
+
+------------------------------------------------------------------------
+
+
+## Loading data
+
+We'll create the `x` and `y` data frames in `R`:
+
+```{r, echo = TRUE}
+library(tidyverse)
+x <- data.frame(spp_code = c("ABBA", "BEPA", "PIST"),
+                common_name = c("balsum fir", "paper birch", "white pine"))
+
+y <- data.frame(spp_code = c("ABBA", "BEPA", "LALA"),
+                latin_name = c("Abies balsamea", 
+                               "Betula papyrifera",
+                               "Larix laricina"))
+```
+
+## Loading data
+
+We'll create the `x` and `y` data frames in `R`:
+
+```{r, echo = TRUE}
+x
+y
+```
+
+## Q1. Write the code to get this output
+
+```{r}
+#| echo: false
+left_join(x, y, by = "spp_code")
+countdown::countdown(1)
+```
+
+## Q1. Write the code to get this output
+
+```{r}
+left_join(x, y, by = "spp_code")
+```
+
+## Q2. Write the code to get this output
+
+```{r}
+#| echo: false
+full_join(x, y, by = "spp_code")
+countdown::countdown(1)
+```
+
+## Q2. Write the code to get this output
+
+```{r}
+full_join(x, y, by = "spp_code")
+```
+
+## Q3. Write the code to get this output
+
+```{r}
+#| echo: false
+left_join(y, x, by = "spp_code")
+countdown::countdown(1)
+```
+
+## Q3. Write the code to get this output
+
+```{r}
+left_join(y, x, by = "spp_code")
+```
+
+## Q4. Write the code to get this output
+
+```{r}
+#| echo: false
+right_join(x, y, by = "spp_code")
+countdown::countdown(1)
+```
+
+## Q4. Write the code to get this output
+
+```{r}
+right_join(x, y, by = "spp_code")
+```
+
+## Q5. Write the code to get this output
+
+```{r}
+#| echo: false
+inner_join(x, y, by = "spp_code")
+countdown::countdown(1)
+```
+
+## Q5. Write the code to get this output
+
+```{r}
+inner_join(x, y, by = "spp_code")
+```
+
+## Q6. Write the code to get this output
+
+```{r}
+#| echo: false
+full_join(y, x, by = "spp_code")
+countdown::countdown(1)
+```
+
+## Q6. Write the code to get this output
+
+```{r}
+full_join(y, x, by = "spp_code")
+```
+
+## Consider a third data frame, `z`:
+
+```{r}
+z <- x %>%
+  rename(species_code = spp_code)
+z
+```
+
+
+## Q7. Write the code to get this output
+
+```{r}
+#| echo: false
+left_join(z, y, by = c("species_code" = "spp_code"))
+countdown::countdown(1)
+```
+
+## Q7. Write the code to get this output
+
+```{r}
+left_join(z, y, by = c("species_code" = "spp_code"))
+```
+
+
+## Q8. Write the code to get this output (hint: use a filtering join)
+
+```{r}
+#| echo: false
+semi_join(y, x, by = "spp_code")
+countdown::countdown(1)
+```
+
+
+## Q8. Write the code to get this output (hint: use a filtering join)
+
+```{r}
+semi_join(y, x, by = "spp_code")
+```
+
+
+## Q9. Write the code to get this output (hint: use a filtering join)
+
+```{r}
+#| echo: false
+anti_join(z, y, by = c("species_code" = "spp_code"))
+countdown::countdown(1)
+```
+
+
+## Q9. Write the code to get this output (hint: use a filtering join)
+
+```{r}
+anti_join(z, y, by = c("species_code" = "spp_code"))
+```
+
+## Q10. Write the code to get this output (hint: use a filtering join)
+
+```{r}
+#| echo: false
+anti_join(y, x, by = "spp_code")
+countdown::countdown(1)
+```
+
+
+## Q10. Write the code to get this output (hint: use a filtering join)
+
+```{r}
+anti_join(y, x, by = "spp_code")
+# or 
+anti_join(y, z, by = c("spp_code" = "species_code"))
+```

@@ -1,0 +1,1113 @@
+---
+pagetitle: "Spatial Computations and Rasters"
+editor: source
+format: 
+  revealjs:
+    html-math-method: mathjax
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      fig.retina = 3, fig.align = 'center',
+                      fig.asp = 0.75, fig.width = 8)
+library(knitr)
+library(tidyverse)
+# 
+# options(htmltools.preserve.raw = FALSE)
+theme_update(text = element_text(size = 20))
+```
+
+::::: columns
+::: {.column .center width="60%"}
+![](img/r-hex.jpg){width="90%"}
+:::
+
+::: {.column .center width="40%"}
+<br>
+
+[Spatial Computations and Rasters]{.custom-title}
+
+<br> <br> 
+
+[Grayson White]{.custom-subtitle}
+
+[Math 241 <br> Week 5 \| Spring 2026]{.custom-subtitle}
+:::
+:::::
+
+
+------------------------------------------------------------------------
+
+
+## Week 5 Goals
+
+:::: {.columns}
+
+::: {.column width='50%' .nonincremental .fragment}
+
+**Mon Lecture**
+
+* Introduction to spatial data
+    - point data
+    - polygon data
+    
+* Static and interactive maps with point and polygon data
+    - base layers (almost as good as merino)
+    - coordinate reference systems / projections
+    - popups and additional context
+    - static graphs with `sf` and `ggplot2`
+    - interactive graphs with `leaflet`
+
+:::
+
+::: {.column width='50%' .nonincremental .fragment}
+
+**Wed Lecture**
+
+* Geospatial computations
+    - distance
+    - spatial joins
+
+* Raster data
+    - what is it? 
+    - rasters as base layers
+    - rasters as data
+    - extracting values by polygons
+
+
+:::
+
+::::
+
+
+# Geospatial Computations
+
+------------------------------------------------------------------------
+
+### Geospatial Computations
+
+Just like we can perform computations with numerical or factor data, we can compute new variables using spatial data
+
+We'll look at a few helpful `sf` functions:
+
+- `st_distance()`: compute distances between spatial objects
+
+- `st_area()`: compute area enclosed by a spatial object
+
+- `st_centroid()`: compute the centroid of a spatial object
+
+- `st_length()`: compute the length of a spatial object
+
+- `st_intersection()` and `st_difference()`: compute intersections or set differences of spatial objects
+
+- `st_join()`: merge spatial data based on spatial relationships
+
+------------------------------------------------------------------------
+
+
+### New data: [MacLeish Property](https://www.smith.edu/academics/applied-learning-research/sustainable-smith/macleish-field-station)
+
+- liberal arts field station at Smith College
+
+- 250 acre area of forest and pasture land near Whately, MA
+
+- Smith College community can use the space for artistic inquiry, environmental research, outdoor education, low-impact recreation
+
+::: {.fragment}
+
+Can read in spatial data from `macleish` package
+
+```{r}
+library(macleish)
+str(macleish_layers, max.level = 1)
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### MacLeish Property
+
+We'll start by taking a look at: 
+
+::: {.nonincremental}
+
+- The `landmarks` on the property (POINTS)
+
+- The `boundary` of the property (POLYGON)
+
+- The `streams` that go through the property (New geometry: LINESTRING)
+
+:::
+
+::: {.fragment}
+
+```{r}
+landmarks <- macleish_layers$landmarks
+boundary <- macleish_layers$boundary
+streams <- macleish_layers$streams
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### MacLeish Property: Plotting
+
+```{r}
+#| output-location: column
+ggplot() + 
+  geom_sf(data = boundary) + 
+  geom_sf(data = streams, color = "skyblue") + 
+  geom_sf(data = landmarks, color = "deeppink") + 
+  theme_classic()
+```
+
+------------------------------------------------------------------------
+
+### Distances: `st_distance()`
+
+Can use the `st_distance()` function to compute the distance between two spatial objects:
+
+```{r}
+library(sf)
+# calculate distance between the first five landmarks
+distance_matrix <- st_distance(landmarks[1:5, ])
+distance_matrix
+```
+<br>
+
+:::: {.columns}
+
+::: {.column .fragment}
+
+```{r}
+library(units)
+distance_matrix %>%
+  set_units("mi") # distance in miles
+```
+
+
+:::
+
+::: {.column .fragment .nonincremental}
+
+This distance is **"as the crow flies"**
+
+- There are other options (e.g., distance by driving) -- see Chapter 18 in MDSR!
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+
+### Calculating area: `st_area()`
+
+
+The `boundary` dataset already reports the area of the plot:
+
+```{r}
+boundary$area
+```
+
+<br>
+
+::: {.fragment}
+
+But we could calculate it ourselves with the **`st_area()`** function
+
+```{r}
+st_area(boundary) %>%
+  set_units("acres") 
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Centroids: `st_centroid()`
+
+Can calculate the centroid of the `boundary` using the **`st_centroid()`**
+
+```{r}
+boundary_center <- st_centroid(boundary)
+boundary_center
+```
+
+```{r}
+#| output-location: column
+ggplot() + 
+  geom_sf(data = boundary) + 
+  geom_sf(data = streams, 
+          color = "skyblue") + 
+  geom_sf(data = landmarks,
+          color = "deeppink") + 
+  geom_sf(data = boundary_center, 
+          shape = 5, size = 2,
+          color = "tomato") + 
+  labs(caption = "Red diamond indicates boundary center.") + 
+  theme_classic() 
+```
+
+
+------------------------------------------------------------------------
+
+## Lengths of lines/edges: `st_length()`
+
+Can compute the length of each stream with the **`st_length()`** function (from `sf`)
+
+```{r}
+streams <- streams %>%
+  mutate(length = st_length(geometry))
+streams
+```
+
+------------------------------------------------------------------------
+
+## Lengths of lines/edges: `st_length()`
+
+Coloring streams by length:
+
+```{r}
+#| output-location: column
+ggplot(boundary) + 
+  geom_sf() + 
+  geom_sf(data = streams, aes(color = as.numeric(length))) + 
+  scale_color_distiller(palette = "Blues", direction = 1) + 
+  labs(color = "Stream Length (m)") + 
+  theme_void()
+```
+
+------------------------------------------------------------------------
+
+## Intersections: `st_intersection()` and `st_difference()`
+
+**`st_intersection()`** can retain only the parts of the streams that lie *within* the boundary:
+
+```{r}
+streams_within <- st_intersection(streams, boundary)
+streams_within
+```
+
+- Note that the intersection returns the **lines** from `streams` not the polygon from `boundary`. 
+
+------------------------------------------------------------------------
+
+## Intersections: `st_intersection()` and `st_difference()`
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+ggplot(boundary) + 
+  geom_sf() + 
+  geom_sf(data = streams, color = "skyblue") + 
+  theme_void()
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+ggplot(boundary) + 
+  geom_sf() + 
+  geom_sf(data = streams_within, color = "skyblue") + 
+  theme_void()
+```
+
+:::
+
+
+::::
+
+------------------------------------------------------------------------
+
+## Intersections: `st_intersection()` and `st_difference()`
+
+**`st_difference()`** can retain only the parts of the streams that lie *outside* the boundary:
+
+```{r}
+#| output-location: column-fragment
+streams_outside <- st_difference(streams, boundary) 
+ggplot(boundary) + 
+  geom_sf() + 
+  geom_sf(data = streams_outside, color = "skyblue") + 
+  theme_void()
+```
+
+------------------------------------------------------------------------
+
+## Intersections: `st_intersection()` and `st_difference()`
+
+Another example: Let's pull out the trails in this station
+
+```{r}
+trails <- macleish_layers$trails
+trails
+```
+
+------------------------------------------------------------------------
+
+## Intersections: `st_intersection()` and `st_difference()`
+
+```{r}
+#| output-location: column
+ggplot(boundary) + 
+  geom_sf() + 
+  geom_sf(data = streams, color = "skyblue") +
+  geom_sf(data = trails, color = "chocolate4") + 
+  theme_void()
+```
+
+
+------------------------------------------------------------------------
+
+## Intersections: `st_intersection()` and `st_difference()`
+
+...and see where they intersect with the streams!
+
+```{r}
+intersections <- st_intersection(trails, streams) 
+intersections
+```
+
+- Note that **the intersection geometries are now *points***
+
+------------------------------------------------------------------------
+
+## Intersections: `st_intersection()` and `st_difference()`
+
+```{r}
+#| output-location: column
+trails_within <- st_intersection(trails, boundary)
+trails_outside <- st_difference(trails, boundary)
+
+ggplot(boundary) + 
+  geom_sf() + 
+  geom_sf(data = streams_within, 
+          color = "skyblue") + 
+  geom_sf(data = streams_outside, 
+          color = "skyblue",
+          linetype = "dashed") + 
+  geom_sf(data = trails_within, 
+          color = "chocolate4") + 
+  geom_sf(data = trails_outside,
+          color = "chocolate4",
+          linetype = "dashed") + 
+  geom_sf(data = intersections,
+          shape = 21, 
+          fill = "yellow",
+          size = 3)  + 
+  theme_void()
+```
+
+- Plotted stream crossing!
+
+------------------------------------------------------------------------
+
+## Aggregation
+
+Let's look at the trails data frame a little more:
+
+```{r}
+trails %>%
+  arrange(name)
+```
+
+What is odd about this data frame? 
+
+
+------------------------------------------------------------------------
+
+## Aggregation
+
+Let's look at the "Eastern Loop"
+
+```{r}
+eastern <- trails %>% filter(name=="Eastern Loop")
+eastern
+```
+
+```{r}
+#| output-location: column-fragment
+ggplot(boundary) + 
+  geom_sf() + 
+  geom_sf(data = eastern, color = "chocolate4") + 
+  theme_void()
+```
+
+------------------------------------------------------------------------
+
+## Aggregation
+
+What are the pieces of this trail?
+
+```{r}
+#| output-location: column
+part_one <- eastern[1, ]
+part_two <- eastern[2, ]
+ggplot(boundary) + 
+  geom_sf() + 
+  geom_sf(data = part_one, 
+          color = "chocolate4") + # part 1
+  geom_sf(data = part_two, 
+          color = "chocolate4",
+          linetype = "dashed") + # part 2 
+  theme_void()
+```
+
+
+------------------------------------------------------------------------
+
+## Aggregation
+
+For plotting this is fine, but what if we wanted to compare the lengths of each trail?
+
+```{r}
+trails %>%
+  mutate(trail_length = st_length(geometry)) %>%
+  arrange(desc(trail_length))
+```
+
+**The same trail comes up multiple times!** How can we combine them?
+
+::: {.fragment}
+
+- `group_by()` and `summarize()`
+
+:::
+
+------------------------------------------------------------------------
+
+## Aggregation: `group_by` and `summarize()`
+
+```{r}
+trails_combined <- trails %>%
+  group_by(name) %>%
+  summarize(trail_length = sum(st_length(geometry))) %>%
+  arrange(desc(trail_length))
+trails_combined
+```
+
+**Only one row now for each trail.**
+
+------------------------------------------------------------------------
+
+## Aggregation: `group_by` and `summarize()`
+
+:::: {.columns}
+
+::: {.column width='48%'}
+
+```{r}
+# Not combining
+ggplot(boundary) + 
+  geom_sf() + 
+  geom_sf(data = trails,
+          color = "chocolate4") + 
+  theme_void()
+```
+
+:::
+
+::: {.column width='48%'}
+
+```{r}
+# Combined
+ggplot(boundary) + 
+  geom_sf() + 
+  geom_sf(data = trails_combined,
+          color = "chocolate4") + 
+  theme_void()
+```
+
+:::
+
+::::
+
+**Find the difference in the plots!!**
+
+```{r}
+#| echo: false
+countdown::countdown(1)
+```
+
+
+------------------------------------------------------------------------
+
+## Aggregation: `group_by` and `summarize()`
+
+:::: columns
+
+::: {.column}
+
+![](img/thesamepicture.jpg){fig-align='center'}
+
+:::
+
+::::
+
+
+------------------------------------------------------------------------
+
+## Merging Spatial data: `st_join()`
+
+```{r}
+forests <- macleish_layers$forests %>% 
+  select(type, geometry)
+camp_sites <- macleish_layers$camp_sites %>% 
+  select(name, geometry)
+```
+
+<br>
+
+:::: {.columns .fragment}
+
+::: {.column}
+
+```{r}
+forests
+```
+
+:::
+
+::: {.column}
+
+```{r}
+camp_sites
+```
+
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+## Merging Spatial data: `st_join()`
+
+```{r}
+#| output-location: column
+library(ggsflabel)
+ggplot(boundary) + 
+  geom_sf() + 
+  geom_sf(data = forests, fill = "forestgreen", 
+          alpha = 0.2) + 
+  geom_sf(data = camp_sites, size = 4) + 
+  geom_sf_label_repel(data = camp_sites,
+                      aes(label = name)) + 
+  theme_void()
+```
+
+What if we wanted to know **which forests** these campsites are in?
+
+------------------------------------------------------------------------
+
+## Merging Spatial data: `st_join()`
+
+**`st_join()`** can merge datasets on spatial data.
+
+```{r}
+camp_sites_forests <- st_join(camp_sites, forests, left = TRUE)
+camp_sites_forests
+```
+<br>
+
+- Setting `left = TRUE` yields a `left_join()` here. `left = FALSE` would yield an `inner_join()`.
+
+::: {.fragment}
+
+You can set the `join` argument to specify *how* you want to connect the geometries.
+
+- `join = st_interests` is the default, but other `st_*()` functions can be specified. 
+:::
+
+# Raster data
+
+------------------------------------------------------------------------
+
+## What are raster data? 
+
+- So far, we've dealt with (multi)points, (multi)polygons, and line(string) data! 
+    - These all fall into the family of "vector" spatial data
+    - Called "vectors" since they are made up of discrete x, y coordinates that compose a shape. 
+    
+- Now, we are entering into the world of **raster** spatial data. 
+
+- Raster data are arrays of spatially indexed cells, each of the same size
+
+- Think: **spatially indexed** <u>**matrix**</u> or <u>**image**</u>. Each cell / pixel..
+    - is a predefined size square
+    - is the same size as the other cells / pixels
+    - has value(s) attached to it
+
+
+------------------------------------------------------------------------
+
+## Raster data: two hats
+
+- We'll use raster data in two distinct ways:
+    - as a **base layer** for maps, and
+    - as **data** for maps.
+
+
+------------------------------------------------------------------------
+
+## Raster as base layer: example
+
+2.39m x 2.39m imagery in the Macleish property
+
+```{r}
+#| echo: false
+library(basemaps)
+library(terra)
+library(tidyterra)
+library(sf)
+
+rast <- basemap_terra(ext = boundary,
+                      map_service = "esri",
+                      map_type = "world_imagery",
+                      verbose = FALSE)
+
+
+ggplot() + 
+  geom_spatraster_rgb(data = rast) + 
+  geom_sf(data = boundary, alpha = 0.5, fill = "grey", color = "orange") + 
+  geom_sf(data = streams_within, 
+          color = "skyblue") + 
+  geom_sf(data = streams_outside %>%
+            st_intersection(boundary),
+          color = "skyblue",
+          linetype = "dashed") +
+  geom_sf(data = trails_within, 
+          color = "chocolate4") + 
+  geom_sf(data = trails_outside %>%
+            st_intersection(boundary),
+          color = "chocolate4",
+          linetype = "dashed") +
+  geom_sf(data = intersections,
+          shape = 21, 
+          fill = "yellow",
+          size = 3)  + 
+  theme_void()
+```
+
+- Each pixel is a 2.39m x 2.39m square and has RED, GREEN, BLUE (RGB) values assigned to it.
+
+------------------------------------------------------------------------
+
+## Raster as data: example
+
+90m x 90m elevation data in M333 "ecoprovince" (NE Washington, N Idaho, W Montana)
+
+```{r}
+#| echo: false
+library(terra)
+library(tidyterra)
+r <- terra::rast("data/M333_elev.tif")
+ggplot() + 
+  geom_spatraster(data = r, na.rm = TRUE) + 
+  scale_fill_viridis_c(na.value = NA) + 
+  labs(fill = "Elevation (m)") + 
+  theme_bw()
+```
+
+- Each pixel is a 90m x 90m square and has an elevation value assigned to it. 
+
+
+
+------------------------------------------------------------------------
+
+### Loading raster data
+
+:::: columns
+
+::: {.column width="20%"}
+
+![](img/terra.png)
+
+:::
+
+::: {.column width="80%"}
+
+We'll use the `terra` R package to deal with rasters. 
+
+- `terra` can also handle many vector data types such as points and polygons. 
+    - But `sf` is often nicer to work with for those data types. 
+
+- Raster data are often stored as Geotiff (.tif) files. 
+
+
+:::
+
+::::
+
+
+::: {.fragment}
+
+
+
+```{r}
+library(terra)
+r <- terra::rast("data/M333_elev.tif")
+class(r)
+r
+```
+
+:::
+
+
+------------------------------------------------------------------------
+
+### Plotting raster data
+
+The `tidyterra` package gives us some nice `geom_*()` functions to use with `SpatRaster`s and `SpatVector`s. 
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+library(tidyterra)
+ggplot() + 
+  geom_spatraster(data = r) + 
+  scale_fill_viridis_c(na.value = NA) + 
+  labs(fill = "Elevation (m)") + 
+  theme_bw()
+```
+
+:::
+
+::: {.column}
+
+- Main functions: 
+    - `geom_spatraster()` for rasters as data
+    - `geom_spatraster_rgb()` for rasters as baselayers
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+### Raster attributes
+
+Rasters have CRSs as well! 
+
+```{r}
+crs(r)
+```
+
+<br>
+
+::: {.fragment}
+
+And we can get summary stats from rasters
+
+```{r}
+max(values(r), na.rm = TRUE) # highest elevation in M333
+mean(values(r), na.rm = TRUE) # average elevation in M333
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Plotting rasters with vector data
+
+
+```{r}
+#| output-location: column
+library(tigris)
+states(progress_bar = FALSE) %>%
+  filter(NAME %in% c("Washington",
+                     "Idaho",
+                     "Montana")) %>%
+  ggplot() + 
+  geom_sf() + 
+  geom_spatraster(data = r) + 
+  scale_fill_viridis_c(na.value = NA) + 
+  theme_bw()
+```
+
+- Since both the raster and polygons are spatially referenced they "play nice" together! 
+
+
+------------------------------------------------------------------------
+
+
+### Extracting values from vectors that intersect our raster
+
+- Sometimes, we'd like to know the value of a raster a specific location
+    - Think: elevation at a given point, or
+    - average elevation in a national forest, etc. 
+    
+- `terra` makes this easy. 
+
+- Let's get the elevation of the FIA plots in the `forested` package that intersect with our raster!
+
+::: {.fragment}
+
+```{r}
+#| output-location: column
+library(forested)
+forested_sf <- forested %>%
+  st_as_sf(coords = c("lon", "lat"),
+           crs = "EPSG:4269")
+
+plot_elev <- terra::extract(r, forested_sf, xy = TRUE)
+plot_elev
+```
+
+:::
+
+- Why so many NAs?
+
+
+
+------------------------------------------------------------------------
+
+### Not all plots intersect our raster!
+
+```{r}
+ggplot() + 
+  geom_spatraster(data = r) + 
+  geom_sf(data = forested_sf, size = 0.5) + 
+  scale_fill_viridis_c(na.value = NA) + 
+  theme_bw()
+```
+
+
+------------------------------------------------------------------------
+
+### Bringing elevation values into the `forested` data
+
+
+```{r}
+forested_with_M333_elev <- forested_sf %>%
+  bind_cols(plot_elev)
+```
+
+- `bind_cols()` takes two data frames of the same number of rows and "pushes them together". 
+
+::: {.fragment}
+
+```{r}
+#| output-location: column
+forested_with_M333_elev %>%
+  ggplot() + 
+  geom_sf(aes(color = M333_elev), size = 0.5) + 
+  scale_color_viridis_c() + 
+  theme_bw()
+```
+
+:::
+
+
+------------------------------------------------------------------------
+
+
+### Elevation actually already exists in the `forested` dataset
+
+```{r}
+mean(forested_with_M333_elev$elevation == forested_with_M333_elev$M333_elev)
+mean(forested_with_M333_elev$elevation == forested_with_M333_elev$M333_elev,
+     na.rm = TRUE)
+```
+
+- When the data are available, we get the same result as the package! 
+
+
+
+------------------------------------------------------------------------
+
+
+### Interactive raster plots
+
+```{r}
+library(leaflet)
+leaflet() %>% 
+  addTiles() %>%
+  addRasterImage(r, maxBytes = 15000000) 
+```
+
+------------------------------------------------------------------------
+
+### Plotting rasters with raster base layers
+
+
+```{r}
+#| output-location: column
+library(basemaps) # to get the raster base layers
+
+wa_id_mt <- tigris::states(progress_bar = FALSE) %>%
+  filter(NAME %in% c("Washington",
+                     "Idaho",
+                     "Montana"))
+
+rast <- basemap_terra(ext = wa_id_mt,
+                      map_service = "esri",
+                      map_type = "world_imagery",
+                      verbose = FALSE)
+
+ggplot() + 
+  geom_spatraster_rgb(data = rast) + 
+  geom_spatraster(data = r) + 
+  scale_fill_viridis_c(na.value = NA) + 
+  labs(fill = "Elevation (m)") +
+  theme_void() +
+  theme(legend.position = "bottom",
+        legend.title.position = "top")
+```
+
+- Using rasters in two ways: base layer and as data!
+
+
+------------------------------------------------------------------------
+
+### Returning to the Macleish Property
+
+We can use a raster base layer and put vector data on top of it! 
+
+
+```{r}
+#| output-location: column
+rast <- basemap_terra(
+  # recall, `boundary` is the boundary 
+  # of the Macleish property
+  ext = boundary,
+  map_service = "esri",
+  map_type = "world_imagery",
+  verbose = FALSE
+  )
+
+ggplot() + 
+  geom_spatraster_rgb(data = rast) + 
+  geom_sf(data = boundary,
+          alpha = 0.5,
+          fill = "grey",
+          color = "orange")
+```
+
+
+------------------------------------------------------------------------
+
+### Returning to the Macleish Property
+
+We can use a raster base layer and put vector data on top of it! 
+
+
+```{r}
+#| output-location: column
+ggplot() + 
+  geom_spatraster_rgb(data = rast) + 
+  geom_sf(data = boundary,
+          alpha = 0.5,
+          fill = "grey",
+          color = "orange") + 
+  geom_sf(data = streams_within, 
+          color = "skyblue") + 
+  geom_sf(data = streams_outside,
+          color = "skyblue",
+          linetype = "dashed") +
+  geom_sf(data = trails_within, 
+          color = "chocolate4") + 
+  geom_sf(data = trails_outside ,
+          color = "chocolate4",
+          linetype = "dashed") +
+  geom_sf(data = intersections,
+          shape = 21, 
+          fill = "yellow",
+          size = 3)  + 
+  theme_void()
+```
+
+
+------------------------------------------------------------------------
+
+### Returning to the Macleish Property
+
+We can use a raster base layer and put vector data on top of it! 
+
+
+```{r}
+#| output-location: column
+ggplot() + 
+  geom_spatraster_rgb(data = rast) + 
+  geom_sf(data = boundary,
+          alpha = 0.5,
+          fill = "grey",
+          color = "orange") + 
+  geom_sf(data = streams_within, 
+          color = "skyblue") + 
+  geom_sf(data = streams_outside %>%
+            st_intersection(boundary),
+          color = "skyblue",
+          linetype = "dashed") +
+  geom_sf(data = trails_within, 
+          color = "chocolate4") + 
+  geom_sf(data = trails_outside %>%
+            st_intersection(boundary),
+          color = "chocolate4",
+          linetype = "dashed") +
+  geom_sf(data = intersections,
+          shape = 21, 
+          fill = "yellow",
+          size = 3)  + 
+  theme_void()
+```
+
+::: {.nonincremental}
+
+- Note the use of `st_intersection()`
+
+:::
+
+
+------------------------------------------------------------------------
+
+### Spatial data: just scratching the surface
+
+- We could spend all semester on spatial data...
+
+- There is so much more we can do with rasters 
+    - raster algebra (adding / multiplying / etc. rasters)
+    - reprojecting rasters to different resolutions
+
+- You'll have opportunities in your projects to use spatial data if you'd like to! 
+
+- And lots of practice in Problem Set 4! 
+
+
+------------------------------------------------------------------------
+
+### Next week
+
+- Learn how to create interactive dashboards with `shiny`! (a great way to disseminate all of these interactive plots we've learned about)
+
+- Get Project 1 instructions
+

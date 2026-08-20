@@ -1,0 +1,358 @@
+---
+pagetitle: "Writing R Packages"
+editor: source
+format: 
+  revealjs:
+    html-math-method: mathjax
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      fig.retina = 3, fig.align = 'center',
+                      fig.asp = 0.75, fig.width = 8)
+library(knitr)
+library(tidyverse)
+# 
+# options(htmltools.preserve.raw = FALSE)
+ggplot2::theme_update(text = ggplot2::element_text(size = 20))
+```
+
+::::: columns
+::: {.column .center width="60%"}
+![](img/r-hex.jpg){width="90%"}
+:::
+
+::: {.column .center width="40%"}
+<br>
+
+[Writing R Packages]{.custom-title}
+
+<br> <br>
+
+[Grayson White]{.custom-subtitle}
+
+[Math 241 <br> Week 11 \| Spring 2026]{.custom-subtitle}
+:::
+:::::
+
+
+------------------------------------------------------------------------
+
+
+
+
+## Announcements
+
+::: {.nonincremental}
+
+* Fill out [this form](https://forms.gle/6FBbcMFmbSpyEeHM7) ASAP to help me create the Project 2 groups.
+    + Groups and project instructions will be assigned on Monday.
+
+:::
+
+------------------------------------------------------------------------
+
+## Announcements
+
+![](img/Advising Workshop - 041626.png){width="40%" fig-align='center'}
+
+
+
+------------------------------------------------------------------------
+
+
+## Week 11 Goals
+
+:::: {.columns}
+
+
+::: {.column .nonincremental}
+
+**Monday Lecture**: 
+
+- Practice with local LLMs
+
+:::
+
+
+::: {.column .fragment .nonincremental}
+
+**Wednesday Lecture**: 
+
+- Intro to writing `R` packages
+
+:::
+
+::::
+
+
+
+# Sharing Code
+
+::: {.fragment}
+
+**How do you share code?**
+
+:::
+
+------------------------------------------------------------------------
+
+## Sharing Code
+
+### Options:
+
+::: {.fragment .nonincremental}
+
+* `R` scripts and Quarto documents
+* RStudio Projects
+* GitHub Repository
+* R Package
+
+:::
+
+<br>
+
+::: {.fragment}
+
+**How to pick between the options?**
+
+:::
+
+------------------------------------------------------------------------
+
+## When To Create an `R` Package
+
+* If you have certain recurring operations that occur across multiple projects.
+* Want to share data and documentation and not worry about file paths, file types, the documentation getting lost...
+* **BUT**, you will still use an RStudio Project (with a corresponding GitHub repo) for the code and data that are specific to a given project.
+
+------------------------------------------------------------------------
+
+## R Packages
+
+What is an `R` package?
+
+::: {.fragment}
+
+> "R packages are the fundamental unit of R-ness". -- Jenny Bryan
+
+:::
+
+::: {.fragment .nonincremental}
+
+* Contains (usually) functions, (possibly) datasets, documentation, and tests.
+
+* "base R": a handful of base packages that are preloaded.
+
+* CRAN has > 23,000 more packages
+    + `install.packages("dplyr")`
+    + `library(dplyr)`
+
+* And then there are all the packages on `GitHub`:
+    + `devtools::install_github("hadley/genzplyr")`
+    + `library(genzplyr)`
+
+:::
+
+------------------------------------------------------------------------
+
+### R Data Packages
+
+* Great way to share data!
+
+::: {.fragment .nonincremental}
+
+* Example 1:
+    + `library(mosaicData)`
+    + `data(package = "mosaicData")`
+    + `?Births2015`
+
+:::
+
+::: {.fragment .nonincremental}
+
+* Example 2:
+    + `library(pdxTrees)`
+    + `get_pdxTrees_parks()`
+    + `get_pdxTrees_streets()`
+
+:::
+
+::: {.fragment .nonincremental}
+
+* Example 3:
+    + `library(gbfs)`
+
+:::
+
+------------------------------------------------------------------------
+
+### R Packages
+
+#### Why create an R package?
+
+::: {.fragment .nonincremental}
+
+* Very portable.
+* Includes documentation.
+* Provides a useful structure for organizing your work:
+    + `R` folder: Code
+    + `tests` folder: Testing functions
+    + `data` folder: Storing data
+* Lots of helper functions in other packages to automate parts of the process.
+
+::: 
+
+------------------------------------------------------------------------
+
+### Creating an R Package
+
+Key packages:
+
+* [`devtools`](https://cran.r-project.org/web/packages/devtools/index.html): supports the development and dissemination of the package
+
+* [`usethis`](https://usethis.r-lib.org/): automates steps of package creation, such as constructing the data file
+
+* [`roxygen2`](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html): simplifies writing documentation
+
+
+
+# Let's Build an `R` Package!
+
+------------------------------------------------------------------------
+
+#### Our Package: `pdxHoles`
+
+**Goals**:
+
+* Share data on potholes reported across our great city! 
+* Create a function that plots the potholes.
+
+------------------------------------------------------------------------
+
+#### Our Package: `pdxHoles`. Useful MVP code:
+
+```{css, echo=FALSE}
+.reveal code {
+  max-height: 100% !important;
+}
+```
+
+```{r}
+library(tidyverse)
+library(sf)
+potholes <- st_read("data/potholes.geojson", quiet = TRUE) |>
+  select(-OBJECTID, -ITEM_CATEGORY_NAME) |>
+  rename(
+    id = ITEM_ID,
+    status = ITEM_STATUS,
+    date_reported = ITEM_DATE_CREATED,
+    neighborhood = LOCATION_NEIGHBORHOOD
+  ) |>
+  mutate(
+    date_reported = as_datetime(date_reported / 1000, tz = "America/Los_Angeles"),
+    neighborhood = str_to_title(neighborhood),
+  )
+
+plot_holes <- function(colors = c("olivedrab", "darkgoldenrod", "red3"),
+                       alpha = 1) {
+  ggplot(data = potholes,
+                  mapping = aes(color = status)) +
+    geom_sf(alpha = alpha) +
+    scale_color_manual(values = colors) +
+    theme_bw()
+}
+
+```
+
+------------------------------------------------------------------------
+
+#### Our Package: `pdxHoles`. Useful MVP code:
+
+```{css, echo=FALSE}
+.reveal code {
+  max-height: 100% !important;
+}
+```
+
+```{r}
+#| output-location: column-fragment
+plot_holes <- function(colors = c("olivedrab", 
+                                  "darkgoldenrod",
+                                  "red3"),
+                       alpha = 1) {
+  ggplot(data = potholes,
+         mapping = aes(color = status)) +
+    geom_sf(alpha = alpha) +
+    scale_color_manual(values = colors) +
+    theme_bw()
+}
+
+plot_holes()
+```
+
+------------------------------------------------------------------------
+
+### Steps
+
+* Let's go through the "Creating an R Package" hand-out.
+
+* I will demo the process with the PDX pothole data.
+
+* If following along, clone this repo: [https://github.com/Reed-Data-Science/pkgDemo](https://github.com/Reed-Data-Science/pkgDemo)
+
+------------------------------------------------------------------------
+
+### Wrap-Up Thought:
+
+Most common confusions when moving from **`R` scripts/Quarto docs** to **writing `R` packages**:
+
+::: {.nonincremental .fragment}
+
+* Requires new ways of working with functions in other packages.
+    * `DESCRIPTION` file to declare dependencies.
+    * Use `package_name::function_name()`.
+    * Can't use `library(package_name)`.
+    * Want to avoid unnecessary dependencies.
+
+:::
+
+<br>
+
+::: {.fragment}
+
+**Other questions?**
+
+:::
+
+------------------------------------------------------------------------
+
+### Next week
+
+::: {.nonincremental}
+
+- More writing `R` packages!
+
+:::
+
+

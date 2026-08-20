@@ -1,0 +1,1037 @@
+---
+pagetitle: "Data Viz Considerations"
+editor: source
+format: 
+  revealjs:
+    html-math-method: mathjax
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      fig.retina = 3, fig.align = 'center',
+                      fig.asp = 0.75, fig.width = 8)
+library(knitr)
+library(tidyverse)
+# 
+# options(htmltools.preserve.raw = FALSE)
+theme_update(text = element_text(size = 20))
+```
+
+::::: columns
+::: {.column .center width="60%"}
+![](img/r-hex.jpg){width="90%"}
+:::
+
+::: {.column .center width="40%"}
+<br>
+
+[Data Viz Considerations]{.custom-title}
+
+<br> <br> <br> <br>
+
+[Grayson White]{.custom-subtitle}
+
+[Math 241 <br> Week 1 \| Spring 2026]{.custom-subtitle}
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Week 1 Goals
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+**Day 1 Lecture**
+
+* Course overview
+
+:::
+
+::: {.column width='50%'}
+
+**Day 2 Lecture**
+
+* Develop language to talk about the components of a graphic
+
+* Discuss considerations for good graphical design
+
+* Graphics consideration activity
+
+* PSET 0 assigned
+
+:::
+
+::::
+
+
+# First: P-set 0
+
+
+# Let's start with the language we will use to describe the components of a graph:
+
+::: {.fragment}
+
+**The Grammar of Graphics**
+
+:::
+
+------------------------------------------------------------------------
+
+## Background
+
+:::: {.columns}
+
+::: {.column width='30%'}
+
+```{r, out.width = "80%", echo=FALSE, fig.align='center'}
+include_graphics("img/Leland_Wilkinson.png") 
+```
+
+:::
+
+::: {.column width='70%'}
+
+<br>
+
+Leland Wilkinson wrote a book called "The Grammar of Graphics"
+
+:::
+
+::::
+
+::: {.fragment}
+
+:::: {.columns}
+
+::: {.column width='30%'}
+
+```{r, out.width = "100%", echo=FALSE, fig.align='center'}
+include_graphics("img/hadley.jpg") 
+```
+
+:::
+
+::: {.column width='70%'}
+
+<br>
+
+<br>
+
+<br>
+
+As part of his PhD in Statistics at Iowa State, Hadley Wickham wrote the `R` package `ggplot2`, which we will use to create static graphs.
+
+:::
+
+::::
+
+:::
+
+------------------------------------------------------------------------
+
+## The Grammar of Graphics
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+* **data**: dataset that contains the data
+
+* **geom**: geometric shape that the data are mapped to
+    + point, line, bar, text, ...
+    
+* **aes**thetic: visual properties of the **geom** 
+    + x position, y position, color, fill, shape
+    
+* **coord**: coordinate system
+    + Cartesian, polar, geographic
+    
+* **scale**: controls how data are mapped to the visual values of the aesthetic
+    + EX: particular colors, linear
+
+* **guide**: legend to help user convert visual display back to the data    
+
+:::
+
+::: {.column width='50%'}
+
+```{r, out.width = "100%", echo=FALSE, fig.align='center'}
+include_graphics("img/layers.png") 
+```
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+## Geoms versus Names
+
+::: {.nonincremental}
+
+* What are the names of these graphs?
+
+:::
+
+```{r, out.width = "100%", echo=FALSE, fig.align='center'}
+include_graphics("img/bars.png") 
+```
+
+* Focus on the **shapes** (i.e. geoms) and how the variables are **mapped** to those shapes.
+
+------------------------------------------------------------------------
+
+## [Data Viz Example](https://www.nytimes.com/2019/04/11/learning/whats-going-on-in-this-graph-april-17-2019.html)
+
+Let's practice deconstructing this graph using the grammar of graphics.
+
+:::: {.columns}
+
+::: {.column width='30%'}
+
+* Geom(s)?
+* **Aesthetic**s of the **geom**?
+    + Mapping of variables?
+* Coord?
+* Scales?
+
+:::
+
+::: {.column width='70%'}
+
+```{r, out.width = "70%", echo=FALSE, fig.align='center'}
+include_graphics("img/baseball.png") 
+```
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+## [Data Viz Example](https://www.nytimes.com/interactive/2018/01/23/climate/trump-offshore-oil-drilling.html)
+
+Let's practice deconstructing this graph using the grammar of graphics.
+
+
+:::: {.columns}
+
+::: {.column width='30%'}
+
+* Geom(s)?
+* **Aesthetic**s of the **geom**?
+    + Mapping of variables?
+* Coord?
+* Scales?
+
+:::
+
+::: {.column width='70%'}
+
+```{r, out.width = "85%", echo=FALSE, fig.align='center'}
+include_graphics("img/oil_graphic.png") 
+```
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+## Choices
+
+For most data, there won't be just **one** way to graph it. Decisions to be made:
+
+
+:::: {.columns}
+
+::: {.column width='45%'}
+
+* What **geom** to use
+    + Point, line, bar, ...
+    
+* For a given geom, how to map variables to its **aesthetics**
+    + Size, location, color, ...
+
+:::
+
+::: {.column width='10%'}
+
+:::
+
+::: {.column width='45%'}
+
+
+* For each **aesthetic**, what scale to use
+    + Linear, diverging colors, ...
+    
+* For the graph, what **coordinate system** to use
+    + Cartesian, polar
+
+
+:::
+
+::::
+
+::: {.fragment}
+
+Let's discuss some considerations that can help guide these decisions.  But...
+
+:::
+
+
+::: {.fragment}
+
+> "Data visualization is part art and part science. The challenge is to get the art right without getting the science wrong and vice versa." -- Claus Wilke
+
+:::
+
+::: {.fragment}
+
+**Recommendation:** Try out different options and make sure to iterate!
+
+:::
+
+
+# Consideration: Consider variable type when picking the aesthetic mapping.
+
+::: {.fragment}
+
+### What aesthetic options do I have at my disposal?
+
+:::
+
+------------------------------------------------------------------------
+
+## Aesthetics: [Position/location](https://www.nytimes.com/2019/04/11/learning/whats-going-on-in-this-graph-april-17-2019.html)
+
+```{r, out.width = "55%", echo=FALSE, fig.align='center'}
+include_graphics("img/baseball.png") 
+```
+
+------------------------------------------------------------------------
+
+## Aesthetics: [Length](https://www.nature.com/articles/d41586-019-03305-w)
+
+```{r, out.width = "50%", echo=FALSE, fig.align='center'}
+include_graphics("img/female_authors.png") 
+```
+
+
+------------------------------------------------------------------------
+
+## Aesthetics: [Area](https://www.nytimes.com/2022/04/07/learning/whats-going-on-in-this-graph-april-13-2022.html)
+
+```{r, out.width = "70%", echo=FALSE, fig.align='center'}
+include_graphics("img/pandemic-spending.png") 
+```
+
+------------------------------------------------------------------------
+
+## Aesthetics: [Angle](https://www.nytimes.com/2018/09/25/learning/whats-going-on-in-this-graph-sept-26-2018.html)
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+```{r, out.width = "90%", echo=FALSE, fig.align='center'}
+include_graphics("img/pie-chart-dog1.png") 
+```
+
+:::
+
+::: {.column width='50%'}
+
+```{r, out.width = "100%", echo=FALSE, fig.align='center'}
+include_graphics("img/pie-chart-dog2.png") 
+```
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+## Aesthetics: [Shapes](https://clauswilke.com/dataviz/telling-a-story.html/)
+
+```{r, out.width = "70%", echo=FALSE, fig.align='center'}
+include_graphics("img/pets.png") 
+```
+
+------------------------------------------------------------------------
+
+## Aesthetics: [Color Shade](https://fivethirtyeight.com/features/how-you-view-climate-change-might-depend-on-where-you-live/)
+
+```{r, out.width = "60%", echo=FALSE, fig.align='center'}
+include_graphics("img/climate-action.png") 
+```
+
+------------------------------------------------------------------------
+
+## Aesthetics: [Color Hue](https://www.nytimes.com/2022/03/03/learning/whats-going-on-in-this-graph-march-9-2022.html)
+
+```{r, out.width = "45%", echo=FALSE, fig.align='center'}
+include_graphics("img/success.png") 
+```
+
+------------------------------------------------------------------------
+
+## [Which represents the larger value?](http://stat405.had.co.nz/lectures/20-effective-vis.pdf)
+
+```{r, out.width = "60%", echo=FALSE, fig.align='center', fig.cap = "From Wickham (2012)"}
+include_graphics("img/larger1.png") 
+```
+
+------------------------------------------------------------------------
+
+## [Which represents the larger value?](http://stat405.had.co.nz/lectures/20-effective-vis.pdf)
+
+```{r, out.width = "60%", echo=FALSE, fig.align='center', fig.cap = "From Wickham (2012)"}
+include_graphics("img/larger2.png") 
+```
+
+------------------------------------------------------------------------
+
+## [Which represents the larger value?](http://stat405.had.co.nz/lectures/20-effective-vis.pdf)
+
+```{r, out.width = "60%", echo=FALSE, fig.align='center', fig.cap = "From Wickham (2012)"}
+include_graphics("img/larger3.png") 
+```
+
+------------------------------------------------------------------------
+
+## [Which represents the larger value?](http://stat405.had.co.nz/lectures/20-effective-vis.pdf)
+
+```{r, out.width = "60%", echo=FALSE, fig.align='center', fig.cap = "From Wickham (2012)"}
+include_graphics("img/larger4.png") 
+```
+
+------------------------------------------------------------------------
+
+## [Which represents the larger value?](http://stat405.had.co.nz/lectures/20-effective-vis.pdf)
+
+```{r, out.width = "60%", echo=FALSE, fig.align='center', fig.cap = "From Wickham (2012)"}
+include_graphics("img/larger5.png") 
+```
+
+------------------------------------------------------------------------
+
+## [Which represents the larger value?](http://stat405.had.co.nz/lectures/20-effective-vis.pdf)
+
+```{r, out.width = "60%", echo=FALSE, fig.align='center', fig.cap = "From Wickham (2012)"}
+include_graphics("img/larger7.png") 
+```
+
+------------------------------------------------------------------------
+
+## Consideration: Consider variable type when picking the aesthetic mapping.
+
+Some aesthetics are ordinal.  Some are not.  Some can be both!
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+* Color palettes, for example, can be:
+    + **Sequential**: Ordered data with one direction
+    + **Diverging**: Ordered data with two directions
+    + **Qualitative**: No order to the data
+
+:::
+
+::: {.column width='60%'}
+
+```{r, out.width = "100%", echo=FALSE, fig.align='center'}
+include_graphics("img/cb_palettes.001.jpeg") 
+```
+
+:::
+
+::::
+
+<!-- ::: {.fragment} -->
+
+<!-- * Color palettes, for example, can be : -->
+<!--     + **Sequential**: Ordered data with one direction -->
+<!--     + **Diverging**: Ordered data with two directions -->
+<!--     + **Qualitative**: No order to the data -->
+
+<!-- ```{r, out.width = "75%", echo=FALSE, fig.align='center'} -->
+<!-- include_graphics("img/cb_palettes.001.jpeg")  -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+------------------------------------------------------------------------
+
+## Consideration: Consider variable type when picking the aesthetic mapping.
+
+Our ability to perceive differences varies by aesthetic!
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+```{r, echo = FALSE}
+math241_form <- read_csv("data/Background Survey for Math 241_ Data Science (Responses) - Form Responses 1.csv") %>%
+  rename(ggplot2 = `For each R package or activity, rate what you think your proficiency level is. (For many of these, I am guessing the answer is "No experience" and that is completely fine!) [ggplot2]`,
+         dplyr = `For each R package or activity, rate what you think your proficiency level is. (For many of these, I am guessing the answer is "No experience" and that is completely fine!) [dplyr]`,
+         tidyr = `For each R package or activity, rate what you think your proficiency level is. (For many of these, I am guessing the answer is "No experience" and that is completely fine!) [tidyr]`) %>%
+  mutate(ggplot2 = forcats::fct_relevel(ggplot2,
+                                        "No experience",
+                                        "Limited experience",
+                                        "Moderate experience",
+                                        "Expert")) %>%
+  mutate(dplyr = forcats::fct_relevel(dplyr,
+                                        "No experience",
+                                        "Limited experience",
+                                        "Moderate experience",
+                                        "Expert"))
+
+ggplot(data = math241_form, mapping = aes(x = ggplot2)) +
+  geom_bar(fill = "#A71F69", color = "white") +
+  labs(x = "ggplot2 Experience",
+       y = "Number of students") +
+  coord_flip() + 
+  scale_y_continuous(breaks = 0:12)
+```
+
+:::
+
+::: {.column width='50%'}
+
+```{r, echo = FALSE}
+math241_form %>%
+  count(ggplot2) %>%
+ggplot(aes(x = "", y = n, fill = ggplot2)) +
+  geom_bar(stat = "identity", width=1) +
+  coord_polar("y", start=0)   +
+  theme_void() +
+  scale_fill_viridis_d()
+```
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+## Consideration: Pick the aesthetic that makes it easy to assess value.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+**Generally, humans are good at making comparisons involving:**
+
+* Position
+* Length
+* Angle (but less so than position and length!)
+
+:::
+
+::: {.column width='50%'}
+
+**Generally, humans are NOT good at making comparisons involving:**
+
+* Area (especially with irregular shapes)
+* Volume
+* Color shade
+* Color hue
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+
+## Consideration: [Respect the principle of proportional ink.](https://patient.info/news-and-features/whats-the-average-height-for-men)
+
+**Principle of proportional ink:** The size of shaded areas need to be proportional to the data values they represent.
+
+```{r, out.width = "40%", echo=FALSE, fig.align='center'}
+include_graphics("img/men_height.png") 
+```
+
+------------------------------------------------------------------------
+
+## Consideration: [Respect the principle of proportional ink.](https://www.businessinsider.com/the-top-10-most-read-books-in-the-world-infographic-2012-12)
+
+**Principle of proportional ink:** The size of shaded areas need to be proportional to the data values they represent.
+
+```{r, out.width = "35%", echo=FALSE, fig.align='center'}
+include_graphics("img/books.png") 
+```
+
+::: {.nonincremental}
+
+* Bars on a linear scale should start at 0.
+
+:::
+
+------------------------------------------------------------------------
+
+## Consideration: [Respect the principle of proportional ink.](https://fivethirtyeight.com/features/how-you-view-climate-change-might-depend-on-where-you-live/) 
+
+Difficult to respect with spatial data.  Why?
+
+```{r, out.width = "50%", echo=FALSE, fig.align='center'}
+include_graphics("img/climate-action.png") 
+```
+
+- [Land doesn't vote, people do.](https://storymaps.arcgis.com/stories/0e636a652d44484b9457f953994b212b)
+
+------------------------------------------------------------------------
+
+## Consideration: [Respect the principle of proportional ink.](https://projects.fivethirtyeight.com/gop-house-2022/) 
+
+Instead of using geographic boundaries, pick a standardized shape and place "near" geographic location.
+
+```{r, out.width = "45%", echo=FALSE, fig.align='center'}
+include_graphics("img/waffle.png") 
+```
+
+------------------------------------------------------------------------
+
+## Consideration: Try to have a high data-ink ratio.
+
+**Data-ink ratio**: "proportion of a graphic's ink devoted to the non-redundant display of data-information." -- Edward Tufte
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+```{r, out.width = "90%", echo=FALSE, fig.align='center'}
+include_graphics("img/mean-area-decade-bar-1.png") 
+```
+
+:::
+
+::: {.column width='50%'}
+
+```{r, out.width = "100%", echo=FALSE, fig.align='center'}
+include_graphics("img/mean-area-decade-scatter-1.png") 
+```
+
+:::
+
+::::
+
+Credit: Mine Çetinkaya-Rundel
+
+------------------------------------------------------------------------
+
+## Consideration: [Think carefully about context.](https://fivethirtyeight.com/features/what-ruth-bader-ginsburgs-death-could-mean-for-2020-and-the-supreme-court/)
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+Consider including:
+
+* Title (or Figure Caption)
+* Subtitle with maker and data source
+* Caption with key points
+
+:::
+
+::: {.column width='50%'}
+
+<br>
+
+* Legends/helpers (with units)
+* Axis labels (with units)
+* Other annotations or reference points
+
+:::
+
+::::
+
+::: {.fragment}
+
+:::: {.columns}
+
+::: {.column width='30%'}
+
+<br>
+
+<br>
+
+What to add depends **greatly** on the research question or the story you are telling!
+
+:::
+
+::: {.column width='70%'}
+
+```{r, out.width = "75%", echo=FALSE, fig.align='center'}
+include_graphics("img/rbg.png") 
+```
+
+:::
+
+::::
+
+:::
+
+------------------------------------------------------------------------
+
+## Consideration: [Think carefully about context.](https://www.nytimes.com/2020/01/23/learning/whats-going-on-in-this-graph-jan-29-2020.html)
+
+:::: {.columns}
+
+::: {.column width='50%' .nonincremental}
+
+Consider including:
+
+* Title (or Figure Caption)
+* Subtitle with maker and data source
+* Caption with key points
+
+:::
+
+::: {.column width='50%' .nonincremental}
+
+<br>
+
+* Legends/helpers (with units)
+* Axis labels (with units)
+* Other annotations or reference points
+
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column width='30%'}
+
+<br>
+
+<br>
+
+Context should add both **memorability** and **clarity**.
+
+:::
+
+::: {.column width='70%'}
+
+```{r, out.width = "80%", echo=FALSE, fig.align='center'}
+include_graphics("img/sport_injuries.png") 
+```
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+## Consideration: [Simplify as much as you can.](https://fivethirtyeight.com/features/ted-cruzs-general-election-strategy-is-wishful-thinking/) 
+
+:::: {.columns}
+
+::: {.column width='50%' .nonincremental}
+
+* Faceting is a great way to add another variable without over-complicating your graphic.
+
+* But only add additional variables that are **useful** to the story!
+
+:::
+
+::: {.column width='50%'}
+
+```{r, out.width = "80%", echo=FALSE, fig.align='center'}
+include_graphics("img/vote_more.png") 
+```
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+## Consideration: Simplify as much as you can. {.smaller}
+
+::: {.nonincremental}
+
+* Over-plotting is very common in the Age of Big Data!
+
+* Example from my own work with the US Forest Inventory and Analysis Program
+
+:::
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+```{r, echo = FALSE}
+dat <- readRDS(url("https://mcconvil.github.io/fia_workshop_2021/data/IDdata.rds","rb"))
+idaho_plots <- dat$pltassgn
+ggplot(data = idaho_plots, mapping = aes(x = elev, y = BA_TPA_ADJ)) +
+  geom_point() + labs(x = "Elevation", y = "Basal Area of Trees (sq ft)", caption = "Sampled Forest Inventory plots in Idaho 2011 - 2020")
+``` 
+
+:::
+
+::: {.column width='50%'}
+
+::: {.fragment .nonincremental}
+
+```{r, echo = FALSE}
+ggplot(data = idaho_plots, mapping = aes(x = elev, y = BA_TPA_ADJ)) +
+  geom_jitter() + labs(x = "Elevation", y = "Basal Area of Trees (sq ft)", caption = "Sampled Forest Inventory plots in Idaho 2011 - 2020")
+```
+
+* Jitter the points.
+
+:::
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+## Consideration: Simplify as much as you can. {.smaller}
+
+:::: {.columns}
+
+::: {.column width='50%' .nonincremental}
+
+```{r, echo = FALSE}
+ggplot(data = idaho_plots, mapping = aes(x = elev, y = BA_TPA_ADJ)) +
+  geom_point(alpha = 0.2) + labs(x = "Elevation", y = "Basal Area of Trees (sq ft)", caption = "Sampled Forest Inventory plots in Idaho 2011 - 2020")
+``` 
+
+* Add transparency.
+
+:::
+
+::: {.column width='50%'}
+
+::: {.fragment .nonincremental}
+
+```{r, echo = FALSE}
+ggplot(data = idaho_plots, mapping = aes(x = elev, y = BA_TPA_ADJ)) +
+  geom_bin2d() +
+  scale_fill_viridis_c() + labs(x = "Elevation", y = "Basal Area of Trees (sq ft)", caption = "Sampled Forest Inventory plots in Idaho 2011 - 2020")
+```
+
+* Bin the data and then try a different `geom`.
+
+:::
+
+:::
+
+::::
+
+::: {.fragment}
+
+**Pros and cons of different approaches?**
+
+:::
+------------------------------------------------------------------------
+
+## Consideration: Make important comparisons easy.
+
+Which graph makes it easy to conclude that the ruling coalition (FDP + SPD) have a majority?
+
+```{r, out.width = "80%", echo=FALSE, fig.align='center', fig.cap = "Wilke (2019)"}
+include_graphics("img/bundestag.png") 
+```
+
+------------------------------------------------------------------------
+
+## Consideration: Make important comparisons easy. {.smaller}
+
+Which graph makes it easy to see how a company's market share changes over time? (Warning: Fake data.)
+
+```{r, out.width = "80%", echo=FALSE, fig.align='center', fig.cap = "Wilke (2019)"}
+include_graphics("img/trend.png") 
+``` 
+
+------------------------------------------------------------------------
+
+## Consideration: Make your graphs accessible!
+
+Not all `R` color palettes have been vetted for color blindness.
+
+```{r, out.width = "60%", echo=FALSE, fig.align='center'}
+include_graphics("img/color_palettes.png") 
+```
+
+------------------------------------------------------------------------
+
+## Consideration: Make your graphs accessible!
+
+Not all `R` color palettes have been vetted for color blindness.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+```{r, out.width = "100%", echo=FALSE, fig.align='center'}
+include_graphics("img/red_blind.png") 
+```
+
+:::
+
+::: {.column width='50%'}
+
+```{r, out.width = "100%", echo=FALSE, fig.align='center'}
+include_graphics("img/green_blind.png") 
+```
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+## Consideration: Make your graphs accessible!
+
+::: {.nonincremental}
+
+* Color contrast also matters.  
+    + Shoot for a ratio of 4.5 or higher between overlapping colors.
+
+:::
+
+```{r, fig.width = 10, echo = FALSE, fig.asp=.4}
+library(patchwork)
+p1 <- ggplot(data = math241_form, mapping = aes(x = ggplot2)) +
+  geom_bar(fill = "#A71F69", color = "white") +
+  labs(x = "ggplot2 Experience",
+       y = "Number of students") +
+  coord_flip()
+
+p2 <- ggplot(data = math241_form, mapping = aes(x = ggplot2)) +
+  geom_bar(fill = "#A4DBE8") +
+  labs(x = "ggplot2 Experience",
+       y = "Number of students") +
+  coord_flip()
+p1 + p2
+```
+
+:::: {.columns .fragment}
+
+::: {.column width='50%'}
+
+```{r}
+library(coloratio)
+cr_get_ratio("#A71F69", "#EBEBEB")
+```
+
+:::
+
+::: {.column width='50%'}
+
+```{r}
+cr_get_ratio("#A4DBE8", "#EBEBEB")
+```
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+## Consideration: Make your graphs accessible!
+
+Use white space to help separate elements.
+
+```{r, fig.width= 13, echo = FALSE, fig.asp=.4}
+library(patchwork)
+p1 <- ggplot(data = math241_form, mapping = aes(x = ggplot2, fill = dplyr)) +
+  geom_bar() +
+  labs(x = "ggplot2 Experience",
+       y = "Number of students") +
+  coord_flip() +
+  scale_fill_brewer(type = "seq", palette = 1) +
+  theme(legend.position = "bottom") +
+  guides(fill = guide_legend(nrow = 2, byrow = TRUE))
+
+p2 <- ggplot(data = math241_form, mapping = aes(x = ggplot2, fill = dplyr)) +
+  geom_bar(color = "black", linewidth = 2) +
+  labs(x = "ggplot2 Experience",
+       y = "Number of students") +
+  coord_flip() +
+  scale_fill_brewer(type = "seq", palette = 1)  +
+  theme(legend.position = "bottom") +
+  guides(fill = guide_legend(nrow = 2, byrow = TRUE))
+p1 + p2
+```
+
+------------------------------------------------------------------------
+
+## Consideration: Make your graphs accessible!
+
+Use a large enough font size!  
+
+```{r, fig.width= 13, echo = FALSE, fig.asp=.5}
+library(patchwork)
+p1 <- ggplot(data = math241_form, mapping = aes(x = ggplot2)) +
+  geom_bar(fill = "#A71F69", color = "white") +
+  labs(x = "ggplot2 Experience",
+       y = "Number of students") +
+  coord_flip()
+
+p2 <- ggplot(data = math241_form, mapping = aes(x = ggplot2)) +
+  geom_bar(fill = "#A71F69", color = "white") +
+  labs(x = "ggplot2 Experience",
+       y = "Number of students") +
+  coord_flip() + theme(text = element_text(size = 10))
+p1 + p2
+```
+
+------------------------------------------------------------------------
+
+## Data Viz Considerations
+
+* We could spend all semester on data viz principles.
+
+::: {.fragment}
+
+* Be thoughtful and iterate.  
+
+:::
+
+::: {.fragment .nonincremental}
+
+* Let's spend some time considering the strengths and weaknesses of some graphs via an [activity](../in_class/activity1.qmd).
+    + Pick out the:
+        + Clearest story
+        + Most memorable
+        + Best overall
+
+:::
+
+* Be ready to present one of your graphs to the class, if we have time.
+
+```{r}
+#| echo: false
+countdown::countdown(15)
+```
+

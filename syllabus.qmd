@@ -1,0 +1,160 @@
+---
+title: "Syllabus"
+subtitle: |
+  Stat 241: Data Science \
+  Reed College \ 
+  Fall 2026
+author: "Grayson White"
+format:
+  html: default
+  pdf: default
+editor: 
+  mode: source
+---
+
+## Useful Information
+
+**Instructor**: Grayson White (he/him) 
+
+-   Email: [gwhite@reed.edu](mailto:gwhite@reed.edu)
+-   Office: Library 386
+-   Office hours: Available [here](office_hours.qmd). 
+
+**Course Assistant**:  TBD
+
+-   Email: TBD 
+-   Office: ETC 105B
+-   Office hours: TBD 
+
+<!-- In addition to holding office hours, [the course assistant] will attend class on Monday's and will be available to help via Slack.  -->
+
+
+**Links and course resources**:
+
+The course website, [reed-data-science.github.io](https://reed-data-science.github.io/), includes information on the course, lecture slides, public course materials, and links to all other course resources:
+
+-   Slack, for course correspondence,
+-   Gradescope, for turning in (most) assignments, and
+-   the RStudio Server.
+
+
+**Meeting Times**:
+
+We'll have a lecture-style meeting twice a week. **Attendance is required** (please see the *Participation and Attendance* section of the syllabus. 
+
+-   Lectures are on Mondays and Wednesdays, 1:10pm - 2:30pm, Eliot Hall Room 207.
+
+-   "Lectures" will consist of both (1) content delivery from the instructor and (2) interactive activities, worksheets, project work time, and more. 
+
+
+
+## Learning Outcomes
+
+By the end of the course, you will be able to:
+
+- Comfortably use `R` for data management, cleaning, and visualization.
+- Apply advanced data wrangling techniques to clean, merge, reshape, read in, and summarize data.
+- Work with non-traditional data types (e.g., spatial data, text data, dates).
+- Communicate about data and analysis to a non-specialist audience both orally and in writing. 
+
+
+## Learning Materials & Tools
+
+**Textbooks**: We'll use textbooks for our course, all of which are freely available online: 
+
+
+-   [Modern Data Science with R (2e)](https://mdsr-book.github.io/mdsr2e/) by Benjamin Baumer, Daniel Kaplan, and Nicholas Horton
+-   [Advanced R (2e)](https://adv-r.hadley.nz/index.html) by Hadley Wickham
+-   [Mastering Shiny](https://mastering-shiny.org/index.html) by Hadley Wickham
+-   [R for Data Science (2e)](https://r4ds.hadley.nz/) by Hadley Wickham and Garrett Grolemund
+-   [R Packages (2e)](https://r-pkgs.org/) by Hadley Wickham and Jenny Bryan 
+
+
+**Technologies (R, Positron or RStudio, and Quarto)**: R is a free and open source programming language, Positron and RStudio are Integrated Development Environments (IDEs) which allows for streamlined use of the R programming language, and Quarto is a markdown language that allows for reproducible documents that include R code, text, images, and much more! Access to these resources is available locally on your own machine, or on the [RStudio Server](https://www.rstudio.reed.edu) for this course. A laptop that can access the internet is required for this course.
+
+**Please let me know ASAP if you do not have access to a personal computer!**
+
+
+
+
+
+## Assignments, Activities, and Projects
+
+We'll have a few types of assignments, activities, and projects for this course. In particular: 
+
+-   **Problem sets**:
+    - Most weeks, we will have a problem set. The problem sets will be assigned on Thursday by 5pm and due the following week on Thursday by 5pm. 
+    - Problem sets will be turned in via Gradescope. 
+    - To help with various circumstances (expected and unexpected), you have up to 4 additional extensions days that you can use as you need (e.g., 1 additional day for 4 problem sets, 4 additional days for 1 problem set, ...) but the extension days must be rounded up to the nearest day (e.g., 2 extra hours = 1 extension day). There is no need to notify me of your use of extension days. 
+        - Note: if you use more than your allotted extension days for a problem set in and, no credit will be received for that problem set (e.g., if you have already used 3 extension days, and then turn in a problem set 2 days late, you will receive 0 credit for that problem set). 
+    
+-   **In-class activities**:
+    - During lecture, we will include some in-class activities. Including but not limited to: 
+        - group activities,
+        - independent activities.
+    
+-   **Projects**:
+    - We'll have two projects for this course. The first will be presented before fall break, and the second will be presented during finals week.
+    - No late projects are accepted.
+    
+## Participation and Attendance
+
+Attending class and actively engaging with the lecture content and activities in class is crucial to your own and your classmates learning. This is especially true in Stat 241: Data Science, as much of the learning will happen through active learning. Because of this, I will be taking attendance at each lecture and noting participation in class and in Slack. 
+
+## Distribution Requirements
+
+This course can be used towards your **Group III, “Natural, Mathematical, and Psychological Science”** requirement. It accomplishes the following learning goals for the group:
+
+1. Use and evaluate quantitative data or modeling, or use logical/mathematical reasoning to evaluate, test or prove statements.
+2. Given a problem or question, formulate a hypothesis or conjecture, and design an experiment, collect data or use mathematical reasoning to test or validate it.
+3. Collect, analyze, and interpret data.
+
+This course does **not** satisfy the "primary data collection and analysis" requirement.
+
+
+
+## Course Climate
+
+We expect everyone in this class to strive to foster a learning environment that is equitable, inclusive, and welcoming. If you experience any barriers to learning, please come to Professor Grayson White or a college administrator with your concerns.
+
+**Code of Conduct**:
+
+We expect all members of Stat 241 to make participation a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+
+We expect everyone to act and interact in ways that contribute to an open, welcoming, inclusive, and healthy community of learners. You can contribute to a positive learning environment by demonstrating empathy and kindness, being respectful of differing viewpoints and experiences, and giving and gracefully accepting constructive feedback.[^1]
+
+[^1]: This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html), version 2.0.
+
+
+
+## Policies
+
+**Late work policy**:
+
+Please see the late work policy for each individual assignment type that is included in the *Assignments, Activities, and Projects* section of the syllabus. 
+
+**Collaboration Policy and Academic Honesty**:
+
+Working with your classmates on difficult and interesting problems can not only help your learning, but also help you get to know each other! Therefore, I encourage you to collaborate on assignments but **every piece of work you submit must be your own**. Copying and pasting other people’s work or code is not acceptable. The Honor Principle must guide your conduct in this class. Failure to act with academic integrity may result in failing the course. 
+
+If you choose to collaborate with a classmate, **you must add their name to the top of your assignment**, and list them as a collaborator, e.g.:
+
+Collaborator(s): Elliot Shannon, Romain Boutelet
+
+*But what is collaboration?*:
+
+For Stat 241, collaboration can look like: working with classmates together on a given problem, doing scratch work, helping each other get un-stuck on a part of a problem, and even coming to a solution. However, you **must** write up your own problem solutions individually and cannot copy other's solutions (even those who you have collaborated with). Further, copying code from a collaborator, classmate, or generative AI tool (see the following section) is strictly prohibited. 
+
+
+**AI Policy**:
+
+Artificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, write, and much more (and they are getting quite good at many of these tasks!). On the other hand, learning to think critically about a problem at hand, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. This dichotomy puts Stat 241 in a interesting position as a course which aims to provide a cutting edge data science education at a liberal arts college. One of my main goals as the instructor of this course is to turn each of you into high quality data scientists who have a deep understanding of the R programming language and the ability to communicate insights about data on your own. Because of this, we will take a nuanced approach to engaging with AI tools in this course:
+
+**For all course content[^2]**: The use of generative AI tools, such as ChatGPT and others, are strictly prohibited in any stage of the work process for this course.
+
+[^2]: Except for content directly related to AI, LLMs, or coding agents. This content will occur towards the end of the semester and will be clearly marked. If you have any questions about what content you are allowed / supposed to use AI on, reach out to the instructor. Note that you may **never** use AI tools in the writing process for this course.
+
+Always, if you have questions about whether a tool is allowed for this course or if the way you plan to engage with a tool is allowed, ask the instructor before using it.
+
+**Why this policy?**: In today's job market, understanding generative AI tools and being able to engage with them is a key skill for data scientists and software engineers. However, relying too heavily on AI tools to write your code and think for you prohibits understanding of the core concepts that make you a good programmer and data scientist. Therefore, I want to help build you a strong base of understanding early in the course so that you can use that base understanding throughout the times in your life where you engage with data.
+

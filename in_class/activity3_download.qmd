@@ -1,0 +1,214 @@
+---
+title: "Activity: Spatial Data"
+---
+
+
+## Instructions
+
+For this activity, work in groups of 2 - 3. Work together to come to a solution, and help each other out when stuck! The goal is to use the journey as a vessel for your and your peer's learning, not to make it to the 'correct' answer as fast as possible.
+
+1. Compose your answer to each problem between the bars of red stars.
+
+2. If partially completed code is provided, you will see that `#| eval: FALSE` in the `R` chunk options. After editing/completing the code, make sure to change that to `eval = TRUE`.
+
+3. Be prepared to ask for help from me and your classmates!
+
+
+
+## Problem 0: loading Libraries
+
+Load the following libraries. You may need to install them first if you haven't used them on your computer before. 
+
+```{r libraries}
+# Libraries
+library(tidyverse)
+library(tidycensus)
+library(sf)
+```
+
+
+## Problem 1: Setting up Census API Key
+
+Like we did for Data Intake Activity 1, we are going to use Census data from the API package `tidycensus`:
+
+```{r}
+library(tidycensus)
+```
+
+Type your API key into the quotes in the code provided below, and change `#| eval: true` in the `R` chunk options. If you need a key, you can get one [here](https://api.census.gov/data/key_signup.html). 
+
+
+
+******************************************
+
+
+```{r}
+#| eval: false
+
+# Load in your Census API key 
+api_key <- "Insert your API key here"
+```
+
+
+
+******************************************
+
+
+
+
+## Problem 2: Retrieving Spatial Data for Multnomah County, OR
+
+Run the code below that uses the `get_acs()` command to bring in Oregon tract-level median household income, total foreign-born population, and total population from the 5-year 2018-2022 American Community Survey (ACS). Remember that “E” at the end of the variable indicates “Estimate” and “M” indicates margin of errors:
+
+```{r}
+# Use tidycensus to get ACS data for Multnomah County, OR
+or_tracts <- get_acs(geography = "tract",
+                     year = 2022,
+                     variables = c(medincome = "B19013_001",
+                                   fb = "B05012_003",
+                                   totp = "B05012_001"),
+                     state = "OR",
+                     county = "Multnomah",
+                     survey = "acs5",
+                     output = "wide",
+                     geometry = TRUE,
+                     key = api_key)
+
+# View the first few rows of the data
+head(or_tracts)
+```
+
+Check the type of the `or_tracts` object using the `class()` function to confirm that it is both a data frame, and an `sf` object. What is the name of the variable in the data set that contains the spatial information? How did we tell the `get_acs()` function above to pull this information? (Hint: check the options for the `get_acs()` call in the code above.)
+
+
+******************************************
+
+
+
+
+******************************************
+
+
+
+## Problem 3: Wrangling Data
+
+Before we get to mapping, run the following code to (i) drop the margin of error columns, (ii) rename variables, and (iii) calculate a percent foreign born (`pfb`) variable:
+
+```{r}
+# A bit of data wrangling
+or_tracts <- or_tracts %>%
+  select(-ends_with("M")) %>% # getting rid of Margin of Error columns
+  rename(medincome = medincomeE, fb = fbE, totp = totpE) %>% # renaming columns
+  mutate(pfb = 100 * (fb / totp)) # creating % foreign born
+
+# View the updated data
+head(or_tracts)
+```
+
+Next, make a new variable called `medincome_quintiles`, a categorical variable which splits the the `medincome` variable into quintiles:
+
+- Q1: <=20th percentile
+
+- Q2: >20th percentile and <=40th percentile
+
+- Q3: >40th percentile and <=60th percentile
+
+- Q4: >60th percentile and <=80th percentile
+
+- Q5: >80th percentile
+
+
+******************************************
+
+
+
+
+******************************************
+
+
+
+
+## Problem 4: Mapping Data
+
+Now that you’ve got your spatial data in and wrangled, the next step is to map something. Using the `sf` package, make a plot of Multnomah County, with tracts colored by their quintile for median income.
+
+
+******************************************
+
+
+
+******************************************
+
+
+
+
+## Problem 5: Customization
+
+Now that you've made your first spatial plot, it's time to beautify it! Change the fill color and clean up the visual properties of the plot. Feel free to add a base layer if you're feeling extra excited about spatial data! 
+
+
+
+******************************************
+
+
+
+
+******************************************
+
+
+
+
+## Problem 6: Adding Reed College
+
+Reed College is about at a Longitude of -122.6306, and a Latitude of 45.48194. This dataset has these coordinates:
+
+```{r}
+locations <- data.frame(long = -122.6306, lat = 45.48194, what = "Reed")
+```
+
+Add Reed College to your plot as a point on the graph. Label it as Reed College, and make sure to choose a color that will stick out from the color scheme and other visual properties you chose in the previous question.
+
+
+******************************************
+
+
+
+******************************************
+
+
+
+
+
+
+
+
+
+## Problem 7: Saving Maps
+
+You can save your maps using the function `ggsave()`, for example:
+
+```{r, eval=F}
+ggsave(plot=OBJECT_NAME, filename="[FILE_NAME].[EXT]")
+```
+
+Define your map from the previous question as an object (with the name of your choice), and edit the above code, specifying:
+
+  - The name of your graph object (`OBJECT_NAME`)
+  
+  - The file name for your graph (`[FILE_NAME]`)
+  
+  - The extension or type of file you want the graph saved as (`[EXT]`). Try either pdf, png, or jpg.
+
+
+
+******************************************
+
+
+
+******************************************
+
+
+
+
+
+

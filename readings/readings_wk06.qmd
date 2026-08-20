@@ -1,0 +1,8 @@
+---
+date: 3/2/26
+editor: source
+---
+
+# Math 241: Suggested reading for Monday and Wednesday, Week 6
+
+For reference on `shiny`: [Hadley Wickham's *Mastering Shiny*](https://mastering-shiny.org/).

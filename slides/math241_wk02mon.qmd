@@ -1,0 +1,930 @@
+---
+pagetitle: "Graphing with ggplot2"
+editor: source
+format: 
+  revealjs:
+    html-math-method: mathjax
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      fig.retina = 3, fig.align = 'center',
+                      fig.asp = 0.75, fig.width = 8)
+library(knitr)
+library(tidyverse)
+# 
+# options(htmltools.preserve.raw = FALSE)
+theme_update(text = element_text(size = 20))
+```
+
+::::: columns
+::: {.column .center width="60%"}
+![](img/r-hex.jpg){width="90%"}
+:::
+
+::: {.column .center width="40%"}
+<br>
+
+[Graphing with `ggplot2`]{.custom-title}
+
+<br> <br>
+
+[Grayson White]{.custom-subtitle}
+
+[Math 241 <br> Week 2 \| Spring 2026]{.custom-subtitle}
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Announcements
+
+::: {.nonincremental}
+
+* [Office Hours Schedule](https://reed-data-science.github.io/office_hours.html) is now posted on the course website.
+    + We will try to stick to this schedule, but if one of us has to reschedule, we will send a Slack message and update the schedule.
+* P-Set 0 due at 9am on **WEDNESDAY** (all other p-sets will be due on Thursdays).
+
+:::
+
+------------------------------------------------------------------------
+
+## Week 2 Goals
+
+:::: {.columns}
+
+::: {.column width='50%' .nonincremental .fragment}
+
+**Mon Lecture**
+
+* Basics of `ggplot2`
+
+* Explore several `geoms`.
+
+* And a little data wrangling with `dplyr` as needed!
+
+:::
+
+::: {.column width='50%' .nonincremental .fragment}
+
+**Wed Lecture**
+
+
+* GitHub workflow overview
+* Graphing context!
+    + Labels
+    + Highlighting 
+    + Useful text
+* Look at more `geom`s.
+* Explore further customizations.
+    + Color
+    + Themes
+* Learn how to ask coding questions well.
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+## Recall: The Grammar of Graphics
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+* **data**: dataset that contains the data
+
+* **geom**: geometric shape that the data are mapped to
+    + point, line, bar, text, ...
+    
+* **aes**thetic: visual properties of the **geom** 
+    + x position, y position, color, fill, shape
+    
+* **coord**: coordinate system
+    + Cartesian, polar, geographic
+    
+* **scale**: controls how data are mapped to the visual values of the aesthetic
+    + EX: particular colors, linear
+
+* **guide**: legend to help user convert visual display back to the data    
+
+:::
+
+::: {.column width='50%'}
+
+```{r, out.width = "100%", echo=FALSE, fig.align='center'}
+include_graphics("img/layers.png") 
+```
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+## ggplot2 example code
+
+```{r}
+#| eval: false
+#| tidy: false
+ggplot(data = ---, mapping = aes(---)) +
+  geom_---(---) + 
+  coord_---() + 
+  scale_---_---() +
+  ---
+```
+
+------------------------------------------------------------------------
+
+## Example: Over the course of a year, how does the daily number of births vary?
+
+```{r, echo = FALSE}
+# Load library that has dataset of interest
+library(mosaicData)
+
+# Grab data
+data(Births2015)
+
+# Load tidyverse (which contains ggplot2)
+library(tidyverse)
+
+# Create plot
+ggplot(data = Births2015, mapping = aes(x = date, y = births)) + 
+  geom_point()
+```
+
+::: {.fragment}
+
+* What patterns do you see?
+
+:::
+
+
+------------------------------------------------------------------------
+
+## Example
+
+```{r}
+# Load library that has dataset of interest
+library(mosaicData)
+
+# Grab data
+data(Births2015)
+
+# Load tidyverse (which contains ggplot2)
+library(tidyverse)
+```
+
+------------------------------------------------------------------------
+
+## Example
+
+```{r, eval = FALSE, tidy = FALSE}
+# Example code
+ggplot(data = ---, mapping = aes(---)) +
+  geom_---(---) + 
+  coord_---() + 
+  scale_---_---() +
+  ---
+```
+
+```{r birthsPlot}
+#| output-location: column
+# Create plot
+ggplot(data = Births2015, 
+       mapping = aes(x = date, y = births)) + 
+  geom_point()
+```
+
+------------------------------------------------------------------------
+
+## Example: Cycles related to day of the week?
+
+```{r, fig.height = 5}
+# Look at structure of data with dplyr function
+glimpse(Births2015)
+```
+
+------------------------------------------------------------------------
+
+## Example: Cycles related to day of the week? {.smaller}
+
+```{r birthsPlot2}
+#| output-location: column
+# Create plot
+ggplot(data = Births2015, 
+       mapping = aes(x = date, y = births, 
+                     color = day_of_week)) + 
+  geom_point()
+```
+
+* Additional aesthetic:
+    + Why is this not quite what we want? What do we want?
+* What happened to the aspect ratio when we added the legend?
+    
+
+------------------------------------------------------------------------
+
+## Example: Cycles related to day of the week? {.smaller}
+
+```{r birthsPlot3}
+#| output-location: column
+# Create plot
+ggplot(data = Births2015, 
+       mapping = aes(x = date, y = births, 
+                     color = wday)) + 
+  geom_point() + 
+  theme(legend.position = "bottom")
+```
+
+* Positioning the legend on the bottom of the graph helped give us a nicer aspect ratio.
+
+* What if we want to see the **direction** that the number of births take over time for each day of the week?
+    + New visual cue/`geom`?    
+
+
+------------------------------------------------------------------------
+
+## Example
+
+```{r birthsPlot4}
+#| output-location: column
+# Create plot
+ggplot(data = Births2015, 
+       mapping = aes(x = date, y = births, 
+                     color = wday)) + 
+  geom_line() + 
+  theme(legend.position = "bottom")
+```
+
+* What if we want visual cues for both **position** and **direction**?   
+
+
+------------------------------------------------------------------------
+
+## Example
+
+```{r birthsPlot5}
+#| output-location: column
+# Create plot
+ggplot(data = Births2015, 
+       mapping = aes(x = date, y = births, 
+                     color = wday)) + 
+  geom_line() +
+  geom_point() +
+  theme(legend.position = "bottom")
+```
+
+
+------------------------------------------------------------------------
+
+## Coordinate System Layer
+
+```{r birthsPlot6}
+#| output-location: column
+library(lubridate)
+
+ggplot(data = Births2015, 
+       mapping = aes(x = date, y = births, 
+                     color = wday)) + 
+  geom_line() + 
+  geom_point() +
+  theme(legend.position = "bottom") +
+  coord_cartesian(xlim = 
+                    as_date(c("2015-01-01",
+                              "2015-01-31")))
+```
+
+* How did this new layer change our plot?
+
+* What if we want all the points to be colored "midnightblue"?
+
+
+
+------------------------------------------------------------------------
+
+## Setting instead of Mapping
+
+```{r birthsPlot7}
+#| output-location: column
+ggplot(data = Births2015, 
+       mapping = aes(x = date, y = births, 
+                     color = "midnightblue")) + 
+  geom_point() 
+```
+
+
+
+------------------------------------------------------------------------
+
+## Setting instead of Mapping
+
+```{r birthsPlot8}
+#| output-location: column
+ggplot(data = Births2015, 
+       mapping = aes(x = date, y = births)) + 
+  geom_point(color = "midnightblue") 
+```
+
+* If you want to **set** an aesthetic to a specific value (instead of **mapping** the aesthetic to a variable), do so in the `geom_--()` function.
+
+
+------------------------------------------------------------------------
+
+## Layer order (sometimes) matters
+
+```{r birthsPlot9}
+#| output-location: column
+ggplot(data = Births2015, 
+       mapping = aes(x = date, y = births,
+                     color = wday)) + 
+  geom_point(color = "#ff006e") +
+  geom_line() + 
+  theme(legend.position = "bottom")
+```
+
+
+------------------------------------------------------------------------
+
+## Layer order (sometimes) matters
+
+```{r birthsPlot10}
+#| output-location: column
+ggplot(data = Births2015, 
+       mapping = aes(x = date, y = births,
+                     color = wday)) + 
+  geom_line(color = "#ff006e") + 
+  geom_point() + 
+  theme(legend.position = "bottom")
+```
+
+
+------------------------------------------------------------------------
+
+## Layer order (sometimes) matters
+
+```{r birthsPlot11}
+#| output-location: column
+ggplot(data = Births2015, 
+       mapping = aes(x = date, y = births,
+                     color = wday)) + 
+  geom_line() + 
+  geom_point(color = "#ff006e") + 
+  theme(legend.position = "bottom")
+```
+
+- Inheriting aesthetics discussion.
+
+
+------------------------------------------------------------------------
+
+## Let's explore other **geom**s
+
+* Many are listed on the first page of the [`ggplot2` cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf).
+
+::: {.fragment .nonincremental}
+
+* Can also ask R:
+
+```{r}
+apropos("geom_")
+```
+
+:::
+
+------------------------------------------------------------------------
+
+## Adding Curve(s)
+
+```{r birthsPlot12}
+#| output-location: column
+ggplot(data = Births2015, 
+       mapping = aes(x = date, y = births,
+                     color = wday)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE) + 
+  theme(legend.position = "bottom")
+```
+
+* Does a multiple linear regression line(s) capture the trend?
+
+
+------------------------------------------------------------------------
+
+## Adding Curve(s)
+
+```{r birthsPlot13}
+#| output-location: column
+ggplot(data = Births2015, 
+       mapping = aes(x = date, y = births,
+                     color = wday)) + 
+  geom_point() + 
+  geom_smooth(se = FALSE) + 
+  theme(legend.position = "bottom")
+```
+
+* The default LOESS smoother usually does a reasonable job.
+
+
+------------------------------------------------------------------------
+
+## Adding Curve(s)
+
+```{r birthsPlot14}
+#| output-location: column
+ggplot(data = Births2015, 
+       mapping = aes(x = date, y = births,
+                     color = wday)) + 
+  geom_smooth(color = "black", se = FALSE) +
+  geom_point() + 
+  theme(legend.position = "bottom")
+```
+
+* What happened?
+
+* Inheriting aesthetics discussion.
+
+------------------------------------------------------------------------
+
+## New Example: Movies and the Bechdel Test
+
+* Need a new dataset with more categorical variables
+
+::: {.fragment .nonincremental}
+
+* **The Alison Bechdel Test**: A movie passes the test if:
+    + There are at least two named women in the picture
+    + They have a conversation with each other at some point
+    + That conversation isn't about a male character 
+
+:::
+
+::: {.fragment .nonincremental}
+
+* Movies from 1970 - 2013
+
+
+```{r}
+movies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-09/movies.csv') %>%
+  filter(rated %in% c("R", "PG-13", "PG", "G"))
+```
+
+:::
+
+------------------------------------------------------------------------
+
+## New Example: Movies and the Bechdel Test
+
+```{r}
+glimpse(movies)
+```
+
+```{r, echo = FALSE, eval = FALSE}
+
+ggplot(data = movies,
+       mapping = aes(x = clean_test)) + 
+  geom_bar()
+
+ggplot(data = movies, 
+       mapping = aes(x = rated, 
+                     fill = clean_test)) + 
+  geom_bar()
+
+ggplot(data = movies, 
+       mapping = aes(x = rated, 
+                     fill = clean_test)) + 
+  geom_bar(position = "fill")
+
+ggplot(data = movies, 
+       mapping = aes(x = rated, 
+                     fill = binary)) + 
+  geom_bar(position = "fill")
+
+movies %>%
+  count(rated, binary) %>%
+ggplot(mapping = aes(x = rated, binary,
+                     fill = n)) + 
+  geom_tile()
+
+movies %>%
+  group_by(rated, binary) %>%
+  summarize(median_budget = mean(budget)) %>%
+ggplot(mapping = aes(x = rated, binary,
+                     fill = median_budget)) + 
+  geom_tile()
+```
+
+# What are useful `geom`s for describing amounts/frequencies?
+
+------------------------------------------------------------------------
+
+## Amounts: `geom_bar`
+
+```{r movies1}
+#| output-location: column
+ggplot(data = movies,
+       mapping = aes(x = binary)) + 
+  geom_bar()
+```
+
+* Verbalize the mapping of **data** to **geom_bar()**. 
+    + How is this mapping different from **geom_point()**?
+
+
+------------------------------------------------------------------------
+
+## Another option: `geom_col`
+
+```{r movies2}
+#| output-location: column
+# First wrangle with dplyr
+movies_ag <- count(movies, binary) 
+movies_ag
+
+ggplot(data = movies_ag, 
+       mapping = aes(x = binary, y = n)) + 
+  geom_col()
+```
+
+
+------------------------------------------------------------------------
+
+## `geom_point` again
+
+```{r movies3}
+#| output-location: column
+ggplot(data = movies_ag, 
+       mapping = aes(x = binary, y = n)) + 
+  geom_point(size = 4)
+```
+
+* If you are worried about the data-ink ratio...
+
+
+------------------------------------------------------------------------
+
+## `geom_point` + `geom_segment`
+
+```{r movies4}
+#| output-location: column
+ggplot(data = movies_ag, 
+       mapping = aes(x = binary, y = n)) + 
+  geom_segment(mapping = aes(xend = binary), 
+               yend = 0) + 
+  geom_point(size = 10, color = "orange") +
+  ylim(c(0, 875))
+```
+
+* Lollipop chart: compromise?
+
+
+------------------------------------------------------------------------
+
+## Two categorical variables: `geom_bar`
+
+```{r movies5}
+#| output-location: column
+ggplot(data = movies,
+       mapping = aes(x = rated,
+                     fill = binary)) + 
+  geom_bar()
+```
+
+::: {.nonincremental}
+
+* Describe the mapping.
+
+:::
+
+
+------------------------------------------------------------------------
+
+## Two categorical variables: `geom_bar`
+
+```{r movies6}
+#| output-location: column
+ggplot(data = movies,
+       mapping = aes(x = rated,
+                     fill = binary)) + 
+  geom_bar(position = "fill")
+```
+
+::: {.nonincremental}
+
+* Describe the mapping.
+
+:::
+
+------------------------------------------------------------------------
+
+## Two categorical variables: `geom_bar`
+
+```{r movies6b}
+#| output-location: column
+ggplot(data = movies,
+       mapping = aes(x = rated,
+                     fill = binary)) + 
+  geom_bar(position = "dodge")
+```
+
+::: {.nonincremental}
+
+* Describe the mapping.
+
+:::
+
+------------------------------------------------------------------------
+
+## Two categorical variables: `geom_tile`
+
+```{r movies7}
+#| output-location: column
+movies_ag <- count(movies, rated, binary)
+
+ggplot(data = movies_ag,
+       mapping = aes(x = rated,
+                     y = binary,
+                     fill = n)) + 
+  geom_tile()
+```
+
+::: {.nonincremental}
+
+* Describe the mapping.
+
+:::
+
+------------------------------------------------------------------------
+
+## Two categorical variables: `geom_tile`
+
+```{r movies8}
+#| output-location: column
+movies_ag <- count(movies, rated, binary)
+
+ggplot(data = movies_ag,
+       mapping = aes(x = rated,
+                     y = binary,
+                     fill = n)) + 
+  geom_tile() +
+  scale_fill_distiller(palette = 4)
+```
+
+* Change the `fill` scale!
+
+
+------------------------------------------------------------------------
+
+## Can display more than frequencies!
+
+```{r movies9}
+#| output-location: column
+movies_ag <- group_by(movies,
+                      rated, binary) %>%
+  summarize(mean_budget = mean(budget))
+
+ggplot(data = movies_ag,
+       mapping = aes(x = rated,
+                     y = binary,
+                     fill = mean_budget)) + 
+  geom_tile() +
+  scale_fill_viridis_c(direction = -1) +
+  theme(legend.position = "bottom")
+```
+
+
+------------------------------------------------------------------------
+
+## Can display more than frequencies!
+
+```{r movies9.2}
+#| output-location: column
+options(scipen = 999) # turn off scientific notation
+
+movies_ag <- group_by(movies,
+                      rated, binary) %>%
+  summarize(mean_budget = mean(budget))
+
+ggplot(data = movies_ag,
+       mapping = aes(x = rated,
+                     y = binary,
+                     fill = mean_budget)) + 
+  geom_tile() +
+  scale_fill_viridis_c(direction = -1,
+                       guide = guide_colorbar(angle = 90)) +
+  theme(legend.position = "bottom")
+```
+
+
+# What are useful `geom`s (graphs) for visualizing distributions?
+
+------------------------------------------------------------------------
+
+## Distributions: `geom_histogram`
+
+```{r movies10}
+#| output-location: column
+ggplot(movies, aes(x = budget)) +
+  geom_histogram()
+```
+
+::: {.nonincremental}
+
+* Describe the mapping.
+
+:::
+
+------------------------------------------------------------------------
+
+## Distributions: `geom_histogram`
+
+```{r movies11}
+#| output-location: column
+ggplot(movies, aes(x = budget)) +
+  geom_histogram(bins = 50, 
+                 color = "white",
+                 fill = "darkcyan") 
+```
+
+* Can modify the mapping via the `binwidth` or `bins` arguments
+
+
+------------------------------------------------------------------------
+
+## Distributions: `geom_histogram`
+
+```{r movies12}
+#| output-location: column
+ggplot(movies, aes(x = budget, 
+                   fill = binary)) +
+  geom_histogram(bins = 50, 
+                 color = "white")
+```
+
+* What is problematic about this graph?
+
+
+------------------------------------------------------------------------
+
+## Distributions: `geom_histogram`
+
+```{r movies13}
+#| output-location: column
+ggplot(movies, aes(x = budget, 
+                   fill = binary)) +
+  geom_histogram(bins = 50,
+                 alpha = 0.4,
+                 position = "identity")
+```
+
+::: {.nonincremental}
+
+* Still problematic.
+
+:::
+
+------------------------------------------------------------------------
+
+## One option: Faceting
+
+```{r movies14}
+#| output-location: column
+ggplot(movies, aes(x = budget, 
+                   fill = binary)) +
+  geom_histogram(bins = 50) +
+  facet_wrap(~binary) +
+  guides(fill = "none")
+```
+
+
+------------------------------------------------------------------------
+
+## One option: Faceting
+
+```{r movies14b}
+#| output-location: column
+ggplot(movies, aes(x = budget, 
+                   fill = binary)) +
+  geom_histogram() +
+  facet_grid(rated ~ binary, scales = "free_y") +
+  guides(fill = "none")
+```
+
+
+------------------------------------------------------------------------
+
+## Another option: `geom_density`
+
+```{r movies15}
+#| output-location: column
+ggplot(movies, aes(x = budget, 
+                   fill = binary)) +
+  geom_density(alpha = 0.4)  +
+  theme(legend.position = "bottom")
+```
+
+
+------------------------------------------------------------------------
+
+## Distributions: `geom_boxplot`
+
+```{r movies17}
+#| output-location: column
+ggplot(movies, aes(x = binary, 
+                   y = budget)) +
+  geom_boxplot()
+```
+
+
+------------------------------------------------------------------------
+
+## Distributions: `geom_boxplot`
+
+```{r movies18}
+#| output-location: column
+ggplot(movies, aes(x = binary, 
+                   y = budget)) +
+  geom_boxplot(varwidth = TRUE,
+               notch = TRUE)
+```
+
+* What does `varwidth` do?
+* Why might we add `notch = TRUE`?
+
+
+------------------------------------------------------------------------
+
+## Distributions: `geom_boxplot`
+
+```{r movies19}
+#| output-location: column
+ggplot(movies, aes(x = binary, 
+                   y = budget,
+                   fill = rated)) +
+  geom_boxplot()
+```
+
+
+------------------------------------------------------------------------
+
+## Distributions: `geom_violin`
+
+```{r movies20}
+#| output-location: column
+ggplot(movies, aes(x = binary, 
+                   y = budget)) +
+  geom_violin()
+```
+
+* Utility of the violin over the box?
+
+
+------------------------------------------------------------------------
+
+## Distributions: `geom_violin`
+
+```{r movies21}
+#| output-location: column
+
+ggplot(movies, aes(x = binary, 
+                   y = budget)) +
+  geom_violin() + 
+  geom_jitter(alpha = .1,
+              width = .1,
+              color = "darkcyan")
+```
+
+
+------------------------------------------------------------------------
+
+## Reminders
+
+::: {.nonincremental}
+
+* [Office Hours Schedule](https://reed-data-science.github.io/office_hours.html)
+* P-Set 1 released at 9am on Thursday.
+    + Will discuss how to access the p-sets through GitHub on Wednesday.
+    
+:::
+

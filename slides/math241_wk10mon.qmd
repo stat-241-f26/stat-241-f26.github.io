@@ -1,0 +1,1095 @@
+---
+pagetitle: "Iteration"
+editor: source
+format: 
+  revealjs:
+    html-math-method: mathjax
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      fig.retina = 3, fig.align = 'center',
+                      fig.asp = 0.75, fig.width = 8)
+library(knitr)
+library(tidyverse)
+# 
+# options(htmltools.preserve.raw = FALSE)
+ggplot2::theme_update(text = ggplot2::element_text(size = 20))
+```
+
+::::: columns
+::: {.column .center width="60%"}
+![](img/r-hex.jpg){width="90%"}
+:::
+
+::: {.column .center width="40%"}
+<br>
+
+[Iteration]{.custom-title}
+
+<br> <br> <br> <br> <br> <br> <br>
+
+[Grayson White]{.custom-subtitle}
+
+[Math 241 <br> Week 10 \| Spring 2026]{.custom-subtitle}
+:::
+:::::
+
+
+------------------------------------------------------------------------
+
+
+### Annoucements 
+
+
+- **Welcome** to the visitors!
+
+- Peer / Self Feedback due **tomorrow**!
+    - I also extended the deadline for the data scientist statement until tomorrow.
+
+- Problem Set 5 released tomorrow.
+
+
+------------------------------------------------------------------------
+
+## Week 10 Goals
+
+:::: {.columns}
+
+
+::: {.column .nonincremental}
+
+**Monday Lecture**: 
+
+- Iteration
+    - `for()` and `while()` loops
+    - Functional programming
+
+:::
+
+
+::: {.column .fragment .nonincremental}
+
+**Wednesday Lecture**: 
+
+- Parallelism
+- Ethics
+- AI
+
+:::
+
+::::
+
+
+
+------------------------------------------------------------------------
+
+
+### Reducing Code Duplication
+
+Last time, we reduced code duplication by creating **functions**: 
+
+```{r}
+library(pdxTrees)
+pdxTrees <- get_pdxTrees_parks()
+
+pdxTrees %>%
+  rename(ht = Tree_Height, 
+         pol = Pollution_Removal_oz) %>%
+  summarize(DBH_cv = sd(DBH, na.rm = TRUE)/mean(DBH, na.rm = TRUE),
+            ht_cv = sd(ht, na.rm = TRUE)/mean(ht, na.rm = TRUE), 
+            pol_cv = sd(pol, na.rm = TRUE)/mean(ht, na.rm = TRUE))
+```
+
+------------------------------------------------------------------------
+
+### Reducing Code Duplication
+
+Last time, we reduced code duplication by creating **functions**: 
+
+```{r}
+coef_of_var <- function(x, na.rm = FALSE, trim = 0) {
+  stopifnot(is.numeric(x))
+  sd(x, na.rm = na.rm) / mean(x, na.rm = na.rm, trim = trim)
+}
+
+pdxTrees %>%
+  rename(ht = Tree_Height, 
+         pol = Pollution_Removal_oz)  %>%
+  summarize(DBH_cv = coef_of_var(DBH, na.rm = TRUE),
+            ht_cv = coef_of_var(ht, na.rm = TRUE), 
+            pol_cv = coef_of_var(pol, na.rm = TRUE))
+```
+
+* But we still have some code duplication.
+
+------------------------------------------------------------------------
+
+### Reducing Code Duplication
+
+* Can also reduce duplication through iteration.
+
+* **Iteration**: Do the same thing for multiple inputs.
+
+::: {.fragment}
+
+`dplyr` style:
+
+```{r}
+pdxTrees %>%
+  rename(ht = Tree_Height, 
+         pol = Pollution_Removal_oz)  %>%
+  summarize(across(.cols = c(DBH, ht, pol), .fns = coef_of_var))
+```
+
+* Why the `NA`s for `ht` and `pol`?
+
+:::
+
+------------------------------------------------------------------------
+
+### Anonymous Function
+
+::: {.nonincremental}
+
+* Create a function on the fly to use as an argument of another function.
+    + Don't store the anonymous function.
+
+* Also called lambda function/expression.
+
+:::
+
+::: {.fragment}
+
+Longform syntax:
+
+```{r}
+pdxTrees %>%
+  rename(ht = Tree_Height, 
+         pol = Pollution_Removal_oz)  %>%
+  summarize(across(.cols = c(DBH, ht, pol), 
+                   .fns = function(.x) {
+                     coef_of_var(.x, na.rm = TRUE)
+    }))
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Anonymous Function
+
+
+::: {.nonincremental}
+
+* Create a function on the fly to use as an argument of another function.
+    + Don't store the anonymous function.
+
+* Also called lambda function/expression.
+
+:::
+
+Shorthand syntax: `~`
+
+
+```{r}
+pdxTrees %>%
+  rename(ht = Tree_Height, 
+         pol = Pollution_Removal_oz)  %>%
+  summarize(across(.cols = c(DBH, ht, pol), 
+                   .fns = ~ coef_of_var(.x, na.rm = TRUE)))
+```
+
+------------------------------------------------------------------------
+
+### Back to `dplyr` Iterating: "ten, ten, ten for `everything()`, `everything()`"
+
+::: {.nonincremental}
+
+* `everything()` is useful if you want to apply the function to all columns of the `data.frame()`.
+
+:::
+
+```{r}
+pdxTrees %>%
+  rename(ht = Tree_Height, 
+         pol = Pollution_Removal_oz)  %>%
+  select(DBH, ht, pol) %>%
+  summarize(across(everything(), 
+                   .fns = ~ coef_of_var(.x, na.rm = TRUE)))
+```
+
+------------------------------------------------------------------------
+
+### Back to `dplyr` Iterating: "oh `where()` is my hairbrush?"
+
+::: {.nonincremental}
+
+* `where()` is useful for conditional application of the function.
+
+:::
+
+```{r}
+pdxTrees %>%
+  rename(ht = Tree_Height, 
+         pol = Pollution_Removal_oz)  %>%
+  select(DBH, ht, pol, Condition) %>%
+  summarize(across(where(is.numeric), 
+                   .fns = ~ coef_of_var(.x, na.rm = TRUE)))
+```
+
+------------------------------------------------------------------------
+
+### Back to `dplyr` Iterating
+
+::: {.nonincremental}
+
+* You can provide more than one function via a `list()`.
+
+:::
+
+```{r}
+pdxTrees %>%
+  rename(ht = Tree_Height, 
+         pol = Pollution_Removal_oz)  %>%
+  select(DBH, ht, pol, Condition) %>%
+  summarize(across(where(is.numeric), 
+                   .fns = list(
+                     cv = ~ coef_of_var(.x, na.rm = TRUE),
+                     mean = ~ mean(.x, na.rm = TRUE))))
+```
+
+------------------------------------------------------------------------
+
+### Back to `dplyr` Iterating: "`across()` the universe"
+
+::: {.nonincremental}
+
+* `across()` also works with `mutate()`.
+
+:::
+
+```{r}
+pdxTrees %>%
+  slice(1:10) %>%
+  mutate(across(1:2, as.character))
+```
+
+
+# Explicit Iterating: `for()` Loops
+
+------------------------------------------------------------------------
+
+### Explicit Iterating: `for()` Loops
+
+
+
+**Language**: Iterating = Looping
+
+```{r}
+# Data
+pdxTrees <- get_pdxTrees_parks() 
+
+# Variables of interest
+vars <- c("DBH", "Tree_Height", "Pollution_Removal_oz")
+
+# Vector for storing output
+pdxTrees_coef_of_vars <- rep(NA, 3)
+
+# For loop
+for(i in 1:3){
+  pdxTrees_coef_of_vars[i] <- coef_of_var(pdxTrees[[vars[i]]],
+                                          na.rm = TRUE)
+}
+
+# Examine output
+pdxTrees_coef_of_vars
+```
+
+------------------------------------------------------------------------
+
+### `for()` Loop Components
+
+::: {.nonincremental}
+
+* **Output**: What you want to produce and store.
+    + Good to specify size of output object.
+    + Start with `NA`s so clear which have been replaced.
+    + Determine if you want to store the output as a vector or data frame or something else.
+    
+:::
+
+```{r}
+# Output options
+pdxTrees_coef_of_vars <- vector("double", 3)
+pdxTrees_coef_of_vars
+
+pdxTrees_coef_of_vars <- vector()
+pdxTrees_coef_of_vars
+
+pdxTrees_coef_of_vars <- rep(NA, 3)
+pdxTrees_coef_of_vars
+```
+
+------------------------------------------------------------------------
+
+### `for()` Loop Components
+
+**Sequence**: The vector you want to iterate over
+
+```{r}
+# Sequence Options
+1:3
+
+1:length(pdxTrees_coef_of_vars)
+
+seq_along(pdxTrees_coef_of_vars)
+```
+
+------------------------------------------------------------------------
+
+### `for()` Loop Components
+
+**Body**: The code that we iterate.
+
+```{r}
+for(i in seq_along(pdxTrees_coef_of_vars)){
+  
+  pdxTrees_coef_of_vars[i] <- coef_of_var(pdxTrees[[vars[i]]],
+                                          na.rm = TRUE)
+}
+
+pdxTrees_coef_of_vars
+```
+
+------------------------------------------------------------------------
+
+### Another example: Building Up a `for()` Loop
+
+I want to construct a bootstrap distribution for the mean `DBH` for our sample of Portland trees.
+
+* How is looping/iterating helpful here?
+
+::: {.fragment .nonincremental}
+
+* Let's start with a minimal viable product.
+
+```{r}
+mean(sample(pdxTrees$DBH, replace = TRUE))
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Another example: Building Up a `for()` Loop
+
+* What do I want to store?
+    + What type of R object do I want?
+    + What's the required size?
+
+::: {.fragment}
+
+```{r}
+boot <- data.frame(avg = rep(NA, 1000))
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Another example: Building Up a `for()` Loop
+
+How do I save this in `boot`?
+
+```{r}
+mean(sample(pdxTrees$DBH, replace = TRUE))
+```
+
+::: {.fragment}
+
+```{r}
+# Set i for now
+i <- 1
+
+# Option 1
+boot[i, ] <- mean(sample(pdxTrees$DBH, replace = TRUE))
+boot[i, ]
+
+# Option 2
+boot$avg[i] <- mean(sample(pdxTrees$DBH, replace = TRUE))
+boot$avg[i]
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Another example: Building Up a `for()` Loop
+
+```{r}
+#| output-location: column
+boot <- data.frame(avg = rep(NA, 1000))
+
+for(i in seq_along(boot$avg)){
+  
+  boot[i,] <- mean(sample(pdxTrees$DBH, replace = TRUE))
+  
+}
+
+ggplot(data = boot, mapping = aes(x = avg)) +
+  geom_density()
+```
+
+------------------------------------------------------------------------
+
+We can also **nest** loops:
+
+```{r}
+boot <- data.frame(avg_n_20 = rep(NA, 1000),
+                   avg_n_50 = rep(NA, 1000),
+                   avg_n_100 = rep(NA, 1000))
+
+sizes <- c(20, 50, 100)
+
+for(j in 1:ncol(boot)){
+  
+  # Generate sample
+  samp <- sample(pdxTrees$DBH, size = sizes[j])
+  
+  for(i in 1:nrow(boot)){
+    
+    boot[i,j] <- mean(sample(samp, replace = TRUE))
+     
+  }
+}
+
+
+glimpse(boot)
+```
+
+------------------------------------------------------------------------
+
+We can also **nest** loops:
+
+```{r}
+#| output-location: column
+boot %>%
+  pivot_longer(cols = everything(), 
+               names_to = "n", 
+               values_to = "avg") %>%
+  mutate(n = parse_number(n)) %>%
+  ggplot(aes(x = avg)) + 
+  geom_density() + 
+  facet_wrap(~n, ncol = 1)
+```
+
+------------------------------------------------------------------------
+
+### Need an Unknown Number of Iterations
+
+* If you want to iterate `while` some condition is true, then you don't necessarily know how many iterations are required beforehand.
+
+* Will then use a `while()` loop instead of a `for()` loop.
+
+::: {.fragment}
+
+```{r, eval=FALSE}
+for(i in 1:???){
+  
+  # Do Something
+  
+}
+
+
+while(condition) {
+
+  # Do Something
+    
+}
+```
+
+:::
+
+* Keeps iterating as long as the condition holds.
+
+------------------------------------------------------------------------
+
+### `while()` Loop Example
+
+Want 20 random draws from a normal that are positive numbers
+
+::: {.fragment}
+
+```{r}
+norm_pos <- vector() 
+
+i <- 0
+
+while(length(norm_pos) < 20){
+  # Random draw
+  draw <- rnorm(n = 1)
+  
+  # Only add positive draws
+  if(draw > 0){
+    norm_pos <- c(norm_pos, draw)
+  }
+  
+}
+
+glimpse(norm_pos)
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Loops
+
+* `while()` loops aren't nearly as common as `for()` loops.
+
+* For those who go into statistics research, you will end up often using `for()` loops to run simulation studies.
+
+::: {.fragment .nonincremental}
+
+* The internet hates `for()` loops in R.
+    + But they usually aren't as slow as people say.
+    
+:::
+    
+::: {.fragment .nonincremental}
+
+* Alternatives:
+    + `apply()` functions
+    + `purrr` functions
+
+```{r}
+library(purrr)
+```
+
+:::
+
+# Function Programming with `purrr`
+
+```{r, echo=FALSE, out.width='20%'}
+knitr::include_graphics("img/purrr.png")
+```
+
+------------------------------------------------------------------------
+
+### Function Programming
+
+**Functional Programming**: Functions that allow us to pass **other functions** as arguments
+
+
+::: {.fragment}
+
+```{r}
+pdxTrees %>%
+  select(DBH, Tree_Height, Pollution_Removal_oz) %>%
+  map(.f = mean, na.rm = TRUE)
+
+
+pdxTrees %>%
+  select(DBH, Tree_Height, Pollution_Removal_oz) %>%
+  map_dbl(.f = mean, na.rm = TRUE)
+```
+
+:::
+
+------------------------------------------------------------------------
+
+
+### `map_XXX` Functions
+
+
+:::: {.columns}
+
+
+::: {.column .nonincremental}
+
+* Loop over an R object
+
+* Do something
+
+* Save results
+
+:::
+
+::: {.column .nonincremental .fragment}
+
+* Function for each type of output:
+    + `map()` makes a list.
+    + `map_lgl()` makes a logical vector.
+    + `map_int()` makes an integer vector.
+    + `map_dbl()` makes a double vector.
+    + `map_chr()` makes a character vector.
+    + `map_df()` makes a data frame.
+
+:::
+
+::::
+
+
+::: {.fragment}
+
+General structure:
+
+```{r, eval=FALSE}
+map_XXX(.x, .f, ...)
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### `map_XXX` Functions
+
+::: {.nonincremental}
+
+* Input: vector
+    + What did `map_XXX()` iterate over?
+    
+:::
+
+```{r}
+x <- c(1, 3, 6, 2)
+map_lgl(x, .f = ~(.x > 5 ))
+```
+
+------------------------------------------------------------------------
+
+### `map_XXX` Functions
+
+::: {.nonincremental}
+
+* Input: data frame
+    + What did `map_XXX()` iterate over?
+    
+:::
+
+```{r}
+pdxTrees %>%
+  select(DBH, Tree_Height, Pollution_Removal_oz) %>%
+  map_dbl(.f = mean, na.rm = TRUE)
+```
+
+* Lists iterate over its elements.
+    - **Recall**: Data.frames are lists. What are their elements?
+
+------------------------------------------------------------------------
+
+### `map_XXX` Functions
+
+```{r}
+pdxTrees %>%
+  select(DBH, Condition, Pollution_Removal_oz) %>%
+  map(class)
+
+
+pdxTrees %>%
+  select(DBH, Condition, Pollution_Removal_oz) %>%
+  map_chr(class)
+```
+
+------------------------------------------------------------------------
+
+### `map_XXX` Functions
+
+```{r}
+pdxTrees %>%
+  select(Condition, Native) %>%
+  map_int(n_distinct)
+```
+
+```{r}
+pdxTrees %>%
+  select(DBH, Condition, Native) %>%
+  map_df(as.factor) %>%
+  glimpse()
+```
+
+------------------------------------------------------------------------
+
+### `map_XXX()` using `...`
+
+```{r}
+pdxTrees %>%
+  select(DBH, Tree_Height, Pollution_Removal_oz) %>%
+  map_dbl(mean, na.rm = TRUE, trim = 0.1)
+```
+
+------------------------------------------------------------------------
+
+### Anonymous Functions
+
+::: {.nonincremental}
+
+* As we saw, you can also supply anonymous functions to `map_XXX()`.
+
+:::
+
+```{r}
+pdxTrees %>%
+  select(DBH, Tree_Height, Pollution_Removal_oz) %>%
+  map_dbl(.f = function(.x){ mean(.x, na.rm = TRUE) })
+```
+
+------------------------------------------------------------------------
+
+### Anonymous Functions
+
+```{r}
+pdxTrees %>%
+  select(Condition, Native, Tree_Height) %>%
+  map_df(.f = function(.x) {
+    data.frame(n_distinct = n_distinct(.x),
+               class = class(.x))
+    })
+```
+
+* What useful information did we lose?
+
+------------------------------------------------------------------------
+
+### Anonymous Functions
+
+```{r, warning=FALSE, message=FALSE}
+pdxTrees %>%
+  select(Condition, Native, Tree_Height) %>%
+  map_df(.f = function(.x) {
+    data.frame(n_distinct = n_distinct(.x),
+               class = class(.x))
+    },
+    .id = "variable")
+```
+
+------------------------------------------------------------------------
+
+### Returning to our Bootstrap Example
+
+```{r}
+boot_mean <- function(x){
+  samp <- sample(x, replace = TRUE)
+  mean(samp)
+}
+
+boot_mean(pdxTrees$DBH)
+
+map_dbl(1:10, ~ boot_mean(pdxTrees$DBH))
+```
+
+
+# Scary `list()` to Friendly `data.frame()`
+
+------------------------------------------------------------------------
+
+### Scary `list()` to Friendly `data.frame()`
+
+```{r}
+# Examples of nested lists
+library(repurrrsive)
+```
+
+::: {.nonincremental}
+
+* `got_chars`: recursive list
+    + Each element is a character in Game of Thrones
+
+* Want to put the `name`, `culture`, and `alive` into a `data.frame()`.
+
+:::
+
+```{r}
+class(got_chars)
+got_chars
+```
+
+------------------------------------------------------------------------
+
+### Scary `list()` to Friendly `data.frame()`
+
+```{r}
+class(got_chars[[1]])
+names(got_chars[[1]])
+```
+
+------------------------------------------------------------------------
+
+### Scary `list()` to Friendly `data.frame()`
+
+Explain what the following code does.
+
+```{r}
+got_chars[[1]]["name"]
+got_chars[[1]][3]
+```
+
+How should we generalize this to extract the `name`, `culture`, and `alive` for the first character?
+
+------------------------------------------------------------------------
+
+### Scary `list()` to Friendly `data.frame()`
+
+How should we generalize this to extract the `name`, `culture`, and `alive` for the first character?
+
+```{r}
+got_chars[[1]][c("name", "culture", "alive")]
+```
+
+------------------------------------------------------------------------
+
+### Scary `list()` to Friendly `data.frame()`
+
+```{r}
+names(got_chars[[1]])
+got_chars[[1]][c(3, 5, 8)]
+```
+
+* What do I want to store?
+    + What type of R object do I want?
+    + What's the required size?
+
+------------------------------------------------------------------------
+
+### Scary `list()` to Friendly `data.frame()`
+
+```{r}
+got_chars_df <- tibble(name = rep(NA, 30),
+                       culture = rep(NA, 30),
+                       alive = rep(NA, 30))
+dim(got_chars_df)
+```
+
+How should I save the information in `got_chars_df`?
+
+------------------------------------------------------------------------
+
+### `for()` Loop Version
+
+```{r}
+# Set i and j to test
+i <- 1
+j <- 1
+
+# Variable locations
+locations <- c(3, 5, 8)
+
+# Grab the jth variable of the ith person
+got_chars[[i]][locations[j]]
+
+# Another option
+k <- locations[j]
+got_chars[[i]][k]
+
+# Store
+got_chars_df[i, j] <- got_chars[[i]][k]
+```
+
+------------------------------------------------------------------------
+
+### Scary `list()` to Friendly `data.frame()`
+
+```{r}
+got_chars_df <- tibble(name = rep(NA, 30),
+                       culture = rep(NA, 30),
+                       alive = rep(NA, 30))
+locations <- c(3, 5, 8)
+
+for(j in 1:ncol(got_chars_df)){
+  for(i in 1:nrow(got_chars_df)){
+    
+    k <- locations[j]
+    got_chars_df[i, j] <- got_chars[[i]][k]
+    
+  }
+}
+```
+
+------------------------------------------------------------------------
+
+### Scary `list()` to Friendly `data.frame()`
+
+[We did it!](https://www.youtube.com/watch?v=SBCw4_XgouA)
+
+```{r}
+got_chars_df
+```
+
+
+# Now how can we use `purrr` to convert the scary `list()` to friendly `data.frame()`?
+
+------------------------------------------------------------------------
+
+### Scary `list()` to Friendly `data.frame()`
+
+
+::: {.nonincremental}
+
+* Let's start with `name`.
+
+* Translate into words what the following anonymous function is doing.
+
+:::
+
+```{r}
+map(got_chars, ~ .x[[3]])
+```
+
+------------------------------------------------------------------------
+
+### Scary `list()` to Friendly `data.frame()`
+
+
+Shortcut:
+
+```{r}
+map(got_chars, 3)
+```
+
+------------------------------------------------------------------------
+
+### Scary `list()` to Friendly `data.frame()`
+
+Another shortcut:
+
+```{r}
+map(got_chars, "name")
+```
+
+* How do we change this to a **vector()** output instead of a **list()** output?
+
+
+------------------------------------------------------------------------
+
+### Scary `list()` to Friendly `data.frame()`
+
+How do we change this to a **vector()** output instead of a **list()** output?
+
+```{r}
+map_chr(got_chars, "name")
+```
+
+------------------------------------------------------------------------
+
+### Scary `list()` to Friendly `data.frame()`
+
+Let's go back to the code that grabs the `name`, `culture`, and `alive` for the first character.
+
+```{r}
+got_chars[[1]][c("name", "culture", "alive")]
+```
+
+------------------------------------------------------------------------
+
+### Scary `list()` to Friendly `data.frame()`
+
+For all characters, we will use the `[` function
+
+```{r}
+map(got_chars, `[`, c("name", "culture", "alive"))
+```
+
+------------------------------------------------------------------------
+
+### Scary `list()` to Friendly `data.frame()`
+
+**Finally**: Let's make it into a data frame.
+
+```{r}
+map_dfr(got_chars, `[`, c("name", "culture", "alive"))
+```
+
+* `dfr`: `r` stands for row binding.
+
+------------------------------------------------------------------------
+
+### Two Routes to the Same End: **Pros/Cons**?
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+map_dfr(got_chars, `[`, c("name", "culture", "alive"))
+```
+
+:::
+
+::: {.column}
+
+
+```{r}
+got_chars_df <- tibble(name = rep(NA, 30),
+                       culture = rep(NA, 30),
+                       alive = rep(NA, 30))
+locations <- c(3, 5, 8)
+
+for(j in 1:ncol(got_chars_df)){
+  for(i in 1:nrow(got_chars_df)){
+    
+    k <- locations[j]
+    got_chars_df[i, j] <- got_chars[[i]][k]
+    
+  }
+}
+got_chars_df
+```
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+```{r}
+system.time({
+  got_chars_df <- map_dfr(got_chars, `[`, c("name", "culture", "alive"))
+  })
+
+
+system.time({
+  got_chars_df <- data.frame(name = rep(NA, 30),
+                          culture = rep(NA, 30),
+                          alive = rep(NA, 30))
+locations <- c(3, 5, 8)
+
+for(j in 1:ncol(got_chars_df)){
+  for(i in 1:nrow(got_chars_df)){
+    
+    k <- locations[j]
+    got_chars_df[i, j] <- got_chars[[i]][k]
+    
+  }
+}
+})
+```
+
+------------------------------------------------------------------------
+
+### Closing Thoughts
+
+> "But you should never feel bad about using a for loop instead of a map function. The map functions are a step up a tower of abstraction, and it can take a long time to get your head around how they work. The important thing is that you solve the problem that you're working on, not write the most concise and elegant code (although that's definitely something you want to strive towards!)." -- Hadley Wickham & Garrett Grolemund
+
+
+

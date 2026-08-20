@@ -1,0 +1,4227 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
+
+  <title>Stat 241 – Iteration</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-c529b4720787994cceb3b19d116aa975.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level2">
+
+<div class="columns">
+<div class="column center" style="width:60%;">
+<p><img data-src="img/r-hex.jpg" style="width:90.0%"></p>
+</div><div class="column center" style="width:40%;">
+<p><br></p>
+<p><span class="custom-title">Iteration</span></p>
+<p><br> <br> <br> <br> <br> <br> <br></p>
+<p><span class="custom-subtitle">Grayson White</span></p>
+<p><span class="custom-subtitle">Math 241 <br> Week 10 | Spring 2026</span></p>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="annoucements">Annoucements</h3>
+<ul>
+<li class="fragment"><p><strong>Welcome</strong> to the visitors!</p></li>
+<li class="fragment"><p>Peer / Self Feedback due <strong>tomorrow</strong>!</p>
+<ul>
+<li class="fragment">I also extended the deadline for the data scientist statement until tomorrow.</li>
+</ul></li>
+<li class="fragment"><p>Problem Set 5 released tomorrow.</p></li>
+</ul>
+</section>
+<section id="week-10-goals" class="slide level2">
+<h2>Week 10 Goals</h2>
+<div class="columns">
+<div class="column">
+<p><strong>Monday Lecture</strong>:</p>
+<ul>
+<li>Iteration
+<ul>
+<li><code>for()</code> and <code>while()</code> loops</li>
+<li>Functional programming</li>
+</ul></li>
+</ul>
+</div><div class="column fragment">
+<p><strong>Wednesday Lecture</strong>:</p>
+<ul>
+<li>Parallelism</li>
+<li>Ethics</li>
+<li>AI</li>
+</ul>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="reducing-code-duplication">Reducing Code Duplication</h3>
+<p>Last time, we reduced code duplication by creating <strong>functions</strong>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(pdxTrees)</span>
+<span id="cb1-2"><a></a>pdxTrees <span class="ot">&lt;-</span> <span class="fu">get_pdxTrees_parks</span>()</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a></a>  <span class="fu">rename</span>(<span class="at">ht =</span> Tree_Height, </span>
+<span id="cb1-6"><a></a>         <span class="at">pol =</span> Pollution_Removal_oz) <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a></a>  <span class="fu">summarize</span>(<span class="at">DBH_cv =</span> <span class="fu">sd</span>(DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">/</span><span class="fu">mean</span>(DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-8"><a></a>            <span class="at">ht_cv =</span> <span class="fu">sd</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">/</span><span class="fu">mean</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb1-9"><a></a>            <span class="at">pol_cv =</span> <span class="fu">sd</span>(pol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">/</span><span class="fu">mean</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  DBH_cv ht_cv pol_cv
+   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+1  0.650 0.613  0.243</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="reducing-code-duplication-1">Reducing Code Duplication</h3>
+<p>Last time, we reduced code duplication by creating <strong>functions</strong>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>, <span class="at">trim =</span> <span class="dv">0</span>) {</span>
+<span id="cb3-2"><a></a>  <span class="fu">stopifnot</span>(<span class="fu">is.numeric</span>(x))</span>
+<span id="cb3-3"><a></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim)</span>
+<span id="cb3-4"><a></a>}</span>
+<span id="cb3-5"><a></a></span>
+<span id="cb3-6"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a></a>  <span class="fu">rename</span>(<span class="at">ht =</span> Tree_Height, </span>
+<span id="cb3-8"><a></a>         <span class="at">pol =</span> Pollution_Removal_oz)  <span class="sc">%&gt;%</span></span>
+<span id="cb3-9"><a></a>  <span class="fu">summarize</span>(<span class="at">DBH_cv =</span> <span class="fu">coef_of_var</span>(DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb3-10"><a></a>            <span class="at">ht_cv =</span> <span class="fu">coef_of_var</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb3-11"><a></a>            <span class="at">pol_cv =</span> <span class="fu">coef_of_var</span>(pol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  DBH_cv ht_cv pol_cv
+   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+1  0.650 0.613  0.884</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment">But we still have some code duplication.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="reducing-code-duplication-2">Reducing Code Duplication</h3>
+<ul>
+<li class="fragment"><p>Can also reduce duplication through iteration.</p></li>
+<li class="fragment"><p><strong>Iteration</strong>: Do the same thing for multiple inputs.</p></li>
+</ul>
+<div class="fragment">
+<p><code>dplyr</code> style:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a></a>  <span class="fu">rename</span>(<span class="at">ht =</span> Tree_Height, </span>
+<span id="cb5-3"><a></a>         <span class="at">pol =</span> Pollution_Removal_oz)  <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(DBH, ht, pol), <span class="at">.fns =</span> coef_of_var))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+    DBH    ht   pol
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 0.650    NA    NA</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment">Why the <code>NA</code>s for <code>ht</code> and <code>pol</code>?</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="anonymous-function">Anonymous Function</h3>
+<ul>
+<li>Create a function on the fly to use as an argument of another function.
+<ul>
+<li>Don’t store the anonymous function.</li>
+</ul></li>
+<li>Also called lambda function/expression.</li>
+</ul>
+<div class="fragment">
+<p>Longform syntax:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">rename</span>(<span class="at">ht =</span> Tree_Height, </span>
+<span id="cb7-3"><a></a>         <span class="at">pol =</span> Pollution_Removal_oz)  <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(DBH, ht, pol), </span>
+<span id="cb7-5"><a></a>                   <span class="at">.fns =</span> <span class="cf">function</span>(.x) {</span>
+<span id="cb7-6"><a></a>                     <span class="fu">coef_of_var</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-7"><a></a>    }))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+    DBH    ht   pol
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 0.650 0.613 0.884</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="anonymous-function-1">Anonymous Function</h3>
+<ul>
+<li>Create a function on the fly to use as an argument of another function.
+<ul>
+<li>Don’t store the anonymous function.</li>
+</ul></li>
+<li>Also called lambda function/expression.</li>
+</ul>
+<p>Shorthand syntax: <code>~</code></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a></a>  <span class="fu">rename</span>(<span class="at">ht =</span> Tree_Height, </span>
+<span id="cb9-3"><a></a>         <span class="at">pol =</span> Pollution_Removal_oz)  <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(DBH, ht, pol), </span>
+<span id="cb9-5"><a></a>                   <span class="at">.fns =</span> <span class="sc">~</span> <span class="fu">coef_of_var</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+    DBH    ht   pol
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 0.650 0.613 0.884</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="back-to-dplyr-iterating-ten-ten-ten-for-everything-everything">Back to <code>dplyr</code> Iterating: “ten, ten, ten for <code>everything()</code>, <code>everything()</code>”</h3>
+<ul>
+<li><code>everything()</code> is useful if you want to apply the function to all columns of the <code>data.frame()</code>.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a></a>  <span class="fu">rename</span>(<span class="at">ht =</span> Tree_Height, </span>
+<span id="cb11-3"><a></a>         <span class="at">pol =</span> Pollution_Removal_oz)  <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a></a>  <span class="fu">select</span>(DBH, ht, pol) <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), </span>
+<span id="cb11-6"><a></a>                   <span class="at">.fns =</span> <span class="sc">~</span> <span class="fu">coef_of_var</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+    DBH    ht   pol
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 0.650 0.613 0.884</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="back-to-dplyr-iterating-oh-where-is-my-hairbrush">Back to <code>dplyr</code> Iterating: “oh <code>where()</code> is my hairbrush?”</h3>
+<ul>
+<li><code>where()</code> is useful for conditional application of the function.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a></a>  <span class="fu">rename</span>(<span class="at">ht =</span> Tree_Height, </span>
+<span id="cb13-3"><a></a>         <span class="at">pol =</span> Pollution_Removal_oz)  <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a></a>  <span class="fu">select</span>(DBH, ht, pol, Condition) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), </span>
+<span id="cb13-6"><a></a>                   <span class="at">.fns =</span> <span class="sc">~</span> <span class="fu">coef_of_var</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+    DBH    ht   pol
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 0.650 0.613 0.884</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="back-to-dplyr-iterating">Back to <code>dplyr</code> Iterating</h3>
+<ul>
+<li>You can provide more than one function via a <code>list()</code>.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a></a>  <span class="fu">rename</span>(<span class="at">ht =</span> Tree_Height, </span>
+<span id="cb15-3"><a></a>         <span class="at">pol =</span> Pollution_Removal_oz)  <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a></a>  <span class="fu">select</span>(DBH, ht, pol, Condition) <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), </span>
+<span id="cb15-6"><a></a>                   <span class="at">.fns =</span> <span class="fu">list</span>(</span>
+<span id="cb15-7"><a></a>                     <span class="at">cv =</span> <span class="sc">~</span> <span class="fu">coef_of_var</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb15-8"><a></a>                     <span class="at">mean =</span> <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 6
+  DBH_cv DBH_mean ht_cv ht_mean pol_cv pol_mean
+   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+1  0.650     20.6 0.613    65.7  0.884     18.1</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="back-to-dplyr-iterating-across-the-universe">Back to <code>dplyr</code> Iterating: “<code>across()</code> the universe”</h3>
+<ul>
+<li><code>across()</code> also works with <code>mutate()</code>.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, as.character))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 34
+   Longitude      Latitude UserID Genus Family   DBH Inventory_Date      Species
+   &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;  
+ 1 -122.69364003… 45.5749… 1      Pseu… Pinac…  37.4 2017-05-09 00:00:00 PSME   
+ 2 -122.69381044… 45.5748… 2      Pseu… Pinac…  32.5 2017-05-09 00:00:00 PSME   
+ 3 -122.69418564… 45.5749… 3      Crat… Rosac…   9.7 2017-05-09 00:00:00 CRLA   
+ 4 -122.69394019… 45.5749… 4      Quer… Fagac…  10.3 2017-05-09 00:00:00 QURU   
+ 5 -122.69400504… 45.5749… 5      Pseu… Pinac…  33.2 2017-05-09 00:00:00 PSME   
+ 6 -122.69433328… 45.5748… 6      Pseu… Pinac…  32.1 2017-05-09 00:00:00 PSME   
+ 7 -122.69389891… 45.5749… 7      Pseu… Pinac…  28.4 2017-05-09 00:00:00 PSME   
+ 8 -122.69435497… 45.5749… 8      Pseu… Pinac…  27.2 2017-05-09 00:00:00 PSME   
+ 9 -122.69371051… 45.5750… 9      Pseu… Pinac…  35.2 2017-05-09 00:00:00 PSME   
+10 -122.69434988… 45.5749… 10     Pseu… Pinac…  32.4 2017-05-09 00:00:00 PSME   
+# ℹ 26 more variables: Common_Name &lt;chr&gt;, Condition &lt;chr&gt;, Tree_Height &lt;dbl&gt;,
+#   Crown_Width_NS &lt;dbl&gt;, Crown_Width_EW &lt;dbl&gt;, Crown_Base_Height &lt;dbl&gt;,
+#   Collected_By &lt;chr&gt;, Park &lt;chr&gt;, Scientific_Name &lt;chr&gt;,
+#   Functional_Type &lt;chr&gt;, Mature_Size &lt;fct&gt;, Native &lt;chr&gt;, Edible &lt;chr&gt;,
+#   Nuisance &lt;chr&gt;, Structural_Value &lt;dbl&gt;, Carbon_Storage_lb &lt;dbl&gt;,
+#   Carbon_Storage_value &lt;dbl&gt;, Carbon_Sequestration_lb &lt;dbl&gt;,
+#   Carbon_Sequestration_value &lt;dbl&gt;, Stormwater_ft &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+</section>
+<section>
+<section id="explicit-iterating-for-loops" class="title-slide slide level1 center">
+<h1>Explicit Iterating: <code>for()</code> Loops</h1>
+
+</section>
+<section class="slide level2">
+
+<h3 id="explicit-iterating-for-loops-1">Explicit Iterating: <code>for()</code> Loops</h3>
+<p><strong>Language</strong>: Iterating = Looping</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># Data</span></span>
+<span id="cb19-2"><a></a>pdxTrees <span class="ot">&lt;-</span> <span class="fu">get_pdxTrees_parks</span>() </span>
+<span id="cb19-3"><a></a></span>
+<span id="cb19-4"><a></a><span class="co"># Variables of interest</span></span>
+<span id="cb19-5"><a></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"DBH"</span>, <span class="st">"Tree_Height"</span>, <span class="st">"Pollution_Removal_oz"</span>)</span>
+<span id="cb19-6"><a></a></span>
+<span id="cb19-7"><a></a><span class="co"># Vector for storing output</span></span>
+<span id="cb19-8"><a></a>pdxTrees_coef_of_vars <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">3</span>)</span>
+<span id="cb19-9"><a></a></span>
+<span id="cb19-10"><a></a><span class="co"># For loop</span></span>
+<span id="cb19-11"><a></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){</span>
+<span id="cb19-12"><a></a>  pdxTrees_coef_of_vars[i] <span class="ot">&lt;-</span> <span class="fu">coef_of_var</span>(pdxTrees[[vars[i]]],</span>
+<span id="cb19-13"><a></a>                                          <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-14"><a></a>}</span>
+<span id="cb19-15"><a></a></span>
+<span id="cb19-16"><a></a><span class="co"># Examine output</span></span>
+<span id="cb19-17"><a></a>pdxTrees_coef_of_vars</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6496634 0.6129159 0.8835582</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="for-loop-components"><code>for()</code> Loop Components</h3>
+<ul>
+<li><strong>Output</strong>: What you want to produce and store.
+<ul>
+<li>Good to specify size of output object.</li>
+<li>Start with <code>NA</code>s so clear which have been replaced.</li>
+<li>Determine if you want to store the output as a vector or data frame or something else.</li>
+</ul></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co"># Output options</span></span>
+<span id="cb21-2"><a></a>pdxTrees_coef_of_vars <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"double"</span>, <span class="dv">3</span>)</span>
+<span id="cb21-3"><a></a>pdxTrees_coef_of_vars</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0 0 0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>pdxTrees_coef_of_vars <span class="ot">&lt;-</span> <span class="fu">vector</span>()</span>
+<span id="cb23-2"><a></a>pdxTrees_coef_of_vars</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>logical(0)</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>pdxTrees_coef_of_vars <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">3</span>)</span>
+<span id="cb25-2"><a></a>pdxTrees_coef_of_vars</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA NA NA</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="for-loop-components-1"><code>for()</code> Loop Components</h3>
+<p><strong>Sequence</strong>: The vector you want to iterate over</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="co"># Sequence Options</span></span>
+<span id="cb27-2"><a></a><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(pdxTrees_coef_of_vars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">seq_along</span>(pdxTrees_coef_of_vars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="for-loop-components-2"><code>for()</code> Loop Components</h3>
+<p><strong>Body</strong>: The code that we iterate.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(pdxTrees_coef_of_vars)){</span>
+<span id="cb33-2"><a></a>  </span>
+<span id="cb33-3"><a></a>  pdxTrees_coef_of_vars[i] <span class="ot">&lt;-</span> <span class="fu">coef_of_var</span>(pdxTrees[[vars[i]]],</span>
+<span id="cb33-4"><a></a>                                          <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb33-5"><a></a>}</span>
+<span id="cb33-6"><a></a></span>
+<span id="cb33-7"><a></a>pdxTrees_coef_of_vars</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6496634 0.6129159 0.8835582</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="another-example-building-up-a-for-loop">Another example: Building Up a <code>for()</code> Loop</h3>
+<p>I want to construct a bootstrap distribution for the mean <code>DBH</code> for our sample of Portland trees.</p>
+<ul>
+<li class="fragment">How is looping/iterating helpful here?</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Let’s start with a minimal viable product.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">mean</span>(<span class="fu">sample</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20.59704</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="another-example-building-up-a-for-loop-1">Another example: Building Up a <code>for()</code> Loop</h3>
+<ul>
+<li class="fragment">What do I want to store?
+<ul>
+<li class="fragment">What type of R object do I want?</li>
+<li class="fragment">What’s the required size?</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>boot <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">avg =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="another-example-building-up-a-for-loop-2">Another example: Building Up a <code>for()</code> Loop</h3>
+<p>How do I save this in <code>boot</code>?</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">mean</span>(<span class="fu">sample</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20.59509</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="co"># Set i for now</span></span>
+<span id="cb40-2"><a></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb40-3"><a></a></span>
+<span id="cb40-4"><a></a><span class="co"># Option 1</span></span>
+<span id="cb40-5"><a></a>boot[i, ] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sample</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb40-6"><a></a>boot[i, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20.62719</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="co"># Option 2</span></span>
+<span id="cb42-2"><a></a>boot<span class="sc">$</span>avg[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sample</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb42-3"><a></a>boot<span class="sc">$</span>avg[i]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20.50022</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="another-example-building-up-a-for-loop-3">Another example: Building Up a <code>for()</code> Loop</h3>
+<div class="cell columns column-output-location" data-layout-align="center">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>boot <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">avg =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>))</span>
+<span id="cb44-2"><a></a></span>
+<span id="cb44-3"><a></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(boot<span class="sc">$</span>avg)){</span>
+<span id="cb44-4"><a></a>  </span>
+<span id="cb44-5"><a></a>  boot[i,] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sample</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb44-6"><a></a>  </span>
+<span id="cb44-7"><a></a>}</span>
+<span id="cb44-8"><a></a></span>
+<span id="cb44-9"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> boot, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> avg)) <span class="sc">+</span></span>
+<span id="cb44-10"><a></a>  <span class="fu">geom_density</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="math241_wk10mon_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<p>We can also <strong>nest</strong> loops:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>boot <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">avg_n_20 =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>),</span>
+<span id="cb45-2"><a></a>                   <span class="at">avg_n_50 =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>),</span>
+<span id="cb45-3"><a></a>                   <span class="at">avg_n_100 =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>))</span>
+<span id="cb45-4"><a></a></span>
+<span id="cb45-5"><a></a>sizes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">100</span>)</span>
+<span id="cb45-6"><a></a></span>
+<span id="cb45-7"><a></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(boot)){</span>
+<span id="cb45-8"><a></a>  </span>
+<span id="cb45-9"><a></a>  <span class="co"># Generate sample</span></span>
+<span id="cb45-10"><a></a>  samp <span class="ot">&lt;-</span> <span class="fu">sample</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">size =</span> sizes[j])</span>
+<span id="cb45-11"><a></a>  </span>
+<span id="cb45-12"><a></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(boot)){</span>
+<span id="cb45-13"><a></a>    </span>
+<span id="cb45-14"><a></a>    boot[i,j] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sample</span>(samp, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb45-15"><a></a>     </span>
+<span id="cb45-16"><a></a>  }</span>
+<span id="cb45-17"><a></a>}</span>
+<span id="cb45-18"><a></a></span>
+<span id="cb45-19"><a></a></span>
+<span id="cb45-20"><a></a><span class="fu">glimpse</span>(boot)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,000
+Columns: 3
+$ avg_n_20  &lt;dbl&gt; 21.105, 20.330, 20.815, 21.605, 23.870, 21.500, 16.965, 23.5…
+$ avg_n_50  &lt;dbl&gt; 19.784, 17.608, 17.988, 12.888, 14.784, 11.650, 14.538, 13.3…
+$ avg_n_100 &lt;dbl&gt; 23.912, 20.134, 19.496, 19.383, 18.927, 20.760, 22.355, 21.6…</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>We can also <strong>nest</strong> loops:</p>
+<div class="cell columns column-output-location" data-layout-align="center">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>boot <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>(), </span>
+<span id="cb47-3"><a></a>               <span class="at">names_to =</span> <span class="st">"n"</span>, </span>
+<span id="cb47-4"><a></a>               <span class="at">values_to =</span> <span class="st">"avg"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb47-5"><a></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">parse_number</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb47-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> avg)) <span class="sc">+</span> </span>
+<span id="cb47-7"><a></a>  <span class="fu">geom_density</span>() <span class="sc">+</span> </span>
+<span id="cb47-8"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>n, <span class="at">ncol =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="math241_wk10mon_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="need-an-unknown-number-of-iterations">Need an Unknown Number of Iterations</h3>
+<ul>
+<li class="fragment"><p>If you want to iterate <code>while</code> some condition is true, then you don’t necessarily know how many iterations are required beforehand.</p></li>
+<li class="fragment"><p>Will then use a <code>while()</code> loop instead of a <code>for()</code> loop.</p></li>
+</ul>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>???){</span>
+<span id="cb48-2"><a></a>  </span>
+<span id="cb48-3"><a></a>  <span class="co"># Do Something</span></span>
+<span id="cb48-4"><a></a>  </span>
+<span id="cb48-5"><a></a>}</span>
+<span id="cb48-6"><a></a></span>
+<span id="cb48-7"><a></a></span>
+<span id="cb48-8"><a></a><span class="cf">while</span>(condition) {</span>
+<span id="cb48-9"><a></a></span>
+<span id="cb48-10"><a></a>  <span class="co"># Do Something</span></span>
+<span id="cb48-11"><a></a>    </span>
+<span id="cb48-12"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<ul>
+<li class="fragment">Keeps iterating as long as the condition holds.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="while-loop-example"><code>while()</code> Loop Example</h3>
+<p>Want 20 random draws from a normal that are positive numbers</p>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>norm_pos <span class="ot">&lt;-</span> <span class="fu">vector</span>() </span>
+<span id="cb49-2"><a></a></span>
+<span id="cb49-3"><a></a>i <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb49-4"><a></a></span>
+<span id="cb49-5"><a></a><span class="cf">while</span>(<span class="fu">length</span>(norm_pos) <span class="sc">&lt;</span> <span class="dv">20</span>){</span>
+<span id="cb49-6"><a></a>  <span class="co"># Random draw</span></span>
+<span id="cb49-7"><a></a>  draw <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1</span>)</span>
+<span id="cb49-8"><a></a>  </span>
+<span id="cb49-9"><a></a>  <span class="co"># Only add positive draws</span></span>
+<span id="cb49-10"><a></a>  <span class="cf">if</span>(draw <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb49-11"><a></a>    norm_pos <span class="ot">&lt;-</span> <span class="fu">c</span>(norm_pos, draw)</span>
+<span id="cb49-12"><a></a>  }</span>
+<span id="cb49-13"><a></a>  </span>
+<span id="cb49-14"><a></a>}</span>
+<span id="cb49-15"><a></a></span>
+<span id="cb49-16"><a></a><span class="fu">glimpse</span>(norm_pos)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> num [1:20] 0.785 2.638 1.847 0.274 0.32 ...</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="loops">Loops</h3>
+<ul>
+<li class="fragment"><p><code>while()</code> loops aren’t nearly as common as <code>for()</code> loops.</p></li>
+<li class="fragment"><p>For those who go into statistics research, you will end up often using <code>for()</code> loops to run simulation studies.</p></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>The internet hates <code>for()</code> loops in R.
+<ul>
+<li>But they usually aren’t as slow as people say.</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Alternatives:
+<ul>
+<li><code>apply()</code> functions</li>
+<li><code>purrr</code> functions</li>
+</ul></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a><span class="fu">library</span>(purrr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="function-programming-with-purrr" class="title-slide slide level1 center">
+<h1>Function Programming with <code>purrr</code></h1>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/purrr.png" class="quarto-figure quarto-figure-center" style="width:20.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="function-programming">Function Programming</h3>
+<p><strong>Functional Programming</strong>: Functions that allow us to pass <strong>other functions</strong> as arguments</p>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a></a>  <span class="fu">select</span>(DBH, Tree_Height, Pollution_Removal_oz) <span class="sc">%&gt;%</span></span>
+<span id="cb52-3"><a></a>  <span class="fu">map</span>(<span class="at">.f =</span> mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$DBH
+[1] 20.61408
+
+$Tree_Height
+[1] 65.73607
+
+$Pollution_Removal_oz
+[1] 18.09618</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a></a>  <span class="fu">select</span>(DBH, Tree_Height, Pollution_Removal_oz) <span class="sc">%&gt;%</span></span>
+<span id="cb54-3"><a></a>  <span class="fu">map_dbl</span>(<span class="at">.f =</span> mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 DBH          Tree_Height Pollution_Removal_oz 
+            20.61408             65.73607             18.09618 </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="map_xxx-functions"><code>map_XXX</code> Functions</h3>
+<div class="columns">
+<div class="column">
+<ul>
+<li><p>Loop over an R object</p></li>
+<li><p>Do something</p></li>
+<li><p>Save results</p></li>
+</ul>
+</div><div class="column fragment">
+<ul>
+<li>Function for each type of output:
+<ul>
+<li><code>map()</code> makes a list.</li>
+<li><code>map_lgl()</code> makes a logical vector.</li>
+<li><code>map_int()</code> makes an integer vector.</li>
+<li><code>map_dbl()</code> makes a double vector.</li>
+<li><code>map_chr()</code> makes a character vector.</li>
+<li><code>map_df()</code> makes a data frame.</li>
+</ul></li>
+</ul>
+</div></div>
+<div class="fragment">
+<p>General structure:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a><span class="fu">map_XXX</span>(.x, .f, ...)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="map_xxx-functions-1"><code>map_XXX</code> Functions</h3>
+<ul>
+<li>Input: vector
+<ul>
+<li>What did <code>map_XXX()</code> iterate over?</li>
+</ul></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">2</span>)</span>
+<span id="cb57-2"><a></a><span class="fu">map_lgl</span>(x, <span class="at">.f =</span> <span class="sc">~</span>(.x <span class="sc">&gt;</span> <span class="dv">5</span> ))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE FALSE  TRUE FALSE</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="map_xxx-functions-2"><code>map_XXX</code> Functions</h3>
+<ul>
+<li>Input: data frame
+<ul>
+<li>What did <code>map_XXX()</code> iterate over?</li>
+</ul></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb59-2"><a></a>  <span class="fu">select</span>(DBH, Tree_Height, Pollution_Removal_oz) <span class="sc">%&gt;%</span></span>
+<span id="cb59-3"><a></a>  <span class="fu">map_dbl</span>(<span class="at">.f =</span> mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 DBH          Tree_Height Pollution_Removal_oz 
+            20.61408             65.73607             18.09618 </code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment">Lists iterate over its elements.
+<ul>
+<li class="fragment"><strong>Recall</strong>: Data.frames are lists. What are their elements?</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="map_xxx-functions-3"><code>map_XXX</code> Functions</h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb61-2"><a></a>  <span class="fu">select</span>(DBH, Condition, Pollution_Removal_oz) <span class="sc">%&gt;%</span></span>
+<span id="cb61-3"><a></a>  <span class="fu">map</span>(class)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$DBH
+[1] "numeric"
+
+$Condition
+[1] "character"
+
+$Pollution_Removal_oz
+[1] "numeric"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb63-2"><a></a>  <span class="fu">select</span>(DBH, Condition, Pollution_Removal_oz) <span class="sc">%&gt;%</span></span>
+<span id="cb63-3"><a></a>  <span class="fu">map_chr</span>(class)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 DBH            Condition Pollution_Removal_oz 
+           "numeric"          "character"            "numeric" </code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="map_xxx-functions-4"><code>map_XXX</code> Functions</h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb65-2"><a></a>  <span class="fu">select</span>(Condition, Native) <span class="sc">%&gt;%</span></span>
+<span id="cb65-3"><a></a>  <span class="fu">map_int</span>(n_distinct)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Condition    Native 
+        4         3 </code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb67-2"><a></a>  <span class="fu">select</span>(DBH, Condition, Native) <span class="sc">%&gt;%</span></span>
+<span id="cb67-3"><a></a>  <span class="fu">map_df</span>(as.factor) <span class="sc">%&gt;%</span></span>
+<span id="cb67-4"><a></a>  <span class="fu">glimpse</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 25,534
+Columns: 3
+$ DBH       &lt;fct&gt; 37.4, 32.5, 9.7, 10.3, 33.2, 32.1, 28.4, 27.2, 35.2, 32.4, 3…
+$ Condition &lt;fct&gt; Fair, Fair, Fair, Poor, Fair, Fair, Fair, Fair, Fair, Fair, …
+$ Native    &lt;fct&gt; Yes, Yes, No, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes…</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="map_xxx-using-..."><code>map_XXX()</code> using <code>...</code></h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb69-2"><a></a>  <span class="fu">select</span>(DBH, Tree_Height, Pollution_Removal_oz) <span class="sc">%&gt;%</span></span>
+<span id="cb69-3"><a></a>  <span class="fu">map_dbl</span>(mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> <span class="fl">0.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 DBH          Tree_Height Pollution_Removal_oz 
+            19.70520             62.95046             15.93507 </code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="anonymous-functions">Anonymous Functions</h3>
+<ul>
+<li>As we saw, you can also supply anonymous functions to <code>map_XXX()</code>.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb71-2"><a></a>  <span class="fu">select</span>(DBH, Tree_Height, Pollution_Removal_oz) <span class="sc">%&gt;%</span></span>
+<span id="cb71-3"><a></a>  <span class="fu">map_dbl</span>(<span class="at">.f =</span> <span class="cf">function</span>(.x){ <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 DBH          Tree_Height Pollution_Removal_oz 
+            20.61408             65.73607             18.09618 </code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="anonymous-functions-1">Anonymous Functions</h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb73-2"><a></a>  <span class="fu">select</span>(Condition, Native, Tree_Height) <span class="sc">%&gt;%</span></span>
+<span id="cb73-3"><a></a>  <span class="fu">map_df</span>(<span class="at">.f =</span> <span class="cf">function</span>(.x) {</span>
+<span id="cb73-4"><a></a>    <span class="fu">data.frame</span>(<span class="at">n_distinct =</span> <span class="fu">n_distinct</span>(.x),</span>
+<span id="cb73-5"><a></a>               <span class="at">class =</span> <span class="fu">class</span>(.x))</span>
+<span id="cb73-6"><a></a>    })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  n_distinct     class
+1          4 character
+2          3 character
+3        185   numeric</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment">What useful information did we lose?</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="anonymous-functions-2">Anonymous Functions</h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb75-2"><a></a>  <span class="fu">select</span>(Condition, Native, Tree_Height) <span class="sc">%&gt;%</span></span>
+<span id="cb75-3"><a></a>  <span class="fu">map_df</span>(<span class="at">.f =</span> <span class="cf">function</span>(.x) {</span>
+<span id="cb75-4"><a></a>    <span class="fu">data.frame</span>(<span class="at">n_distinct =</span> <span class="fu">n_distinct</span>(.x),</span>
+<span id="cb75-5"><a></a>               <span class="at">class =</span> <span class="fu">class</span>(.x))</span>
+<span id="cb75-6"><a></a>    },</span>
+<span id="cb75-7"><a></a>    <span class="at">.id =</span> <span class="st">"variable"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     variable n_distinct     class
+1   Condition          4 character
+2      Native          3 character
+3 Tree_Height        185   numeric</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="returning-to-our-bootstrap-example">Returning to our Bootstrap Example</h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a></a>boot_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb77-2"><a></a>  samp <span class="ot">&lt;-</span> <span class="fu">sample</span>(x, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb77-3"><a></a>  <span class="fu">mean</span>(samp)</span>
+<span id="cb77-4"><a></a>}</span>
+<span id="cb77-5"><a></a></span>
+<span id="cb77-6"><a></a><span class="fu">boot_mean</span>(pdxTrees<span class="sc">$</span>DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20.66842</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a></a><span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="sc">~</span> <span class="fu">boot_mean</span>(pdxTrees<span class="sc">$</span>DBH))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 20.61489 20.71023 20.70132 20.63711 20.54470 20.60850 20.70528 20.61666
+ [9] 20.59528 20.65874</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="scary-list-to-friendly-data.frame" class="title-slide slide level1 center">
+<h1>Scary <code>list()</code> to Friendly <code>data.frame()</code></h1>
+
+</section>
+<section class="slide level2">
+
+<h3 id="scary-list-to-friendly-data.frame-1">Scary <code>list()</code> to Friendly <code>data.frame()</code></h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a></a><span class="co"># Examples of nested lists</span></span>
+<span id="cb81-2"><a></a><span class="fu">library</span>(repurrrsive)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li><code>got_chars</code>: recursive list
+<ul>
+<li>Each element is a character in Game of Thrones</li>
+</ul></li>
+<li>Want to put the <code>name</code>, <code>culture</code>, and <code>alive</code> into a <code>data.frame()</code>.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a></a><span class="fu">class</span>(got_chars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a></a>got_chars</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[[1]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/1022"
+
+[[1]]$id
+[1] 1022
+
+[[1]]$name
+[1] "Theon Greyjoy"
+
+[[1]]$gender
+[1] "Male"
+
+[[1]]$culture
+[1] "Ironborn"
+
+[[1]]$born
+[1] "In 278 AC or 279 AC, at Pyke"
+
+[[1]]$died
+[1] ""
+
+[[1]]$alive
+[1] TRUE
+
+[[1]]$titles
+[1] "Prince of Winterfell"                                
+[2] "Lord of the Iron Islands (by law of the green lands)"
+
+[[1]]$aliases
+[1] "Prince of Fools" "Theon Turncloak" "Reek"            "Theon Kinslayer"
+
+[[1]]$father
+[1] ""
+
+[[1]]$mother
+[1] ""
+
+[[1]]$spouse
+[1] ""
+
+[[1]]$allegiances
+[1] "House Greyjoy of Pyke"
+
+[[1]]$books
+[1] "A Game of Thrones" "A Storm of Swords" "A Feast for Crows"
+
+[[1]]$povBooks
+[1] "A Clash of Kings"     "A Dance with Dragons"
+
+[[1]]$tvSeries
+[1] "Season 1" "Season 2" "Season 3" "Season 4" "Season 5" "Season 6"
+
+[[1]]$playedBy
+[1] "Alfie Allen"
+
+
+[[2]]
+[[2]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/1052"
+
+[[2]]$id
+[1] 1052
+
+[[2]]$name
+[1] "Tyrion Lannister"
+
+[[2]]$gender
+[1] "Male"
+
+[[2]]$culture
+[1] ""
+
+[[2]]$born
+[1] "In 273 AC, at Casterly Rock"
+
+[[2]]$died
+[1] ""
+
+[[2]]$alive
+[1] TRUE
+
+[[2]]$titles
+[1] "Acting Hand of the King (former)" "Master of Coin (former)"         
+
+[[2]]$aliases
+ [1] "The Imp"            "Halfman"            "The boyman"        
+ [4] "Giant of Lannister" "Lord Tywin's Doom"  "Lord Tywin's Bane" 
+ [7] "Yollo"              "Hugor Hill"         "No-Nose"           
+[10] "Freak"              "Dwarf"             
+
+[[2]]$father
+[1] ""
+
+[[2]]$mother
+[1] ""
+
+[[2]]$spouse
+[1] "https://www.anapioficeandfire.com/api/characters/2044"
+
+[[2]]$allegiances
+[1] "House Lannister of Casterly Rock"
+
+[[2]]$books
+[1] "A Feast for Crows"         "The World of Ice and Fire"
+
+[[2]]$povBooks
+[1] "A Game of Thrones"    "A Clash of Kings"     "A Storm of Swords"   
+[4] "A Dance with Dragons"
+
+[[2]]$tvSeries
+[1] "Season 1" "Season 2" "Season 3" "Season 4" "Season 5" "Season 6"
+
+[[2]]$playedBy
+[1] "Peter Dinklage"
+
+
+[[3]]
+[[3]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/1074"
+
+[[3]]$id
+[1] 1074
+
+[[3]]$name
+[1] "Victarion Greyjoy"
+
+[[3]]$gender
+[1] "Male"
+
+[[3]]$culture
+[1] "Ironborn"
+
+[[3]]$born
+[1] "In 268 AC or before, at Pyke"
+
+[[3]]$died
+[1] ""
+
+[[3]]$alive
+[1] TRUE
+
+[[3]]$titles
+[1] "Lord Captain of the Iron Fleet" "Master of the Iron Victory"    
+
+[[3]]$aliases
+[1] "The Iron Captain"
+
+[[3]]$father
+[1] ""
+
+[[3]]$mother
+[1] ""
+
+[[3]]$spouse
+[1] ""
+
+[[3]]$allegiances
+[1] "House Greyjoy of Pyke"
+
+[[3]]$books
+[1] "A Game of Thrones" "A Clash of Kings"  "A Storm of Swords"
+
+[[3]]$povBooks
+[1] "A Feast for Crows"    "A Dance with Dragons"
+
+[[3]]$tvSeries
+[1] ""
+
+[[3]]$playedBy
+[1] ""
+
+
+[[4]]
+[[4]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/1109"
+
+[[4]]$id
+[1] 1109
+
+[[4]]$name
+[1] "Will"
+
+[[4]]$gender
+[1] "Male"
+
+[[4]]$culture
+[1] ""
+
+[[4]]$born
+[1] ""
+
+[[4]]$died
+[1] "In 297 AC, at Haunted Forest"
+
+[[4]]$alive
+[1] FALSE
+
+[[4]]$titles
+[1] ""
+
+[[4]]$aliases
+[1] ""
+
+[[4]]$father
+[1] ""
+
+[[4]]$mother
+[1] ""
+
+[[4]]$spouse
+[1] ""
+
+[[4]]$allegiances
+list()
+
+[[4]]$books
+[1] "A Clash of Kings"
+
+[[4]]$povBooks
+[1] "A Game of Thrones"
+
+[[4]]$tvSeries
+[1] ""
+
+[[4]]$playedBy
+[1] "Bronson Webb"
+
+
+[[5]]
+[[5]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/1166"
+
+[[5]]$id
+[1] 1166
+
+[[5]]$name
+[1] "Areo Hotah"
+
+[[5]]$gender
+[1] "Male"
+
+[[5]]$culture
+[1] "Norvoshi"
+
+[[5]]$born
+[1] "In 257 AC or before, at Norvos"
+
+[[5]]$died
+[1] ""
+
+[[5]]$alive
+[1] TRUE
+
+[[5]]$titles
+[1] "Captain of the Guard at Sunspear"
+
+[[5]]$aliases
+[1] ""
+
+[[5]]$father
+[1] ""
+
+[[5]]$mother
+[1] ""
+
+[[5]]$spouse
+[1] ""
+
+[[5]]$allegiances
+[1] "House Nymeros Martell of Sunspear"
+
+[[5]]$books
+[1] "A Game of Thrones" "A Clash of Kings"  "A Storm of Swords"
+
+[[5]]$povBooks
+[1] "A Feast for Crows"    "A Dance with Dragons"
+
+[[5]]$tvSeries
+[1] "Season 5" "Season 6"
+
+[[5]]$playedBy
+[1] "DeObia Oparei"
+
+
+[[6]]
+[[6]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/1267"
+
+[[6]]$id
+[1] 1267
+
+[[6]]$name
+[1] "Chett"
+
+[[6]]$gender
+[1] "Male"
+
+[[6]]$culture
+[1] ""
+
+[[6]]$born
+[1] "At Hag's Mire"
+
+[[6]]$died
+[1] "In 299 AC, at Fist of the First Men"
+
+[[6]]$alive
+[1] FALSE
+
+[[6]]$titles
+[1] ""
+
+[[6]]$aliases
+[1] ""
+
+[[6]]$father
+[1] ""
+
+[[6]]$mother
+[1] ""
+
+[[6]]$spouse
+[1] ""
+
+[[6]]$allegiances
+list()
+
+[[6]]$books
+[1] "A Game of Thrones" "A Clash of Kings" 
+
+[[6]]$povBooks
+[1] "A Storm of Swords"
+
+[[6]]$tvSeries
+[1] ""
+
+[[6]]$playedBy
+[1] ""
+
+
+[[7]]
+[[7]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/1295"
+
+[[7]]$id
+[1] 1295
+
+[[7]]$name
+[1] "Cressen"
+
+[[7]]$gender
+[1] "Male"
+
+[[7]]$culture
+[1] ""
+
+[[7]]$born
+[1] "In 219 AC or 220 AC"
+
+[[7]]$died
+[1] "In 299 AC, at Dragonstone"
+
+[[7]]$alive
+[1] FALSE
+
+[[7]]$titles
+[1] "Maester"
+
+[[7]]$aliases
+[1] ""
+
+[[7]]$father
+[1] ""
+
+[[7]]$mother
+[1] ""
+
+[[7]]$spouse
+[1] ""
+
+[[7]]$allegiances
+list()
+
+[[7]]$books
+[1] "A Storm of Swords" "A Feast for Crows"
+
+[[7]]$povBooks
+[1] "A Clash of Kings"
+
+[[7]]$tvSeries
+[1] "Season 2"
+
+[[7]]$playedBy
+[1] "Oliver Ford"
+
+
+[[8]]
+[[8]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/130"
+
+[[8]]$id
+[1] 130
+
+[[8]]$name
+[1] "Arianne Martell"
+
+[[8]]$gender
+[1] "Female"
+
+[[8]]$culture
+[1] "Dornish"
+
+[[8]]$born
+[1] "In 276 AC, at Sunspear"
+
+[[8]]$died
+[1] ""
+
+[[8]]$alive
+[1] TRUE
+
+[[8]]$titles
+[1] "Princess of Dorne"
+
+[[8]]$aliases
+[1] ""
+
+[[8]]$father
+[1] ""
+
+[[8]]$mother
+[1] ""
+
+[[8]]$spouse
+[1] ""
+
+[[8]]$allegiances
+[1] "House Nymeros Martell of Sunspear"
+
+[[8]]$books
+[1] "A Game of Thrones"    "A Clash of Kings"     "A Storm of Swords"   
+[4] "A Dance with Dragons"
+
+[[8]]$povBooks
+[1] "A Feast for Crows"
+
+[[8]]$tvSeries
+[1] ""
+
+[[8]]$playedBy
+[1] ""
+
+
+[[9]]
+[[9]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/1303"
+
+[[9]]$id
+[1] 1303
+
+[[9]]$name
+[1] "Daenerys Targaryen"
+
+[[9]]$gender
+[1] "Female"
+
+[[9]]$culture
+[1] "Valyrian"
+
+[[9]]$born
+[1] "In 284 AC, at Dragonstone"
+
+[[9]]$died
+[1] ""
+
+[[9]]$alive
+[1] TRUE
+
+[[9]]$titles
+[1] "Queen of the Andals and the Rhoynar and the First Men, Lord of the Seven Kingdoms"
+[2] "Khaleesi of the Great Grass Sea"                                                  
+[3] "Breaker of Shackles/Chains"                                                       
+[4] "Queen of Meereen"                                                                 
+[5] "Princess of Dragonstone"                                                          
+
+[[9]]$aliases
+ [1] "Dany"                    "Daenerys Stormborn"     
+ [3] "The Unburnt"             "Mother of Dragons"      
+ [5] "Mother"                  "Mhysa"                  
+ [7] "The Silver Queen"        "Silver Lady"            
+ [9] "Dragonmother"            "The Dragon Queen"       
+[11] "The Mad King's daughter"
+
+[[9]]$father
+[1] ""
+
+[[9]]$mother
+[1] ""
+
+[[9]]$spouse
+[1] "https://www.anapioficeandfire.com/api/characters/1346"
+
+[[9]]$allegiances
+[1] "House Targaryen of King's Landing"
+
+[[9]]$books
+[1] "A Feast for Crows"
+
+[[9]]$povBooks
+[1] "A Game of Thrones"    "A Clash of Kings"     "A Storm of Swords"   
+[4] "A Dance with Dragons"
+
+[[9]]$tvSeries
+[1] "Season 1" "Season 2" "Season 3" "Season 4" "Season 5" "Season 6"
+
+[[9]]$playedBy
+[1] "Emilia Clarke"
+
+
+[[10]]
+[[10]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/1319"
+
+[[10]]$id
+[1] 1319
+
+[[10]]$name
+[1] "Davos Seaworth"
+
+[[10]]$gender
+[1] "Male"
+
+[[10]]$culture
+[1] "Westeros"
+
+[[10]]$born
+[1] "In 260 AC or before, at King's Landing"
+
+[[10]]$died
+[1] ""
+
+[[10]]$alive
+[1] TRUE
+
+[[10]]$titles
+[1] "Ser"                       "Lord of the Rainwood"     
+[3] "Admiral of the Narrow Sea" "Hand of the King"         
+
+[[10]]$aliases
+[1] "Onion Knight"    "Davos Shorthand" "Ser Onions"      "Onion Lord"     
+[5] "Smuggler"       
+
+[[10]]$father
+[1] ""
+
+[[10]]$mother
+[1] ""
+
+[[10]]$spouse
+[1] "https://www.anapioficeandfire.com/api/characters/1676"
+
+[[10]]$allegiances
+[1] "House Baratheon of Dragonstone" "House Seaworth of Cape Wrath"  
+
+[[10]]$books
+[1] "A Feast for Crows"
+
+[[10]]$povBooks
+[1] "A Clash of Kings"     "A Storm of Swords"    "A Dance with Dragons"
+
+[[10]]$tvSeries
+[1] "Season 2" "Season 3" "Season 4" "Season 5" "Season 6"
+
+[[10]]$playedBy
+[1] "Liam Cunningham"
+
+
+[[11]]
+[[11]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/148"
+
+[[11]]$id
+[1] 148
+
+[[11]]$name
+[1] "Arya Stark"
+
+[[11]]$gender
+[1] "Female"
+
+[[11]]$culture
+[1] "Northmen"
+
+[[11]]$born
+[1] "In 289 AC, at Winterfell"
+
+[[11]]$died
+[1] ""
+
+[[11]]$alive
+[1] TRUE
+
+[[11]]$titles
+[1] "Princess"
+
+[[11]]$aliases
+ [1] "Arya Horseface"       "Arya Underfoot"       "Arry"                
+ [4] "Lumpyface"            "Lumpyhead"            "Stickboy"            
+ [7] "Weasel"               "Nymeria"              "Squan"               
+[10] "Saltb"                "Cat of the Canaly"    "Bets"                
+[13] "The Blind Girh"       "The Ugly Little Girl" "Mercedenl"           
+[16] "Mercye"              
+
+[[11]]$father
+[1] ""
+
+[[11]]$mother
+[1] ""
+
+[[11]]$spouse
+[1] ""
+
+[[11]]$allegiances
+[1] "House Stark of Winterfell"
+
+[[11]]$books
+list()
+
+[[11]]$povBooks
+[1] "A Game of Thrones"    "A Clash of Kings"     "A Storm of Swords"   
+[4] "A Feast for Crows"    "A Dance with Dragons"
+
+[[11]]$tvSeries
+[1] "Season 1" "Season 2" "Season 3" "Season 4" "Season 5" "Season 6"
+
+[[11]]$playedBy
+[1] "Maisie Williams"
+
+
+[[12]]
+[[12]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/149"
+
+[[12]]$id
+[1] 149
+
+[[12]]$name
+[1] "Arys Oakheart"
+
+[[12]]$gender
+[1] "Male"
+
+[[12]]$culture
+[1] "Reach"
+
+[[12]]$born
+[1] "At Old Oak"
+
+[[12]]$died
+[1] "In 300 AC, at the Greenblood"
+
+[[12]]$alive
+[1] FALSE
+
+[[12]]$titles
+[1] "Ser"
+
+[[12]]$aliases
+[1] ""
+
+[[12]]$father
+[1] ""
+
+[[12]]$mother
+[1] ""
+
+[[12]]$spouse
+[1] ""
+
+[[12]]$allegiances
+[1] "House Oakheart of Old Oak"
+
+[[12]]$books
+[1] "A Game of Thrones"    "A Clash of Kings"     "A Storm of Swords"   
+[4] "A Dance with Dragons"
+
+[[12]]$povBooks
+[1] "A Feast for Crows"
+
+[[12]]$tvSeries
+[1] ""
+
+[[12]]$playedBy
+[1] ""
+
+
+[[13]]
+[[13]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/150"
+
+[[13]]$id
+[1] 150
+
+[[13]]$name
+[1] "Asha Greyjoy"
+
+[[13]]$gender
+[1] "Female"
+
+[[13]]$culture
+[1] "Ironborn"
+
+[[13]]$born
+[1] "In 275 AC or 276 AC, at Pyke"
+
+[[13]]$died
+[1] ""
+
+[[13]]$alive
+[1] TRUE
+
+[[13]]$titles
+[1] "Princess"                    "Captain of the Black Wind"  
+[3] "Conqueror of Deepwood Motte"
+
+[[13]]$aliases
+[1] "Esgred"                "The Kraken's Daughter"
+
+[[13]]$father
+[1] ""
+
+[[13]]$mother
+[1] ""
+
+[[13]]$spouse
+[1] "https://www.anapioficeandfire.com/api/characters/1372"
+
+[[13]]$allegiances
+[1] "House Greyjoy of Pyke" "House Ironmaker"      
+
+[[13]]$books
+[1] "A Game of Thrones" "A Clash of Kings" 
+
+[[13]]$povBooks
+[1] "A Feast for Crows"    "A Dance with Dragons"
+
+[[13]]$tvSeries
+[1] "Season 2" "Season 3" "Season 4"
+
+[[13]]$playedBy
+[1] "Gemma Whelan"
+
+
+[[14]]
+[[14]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/168"
+
+[[14]]$id
+[1] 168
+
+[[14]]$name
+[1] "Barristan Selmy"
+
+[[14]]$gender
+[1] "Male"
+
+[[14]]$culture
+[1] "Westeros"
+
+[[14]]$born
+[1] "In 237 AC"
+
+[[14]]$died
+[1] ""
+
+[[14]]$alive
+[1] TRUE
+
+[[14]]$titles
+[1] "Ser"               "Hand of the Queen"
+
+[[14]]$aliases
+[1] "Barristan the Bold" "Arstan Whitebeard"  "Ser Grandfather"   
+[4] "Barristan the Old"  "Old Ser"           
+
+[[14]]$father
+[1] ""
+
+[[14]]$mother
+[1] ""
+
+[[14]]$spouse
+[1] ""
+
+[[14]]$allegiances
+[1] "House Selmy of Harvest Hall"       "House Targaryen of King's Landing"
+
+[[14]]$books
+[1] "A Game of Thrones"         "A Clash of Kings"         
+[3] "A Storm of Swords"         "A Feast for Crows"        
+[5] "The World of Ice and Fire"
+
+[[14]]$povBooks
+[1] "A Dance with Dragons"
+
+[[14]]$tvSeries
+[1] "Season 1" "Season 3" "Season 4" "Season 5"
+
+[[14]]$playedBy
+[1] "Ian McElhinney"
+
+
+[[15]]
+[[15]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/2066"
+
+[[15]]$id
+[1] 2066
+
+[[15]]$name
+[1] "Varamyr"
+
+[[15]]$gender
+[1] "Male"
+
+[[15]]$culture
+[1] "Free Folk"
+
+[[15]]$born
+[1] "At a village Beyond the Wall"
+
+[[15]]$died
+[1] "In 300 AC, at a village Beyond the Wall"
+
+[[15]]$alive
+[1] FALSE
+
+[[15]]$titles
+[1] ""
+
+[[15]]$aliases
+[1] "Varamyr Sixskins" "Haggon"           "Lump"            
+
+[[15]]$father
+[1] ""
+
+[[15]]$mother
+[1] ""
+
+[[15]]$spouse
+[1] ""
+
+[[15]]$allegiances
+list()
+
+[[15]]$books
+[1] "A Storm of Swords"
+
+[[15]]$povBooks
+[1] "A Dance with Dragons"
+
+[[15]]$tvSeries
+[1] ""
+
+[[15]]$playedBy
+[1] ""
+
+
+[[16]]
+[[16]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/208"
+
+[[16]]$id
+[1] 208
+
+[[16]]$name
+[1] "Brandon Stark"
+
+[[16]]$gender
+[1] "Male"
+
+[[16]]$culture
+[1] "Northmen"
+
+[[16]]$born
+[1] "In 290 AC, at Winterfell"
+
+[[16]]$died
+[1] ""
+
+[[16]]$alive
+[1] TRUE
+
+[[16]]$titles
+[1] "Prince of Winterfell"
+
+[[16]]$aliases
+[1] "Bran"            "Bran the Broken" "The Winged Wolf"
+
+[[16]]$father
+[1] ""
+
+[[16]]$mother
+[1] ""
+
+[[16]]$spouse
+[1] ""
+
+[[16]]$allegiances
+[1] "House Stark of Winterfell"
+
+[[16]]$books
+[1] "A Feast for Crows"
+
+[[16]]$povBooks
+[1] "A Game of Thrones"    "A Clash of Kings"     "A Storm of Swords"   
+[4] "A Dance with Dragons"
+
+[[16]]$tvSeries
+[1] "Season 1" "Season 2" "Season 3" "Season 4" "Season 6"
+
+[[16]]$playedBy
+[1] "Isaac Hempstead-Wright"
+
+
+[[17]]
+[[17]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/216"
+
+[[17]]$id
+[1] 216
+
+[[17]]$name
+[1] "Brienne of Tarth"
+
+[[17]]$gender
+[1] "Female"
+
+[[17]]$culture
+[1] ""
+
+[[17]]$born
+[1] "In 280 AC"
+
+[[17]]$died
+[1] ""
+
+[[17]]$alive
+[1] TRUE
+
+[[17]]$titles
+[1] ""
+
+[[17]]$aliases
+[1] "The Maid of Tarth"  "Brienne the Beauty" "Brienne the Blue"  
+
+[[17]]$father
+[1] ""
+
+[[17]]$mother
+[1] ""
+
+[[17]]$spouse
+[1] ""
+
+[[17]]$allegiances
+[1] "House Baratheon of Storm's End" "House Stark of Winterfell"     
+[3] "House Tarth of Evenfall Hall"  
+
+[[17]]$books
+[1] "A Clash of Kings"     "A Storm of Swords"    "A Dance with Dragons"
+
+[[17]]$povBooks
+[1] "A Feast for Crows"
+
+[[17]]$tvSeries
+[1] "Season 2" "Season 3" "Season 4" "Season 5" "Season 6"
+
+[[17]]$playedBy
+[1] "Gwendoline Christie"
+
+
+[[18]]
+[[18]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/232"
+
+[[18]]$id
+[1] 232
+
+[[18]]$name
+[1] "Catelyn Stark"
+
+[[18]]$gender
+[1] "Female"
+
+[[18]]$culture
+[1] "Rivermen"
+
+[[18]]$born
+[1] "In 264 AC, at Riverrun"
+
+[[18]]$died
+[1] "In 299 AC, at the Twins"
+
+[[18]]$alive
+[1] FALSE
+
+[[18]]$titles
+[1] "Lady of Winterfell"
+
+[[18]]$aliases
+[1] "Catelyn Tully"     "Lady Stoneheart"   "The Silent Sistet"
+[4] "Mother Mercilesr"  "The Hangwomans"   
+
+[[18]]$father
+[1] ""
+
+[[18]]$mother
+[1] ""
+
+[[18]]$spouse
+[1] "https://www.anapioficeandfire.com/api/characters/339"
+
+[[18]]$allegiances
+[1] "House Stark of Winterfell" "House Tully of Riverrun"  
+
+[[18]]$books
+[1] "A Feast for Crows"    "A Dance with Dragons"
+
+[[18]]$povBooks
+[1] "A Game of Thrones" "A Clash of Kings"  "A Storm of Swords"
+
+[[18]]$tvSeries
+[1] "Season 1" "Season 2" "Season 3"
+
+[[18]]$playedBy
+[1] "Michelle Fairley"
+
+
+[[19]]
+[[19]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/238"
+
+[[19]]$id
+[1] 238
+
+[[19]]$name
+[1] "Cersei Lannister"
+
+[[19]]$gender
+[1] "Female"
+
+[[19]]$culture
+[1] "Westerman"
+
+[[19]]$born
+[1] "In 266 AC, at Casterly Rock"
+
+[[19]]$died
+[1] ""
+
+[[19]]$alive
+[1] TRUE
+
+[[19]]$titles
+[1] "Light of the West"      "Queen Dowager"          "Protector of the Realm"
+[4] "Lady of Casterly Rock"  "Queen Regent"          
+
+[[19]]$aliases
+[1] ""
+
+[[19]]$father
+[1] ""
+
+[[19]]$mother
+[1] ""
+
+[[19]]$spouse
+[1] "https://www.anapioficeandfire.com/api/characters/901"
+
+[[19]]$allegiances
+[1] "House Lannister of Casterly Rock"
+
+[[19]]$books
+[1] "A Game of Thrones" "A Clash of Kings"  "A Storm of Swords"
+
+[[19]]$povBooks
+[1] "A Feast for Crows"    "A Dance with Dragons"
+
+[[19]]$tvSeries
+[1] "Season 1" "Season 2" "Season 3" "Season 4" "Season 5" "Season 6"
+
+[[19]]$playedBy
+[1] "Lena Headey"
+
+
+[[20]]
+[[20]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/339"
+
+[[20]]$id
+[1] 339
+
+[[20]]$name
+[1] "Eddard Stark"
+
+[[20]]$gender
+[1] "Male"
+
+[[20]]$culture
+[1] "Northmen"
+
+[[20]]$born
+[1] "In 263 AC, at Winterfell"
+
+[[20]]$died
+[1] "In 299 AC, at Great Sept of Baelor in King's Landing"
+
+[[20]]$alive
+[1] FALSE
+
+[[20]]$titles
+[1] "Lord of Winterfell"     "Warden of the North"    "Hand of the King"      
+[4] "Protector of the Realm" "Regent"                
+
+[[20]]$aliases
+[1] "Ned"            "The Ned"        "The Quiet Wolf"
+
+[[20]]$father
+[1] ""
+
+[[20]]$mother
+[1] ""
+
+[[20]]$spouse
+[1] "https://www.anapioficeandfire.com/api/characters/232"
+
+[[20]]$allegiances
+[1] "House Stark of Winterfell"
+
+[[20]]$books
+[1] "A Clash of Kings"          "A Storm of Swords"        
+[3] "A Feast for Crows"         "A Dance with Dragons"     
+[5] "The World of Ice and Fire"
+
+[[20]]$povBooks
+[1] "A Game of Thrones"
+
+[[20]]$tvSeries
+[1] "Season 1" "Season 6"
+
+[[20]]$playedBy
+[1] "Sean Bean"       "Sebastian Croft" "Robert Aramayo" 
+
+
+[[21]]
+[[21]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/529"
+
+[[21]]$id
+[1] 529
+
+[[21]]$name
+[1] "Jaime Lannister"
+
+[[21]]$gender
+[1] "Male"
+
+[[21]]$culture
+[1] "Westerlands"
+
+[[21]]$born
+[1] "In 266 AC, at Casterly Rock"
+
+[[21]]$died
+[1] ""
+
+[[21]]$alive
+[1] TRUE
+
+[[21]]$titles
+[1] "Ser"                              "Lord Commander of the Kingsguard"
+[3] "Warden of the East (formerly)"   
+
+[[21]]$aliases
+[1] "The Kingslayer"        "The Lion of Lannister" "The Young Lion"       
+[4] "Cripple"              
+
+[[21]]$father
+[1] ""
+
+[[21]]$mother
+[1] ""
+
+[[21]]$spouse
+[1] ""
+
+[[21]]$allegiances
+[1] "House Lannister of Casterly Rock"
+
+[[21]]$books
+[1] "A Game of Thrones" "A Clash of Kings" 
+
+[[21]]$povBooks
+[1] "A Storm of Swords"    "A Feast for Crows"    "A Dance with Dragons"
+
+[[21]]$tvSeries
+[1] "Season 1" "Season 2" "Season 3" "Season 4" "Season 5"
+
+[[21]]$playedBy
+[1] "Nikolaj Coster-Waldau"
+
+
+[[22]]
+[[22]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/576"
+
+[[22]]$id
+[1] 576
+
+[[22]]$name
+[1] "Jon Connington"
+
+[[22]]$gender
+[1] "Male"
+
+[[22]]$culture
+[1] "Stormlands"
+
+[[22]]$born
+[1] "In or between 263 AC and 265 AC"
+
+[[22]]$died
+[1] ""
+
+[[22]]$alive
+[1] TRUE
+
+[[22]]$titles
+[1] "Lord of Griffin's Roost" "Hand of the King"       
+[3] "Hand of the True King"  
+
+[[22]]$aliases
+[1] "Griffthe Mad King's Hand"
+
+[[22]]$father
+[1] ""
+
+[[22]]$mother
+[1] ""
+
+[[22]]$spouse
+[1] ""
+
+[[22]]$allegiances
+[1] "House Connington of Griffin's Roost" "House Targaryen of King's Landing"  
+
+[[22]]$books
+[1] "A Storm of Swords"         "A Feast for Crows"        
+[3] "The World of Ice and Fire"
+
+[[22]]$povBooks
+[1] "A Dance with Dragons"
+
+[[22]]$tvSeries
+[1] ""
+
+[[22]]$playedBy
+[1] ""
+
+
+[[23]]
+[[23]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/583"
+
+[[23]]$id
+[1] 583
+
+[[23]]$name
+[1] "Jon Snow"
+
+[[23]]$gender
+[1] "Male"
+
+[[23]]$culture
+[1] "Northmen"
+
+[[23]]$born
+[1] "In 283 AC"
+
+[[23]]$died
+[1] ""
+
+[[23]]$alive
+[1] TRUE
+
+[[23]]$titles
+[1] "Lord Commander of the Night's Watch"
+
+[[23]]$aliases
+[1] "Lord Snow"                                    
+[2] "Ned Stark's Bastard"                          
+[3] "The Snow of Winterfell"                       
+[4] "The Crow-Come-Over"                           
+[5] "The 998th Lord Commander of the Night's Watch"
+[6] "The Bastard of Winterfell"                    
+[7] "The Black Bastard of the Wall"                
+[8] "Lord Crow"                                    
+
+[[23]]$father
+[1] ""
+
+[[23]]$mother
+[1] ""
+
+[[23]]$spouse
+[1] ""
+
+[[23]]$allegiances
+[1] "House Stark of Winterfell"
+
+[[23]]$books
+[1] "A Feast for Crows"
+
+[[23]]$povBooks
+[1] "A Game of Thrones"    "A Clash of Kings"     "A Storm of Swords"   
+[4] "A Dance with Dragons"
+
+[[23]]$tvSeries
+[1] "Season 1" "Season 2" "Season 3" "Season 4" "Season 5" "Season 6"
+
+[[23]]$playedBy
+[1] "Kit Harington"
+
+
+[[24]]
+[[24]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/60"
+
+[[24]]$id
+[1] 60
+
+[[24]]$name
+[1] "Aeron Greyjoy"
+
+[[24]]$gender
+[1] "Male"
+
+[[24]]$culture
+[1] "Ironborn"
+
+[[24]]$born
+[1] "In or between 269 AC and 273 AC, at Pyke"
+
+[[24]]$died
+[1] ""
+
+[[24]]$alive
+[1] TRUE
+
+[[24]]$titles
+[1] "Priest of the Drowned God"             
+[2] "Captain of the Golden Storm (formerly)"
+
+[[24]]$aliases
+[1] "The Damphair"   "Aeron Damphair"
+
+[[24]]$father
+[1] ""
+
+[[24]]$mother
+[1] ""
+
+[[24]]$spouse
+[1] ""
+
+[[24]]$allegiances
+[1] "House Greyjoy of Pyke"
+
+[[24]]$books
+[1] "A Game of Thrones"    "A Clash of Kings"     "A Storm of Swords"   
+[4] "A Dance with Dragons"
+
+[[24]]$povBooks
+[1] "A Feast for Crows"
+
+[[24]]$tvSeries
+[1] "Season 6"
+
+[[24]]$playedBy
+[1] "Michael Feast"
+
+
+[[25]]
+[[25]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/605"
+
+[[25]]$id
+[1] 605
+
+[[25]]$name
+[1] "Kevan Lannister"
+
+[[25]]$gender
+[1] "Male"
+
+[[25]]$culture
+[1] ""
+
+[[25]]$born
+[1] "In 244 AC"
+
+[[25]]$died
+[1] "In 300 AC, at King's Landing"
+
+[[25]]$alive
+[1] FALSE
+
+[[25]]$titles
+[1] "Ser"                    "Master of laws"         "Lord Regent"           
+[4] "Protector of the Realm"
+
+[[25]]$aliases
+[1] ""
+
+[[25]]$father
+[1] ""
+
+[[25]]$mother
+[1] ""
+
+[[25]]$spouse
+[1] "https://www.anapioficeandfire.com/api/characters/327"
+
+[[25]]$allegiances
+[1] "House Lannister of Casterly Rock"
+
+[[25]]$books
+[1] "A Game of Thrones" "A Clash of Kings"  "A Storm of Swords"
+[4] "A Feast for Crows"
+
+[[25]]$povBooks
+[1] "A Dance with Dragons"
+
+[[25]]$tvSeries
+[1] "Season 1" "Season 2" "Season 5" "Season 6"
+
+[[25]]$playedBy
+[1] "Ian Gelder"
+
+
+[[26]]
+[[26]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/743"
+
+[[26]]$id
+[1] 743
+
+[[26]]$name
+[1] "Melisandre"
+
+[[26]]$gender
+[1] "Female"
+
+[[26]]$culture
+[1] "Asshai"
+
+[[26]]$born
+[1] "At Unknown"
+
+[[26]]$died
+[1] ""
+
+[[26]]$alive
+[1] TRUE
+
+[[26]]$titles
+[1] ""
+
+[[26]]$aliases
+[1] "The Red Priestess"     "The Red Woman"         "The King's Red Shadow"
+[4] "Lady Red"              "Lot Seven"            
+
+[[26]]$father
+[1] ""
+
+[[26]]$mother
+[1] ""
+
+[[26]]$spouse
+[1] ""
+
+[[26]]$allegiances
+list()
+
+[[26]]$books
+[1] "A Clash of Kings"  "A Storm of Swords" "A Feast for Crows"
+
+[[26]]$povBooks
+[1] "A Dance with Dragons"
+
+[[26]]$tvSeries
+[1] "Season 2" "Season 3" "Season 4" "Season 5" "Season 6"
+
+[[26]]$playedBy
+[1] "Carice van Houten"
+
+
+[[27]]
+[[27]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/751"
+
+[[27]]$id
+[1] 751
+
+[[27]]$name
+[1] "Merrett Frey"
+
+[[27]]$gender
+[1] "Male"
+
+[[27]]$culture
+[1] "Rivermen"
+
+[[27]]$born
+[1] "In 262 AC"
+
+[[27]]$died
+[1] "In 300 AC, at Near Oldstones"
+
+[[27]]$alive
+[1] FALSE
+
+[[27]]$titles
+[1] ""
+
+[[27]]$aliases
+[1] "Merrett Muttonhead"
+
+[[27]]$father
+[1] ""
+
+[[27]]$mother
+[1] ""
+
+[[27]]$spouse
+[1] "https://www.anapioficeandfire.com/api/characters/712"
+
+[[27]]$allegiances
+[1] "House Frey of the Crossing"
+
+[[27]]$books
+[1] "A Game of Thrones"    "A Clash of Kings"     "A Feast for Crows"   
+[4] "A Dance with Dragons"
+
+[[27]]$povBooks
+[1] "A Storm of Swords"
+
+[[27]]$tvSeries
+[1] ""
+
+[[27]]$playedBy
+[1] ""
+
+
+[[28]]
+[[28]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/844"
+
+[[28]]$id
+[1] 844
+
+[[28]]$name
+[1] "Quentyn Martell"
+
+[[28]]$gender
+[1] "Male"
+
+[[28]]$culture
+[1] "Dornish"
+
+[[28]]$born
+[1] "In 281 AC, at Sunspear, Dorne"
+
+[[28]]$died
+[1] "In 300 AC, at Meereen"
+
+[[28]]$alive
+[1] FALSE
+
+[[28]]$titles
+[1] "Prince"
+
+[[28]]$aliases
+[1] "Frog"                         "Prince Frog"                 
+[3] "The prince who came too late" "The Dragonrider"             
+
+[[28]]$father
+[1] ""
+
+[[28]]$mother
+[1] ""
+
+[[28]]$spouse
+[1] ""
+
+[[28]]$allegiances
+[1] "House Nymeros Martell of Sunspear"
+
+[[28]]$books
+[1] "A Game of Thrones" "A Clash of Kings"  "A Storm of Swords"
+[4] "A Feast for Crows"
+
+[[28]]$povBooks
+[1] "A Dance with Dragons"
+
+[[28]]$tvSeries
+[1] ""
+
+[[28]]$playedBy
+[1] ""
+
+
+[[29]]
+[[29]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/954"
+
+[[29]]$id
+[1] 954
+
+[[29]]$name
+[1] "Samwell Tarly"
+
+[[29]]$gender
+[1] "Male"
+
+[[29]]$culture
+[1] "Andal"
+
+[[29]]$born
+[1] "In 283 AC, at Horn Hill"
+
+[[29]]$died
+[1] ""
+
+[[29]]$alive
+[1] TRUE
+
+[[29]]$titles
+[1] ""
+
+[[29]]$aliases
+[1] "Sam"              "Ser Piggy"        "Prince Pork-chop" "Lady Piggy"      
+[5] "Sam the Slayer"   "Black Sam"        "Lord of Ham"     
+
+[[29]]$father
+[1] ""
+
+[[29]]$mother
+[1] ""
+
+[[29]]$spouse
+[1] ""
+
+[[29]]$allegiances
+[1] "House Tarly of Horn Hill"
+
+[[29]]$books
+[1] "A Game of Thrones"    "A Clash of Kings"     "A Dance with Dragons"
+
+[[29]]$povBooks
+[1] "A Storm of Swords" "A Feast for Crows"
+
+[[29]]$tvSeries
+[1] "Season 1" "Season 2" "Season 3" "Season 4" "Season 5" "Season 6"
+
+[[29]]$playedBy
+[1] "John Bradley-West"
+
+
+[[30]]
+[[30]]$url
+[1] "https://www.anapioficeandfire.com/api/characters/957"
+
+[[30]]$id
+[1] 957
+
+[[30]]$name
+[1] "Sansa Stark"
+
+[[30]]$gender
+[1] "Female"
+
+[[30]]$culture
+[1] "Northmen"
+
+[[30]]$born
+[1] "In 286 AC, at Winterfell"
+
+[[30]]$died
+[1] ""
+
+[[30]]$alive
+[1] TRUE
+
+[[30]]$titles
+[1] "Princess"
+
+[[30]]$aliases
+[1] "Little bird"  "Alayne Stone" "Jonquil"     
+
+[[30]]$father
+[1] ""
+
+[[30]]$mother
+[1] ""
+
+[[30]]$spouse
+[1] "https://www.anapioficeandfire.com/api/characters/1052"
+
+[[30]]$allegiances
+[1] "House Baelish of Harrenhal" "House Stark of Winterfell" 
+
+[[30]]$books
+[1] "A Dance with Dragons"
+
+[[30]]$povBooks
+[1] "A Game of Thrones" "A Clash of Kings"  "A Storm of Swords"
+[4] "A Feast for Crows"
+
+[[30]]$tvSeries
+[1] "Season 1" "Season 2" "Season 3" "Season 4" "Season 5" "Season 6"
+
+[[30]]$playedBy
+[1] "Sophie Turner"</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="scary-list-to-friendly-data.frame-2">Scary <code>list()</code> to Friendly <code>data.frame()</code></h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a></a><span class="fu">class</span>(got_chars[[<span class="dv">1</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a></a><span class="fu">names</span>(got_chars[[<span class="dv">1</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "url"         "id"          "name"        "gender"      "culture"    
+ [6] "born"        "died"        "alive"       "titles"      "aliases"    
+[11] "father"      "mother"      "spouse"      "allegiances" "books"      
+[16] "povBooks"    "tvSeries"    "playedBy"   </code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="scary-list-to-friendly-data.frame-3">Scary <code>list()</code> to Friendly <code>data.frame()</code></h3>
+<p>Explain what the following code does.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a></a>got_chars[[<span class="dv">1</span>]][<span class="st">"name"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$name
+[1] "Theon Greyjoy"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a></a>got_chars[[<span class="dv">1</span>]][<span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$name
+[1] "Theon Greyjoy"</code></pre>
+</div>
+</div>
+<p>How should we generalize this to extract the <code>name</code>, <code>culture</code>, and <code>alive</code> for the first character?</p>
+</section>
+<section class="slide level2">
+
+<h3 id="scary-list-to-friendly-data.frame-4">Scary <code>list()</code> to Friendly <code>data.frame()</code></h3>
+<p>How should we generalize this to extract the <code>name</code>, <code>culture</code>, and <code>alive</code> for the first character?</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a></a>got_chars[[<span class="dv">1</span>]][<span class="fu">c</span>(<span class="st">"name"</span>, <span class="st">"culture"</span>, <span class="st">"alive"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$name
+[1] "Theon Greyjoy"
+
+$culture
+[1] "Ironborn"
+
+$alive
+[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="scary-list-to-friendly-data.frame-5">Scary <code>list()</code> to Friendly <code>data.frame()</code></h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a></a><span class="fu">names</span>(got_chars[[<span class="dv">1</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "url"         "id"          "name"        "gender"      "culture"    
+ [6] "born"        "died"        "alive"       "titles"      "aliases"    
+[11] "father"      "mother"      "spouse"      "allegiances" "books"      
+[16] "povBooks"    "tvSeries"    "playedBy"   </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a></a>got_chars[[<span class="dv">1</span>]][<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">8</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$name
+[1] "Theon Greyjoy"
+
+$culture
+[1] "Ironborn"
+
+$alive
+[1] TRUE</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment">What do I want to store?
+<ul>
+<li class="fragment">What type of R object do I want?</li>
+<li class="fragment">What’s the required size?</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="scary-list-to-friendly-data.frame-6">Scary <code>list()</code> to Friendly <code>data.frame()</code></h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a></a>got_chars_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">30</span>),</span>
+<span id="cb100-2"><a></a>                       <span class="at">culture =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">30</span>),</span>
+<span id="cb100-3"><a></a>                       <span class="at">alive =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">30</span>))</span>
+<span id="cb100-4"><a></a><span class="fu">dim</span>(got_chars_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30  3</code></pre>
+</div>
+</div>
+<p>How should I save the information in <code>got_chars_df</code>?</p>
+</section>
+<section class="slide level2">
+
+<h3 id="for-loop-version"><code>for()</code> Loop Version</h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a></a><span class="co"># Set i and j to test</span></span>
+<span id="cb102-2"><a></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb102-3"><a></a>j <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb102-4"><a></a></span>
+<span id="cb102-5"><a></a><span class="co"># Variable locations</span></span>
+<span id="cb102-6"><a></a>locations <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">8</span>)</span>
+<span id="cb102-7"><a></a></span>
+<span id="cb102-8"><a></a><span class="co"># Grab the jth variable of the ith person</span></span>
+<span id="cb102-9"><a></a>got_chars[[i]][locations[j]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$name
+[1] "Theon Greyjoy"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a></a><span class="co"># Another option</span></span>
+<span id="cb104-2"><a></a>k <span class="ot">&lt;-</span> locations[j]</span>
+<span id="cb104-3"><a></a>got_chars[[i]][k]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$name
+[1] "Theon Greyjoy"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a></a><span class="co"># Store</span></span>
+<span id="cb106-2"><a></a>got_chars_df[i, j] <span class="ot">&lt;-</span> got_chars[[i]][k]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="scary-list-to-friendly-data.frame-7">Scary <code>list()</code> to Friendly <code>data.frame()</code></h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a></a>got_chars_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">30</span>),</span>
+<span id="cb107-2"><a></a>                       <span class="at">culture =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">30</span>),</span>
+<span id="cb107-3"><a></a>                       <span class="at">alive =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">30</span>))</span>
+<span id="cb107-4"><a></a>locations <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">8</span>)</span>
+<span id="cb107-5"><a></a></span>
+<span id="cb107-6"><a></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(got_chars_df)){</span>
+<span id="cb107-7"><a></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(got_chars_df)){</span>
+<span id="cb107-8"><a></a>    </span>
+<span id="cb107-9"><a></a>    k <span class="ot">&lt;-</span> locations[j]</span>
+<span id="cb107-10"><a></a>    got_chars_df[i, j] <span class="ot">&lt;-</span> got_chars[[i]][k]</span>
+<span id="cb107-11"><a></a>    </span>
+<span id="cb107-12"><a></a>  }</span>
+<span id="cb107-13"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="scary-list-to-friendly-data.frame-8">Scary <code>list()</code> to Friendly <code>data.frame()</code></h3>
+<p><a href="https://www.youtube.com/watch?v=SBCw4_XgouA">We did it!</a></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a></a>got_chars_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 3
+   name               culture    alive
+   &lt;chr&gt;              &lt;chr&gt;      &lt;lgl&gt;
+ 1 Theon Greyjoy      "Ironborn" TRUE 
+ 2 Tyrion Lannister   ""         TRUE 
+ 3 Victarion Greyjoy  "Ironborn" TRUE 
+ 4 Will               ""         FALSE
+ 5 Areo Hotah         "Norvoshi" TRUE 
+ 6 Chett              ""         FALSE
+ 7 Cressen            ""         FALSE
+ 8 Arianne Martell    "Dornish"  TRUE 
+ 9 Daenerys Targaryen "Valyrian" TRUE 
+10 Davos Seaworth     "Westeros" TRUE 
+# ℹ 20 more rows</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="now-how-can-we-use-purrr-to-convert-the-scary-list-to-friendly-data.frame" class="title-slide slide level1 center">
+<h1>Now how can we use <code>purrr</code> to convert the scary <code>list()</code> to friendly <code>data.frame()</code>?</h1>
+
+</section>
+<section class="slide level2">
+
+<h3 id="scary-list-to-friendly-data.frame-9">Scary <code>list()</code> to Friendly <code>data.frame()</code></h3>
+<ul>
+<li><p>Let’s start with <code>name</code>.</p></li>
+<li><p>Translate into words what the following anonymous function is doing.</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a></a><span class="fu">map</span>(got_chars, <span class="sc">~</span> .x[[<span class="dv">3</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "Theon Greyjoy"
+
+[[2]]
+[1] "Tyrion Lannister"
+
+[[3]]
+[1] "Victarion Greyjoy"
+
+[[4]]
+[1] "Will"
+
+[[5]]
+[1] "Areo Hotah"
+
+[[6]]
+[1] "Chett"
+
+[[7]]
+[1] "Cressen"
+
+[[8]]
+[1] "Arianne Martell"
+
+[[9]]
+[1] "Daenerys Targaryen"
+
+[[10]]
+[1] "Davos Seaworth"
+
+[[11]]
+[1] "Arya Stark"
+
+[[12]]
+[1] "Arys Oakheart"
+
+[[13]]
+[1] "Asha Greyjoy"
+
+[[14]]
+[1] "Barristan Selmy"
+
+[[15]]
+[1] "Varamyr"
+
+[[16]]
+[1] "Brandon Stark"
+
+[[17]]
+[1] "Brienne of Tarth"
+
+[[18]]
+[1] "Catelyn Stark"
+
+[[19]]
+[1] "Cersei Lannister"
+
+[[20]]
+[1] "Eddard Stark"
+
+[[21]]
+[1] "Jaime Lannister"
+
+[[22]]
+[1] "Jon Connington"
+
+[[23]]
+[1] "Jon Snow"
+
+[[24]]
+[1] "Aeron Greyjoy"
+
+[[25]]
+[1] "Kevan Lannister"
+
+[[26]]
+[1] "Melisandre"
+
+[[27]]
+[1] "Merrett Frey"
+
+[[28]]
+[1] "Quentyn Martell"
+
+[[29]]
+[1] "Samwell Tarly"
+
+[[30]]
+[1] "Sansa Stark"</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="scary-list-to-friendly-data.frame-10">Scary <code>list()</code> to Friendly <code>data.frame()</code></h3>
+<p>Shortcut:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a></a><span class="fu">map</span>(got_chars, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "Theon Greyjoy"
+
+[[2]]
+[1] "Tyrion Lannister"
+
+[[3]]
+[1] "Victarion Greyjoy"
+
+[[4]]
+[1] "Will"
+
+[[5]]
+[1] "Areo Hotah"
+
+[[6]]
+[1] "Chett"
+
+[[7]]
+[1] "Cressen"
+
+[[8]]
+[1] "Arianne Martell"
+
+[[9]]
+[1] "Daenerys Targaryen"
+
+[[10]]
+[1] "Davos Seaworth"
+
+[[11]]
+[1] "Arya Stark"
+
+[[12]]
+[1] "Arys Oakheart"
+
+[[13]]
+[1] "Asha Greyjoy"
+
+[[14]]
+[1] "Barristan Selmy"
+
+[[15]]
+[1] "Varamyr"
+
+[[16]]
+[1] "Brandon Stark"
+
+[[17]]
+[1] "Brienne of Tarth"
+
+[[18]]
+[1] "Catelyn Stark"
+
+[[19]]
+[1] "Cersei Lannister"
+
+[[20]]
+[1] "Eddard Stark"
+
+[[21]]
+[1] "Jaime Lannister"
+
+[[22]]
+[1] "Jon Connington"
+
+[[23]]
+[1] "Jon Snow"
+
+[[24]]
+[1] "Aeron Greyjoy"
+
+[[25]]
+[1] "Kevan Lannister"
+
+[[26]]
+[1] "Melisandre"
+
+[[27]]
+[1] "Merrett Frey"
+
+[[28]]
+[1] "Quentyn Martell"
+
+[[29]]
+[1] "Samwell Tarly"
+
+[[30]]
+[1] "Sansa Stark"</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="scary-list-to-friendly-data.frame-11">Scary <code>list()</code> to Friendly <code>data.frame()</code></h3>
+<p>Another shortcut:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a></a><span class="fu">map</span>(got_chars, <span class="st">"name"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "Theon Greyjoy"
+
+[[2]]
+[1] "Tyrion Lannister"
+
+[[3]]
+[1] "Victarion Greyjoy"
+
+[[4]]
+[1] "Will"
+
+[[5]]
+[1] "Areo Hotah"
+
+[[6]]
+[1] "Chett"
+
+[[7]]
+[1] "Cressen"
+
+[[8]]
+[1] "Arianne Martell"
+
+[[9]]
+[1] "Daenerys Targaryen"
+
+[[10]]
+[1] "Davos Seaworth"
+
+[[11]]
+[1] "Arya Stark"
+
+[[12]]
+[1] "Arys Oakheart"
+
+[[13]]
+[1] "Asha Greyjoy"
+
+[[14]]
+[1] "Barristan Selmy"
+
+[[15]]
+[1] "Varamyr"
+
+[[16]]
+[1] "Brandon Stark"
+
+[[17]]
+[1] "Brienne of Tarth"
+
+[[18]]
+[1] "Catelyn Stark"
+
+[[19]]
+[1] "Cersei Lannister"
+
+[[20]]
+[1] "Eddard Stark"
+
+[[21]]
+[1] "Jaime Lannister"
+
+[[22]]
+[1] "Jon Connington"
+
+[[23]]
+[1] "Jon Snow"
+
+[[24]]
+[1] "Aeron Greyjoy"
+
+[[25]]
+[1] "Kevan Lannister"
+
+[[26]]
+[1] "Melisandre"
+
+[[27]]
+[1] "Merrett Frey"
+
+[[28]]
+[1] "Quentyn Martell"
+
+[[29]]
+[1] "Samwell Tarly"
+
+[[30]]
+[1] "Sansa Stark"</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment">How do we change this to a <strong>vector()</strong> output instead of a <strong>list()</strong> output?</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="scary-list-to-friendly-data.frame-12">Scary <code>list()</code> to Friendly <code>data.frame()</code></h3>
+<p>How do we change this to a <strong>vector()</strong> output instead of a <strong>list()</strong> output?</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a></a><span class="fu">map_chr</span>(got_chars, <span class="st">"name"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Theon Greyjoy"      "Tyrion Lannister"   "Victarion Greyjoy" 
+ [4] "Will"               "Areo Hotah"         "Chett"             
+ [7] "Cressen"            "Arianne Martell"    "Daenerys Targaryen"
+[10] "Davos Seaworth"     "Arya Stark"         "Arys Oakheart"     
+[13] "Asha Greyjoy"       "Barristan Selmy"    "Varamyr"           
+[16] "Brandon Stark"      "Brienne of Tarth"   "Catelyn Stark"     
+[19] "Cersei Lannister"   "Eddard Stark"       "Jaime Lannister"   
+[22] "Jon Connington"     "Jon Snow"           "Aeron Greyjoy"     
+[25] "Kevan Lannister"    "Melisandre"         "Merrett Frey"      
+[28] "Quentyn Martell"    "Samwell Tarly"      "Sansa Stark"       </code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="scary-list-to-friendly-data.frame-13">Scary <code>list()</code> to Friendly <code>data.frame()</code></h3>
+<p>Let’s go back to the code that grabs the <code>name</code>, <code>culture</code>, and <code>alive</code> for the first character.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a></a>got_chars[[<span class="dv">1</span>]][<span class="fu">c</span>(<span class="st">"name"</span>, <span class="st">"culture"</span>, <span class="st">"alive"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$name
+[1] "Theon Greyjoy"
+
+$culture
+[1] "Ironborn"
+
+$alive
+[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="scary-list-to-friendly-data.frame-14">Scary <code>list()</code> to Friendly <code>data.frame()</code></h3>
+<p>For all characters, we will use the <code>[</code> function</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a></a><span class="fu">map</span>(got_chars, <span class="st">`</span><span class="at">[</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"name"</span>, <span class="st">"culture"</span>, <span class="st">"alive"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[[1]]$name
+[1] "Theon Greyjoy"
+
+[[1]]$culture
+[1] "Ironborn"
+
+[[1]]$alive
+[1] TRUE
+
+
+[[2]]
+[[2]]$name
+[1] "Tyrion Lannister"
+
+[[2]]$culture
+[1] ""
+
+[[2]]$alive
+[1] TRUE
+
+
+[[3]]
+[[3]]$name
+[1] "Victarion Greyjoy"
+
+[[3]]$culture
+[1] "Ironborn"
+
+[[3]]$alive
+[1] TRUE
+
+
+[[4]]
+[[4]]$name
+[1] "Will"
+
+[[4]]$culture
+[1] ""
+
+[[4]]$alive
+[1] FALSE
+
+
+[[5]]
+[[5]]$name
+[1] "Areo Hotah"
+
+[[5]]$culture
+[1] "Norvoshi"
+
+[[5]]$alive
+[1] TRUE
+
+
+[[6]]
+[[6]]$name
+[1] "Chett"
+
+[[6]]$culture
+[1] ""
+
+[[6]]$alive
+[1] FALSE
+
+
+[[7]]
+[[7]]$name
+[1] "Cressen"
+
+[[7]]$culture
+[1] ""
+
+[[7]]$alive
+[1] FALSE
+
+
+[[8]]
+[[8]]$name
+[1] "Arianne Martell"
+
+[[8]]$culture
+[1] "Dornish"
+
+[[8]]$alive
+[1] TRUE
+
+
+[[9]]
+[[9]]$name
+[1] "Daenerys Targaryen"
+
+[[9]]$culture
+[1] "Valyrian"
+
+[[9]]$alive
+[1] TRUE
+
+
+[[10]]
+[[10]]$name
+[1] "Davos Seaworth"
+
+[[10]]$culture
+[1] "Westeros"
+
+[[10]]$alive
+[1] TRUE
+
+
+[[11]]
+[[11]]$name
+[1] "Arya Stark"
+
+[[11]]$culture
+[1] "Northmen"
+
+[[11]]$alive
+[1] TRUE
+
+
+[[12]]
+[[12]]$name
+[1] "Arys Oakheart"
+
+[[12]]$culture
+[1] "Reach"
+
+[[12]]$alive
+[1] FALSE
+
+
+[[13]]
+[[13]]$name
+[1] "Asha Greyjoy"
+
+[[13]]$culture
+[1] "Ironborn"
+
+[[13]]$alive
+[1] TRUE
+
+
+[[14]]
+[[14]]$name
+[1] "Barristan Selmy"
+
+[[14]]$culture
+[1] "Westeros"
+
+[[14]]$alive
+[1] TRUE
+
+
+[[15]]
+[[15]]$name
+[1] "Varamyr"
+
+[[15]]$culture
+[1] "Free Folk"
+
+[[15]]$alive
+[1] FALSE
+
+
+[[16]]
+[[16]]$name
+[1] "Brandon Stark"
+
+[[16]]$culture
+[1] "Northmen"
+
+[[16]]$alive
+[1] TRUE
+
+
+[[17]]
+[[17]]$name
+[1] "Brienne of Tarth"
+
+[[17]]$culture
+[1] ""
+
+[[17]]$alive
+[1] TRUE
+
+
+[[18]]
+[[18]]$name
+[1] "Catelyn Stark"
+
+[[18]]$culture
+[1] "Rivermen"
+
+[[18]]$alive
+[1] FALSE
+
+
+[[19]]
+[[19]]$name
+[1] "Cersei Lannister"
+
+[[19]]$culture
+[1] "Westerman"
+
+[[19]]$alive
+[1] TRUE
+
+
+[[20]]
+[[20]]$name
+[1] "Eddard Stark"
+
+[[20]]$culture
+[1] "Northmen"
+
+[[20]]$alive
+[1] FALSE
+
+
+[[21]]
+[[21]]$name
+[1] "Jaime Lannister"
+
+[[21]]$culture
+[1] "Westerlands"
+
+[[21]]$alive
+[1] TRUE
+
+
+[[22]]
+[[22]]$name
+[1] "Jon Connington"
+
+[[22]]$culture
+[1] "Stormlands"
+
+[[22]]$alive
+[1] TRUE
+
+
+[[23]]
+[[23]]$name
+[1] "Jon Snow"
+
+[[23]]$culture
+[1] "Northmen"
+
+[[23]]$alive
+[1] TRUE
+
+
+[[24]]
+[[24]]$name
+[1] "Aeron Greyjoy"
+
+[[24]]$culture
+[1] "Ironborn"
+
+[[24]]$alive
+[1] TRUE
+
+
+[[25]]
+[[25]]$name
+[1] "Kevan Lannister"
+
+[[25]]$culture
+[1] ""
+
+[[25]]$alive
+[1] FALSE
+
+
+[[26]]
+[[26]]$name
+[1] "Melisandre"
+
+[[26]]$culture
+[1] "Asshai"
+
+[[26]]$alive
+[1] TRUE
+
+
+[[27]]
+[[27]]$name
+[1] "Merrett Frey"
+
+[[27]]$culture
+[1] "Rivermen"
+
+[[27]]$alive
+[1] FALSE
+
+
+[[28]]
+[[28]]$name
+[1] "Quentyn Martell"
+
+[[28]]$culture
+[1] "Dornish"
+
+[[28]]$alive
+[1] FALSE
+
+
+[[29]]
+[[29]]$name
+[1] "Samwell Tarly"
+
+[[29]]$culture
+[1] "Andal"
+
+[[29]]$alive
+[1] TRUE
+
+
+[[30]]
+[[30]]$name
+[1] "Sansa Stark"
+
+[[30]]$culture
+[1] "Northmen"
+
+[[30]]$alive
+[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="scary-list-to-friendly-data.frame-15">Scary <code>list()</code> to Friendly <code>data.frame()</code></h3>
+<p><strong>Finally</strong>: Let’s make it into a data frame.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a></a><span class="fu">map_dfr</span>(got_chars, <span class="st">`</span><span class="at">[</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"name"</span>, <span class="st">"culture"</span>, <span class="st">"alive"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 3
+   name               culture    alive
+   &lt;chr&gt;              &lt;chr&gt;      &lt;lgl&gt;
+ 1 Theon Greyjoy      "Ironborn" TRUE 
+ 2 Tyrion Lannister   ""         TRUE 
+ 3 Victarion Greyjoy  "Ironborn" TRUE 
+ 4 Will               ""         FALSE
+ 5 Areo Hotah         "Norvoshi" TRUE 
+ 6 Chett              ""         FALSE
+ 7 Cressen            ""         FALSE
+ 8 Arianne Martell    "Dornish"  TRUE 
+ 9 Daenerys Targaryen "Valyrian" TRUE 
+10 Davos Seaworth     "Westeros" TRUE 
+# ℹ 20 more rows</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment"><code>dfr</code>: <code>r</code> stands for row binding.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="two-routes-to-the-same-end-proscons">Two Routes to the Same End: <strong>Pros/Cons</strong>?</h3>
+<div class="columns">
+<div class="column">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a></a><span class="fu">map_dfr</span>(got_chars, <span class="st">`</span><span class="at">[</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"name"</span>, <span class="st">"culture"</span>, <span class="st">"alive"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 3
+   name               culture    alive
+   &lt;chr&gt;              &lt;chr&gt;      &lt;lgl&gt;
+ 1 Theon Greyjoy      "Ironborn" TRUE 
+ 2 Tyrion Lannister   ""         TRUE 
+ 3 Victarion Greyjoy  "Ironborn" TRUE 
+ 4 Will               ""         FALSE
+ 5 Areo Hotah         "Norvoshi" TRUE 
+ 6 Chett              ""         FALSE
+ 7 Cressen            ""         FALSE
+ 8 Arianne Martell    "Dornish"  TRUE 
+ 9 Daenerys Targaryen "Valyrian" TRUE 
+10 Davos Seaworth     "Westeros" TRUE 
+# ℹ 20 more rows</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb126"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a></a>got_chars_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">30</span>),</span>
+<span id="cb126-2"><a></a>                       <span class="at">culture =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">30</span>),</span>
+<span id="cb126-3"><a></a>                       <span class="at">alive =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">30</span>))</span>
+<span id="cb126-4"><a></a>locations <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">8</span>)</span>
+<span id="cb126-5"><a></a></span>
+<span id="cb126-6"><a></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(got_chars_df)){</span>
+<span id="cb126-7"><a></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(got_chars_df)){</span>
+<span id="cb126-8"><a></a>    </span>
+<span id="cb126-9"><a></a>    k <span class="ot">&lt;-</span> locations[j]</span>
+<span id="cb126-10"><a></a>    got_chars_df[i, j] <span class="ot">&lt;-</span> got_chars[[i]][k]</span>
+<span id="cb126-11"><a></a>    </span>
+<span id="cb126-12"><a></a>  }</span>
+<span id="cb126-13"><a></a>}</span>
+<span id="cb126-14"><a></a>got_chars_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 3
+   name               culture    alive
+   &lt;chr&gt;              &lt;chr&gt;      &lt;lgl&gt;
+ 1 Theon Greyjoy      "Ironborn" TRUE 
+ 2 Tyrion Lannister   ""         TRUE 
+ 3 Victarion Greyjoy  "Ironborn" TRUE 
+ 4 Will               ""         FALSE
+ 5 Areo Hotah         "Norvoshi" TRUE 
+ 6 Chett              ""         FALSE
+ 7 Cressen            ""         FALSE
+ 8 Arianne Martell    "Dornish"  TRUE 
+ 9 Daenerys Targaryen "Valyrian" TRUE 
+10 Davos Seaworth     "Westeros" TRUE 
+# ℹ 20 more rows</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a></a><span class="fu">system.time</span>({</span>
+<span id="cb128-2"><a></a>  got_chars_df <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(got_chars, <span class="st">`</span><span class="at">[</span><span class="st">`</span>, <span class="fu">c</span>(<span class="st">"name"</span>, <span class="st">"culture"</span>, <span class="st">"alive"</span>))</span>
+<span id="cb128-3"><a></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+  0.001   0.000   0.001 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a></a><span class="fu">system.time</span>({</span>
+<span id="cb130-2"><a></a>  got_chars_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">30</span>),</span>
+<span id="cb130-3"><a></a>                          <span class="at">culture =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">30</span>),</span>
+<span id="cb130-4"><a></a>                          <span class="at">alive =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">30</span>))</span>
+<span id="cb130-5"><a></a>locations <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">8</span>)</span>
+<span id="cb130-6"><a></a></span>
+<span id="cb130-7"><a></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(got_chars_df)){</span>
+<span id="cb130-8"><a></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(got_chars_df)){</span>
+<span id="cb130-9"><a></a>    </span>
+<span id="cb130-10"><a></a>    k <span class="ot">&lt;-</span> locations[j]</span>
+<span id="cb130-11"><a></a>    got_chars_df[i, j] <span class="ot">&lt;-</span> got_chars[[i]][k]</span>
+<span id="cb130-12"><a></a>    </span>
+<span id="cb130-13"><a></a>  }</span>
+<span id="cb130-14"><a></a>}</span>
+<span id="cb130-15"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+  0.002   0.000   0.003 </code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="closing-thoughts">Closing Thoughts</h3>
+<blockquote>
+<p>“But you should never feel bad about using a for loop instead of a map function. The map functions are a step up a tower of abstraction, and it can take a long time to get your head around how they work. The important thing is that you solve the problem that you’re working on, not write the most concise and elegant code (although that’s definitely something you want to strive towards!).” – Hadley Wickham &amp; Garrett Grolemund</p>
+</blockquote>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'pdfMaxPagesPerSlide': 2,
+'menu': {"side":"right","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"numbers":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/www\.reed-data-science\.github\.io\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

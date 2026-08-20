@@ -1,0 +1,52 @@
+---
+title: "Activity 6: Functions"
+editor: source
+---
+
+# Activity: Function Practice
+
+## Problem 1: From specific to general
+
+Turn the following working code into an R function:
+
+
+```{r, eval = TRUE}
+library(pdxTrees)
+pdxTrees <- get_pdxTrees_parks()
+mean(is.na(pdxTrees$Tree_Height))
+```
+
+
+## Problem 2: From convoluted to clear
+
+For the following function, `thing`, figure out what it is trying to do.  Then 
+
+* Fix the function and argument names.
+* Fix the order of the arguments.
+* Fix defaults.
+* Consider ways we could generalize the function.
+
+```{r, eval = TRUE}
+thing <- function(na.rm = FALSE, x = c(7, 1), y = c(3, 4)) {
+  var1 <- mean(x, na.rm = TRUE)
+  var2 <- mean(y, na.rm = TRUE)
+  xx <- var(x, na.rm = TRUE)
+  yy <- var(y, na.rm = TRUE)
+  na <- length(x)
+  nb <- length(y)
+  df <- min(na, nb) - 1
+  important_bit <- (var1 - var2 - 0)/sqrt(xx/na + yy/nb)
+  pt(q = abs(important_bit), df = df, lower.tail = FALSE)*2
+}
+
+
+## Test it!
+# Generate data for testing
+x <- rnorm(n = 10)
+y <- rnorm(n = 20, mean = 2)
+
+# Test
+thing(na.rm = TRUE, x = x, y = y)
+thing(na.rm = FALSE)
+```
+

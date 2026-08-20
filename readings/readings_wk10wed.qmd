@@ -1,0 +1,14 @@
+---
+date: 4/8/26
+editor: source
+---
+
+# Math 241: Required readings for {{< meta date >}}
+
+## Reading 
+
+- [Explained: Generative AI’s environmental impact](https://news.mit.edu/2025/explained-generative-ai-environmental-impact-0117)
+
+- [A software engineer's "typical" electricity useage from LLMs](https://www.simonpcouch.com/blog/2026-01-20-cc-impact/)
+
+- [Gruelling, low-paid human work behind generative AI curtain](https://www.ctvnews.ca/sci-tech/article/gruelling-low-paid-human-work-behind-generative-ai-curtain/)

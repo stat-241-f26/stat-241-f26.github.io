@@ -1,0 +1,54 @@
+---
+title: "Activity: Data Wrangling"
+---
+
+## Instructions
+
+For this activity, work in groups of 2 - 3. Work together to come to a solution, and help each other out when stuck! The goal is to use the journey as a vessel for your and your peer's learning, not to make it to the 'correct' answer as fast as possible. 
+
+
+## Problem 0: load (and install) packages 
+
+
+```{r}
+# Packages (I got you started)
+library(tidyverse)
+library(Lahman) # the baseball data
+library(nycflights13) # the flights data
+```
+
+
+
+## Problem 1: Baseball 
+
+The Major League Baseball Angels have at times been called the California Angels (CAL), the Anaheim Angels (ANA), and the Los Angeles Angels of Anaheim (LAA). Using the `Teams` data frame in the `Lahman` package:
+
+1. Find the 10 most successful seasons in Angels history, defining “successful” as the fraction of regular-season games won in the year. In the table you create, include the `yearID`, `teamID`, `lgID`, `W`, `L`, and `WSWin`. See the documentation for `Teams` (see `help(Teams)`) for the definition of these variables.
+
+2. Have the Angels ever won the World Series? If so, when?
+
+
+```{r}
+data(Teams)
+head(Teams)
+```
+
+
+
+
+
+## Problem 2: Flights
+
+Use the `nycflights13` package and the `flights` data frame to answer the following questions: 
+
+1. What plane (specified by the `tailnum` variable) traveled the most times from New York City airports in 2013?
+
+2. Plot the number of trips per week over the year.
+
+
+
+```{r}
+data(flights)
+head(flights)
+```
+

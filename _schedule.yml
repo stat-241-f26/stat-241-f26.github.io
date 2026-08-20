@@ -1,0 +1,364 @@
+scheduled-docs:
+  draft-after: "system-time"
+  timezone: "-07:00"
+  autonav:
+    hybrid:
+      - title: "Notes"
+        landing-page: notes.qmd
+        type: Notes
+        section-label: unit
+  schedule:
+    - week: 1
+      days:
+        - topic: "Course Introduction & Statistical Computing"
+          display-date: Monday, Aug 31
+          date: 8/31/26
+          docs:
+            - type: Slides
+              href: slides/math241_wk01mon.qmd
+            - type: Slides (PDF)
+              href: pdfs/math241_wk01mon.pdf
+        - topic: "Data Visualization I: Principles"
+          display-date: Wednesday, Sep 2
+          date: 9/2/26
+          docs:
+            - type: Reading
+              href: readings/readings_wk01wed.qmd
+            - type: Slides
+              href: slides/math241_wk01wed.qmd
+            - type: Slides (PDF)
+              href: pdfs/math241_wk01wed.pdf
+            - type: Activity
+              href: in_class/activity1.qmd
+        - topic: "Problem Set 0 Released"
+          display-date: Thursday, Sep 3 9:00am
+          date: 9/3/26
+          docs:
+            - type: Problem Set 0
+              href: psets/pset00.qmd
+      # resources:
+      #   - '<a href="https://join.slack.com/t/reed-data-science/shared_invite/zt-3m9hhwi5f-javjb99NvUzwcC8r1MCXjg">Join Slack</a>'
+      #   - 'Gradescope course entry code: ZJPD33'
+    - week: 2
+      days:
+        - topic: "No Class: Holiday"
+          display-date: Monday, Sep 7
+          date: 9/7/26
+        - topic: "Data Visualization II: Plotting with ggplot2"
+          display-date: Wednesday, Sep 9
+          date: 9/9/26
+          docs:
+            - type: Reading
+              href: readings/readings_wk02mon.qmd
+            - type: Slides
+              href: slides/math241_wk02mon.qmd
+            - type: Slides (PDF)
+              href: pdfs/math241_wk02mon.pdf
+        - topic: "Problem Set 0 Due, Problem Set 1 Released"
+          display-date: Thursday, Sep 10 9:00am
+          date: 9/10/26
+          docs:
+            - type: Problem Set 1
+              href: psets/pset01.qmd
+      # resources:
+      #   - 'Some text'
+    - week: 3
+      days:
+        - topic: "Data Visualization III: Advanced ggplot2 and customization"
+          display-date: Monday, Sep 14
+          date: 9/14/26
+          docs:
+            - type: Reading
+              href: readings/readings_wk02wed.qmd
+            - type: Slides
+              href: slides/math241_wk02wed.qmd
+            - type: Slides (PDF)
+              href: pdfs/math241_wk02wed.pdf
+        - topic: "Data Wrangling and asking good questions"
+          display-date: Wednesday, Sep 16
+          date: 9/16/26
+          docs:
+            - type: Reading
+              href: readings/readings_wk03mon.qmd
+            - type: Slides
+              href: slides/math241_wk03mon.qmd
+            - type: Slides (PDF)
+              href: pdfs/math241_wk03mon.pdf
+            - type: Activity (instructions)
+              href: in_class/activity2.qmd
+            - type: Activity (download)
+              href: in_class/activity2_download.qmd
+        - topic: "Problem Set 1 Due, Problem Set 2 Released"
+          display-date: Thursday, Sep 17 9:00am
+          date: 9/17/26
+          docs:
+            - type: Problem Set 2
+              href: psets/pset02.qmd
+      # resources:
+      #   - 'Some text'
+    - week: 4
+      days:
+        - topic: "Animation and interactivity"
+          display-date: Monday, Sep 21
+          date: 9/21/26
+          docs:
+            - type: Reading
+              href: readings/readings_wk03wed.qmd
+            - type: Slides
+              href: slides/math241_wk03wed.qmd
+            - type: Slides (PDF)
+              href: pdfs/math241_wk03wed.pdf
+        - topic: "Data types and more wrangling"
+          display-date: Wednesday, Sep 23
+          date: 9/23/26
+          docs:
+            - type: Slides
+              href: slides/math241_wk04mon.qmd
+            - type: Slides (PDF)
+              href: pdfs/math241_wk04mon.pdf
+        - topic: "Problem Set 2 Due, Problem Set 3 Released"
+          display-date: Thursday, Sep 24 9:00am
+          date: 9/24/26
+          docs:
+            - type: Problem Set 3
+              href: psets/pset03.qmd
+      # resources:
+      #   - 'Some text'
+    - week: 5
+      days:
+        - topic: "Joins and reshaping data"
+          display-date: Monday, Sep 28
+          date: 9/28/26
+          docs:
+            - type: Reading
+              href: readings/readings_wk04wed.qmd
+            - type: Slides
+              href: slides/math241_wk04wed.qmd
+            - type: Slides (PDF)
+              href: pdfs/math241_wk04wed.pdf
+            - type: Activity
+              href: slides/math241_wk04wed_activity.qmd
+        - topic: "Spatial data I"
+          display-date: Wednesday, Sep 30
+          date: 9/30/26
+          docs:
+            - type: Reading
+              href: readings/readings_wk05mon.qmd
+            - type: Slides
+              href: slides/math241_wk05mon.qmd
+            - type: Slides (PDF)
+              href: pdfs/math241_wk05mon.pdf
+        - topic: "Problem Set 3 Due, Problem Set 4 Released"
+          display-date: Thursday, Oct 1 9:00am
+          date: 10/1/26
+          docs:
+            - type: Problem Set 4
+              href: psets/pset04.qmd
+      resources:
+        - 'Fill out the <a href="https://forms.gle/Q3pk5LhZAJohpbHT6">Project 1 Preferences Form</a>'
+    - week: 6
+      days:
+        - topic: "Spatial data II"
+          display-date: Monday, Oct 5
+          date: 10/5/26
+          docs:
+            - type: Reading
+              href: readings/readings_wk05wed.qmd
+            - type: Slides
+              href: slides/math241_wk05wed.qmd
+            - type: Slides (PDF)
+              href: pdfs/math241_wk05wed.pdf
+            - type: Activity (Download)
+              href: in_class/activity3_download.qmd
+        - topic: "shiny I (Project I Groups Assigned)"
+          display-date: Wednesday, Oct 7
+          date: 10/7/26
+          docs:
+            - type: Reading
+              href: readings/readings_wk06.qmd
+            - type: Slides
+              href: slides/math241_wk06mon.qmd
+            - type: Project I Groups
+              href: projects/proj01_groups.qmd
+        - topic: "Problem Set 4 Due"
+          display-date: Thursday, Oct 8 9:00am
+          date: 10/8/26
+      # resources:
+      #   - 'Some text'
+    - week: 7
+      days:
+        - topic: "shiny II (Project I Instructions Released)"
+          display-date: Monday, Oct 12
+          date: 10/12/26
+          docs:
+            - type: Reading
+              href: readings/readings_wk06.qmd
+            - type: Slides
+              href: slides/math241_wk06wed.qmd
+            - type: Project I Instructions
+              href: projects/proj01.qmd
+        - topic: "Project 1 Work Day"
+          display-date: Wednesday, Oct 14
+          date: 10/14/26
+          docs:
+            - type: Slides
+              href: slides/math241_wk07wed.qmd
+      # resources:
+      #   - 'Some text'
+    - week: Fall Break
+      days:
+        - topic: "No Class"
+          display-date: Saturday, Oct 17 - Sunday, Oct 25
+    # - week: 8
+    #   days:
+    #     - topic: "Different classes in R"
+    #       display-date: Wednesday, Oct 14
+    #       date: 10/14/26
+    #       docs:
+    #         - type: Slides
+    #           href: slides/math241_wk07mon.qmd
+    #     - topic: "string manipulation and regular expressions"
+    #       display-date: Monday, Mar 16
+    #       date: 3/16/26
+    #       docs:
+    #         - type: Reading
+    #           href: readings/readings_wk08mon.qmd
+    #         - type: Slides
+    #           href: slides/math241_wk08mon.qmd
+    #         - type: Activity (Download)
+    #           href: in_class/activity4_download.qmd
+    #     - topic: "Project 1 Peer Feedback Day (Project 1 DRAFT due)"
+    #       display-date: Wednesday, Mar 18
+    #       date: 3/18/26
+    #       docs:
+    #         - type: Project I Peer Feedback
+    #           href: projects/proj01_peerfeedback.qmd
+    #     - topic: "Project I Written Peer Feedback Due (10pm)"
+    #       display-date: Friday, Mar 20
+    #       date: 3/20/26
+    #   # resources:
+    #   #   - 'Some text'
+    # - week: 9
+    #   days:
+    #     - topic: "Control flow"
+    #       display-date: Monday, Mar 30
+    #       date: 3/30/26
+    #       docs:
+    #         - type: Slides
+    #           href: slides/math241_wk09mon.qmd
+    #         - type: Activity (Download)
+    #           href: in_class/activity5_download.qmd
+    #     - topic: "Functions"
+    #       display-date: Wednesday, Apr 1
+    #       date: 4/1/26
+    #       docs:
+    #         - type: Slides
+    #           href: slides/math241_wk09wed.qmd
+    #         - type: Activity (Download)
+    #           href: in_class/activity6_download.qmd
+    #     - topic: "Project I Final Product and Data Scientist Statement Due (10pm)"
+    #       display-date: Sunday, Apr 5
+    #       date: 4/5/26
+    #   # resources:
+    #   #   - 'Some text'
+    # - week: 10
+    #   days:
+    #     - topic: "Iteration: loops and functional programming"
+    #       display-date: Monday, Apr 6
+    #       date: 4/6/26
+    #       docs:
+    #         - type: Slides
+    #           href: slides/math241_wk10mon.qmd
+    #     - topic: "Problem Set 5 Released"
+    #       display-date: Tuesday, Apr 7 9:00am
+    #       date: 4/7/26
+    #       docs:
+    #         - type: Problem Set 5
+    #           href: psets/pset05.qmd
+    #     - topic: "Parallel computing, ethics, and generative AI"
+    #       display-date: Wednesday, Apr 8
+    #       date: 4/8/26
+    #       docs:
+    #         - type: Reading
+    #           href: readings/readings_wk10wed.qmd
+    #         - type: Slides
+    #           href: slides/math241_wk10wed.qmd
+    #   # resources:
+    #   #   - 'Some text'
+    # - week: 11
+    #   days:
+    #     - topic: "Local LLMs and `ellmer` Extensions"
+    #       display-date: Monday, Apr 13
+    #       date: 4/13/26
+    #       docs:
+    #         - type: Slides
+    #           href: slides/math241_wk11mon.qmd
+    #         - type: Activity (Download)
+    #           href: in_class/activity7_download.qmd
+    #     - topic: "R packages: introduction"
+    #       display-date: Wednesday, Apr 15
+    #       date: 4/15/26
+    #       docs:
+    #         - type: Slides
+    #           href: slides/math241_wk11wed.qmd
+    #         - type: R Packages Handout
+    #           href: in_class/R_Package.qmd
+    #         - type: PDX Potholes Data
+    #           href: slides/data/potholes.geojson
+    #     - topic: "Problem Set 6 Released and Problem Set 5 Due"
+    #       display-date: Wednesday, Apr 15 10:00pm
+    #       date: 4/15/26
+    #       docs:
+    #         - type: Problem Set 6
+    #           href: psets/pset06.qmd
+    #   # resources:
+    #   #   - 'Some text'
+    # - week: 12
+    #   days:
+    #     - topic: "R packages: documentation"
+    #       display-date: Monday, Apr 20
+    #       date: 4/20/26
+    #       docs:
+    #         - type: Reading
+    #           href: readings/readings_wk12.qmd
+    #         - type: Slides
+    #           href: slides/math241_wk12mon.qmd
+    #         - type: Project II Groups
+    #           href: projects/proj02_groups.qmd
+    #         - type: Project II Instructions
+    #           href: projects/proj02.qmd
+    #     - topic: "R packages: testing and dissemination (Problem Set 6 Due at 10pm)"
+    #       display-date: Wednesday, Apr 22
+    #       date: 4/22/26
+    #       docs:
+    #         - type: Reading
+    #           href: readings/readings_wk12.qmd
+    #         - type: Slides
+    #           href: slides/math241_wk12wed.qmd
+    #   # resources:
+    #   #   - 'Some text'
+    # - week: 13
+    #   days:
+    #     - topic: "Project II Work Day"
+    #       display-date: Monday, Apr 27
+    #       date: 4/27/26
+    #     - topic: "Building your data science portfolio"
+    #       display-date: Wednesday, Apr 29
+    #       date: 4/29/26
+    #       docs:
+    #         - type: Slides
+    #           href: slides/math241_wk13wed.qmd
+    #   # resources:
+    #   #   - 'Some text'
+    # - week: Finals
+    #   days:
+    #     - topic: "<p>Final Project Presentations</p> <p>All projects materials due at noon, presentations starting at 1pm.</p>"
+    #       display-date: Wednesday, May 13 1pm - 4pm
+    #       date: 5/11/26
+    #       docs:
+    #         # - type: Reading
+    #         #   href: readings/readings_wk02mon.qmd
+    #         # - type: Slides
+    #         #   href: slides/math141_wk02mon.qmd
+    #   # resources:
+    #   #   - 'Some text'

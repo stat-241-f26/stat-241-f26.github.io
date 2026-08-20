@@ -1,0 +1,10 @@
+---
+date: 4/20/26
+editor: source
+---
+
+# Math 241: Required readings for Week 12
+
+## Reading 
+
+A helpful reference for Week 12 / R package content and Project 2 is [R Packages, by Hadley Wickham and Jenny Bryan](https://r-pkgs.org/).

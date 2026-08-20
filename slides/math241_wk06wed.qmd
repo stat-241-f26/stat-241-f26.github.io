@@ -1,0 +1,347 @@
+---
+pagetitle: "More shiny"
+editor: source
+format: 
+  revealjs:
+    html-math-method: mathjax
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      fig.retina = 3, fig.align = 'center',
+                      fig.asp = 0.75, fig.width = 8)
+library(knitr)
+library(tidyverse)
+# 
+# options(htmltools.preserve.raw = FALSE)
+theme_update(text = element_text(size = 20))
+```
+
+::::: columns
+::: {.column .center width="60%"}
+![](img/r-hex.jpg){width="90%"}
+:::
+
+::: {.column .center width="40%"}
+<br>
+
+[More `shiny`]{.custom-title}
+
+<br> <br> <br> <br> <br> <br> <br> <br>
+
+[Grayson White]{.custom-subtitle}
+
+[Math 241 <br> Week 6 \| Spring 2026]{.custom-subtitle}
+:::
+:::::
+
+
+------------------------------------------------------------------------
+
+
+## Week 6 Goals
+
+:::: {.columns}
+
+::: {.column width='50%' .nonincremental .fragment}
+
+**Mon Lecture**
+
+* Introduction to `shiny` applications
+* Get Project 1 group assignments
+
+
+:::
+
+::: {.column width='50%' .nonincremental .fragment}
+
+**Wed Lecture**
+
+* `shiny` dashboards with Quarto
+* Get all the details about Project 1
+
+
+:::
+
+::::
+
+
+------------------------------------------------------------------------
+
+
+### Annoucements 
+
+::: {.fragment .nonincremental}
+
+- [DataFest 2026 @ Willamette](https://my.willamette.edu/site/computer-science/data-fest)
+    - Great opportunity to meet folks and show off your data science skills! 
+    
+:::
+    
+::: {.fragment .nonincremental}
+    
+- Updated Instructions for turning in Problem Set 4
+    - Turn in the PDF on Gradescope as per usual
+        - You may need to set `#| eval: false` in the chunks that have `leaflet` maps
+    - Also Render your document to **HTML** (with `#| eval: true` for the `leaflet` map chunks)
+    - Push the .qmd and .html to GitHub so the graders can grade your `leaflet` maps and interact with them easily
+    
+:::
+
+
+------------------------------------------------------------------------
+
+### Recap
+
+:::: .columns
+
+::: {.fragment .nonincremental .column}
+
+* **Inputs**: What user manipulates
+    + Text
+    + Sliders
+    + Dropdown menus
+    + Action buttons
+
+:::
+
+::: {.fragment .nonincremental .column}
+
+* **Output**: What changes based on user's selections
+    + Graphs
+    + Maps
+    + Tables
+    + Text
+
+:::
+
+::::
+
+::: {.fragment .nonincremental}
+
+* Use **reactive programming**
+    + Update outputs when inputs change
+    
+:::
+
+------------------------------------------------------------------------
+
+### `shiny` Recap -- Main Components
+
+::: {.fragment .nonincremental}
+
+* **UI**: User interface
+    + Defines how your app **looks**
+
+:::
+
+::: {.fragment .nonincremental}
+
+
+* **Server function**
+    + Defines how your app **works**
+    
+:::
+
+::: {.fragment}
+
+```{r, eval=FALSE}
+library(shiny)
+
+# User interface
+ui <- fluidPage()
+
+# Server function
+server <- function(input, output){}
+
+# Creates app
+shinyApp(ui = ui, server = server)
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Building Outputs
+
+::: {.fragment .nonincremental}
+
+**Server-side:**
+
+* Save the object with `output$___`.
+
+* Use a `render___({})` function to create the object.
+    + Look at cheatsheet for examples.
+
+* Access inputs with `input$___`.
+
+:::
+
+::: {.fragment .nonincremental}
+
+**UI-side:**
+
+* Place output with `___Output()`.
+
+:::
+
+::: {.fragment .nonincremental}
+
+**Troubleshooting common issues:**
+
+* Must comma separate all the elements in the `ui`.
+* But don't add a comma after the last element in the `ui`.
+
+:::
+
+------------------------------------------------------------------------
+
+## More Reactivity: `observe()`
+
+* Let's look at another app in the learn-shiny repo.
+    + Within the ShinyApps folder, it is in "app_biketown".
+
+* Features `leaflet` functions and `observe()`.
+
+* Need to use `leafletProxy()` so that the entire map isn't redrawn with each update to the inputs.
+
+------------------------------------------------------------------------
+
+### Adding Source Code to the Dashboard
+
+Create a `DESCRIPTION` text file with this text:
+
+Title: Math 241 Names
+
+Author: Grayson White
+
+AuthorUrl: https://graysonwhite.shinyapps.io/my_first_app/
+
+DisplayMode: Showcase
+
+Type: Shiny
+
+------------------------------------------------------------------------
+
+### Uploading to ShinyApps.io
+
+* Go to [https://www.shinyapps.io/](https://www.shinyapps.io/)
+* Create an account or sign in via your GitHub username.
+
+::: {.fragment .nonincremental}
+
+* Install `rsconnect`.
+
+```{r, eval=FALSE}
+install.packages('rsconnect')
+```
+
+```{r}
+library(rsconnect)
+```
+
+:::
+
+::: {.fragment .nonincremental}
+
+* Configure `rsconnect`.
+
+```{r, eval=FALSE}
+setAccountInfo(name="<ACCOUNT>", token="<TOKEN>", secret="<SECRET>")
+```
+
+:::
+
+::: {.fragment .nonincremental}
+
+* Deploy app. (This will take a couple minutes.)
+
+```{r, eval=FALSE}
+# Include correct file path
+deployApp("ShinyApps/biketown")
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### [Quarto-based `shiny` dashboards](https://quarto.org/docs/dashboards/interactivity/shiny-r.html)
+
+* Will allow you to create dashboards that harness the power of `shiny` but also the simplicity of `Quarto`.
+
+* Can also been used to create stand-alone HTML files with some interactivity.
+
+* I [converted the Shiny App we created last time into a Quarto shiny dashboard](https://graysonwhite.shinyapps.io/quarto_dashboard/).
+    + Let's focus on some of the changes.
+    
+
+
+------------------------------------------------------------------------
+
+### So Much More...
+
+* There are lots of potential [widgets](https://shiny.rstudio.com/gallery/widget-gallery.html) to consider including for inputs.
+
+* My apps were **ugly**. Start with ugly apps but then make them pretty!
+    + Pick a better theme: [Quarto dashboard themes](quarto.org/docs/dashboards/theming.html) and [shiny themes](https://rstudio.github.io/shinythemes/).
+    + Use appropriate labels and titles.
+    + Try out several different layouts: [Quarto dashboard layouts](https://quarto.org/docs/dashboards/layout.html) and [shiny layouts](https://shiny.rstudio.com/articles/layout-guide.html).
+    + Consider adding [HTML](https://shiny.rstudio.com/articles/tag-glossary.html) to further customize the appearance of the UI.
+
+::: {.fragment}
+
+With that in mind...
+
+:::
+
+------------------------------------------------------------------------
+
+### Project 1
+
+#### Big idea:
+
+* Create an interactive web application/dashboard using `shiny` or `Quarto` shiny dashboards.
+
+* Make sure to satisfy the requirements (given in the handout).
+
+* But then stretch yourself to add new features and a "non-default" look to your app.
+    + Create something you'd want to share in a data science portfolio.
+
+* Will have opportunities for feedback from your peers and from me as you are iterating toward the final product!
+
+* Also as part of the project, each group member will write a "data scientist's statement" and reflect on the goals and design choices of the dashboard.
+
+# Practice
+
+**Grab appPractice.qmd from the "learn-shiny" Github repo.**
+
+------------------------------------------------------------------------
+
+## Next Week
+
+::: {.nonincremental}
+
+- Learn even more about data types in `R` (strings / dates / factors)
+- Learn to match strings with regular expressions
+
+:::

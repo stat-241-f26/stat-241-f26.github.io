@@ -1,0 +1,7 @@
+tripduration,starttime,stoptime,start station id,start station name,start station latitude,start station longitude,end station id,end station name,end station latitude,end station longitude,bikeid,usertype,postal code
+1322,2022-07-01T00:00:01Z,2022-07-01T00:22:03Z,53,Beacon St at Massachusetts Ave,42.35082680669095,-71.0898108780384,360,Bartlett St at John Elliot Sq,42.3294633,-71.0901582,3534,Subscriber,01609
+353,2022-07-01T00:00:02Z,2022-07-01T00:05:56Z,19,Park Dr at Buswell St,42.347241,-71.105301,9,Commonwealth Ave at Agganis Way,42.35169201885973,-71.11903488636017,5355,Customer,NULL
+413,2022-07-01T00:00:07Z,2022-07-01T00:07:01Z,104,Harvard University Radcliffe Quadrangle at Shepard St / Garden St,42.380287,-71.125107,533,Danehy Park at New Street,42.389456,-71.139019,5834,Subscriber,02138
+175,2022-07-01T00:00:13Z,2022-07-01T00:03:09Z,183,Alewife MBTA at Steel Place,42.395588457167094,-71.14260613918304,414,Discovery Park - 30 Acorn Park Drive,42.39790817368333,-71.14797130814623,5010,Subscriber,94703
+751,2022-07-01T00:00:19Z,2022-07-01T00:12:50Z,14,HMS/HSPH - Avenue Louis Pasteur at Longwood Ave,42.3374174845973,-71.10286116600037,139,Dana Park,42.36178043960605,-71.10809952020645,7398,Subscriber,02139
+499,2022-07-01T00:00:19Z,2022-07-01T00:08:39Z,120,Beacon St at Charles St,42.356052,-71.069849,417,Columbus Ave at W. Canton St,42.34474224772802,-71.07648162175792,7462,Customer,NULL

@@ -1,0 +1,174 @@
+---
+title: "Activity 7: LLMs"
+editor: source
+---
+
+# Activity: LLM Practice
+
+## Problem 1: Getting started
+
+Run the following code to check how much RAM your computer has
+
+
+```{r, eval = TRUE}
+# install.packages("memuse")
+memuse::Sys.meminfo()
+```
+
+If you have 12gb of RAM or less, I would suggest using "gemma4:e4b" for the following exercises. If you have >12gb RAM, consider browsing Ollama and picking a slightly larger model. 
+
+Once you've pulled a model, run the following code:
+
+```{r}
+library(ellmer)
+chat <- chat_ollama(model = "insert your model name here")
+```
+
+and then send a test message to that chat object:
+
+```{r}
+
+```
+
+
+
+
+## Problem 2: reading
+
+Consider the following responses to "what book have you been reading lately? What year did it come out?"
+
+```{r}
+books <- list(
+  "Zen and the Art of Motorcycle Maintenance, by Robert Pirsig! It came out in 1974",
+ "1984 by George Orwell, the classic from 1949.",
+ "It will be 89 years old this year, The Hobbit by Tolkien.",
+ "Not sure what year it came out, but I just finished a close reading of The Invisible Man by Ralph Ellison"
+)
+```
+
+Using `ellmer`, create a structured text output that includes the book name, author, and year published. Try this first for a given element of the list, and then across all elements at once. 
+
+```{r}
+
+```
+
+
+## Problem 3: by the way...
+
+First, run the following chunk:
+
+```{r}
+library(tidyverse)
+library(forested)
+forested <- forested
+```
+
+Now, I am going to have you explore the use-cases of `btw` in exploring these data. 
+
+a. Start a new `ellmer` chat with your local model of choice. Pass through the necessary context to have the question: "What do eastness and northness measure, and how are they coded?" answered.
+
+
+```{r}
+
+```
+
+
+b. Ask another question about the context of the data, and try to give enough context through `btw` to answer that question
+
+```{r}
+
+```
+
+
+
+
+
+
+## Problem 4: take a `gander`
+
+First, run the following chunk:
+
+```{r}
+library(tidyverse)
+library(pdxTrees)
+park_trees <- get_pdxTrees_parks() 
+```
+
+Install `gander` and set up a keyboard shortcut for it in your IDE. Also, make sure to set it to use the model that you'd like to use. Now, for each of the following code chunks try to debug on your own / in collaboration with your group mates, and then debug with `gander`. 
+
+a.
+
+```{r}
+# First, debug this code on your own / in your group
+park_trees %>%
+  filter(Condition == "Good") |>
+  ggplot(aes(x = DBH, y = Tree_Hieght)) +
+  geom_point()
+```
+
+```{r}
+# Then, debug this code with gander
+park_trees %>%
+  filter(Condition == "Good") |>
+  ggplot(aes(x = DBH, y = Tree_Hieght)) +
+  geom_point()
+```
+
+
+Finally, reflect on any differences: 
+
+
+
+b.
+
+```{r}
+# First, debug this code on your own / in your group
+park_trees %>%
+  filter(!is.na(DBH)) +
+  ggplot(aes(x = DBH, y = Tree_Height)) +
+  geom_point()
+```
+
+```{r}
+# Then, debug this code with gander
+park_trees %>%
+  filter(!is.na(DBH)) +
+  ggplot(aes(x = DBH, y = Tree_Height)) +
+  geom_point()
+```
+
+
+Finally, reflect on any differences: 
+
+
+c. For this problem, I want you to beautify the plot. Pick a better theme and a sensible color palette. Also, turn this into a filled barplot rather than a stacked barplot.   
+
+
+```{r}
+# First, perform these tasks on your own / in your group
+park_trees %>%
+  filter(Condition != "Dead",
+         !is.na(Edible)) %>%
+  ggplot(aes(x = Condition, fill = Edible)) +
+  geom_bar() +  
+  labs(title = "Tree condition by edibility")
+```
+
+```{r}
+# Then, use gander to perform the given tasks. You may have to iterate here. 
+park_trees %>%
+  filter(Condition != "Dead",
+         !is.na(Edible)) %>%
+  ggplot(aes(x = Condition, fill = Edible)) +
+  geom_bar() +  
+  labs(title = "Tree condition by edibility")
+```
+
+
+Finally, reflect on any differences: 
+
+
+
+
+
+

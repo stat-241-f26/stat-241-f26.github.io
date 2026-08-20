@@ -1,0 +1,12 @@
+---
+date: 3/15/26
+editor: source
+---
+
+# Math 241: Suggested readings for {{< meta date >}}
+
+## Reading 
+
+A helpful reference for regular expressions and text analysis:
+
+MDSR, Chapter 19

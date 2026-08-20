@@ -1,0 +1,714 @@
+---
+pagetitle: "Regular Expressions and Text Analysis"
+editor: source
+format: 
+  revealjs:
+    html-math-method: mathjax
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      fig.retina = 3, fig.align = 'center',
+                      fig.asp = 0.75, fig.width = 8)
+library(knitr)
+library(tidyverse)
+# 
+# options(htmltools.preserve.raw = FALSE)
+theme_update(text = element_text(size = 20))
+```
+
+::::: columns
+::: {.column .center width="60%"}
+![](img/r-hex.jpg){width="90%"}
+:::
+
+::: {.column .center width="40%"}
+<br>
+
+[Regex and Text Analysis]{.custom-title}
+
+<br> <br> 
+
+[Grayson White]{.custom-subtitle}
+
+[Math 241 <br> Week 8 \| Spring 2026]{.custom-subtitle}
+:::
+:::::
+
+
+------------------------------------------------------------------------
+
+
+### Annoucements 
+
+::: {.fragment .nonincremental}
+
+- [DataFest 2026 @ Willamette](https://my.willamette.edu/site/computer-science/data-fest)
+    - Great opportunity to meet folks and show off your data science skills! 
+    
+:::
+
+::: {.fragment .nonincremental}
+
+- Project 1 Rough Draft **Due Wednesday**
+    - Check the course website for instructions
+
+:::
+
+------------------------------------------------------------------------
+
+## Week 8 Goals
+
+:::: {.columns}
+
+::: {.column width='50%' .nonincremental .fragment}
+
+**Mon Lecture**
+
+* Pattern matching with regular expressions (and some text analysis!)
+
+
+:::
+
+::: {.column width='50%' .nonincremental .fragment}
+
+**Wed Lecture**
+
+* Project 1 Rough Draft Presentations and Feedback
+    - Aim for ~5 min presentations from each group
+    - Info on group feedback coming soon
+
+
+:::
+
+::::
+
+
+
+------------------------------------------------------------------------
+
+### Recap:
+
+How should we modify the code to locate all the numbers from these lyrics of various songs?
+
+```{r}
+lyrics <- c("But I would walk 500 miles",
+            "Yeah, 360. When you're in the mirror, do you like what you see?", 
+            "I have loved you for a 1000 years, I'll love you for a 1000 more",
+            "Where 2 and 2 always makes a 5",
+            "17-38, ay",
+            "I'm so 3008, You so 2000 and late")
+```
+
+```{r}
+str_view_all(lyrics, "500|1000|2|360|5|17|38|3008|2000")
+```
+
+------------------------------------------------------------------------
+
+### Recap:
+
+But now imagine you had a very long vector and you want to locate any number?
+
+```{r, eval=FALSE}
+str_view_all(lyrics, "1|2|3|4...")
+```
+
+Not a good approach!
+
+------------------------------------------------------------------------
+
+## Regular Expressions
+
+* A concise language for describing patterns in strings.
+    + But not super easy to read.
+    + Good to have cheatsheets and the internet for help!
+
+------------------------------------------------------------------------
+
+## Regular Expressions
+
+```{r}
+str_view_all(lyrics, "[:digit:]")
+```
+
+* `[:digit:]` is a particular [Character Class](https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html)
+* Character classes are a way of specifying that you want to match one of the following characters.
+
+------------------------------------------------------------------------
+
+## Regular Expressions
+
+```{r}
+str_view_all(lyrics, "[:digit:]+")
+```
+
+* `+` is a quantifier
+    * `+`: One or more
+    
+
+
+
+# Activity Part 1: Regular Expression Sleuthing
+
+::: {.fragment}
+
+**Your Mission**: In groups of 2 - 3, go through the activity to make a "dictionary" of what you believe each of the regular expressions shown is doing, and how it does that. 
+
+When you've become confident you know what a certain regexp is doing, add a checkmark in your team's color to the board. 
+
+<br> <br>
+
+```{r}
+#| echo: false
+countdown::countdown(25)
+```
+
+:::
+
+------------------------------------------------------------------------
+
+## RegExplain Demo
+
+* Neat Package and RStudio Addin to help: [`RegExplain`](https://www.garrickadenbuie.com/project/regexplain/)
+
+::: {.fragment}
+
+```{r}
+#| eval: false
+# install.packages("devtools")
+devtools::install_github("gadenbuie/regexplain")
+library(regexplain)
+regexplain_gadget() # launches in the RStudio Viewer
+regexplain_web() # launches in the browser
+```
+
+
+:::
+
+* A good documentation page for common regular expressions: [Regex Manual](https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html)
+
+
+# Activity Part 2: Comparing Notes
+
+
+::: {.fragment}
+
+Now, make cross-group pairings and compare dictionaries. Do you agree on each regexp? If not, try to figure out who of you is correct by testing the regexp on different strings. As a last resort, consult with RegExplain and the Regex Manual linked on the previous slide. 
+
+<br> <br>
+
+```{r}
+#| echo: false
+countdown::countdown(15)
+```
+
+:::
+
+------------------------------------------------------------------------
+
+
+
+
+### Pattern Matching
+
+:::: columns
+
+::: column
+
+* The `str_view_all()` is a nice helper function.
+
+* Now need to learn functions to take **action** based on our regular expression pattern matching.
+
+:::
+
+::: column
+
+* Functions to take **action** based on our regular expression pattern matching.
+
+* Detect pattern with:
+    + `str_detect()`
+    + `str_subset()`
+    + `str_count()`
+
+* Extract pattern with:
+    + `str_extract()` and `str_extract_all()`
+
+* Replace pattern with:
+    + `str_replace()` and `str_replace_all()`
+
+* Split pattern:
+    + `str_split()`
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+### New Example: [Taylor Swift song](https://github.com/shaynak/taylor-swift-lyrics)
+
+```{r}
+ts <- read_csv("https://raw.githubusercontent.com/shaynak/taylor-swift-lyrics/main/lyrics.csv")
+shake_it_off <- ts %>%
+  select(Song, Album, Lyric) %>%
+  filter(Song == "Shake It Off (Taylor's Version)")
+shake_it_off
+```
+
+------------------------------------------------------------------------
+
+## Detect
+
+```{r}
+str_detect(string = shake_it_off$Lyric, pattern = "ake")
+```
+
+------------------------------------------------------------------------
+
+## Detect
+
+```{r}
+str_subset(string = shake_it_off$Lyric, pattern = "ake")
+```
+
+------------------------------------------------------------------------
+
+## Detect
+
+```{r}
+shake <- shake_it_off %>%
+  filter(str_detect(string = Lyric, pattern = "ake"))
+shake
+```
+
+------------------------------------------------------------------------
+
+## Detect
+
+```{r}
+str_count(string = shake_it_off$Lyric, pattern = "ake")
+```
+
+------------------------------------------------------------------------
+
+## Detect
+
+```{r}
+shake_it_off %>%
+  filter(str_count(string = shake_it_off$Lyric, pattern = "ake") > 1)
+```
+
+------------------------------------------------------------------------
+
+## Extract
+
+```{r}
+str_subset(string = shake_it_off$Lyric, pattern = "[:punct:]") %>%
+  str_extract(pattern = "[:punct:]")
+```
+
+------------------------------------------------------------------------
+
+## Extract
+
+```{r}
+all <- str_subset(string = shake_it_off$Lyric, pattern = "[:punct:]") %>%
+  str_extract_all(pattern = "[:punct:]")
+class(all)
+all
+```
+
+------------------------------------------------------------------------
+
+## Extract
+
+```{r}
+str_view_all(shake_it_off$Lyric, pattern = "(?<= gonna )\\w+")
+```
+
+------------------------------------------------------------------------
+
+## Extract
+
+```{r}
+shake_it_off %>%
+  filter(str_detect(Lyric, "gonna")) %>%
+  mutate(after = str_extract(Lyric, "(?<= gonna )\\w+"))
+```
+
+------------------------------------------------------------------------
+
+## Replace
+
+```{r}
+str_replace(string = shake_it_off$Lyric, pattern = "shake", replacement = "bake")
+```
+
+------------------------------------------------------------------------
+
+## Replace
+
+```{r}
+str_replace_all(string = shake_it_off$Lyric, pattern = "shake", replacement = "bake")
+```
+
+------------------------------------------------------------------------
+
+## Replace
+
+```{r}
+run_it_off <- shake_it_off %>%
+  mutate(Lyric = str_replace_all(Lyric, "shake",
+                                 "run")) 
+run_it_off %>%
+  filter(str_detect(Lyric, "run"))
+```
+
+<!-- # Text Analysis with `tidytext` -->
+
+<!-- ```{r, echo=FALSE, out.width='20%'} -->
+<!-- knitr::include_graphics("img/tidytext.png") -->
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Basic Text Analysis with `tidytext` -->
+
+<!-- Topics: -->
+
+<!-- * Tokenizing to a tidy format -->
+<!-- * Word frequencies -->
+<!-- * Sentiment analysis -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Tidy Text -->
+
+<!-- * A data table with one token per row. -->
+
+<!-- ::: {.fragment .nonincremental} -->
+
+<!-- * **Token**: meaningful unit of text -->
+<!--     + What is the unit for `shake_it_off`? -->
+
+<!-- ```{r} -->
+<!-- shake_it_off -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Tidy Text -->
+
+<!-- * A data table with one token per row. -->
+
+<!-- * **Token**: meaningful unit of text -->
+<!--     + What is the unit for `shake_it_off`? -->
+
+<!-- * Other common tokens are words, sentences, paragraphs. -->
+
+<!-- * Some text analysis should be done on text data in a non-tidy format. -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Tidying Text Data -->
+
+<!-- **Tokenize**: Break text into individual tokens -->
+
+<!-- ```{r} -->
+<!-- library(tidytext)  -->
+<!-- shake_it_off_words <- shake_it_off %>% -->
+<!--   unnest_tokens(output = word, input = Lyric, token = "words") -->
+<!-- shake_it_off_words -->
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Tidying Text Data -->
+
+<!-- What is an `ngram`? -->
+
+<!-- ```{r} -->
+<!-- shake_it_off_ngram <- shake_it_off %>% -->
+<!--   unnest_tokens(output = ngram, input = Lyric, -->
+<!--                 token = "ngrams", n = 2) -->
+<!-- shake_it_off_ngram -->
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Word Frequencies -->
+
+<!-- * Common text mining task -->
+
+<!-- * What have we learned about the frequency of words in "Shake it Off"? -->
+
+<!-- ::: {.fragment .nonincremental} -->
+
+<!-- * Which words in this list do we maybe not care about? -->
+
+
+
+<!-- ```{r} -->
+<!-- shake_it_off_words %>% -->
+<!--   count(word, sort = TRUE) -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Word Frequencies -->
+
+<!-- **Stop words**: Common words that are not useful for analysis -->
+
+<!-- ```{r} -->
+<!-- data("stop_words") -->
+<!-- stop_words -->
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Word Frequencies -->
+
+<!-- * I want remove from `shake_it_off_words` the rows that contain the stop words. -->
+<!--     + What sort of `join` do we need?  -->
+
+<!-- ::: {.fragment} -->
+
+<!-- ```{r} -->
+<!-- shake_it_off_words <- shake_it_off_words %>% -->
+<!--   anti_join(stop_words, by = "word") -->
+<!-- shake_it_off_words  -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Word Frequencies -->
+
+<!-- What graph should we construct? -->
+
+<!-- ```{r} -->
+<!-- shake_it_off_words %>% -->
+<!--   count(word, sort = TRUE) -->
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Word Frequencies -->
+
+<!-- ```{r} -->
+<!-- #| output-location: column -->
+<!-- shake_it_off_words %>% -->
+<!--   count(word, sort = TRUE) %>% -->
+<!--   filter(n > 2) %>% -->
+<!--   ggplot(mapping = -->
+<!--            aes(x = word, -->
+<!--                y = n)) + -->
+<!--   geom_col() + -->
+<!--   coord_flip() -->
+<!-- ``` -->
+
+<!-- * Which `forcats` function should we use to reorder the bars? -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Word Frequencies -->
+
+<!-- ```{r} -->
+<!-- #| output-location: column -->
+<!-- shake_it_off_words %>% -->
+<!--   count(word, sort = TRUE) %>% -->
+<!--   filter(n > 2) %>% -->
+<!--   mutate(word =  -->
+<!--         fct_reorder(word, n)) %>% -->
+<!--   ggplot(mapping =  -->
+<!--            aes(x = word, -->
+<!--                y = n)) + -->
+<!--   geom_col() + -->
+<!--   coord_flip() -->
+<!-- ``` -->
+
+<!-- Much better! -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Comparisons Across Albums/Texts -->
+
+<!-- ```{r} -->
+<!-- two_albums <- ts %>% -->
+<!--   select(Song, Album, Lyric) %>% -->
+<!--   filter(Album %in% c("1989 (Taylor's Version)", "reputation")) %>% -->
+<!--   mutate(Album = str_replace(Album, " \\(.+", "")) -->
+
+<!-- two_albums -->
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Word Frequencies Across Albums -->
+
+<!-- ```{r} -->
+<!-- two_albums_tidy <- two_albums %>% -->
+<!--   unnest_tokens(output = word, input = Lyric, token = "words") %>% -->
+<!--   anti_join(stop_words, by = "word") %>% -->
+<!--   filter(!(word %in% c("ah", "ahh", "eh", "uh", "ooh", -->
+<!--                        "huh", "mmm", "di", "ha"))) %>% -->
+<!--   count(Album, word) %>% -->
+<!--   group_by(Album) %>% -->
+<!--   mutate(prop = n/sum(n))  -->
+<!-- two_albums_tidy  -->
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Word Frequencies Across Albums -->
+
+<!-- ```{r} -->
+<!-- #| output-location: column-fragment -->
+<!-- two_albums_tidy %>% -->
+<!--   group_by(Album) %>% -->
+<!--   arrange(desc(n)) %>% -->
+<!--   slice(1:10) %>% -->
+<!--   ungroup() %>% -->
+<!--   mutate(word = factor(word), -->
+<!--          word = fct_reorder(word, n)) %>% -->
+<!--   ggplot(mapping = aes(x = word, -->
+<!--                        y = n)) + -->
+<!--   geom_col() + -->
+<!--   facet_wrap(~Album) + -->
+<!--   coord_flip() -->
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Word Frequencies Across Albums -->
+
+<!-- ```{r} -->
+<!-- #| output-location: column-fragment -->
+<!-- two_albums_tidy %>% -->
+<!--   group_by(Album) %>% -->
+<!--   arrange(desc(n)) %>% -->
+<!--   slice(1:10) %>% -->
+<!--   ungroup() %>% -->
+<!--   mutate(word = factor(word), -->
+<!--          word = fct_reorder(word, n)) %>% -->
+<!--   ggplot(mapping = aes(x = word, -->
+<!--                        y = n)) + -->
+<!--   geom_col() + -->
+<!--   facet_wrap(~Album, -->
+<!--              scales = "free_y") + -->
+<!--   coord_flip() -->
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Sentiment Analysis -->
+
+<!-- * Was one album a more negative album than the other? -->
+
+<!-- ::: {.fragment .nonincremental} -->
+
+<!-- * Need to add a column that measures the sentiment of each token. -->
+<!--     + From [Bing Liu and collaborators](https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html) -->
+<!--     + Generalizability to other English-speaking countries or time periods? -->
+
+<!-- ```{r} -->
+<!-- sentiments -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Sentiment Analysis -->
+
+<!-- Keep stop words this time. -->
+
+<!-- ```{r} -->
+<!-- two_albums_tidy <- two_albums %>% -->
+<!--   unnest_tokens(output = word, input = Lyric, -->
+<!--                 token = "words") %>% -->
+<!--   count(Album, word) %>% -->
+<!--   group_by(Album) %>% -->
+<!--   mutate(prop = n/sum(n))  -->
+<!-- two_albums_tidy -->
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Sentiment Analysis -->
+
+<!-- What are the most common **negative words** on each album? -->
+
+<!-- ```{r} -->
+<!-- two_albums_tidy %>% -->
+<!--   inner_join(sentiments, by = "word") %>% -->
+<!--   filter(sentiment == "negative") %>% -->
+<!--   arrange(desc(n)) -->
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Sentiment Analysis -->
+
+<!-- What are the most common **positive words** on each album? -->
+
+<!-- ```{r} -->
+<!-- two_albums_tidy %>% -->
+<!--   inner_join(sentiments, by = "word") %>% -->
+<!--   filter(sentiment == "positive") %>% -->
+<!--   arrange(desc(n)) -->
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### What is the distribution of positive and negative words? -->
+
+<!-- ```{r} -->
+<!-- #| output-location: column-fragment -->
+<!-- two_albums_tidy %>% -->
+<!--   inner_join(sentiments,  -->
+<!--              by = "word") %>% -->
+<!--   group_by(Album, sentiment) %>% -->
+<!--   summarize(n = sum(n)) %>% -->
+<!--   mutate(prop = n/sum(n)) %>% -->
+<!--   ggplot(aes(x = Album, y = prop, -->
+<!--              fill  = sentiment)) + -->
+<!--   geom_col() -->
+<!-- ``` -->
+
+<!-- * Remember that words not in the lexicon are dropped! -->
+
+<!-- * Issue with word-based sentiment analysis? -->
+
+------------------------------------------------------------------------
+
+## Next time
+
+* Don't forget to add your dashboard to shinyapps.io!
+    - Good to try to put an incomplete version up now to make sure you can get it working. 

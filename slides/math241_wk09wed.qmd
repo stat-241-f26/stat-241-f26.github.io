@@ -1,0 +1,1147 @@
+---
+pagetitle: "Functions"
+editor: source
+format: 
+  revealjs:
+    html-math-method: mathjax
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      fig.retina = 3, fig.align = 'center',
+                      fig.asp = 0.75, fig.width = 8)
+library(knitr)
+library(tidyverse)
+# 
+# options(htmltools.preserve.raw = FALSE)
+ggplot2::theme_update(text = ggplot2::element_text(size = 20))
+```
+
+::::: columns
+::: {.column .center width="60%"}
+![](img/r-hex.jpg){width="90%"}
+:::
+
+::: {.column .center width="40%"}
+<br>
+
+[Functions]{.custom-title}
+
+<br> <br> <br> <br> <br> <br> <br>
+
+[Grayson White]{.custom-subtitle}
+
+[Math 241 <br> Week 9 \| Spring 2026]{.custom-subtitle}
+:::
+:::::
+
+
+------------------------------------------------------------------------
+
+
+### Annoucements 
+
+
+- [Posit internships](https://tidyverse.org/blog/2026/03/2026-internships/)
+
+
+------------------------------------------------------------------------
+
+## Week 9 Goals
+
+:::: {.columns}
+
+
+::: {.column}
+
+**Monday**: Control flow
+
+:::
+
+
+::: {.column .fragment}
+
+**Wednesday**: Learn to write your own 
+
+`r emo::ji("sparkles")` functions `r emo::ji("sparkles")`!
+
+:::
+
+::::
+
+
+
+------------------------------------------------------------------------
+
+
+## Mac and Cheese
+
+:::: {.columns}
+
+
+::: {.column}
+
+```{r}
+#| echo: false
+#| out-width: '50%'
+knitr::include_graphics("img/annies.png")
+```
+
+
+:::
+
+
+::: {.column .fragment}
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/homemademac.jpg")
+```
+
+
+
+:::
+
+::::
+
+
+------------------------------------------------------------------------
+
+
+## Mac and Cheese
+
+:::: {.columns}
+
+
+::: {.column}
+
+```{r}
+#| echo: false
+#| out-width: '50%'
+knitr::include_graphics("img/annies.png")
+```
+
+
+:::
+
+
+::: {.column}
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/homemademac_arrow.png")
+```
+
+
+
+:::
+
+::::
+
+
+------------------------------------------------------------------------
+
+
+## Mac and Cheese
+
+:::: {.columns}
+
+
+::: {.column}
+
+```{r}
+#| echo: false
+#| out-width: '50%'
+knitr::include_graphics("img/annies241.png")
+```
+
+
+:::
+
+
+::: {.column}
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/homemademac_arrow.png")
+```
+
+
+
+:::
+
+::::
+
+
+------------------------------------------------------------------------
+
+### Functions
+
+* Write functions to **automate** common task instead of using copy-and-paste.
+
+::: {.fragment}
+
+```{r}
+library(pdxTrees)
+pdxTrees <- get_pdxTrees_parks()
+
+pdxTrees %>%
+  rename(ht = Tree_Height, 
+         pol = Pollution_Removal_oz) %>%
+  summarize(DBH_cv = sd(DBH, na.rm = TRUE) / mean(DBH, na.rm = TRUE),
+            ht_cv = sd(ht, na.rm = TRUE) / mean(ht, na.rm = TRUE), 
+            pol_cv = sd(pol, na.rm = TRUE) / mean(pol, na.rm = TRUE))  
+```
+
+**Question**: What would we like to automate here?
+
+:::
+
+------------------------------------------------------------------------
+
+### Functions
+
+**Question**: Why write a function when my code works fine without??
+
+- Well named functions make code more readable.
+
+- If your analysis changes, you have less places to update code.
+
+- You eliminate copy-and-paste errors.
+
+::: {.fragment}
+
+Where is the bug in my code?
+
+```{r, eval=FALSE}
+library(pdxTrees)
+
+pdxTrees %>%
+  rename(ht = Tree_Height, 
+         pol = Pollution_Removal_oz) %>%
+  summarize(DBH_cv = sd(DBH, na.rm = TRUE) / mean(DBH, na.rm = TRUE),
+            ht_cv = sd(ht, na.rm = TRUE) / mean(ht, na.rm = TRUE), 
+            pol_cv = sd(pol, na.rm = TRUE) / mean(ht, na.rm = TRUE)) 
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Function Writing
+
+Two things to consider:
+
+::: {.incremental}
+
+1. What do I want to the function to **do**?
+
+2. What will the **user** want to have control over when using my function?
+
+:::
+
+
+::: {.fragment}
+
+In my opinion, it is much easier to satisfy (1)!
+
+:::
+
+
+
+------------------------------------------------------------------------
+
+### Function Writing
+
+**First:** Determine what you want to the function to do.
+
+::: {.fragment}
+
+**Question**: For our example, what do we want?
+
+```{r}
+library(pdxTrees)
+pdxTrees <- get_pdxTrees_parks()
+
+pdxTrees %>%
+  rename(ht = Tree_Height, 
+         pol = Pollution_Removal_oz) %>%
+  summarize(DBH_cv = sd(DBH, na.rm = TRUE) / mean(DBH, na.rm = TRUE),
+            ht_cv = sd(ht, na.rm = TRUE) / mean(ht, na.rm = TRUE), 
+            pol_cv = sd(pol, na.rm = TRUE) / mean(pol, na.rm = TRUE))  
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Function Writing
+
+
+**Next**: Get Something that Works
+
+```{r}
+sd(pdxTrees$DBH, na.rm = TRUE) / mean(pdxTrees$DBH, na.rm = TRUE)
+```
+
+
+
+::: {.fragment}
+
+**Minimal Viable Product**:
+
+```{r, echo=FALSE, out.width='40%', fig.align='center'}
+knitr::include_graphics("img/mvp.png")
+```
+
+:::
+
+
+------------------------------------------------------------------------
+
+
+### First Function
+
+```{r}
+coef_of_var <- function(x){
+  sd(x) / mean(x)
+}
+```
+
+<br>
+
+::: {.fragment}
+
+Test it:
+
+```{r}
+
+coef_of_var(x = pdxTrees$DBH)
+summarize(pdxTrees, coef_of_var(x = DBH))
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Structure of Functions
+
+```{r}
+coef_of_var <- function(x){
+  sd(x) / mean(x)
+}
+```
+
+* Name: `coef_of_var`
+
+* Inputs/Arguments: `x`
+
+* Body: `sd(x)/mean(x)`
+
+
+
+------------------------------------------------------------------------
+
+### Test It More
+
+New variable
+
+```{r}
+coef_of_var(x = pdxTrees$Tree_Height)
+```
+
+------------------------------------------------------------------------
+
+### Test It More
+
+Fix it
+
+```{r}
+coef_of_var <- function(x){
+  sd(x, na.rm = TRUE)/mean(x, na.rm = TRUE)
+}
+
+coef_of_var(x = pdxTrees$Tree_Height)
+```
+
+------------------------------------------------------------------------
+
+### Test It More
+
+New dataset
+
+```{r}
+library(forested)
+coef_of_var(x = forested$canopy_cover)
+```
+
+------------------------------------------------------------------------
+
+### Test It More
+
+Data where you know the answer
+
+```{r}
+coef_of_var(x = rnorm(n = 10000, mean = 1, sd = 4))
+```
+
+------------------------------------------------------------------------
+
+### Test It More
+
+Weird data
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+DBH_new <- c(pdxTrees$DBH, Inf)
+
+coef_of_var(DBH_new)
+
+coef_of_var(pdxTrees)
+
+coef_of_var(pdxTrees$Condition)
+```
+
+------------------------------------------------------------------------
+
+### Test It More
+
+Weird data
+
+```{r}
+coef_of_var(c(TRUE, FALSE, FALSE))
+```
+
+
+------------------------------------------------------------------------
+
+### Check the Inputs
+
+From the Unix Philosophy:
+
+> "Rule of Repair: When you must fail, fail noisily and as soon as possible."
+
+------------------------------------------------------------------------
+
+### Check the Inputs: `stopifnot()`
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x){
+  stopifnot(is.numeric(x))
+  sd(x, na.rm = TRUE) / mean(x, na.rm = TRUE)
+}
+
+coef_of_var(pdxTrees$Condition)
+
+coef_of_var(c(TRUE, FALSE, FALSE))
+```
+
+* But we want a more useful error message.
+
+------------------------------------------------------------------------
+
+### Check the Inputs: `if()` then `stop()`
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x) {
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  sd(x, na.rm = TRUE) / mean(x, na.rm = TRUE)
+}
+
+coef_of_var(pdxTrees$Condition)
+
+coef_of_var(c(TRUE, FALSE, FALSE))
+```
+
+
+* Look at the [Tidyverse Style Guide](https://style.tidyverse.org/error-messages.html) for more advice on writing **helpful** error messages.
+
+------------------------------------------------------------------------
+
+### Generalizing our Function
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  sd(x, na.rm = TRUE) / mean(x, na.rm = TRUE)
+}
+```
+
+* We started with an MVP.
+* We fixed a bug:
+    + Removed `NA`s so that `R` would compute a coefficient of variation even when there was missingness in the data.
+* Checked the input.
+
+* Now comes the harder part:
+    + How might we want to generalize the function?
+    + What might the user want to control?
+
+------------------------------------------------------------------------
+
+### Generalizing our Function
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  sd(x, na.rm = TRUE) / mean(x, na.rm = TRUE)
+}
+```
+
+<br>
+
+
+
+**A generalization**: allow user to choose to remove NAs or not
+
+```{r}
+sd(pdxTrees$Tree_Height, na.rm = FALSE) / mean(pdxTrees$Tree_Height, na.rm = FALSE)
+sd(pdxTrees$Tree_Height, na.rm = TRUE) / mean(pdxTrees$Tree_Height, na.rm = TRUE)
+```
+
+
+
+------------------------------------------------------------------------
+
+### Add an argument to the function
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x, na.rm){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  sd(x, na.rm = TRUE) / mean(x, na.rm = TRUE)
+}
+```
+
+------------------------------------------------------------------------
+
+### Test it
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var(x = pdxTrees$DBH, na.rm = FALSE)
+coef_of_var(x = pdxTrees$DBH, na.rm = TRUE)
+```
+
+::: {.fragment}
+
+Why isn't the `na.rm` argument working???
+
+:::
+
+
+
+::: {.fragment}
+
+Wrong:
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x, na.rm){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  sd(x, na.rm = TRUE) / mean(x, na.rm = TRUE)
+}
+```
+
+:::
+
+<br>
+
+::: {.fragment}
+
+Fixed:
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x, na.rm){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  sd(x, na.rm = na.rm) / mean(x, na.rm = na.rm)
+}
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Set Default Values
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x, na.rm = TRUE){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  sd(x, na.rm = na.rm) / mean(x, na.rm = na.rm)
+}
+```
+
+::: {.fragment}
+
+Test them:
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var(x = pdxTrees$DBH)
+coef_of_var(x = pdxTrees$DBH, na.rm = FALSE)
+```
+
+:::
+
+::: {.fragment}
+
+Why don't we set a default for `x`?
+
+:::
+
+------------------------------------------------------------------------
+
+### Set Default Values
+
+What are our required arguments? Optional arguments?
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x, na.rm = TRUE){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  sd(x, na.rm = na.rm) / mean(x, na.rm = na.rm)
+}
+```
+
+
+* Required: No default
+* Optional: Include default
+
+::: {.fragment}
+
+Note: Should also put in validity checks for `na.rm` and check those.
+
+:::
+
+------------------------------------------------------------------------
+
+### Naming Arguments
+
+**Bad function:**
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var_bad <- function(thing1, thing2 = TRUE){
+  if(!is.numeric(thing1)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(thing1))
+  }
+  sd(thing1, na.rm = thing2) / mean(thing1, na.rm = thing2)
+}
+```
+
+
+
+* Painting the walls is a simple way to decorate a room.
+    + Same goes with function writing. Arguments with clear, self-explanatory names quickly increases the readable of your function.
+    
+::: {.fragment}
+
+> "Programs must be written for people to read, and only incidentally for machines to execute." -- [Hal Abelson](https://en.wikipedia.org/wiki/Hal_Abelson)
+
+:::
+
+------------------------------------------------------------------------
+
+### Naming Arguments
+
+* If you are going to pass arguments to a built-in function, consider using the same names (unless they are awful).
+    + EX: `trim` and `na.rm`
+    
+::: {.fragment}
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x, na.rm = TRUE, trim = 0){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  sd(x, na.rm = na.rm) / mean(x, na.rm = na.rm, trim = trim)
+}
+```
+
+:::
+
+
+::: {.fragment}
+
+Maybe you think `na.rm` is an awful name
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x, remove_nas = TRUE, trim = 0){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  sd(x, na.rm = remove_nas) / mean(x, na.rm = remove_nas, trim = trim)
+}
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Ordering the Arguments
+
+* Generally: Data then details
+
+* Another rule of thumb: order arguments in order of importance
+
+::: {.fragment}
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x, na.rm = TRUE, trim = 0){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  sd(x, na.rm = TRUE) / mean(x, na.rm = na.rm, trim = trim)
+}
+```
+
+:::
+
+* And make sure required arguments come before optional arguments
+
+
+------------------------------------------------------------------------
+
+### Readability
+
+::: {.nonincremental}
+
+* If you have a complicated calculation, break it up into intermediate steps.
+
+:::
+
+::: {.fragment}
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x, na.rm = TRUE, trim = 0){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  
+  std_dev <- sd(x, na.rm = na.rm)
+  
+  avg <- mean(x, na.rm = na.rm, trim = trim)
+  
+  std_dev / avg
+}
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Function Output
+
+Default: Last line of code
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x, na.rm = TRUE, trim = 0){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  sd(x, na.rm = TRUE) / mean(x, na.rm = na.rm, trim = trim)
+}
+```
+
+::: {.fragment}
+
+Can also be explicit with `return()`
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x, na.rm = TRUE, trim = 0){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  
+  return(sd(x, na.rm = TRUE) / mean(x, na.rm = na.rm, trim = trim))
+}
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Function Output
+
+If you want to output more than the last line, use a `list()`:
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x, na.rm = TRUE, trim = 0){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  std_dev <- sd(x, na.rm = na.rm)
+  avg <- mean(x, na.rm = na.rm, trim = trim)
+  stat <- std_dev / avg
+  return(list(stat = stat,
+              avg = avg,
+              std_dev = std_dev))
+}
+coef_of_var(pdxTrees$DBH)
+```
+
+------------------------------------------------------------------------
+
+### Function Output
+
+If possible, provide a `data.frame()`:
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x, trim = 0, na.rm = FALSE){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  std_dev <- sd(x, na.rm = na.rm)
+  avg <- mean(x, na.rm = na.rm, trim = trim)
+  stat <- std_dev / avg
+  return(data.frame(stat = stat,
+              avg = avg,
+              std_dev = std_dev))
+}
+coef_of_var(pdxTrees$DBH)
+```
+
+------------------------------------------------------------------------
+
+### Handling Missingness
+
+
+::: {.nonincremental}
+
+* General R functions behavior:
+    + As we have seen, many base `R` functions have an `na.rm = ` argument with default of `na.rm = FALSE`
+    
+:::
+
+```{r}
+sd(pdxTrees$Tree_Height)
+mean(pdxTrees$Tree_Height)
+```
+
+* Why is it dangerous that we set our default to `na.rm = TRUE`?
+    + What should we do instead?
+
+------------------------------------------------------------------------
+
+### Handling Missingness
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x, na.rm = FALSE, trim = 0){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  sd(x, na.rm = na.rm) / mean(x, na.rm = na.rm, trim = trim)
+}
+```
+
+::: {.fragment}
+
+```{r}
+coef_of_var(pdxTrees$Tree_Height)
+coef_of_var(pdxTrees$Tree_Height, na.rm = TRUE)
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Inheriting the Arguments of a Function
+
+```{r, error=TRUE, message=TRUE, warning=TRUE}
+coef_of_var <- function(x, trim = 0, ...){
+  if(!is.numeric(x)) {
+    stop('Unfortunately this function only works for numeric input.\n',
+         'You have provided an object of class: ', class(x))
+  }
+  sd(x, ...) / mean(x, trim = trim, ...)
+}
+```
+
+```{r}
+coef_of_var(pdxTrees$Tree_Height)
+coef_of_var(pdxTrees$Tree_Height, na.rm = TRUE)
+coef_of_var(pdxTrees$Tree_Height, na.rm = TRUE, trim = .2)
+```
+
+* For readability, I strongly recommend defining important inputs, even if your function could just inherit them.
+
+
+------------------------------------------------------------------------
+
+### Non-Standard Evaluation
+
+* In your Problem Set 5, you are going to create functions for common `ggplot2` and `dplyr` operations.
+
+* To do that, we need to discuss **tidy evaluation**/**non-standard evaluation**.
+
+::: {.fragment}
+
+```{r}
+pdxTrees[pdxTrees$Common_Name == "Douglas-Fir" & pdxTrees$Tree_Height > 180, ]
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Non-Standard Evaluation
+
+::: {.nonincremental}
+
+* In your Problem Set 5, you are going to create functions for common `ggplot2` and `dplyr` operations.
+
+* To do that, we need to discuss **tidy evaluation**/**non-standard evaluation**.
+
+:::
+
+```{r}
+filter(pdxTrees, Common_Name == "Douglas-Fir", Tree_Height > 180)
+```
+
+------------------------------------------------------------------------
+
+### Non-Standard Evaluation
+
+`tidyverse` functions often use **data masking** so that you can use **data variables** as if they were **environment variables**.
+
+```{r}
+filter(pdxTrees, Common_Name == "Douglas-Fir", Tree_Height > 180)
+```
+
+------------------------------------------------------------------------
+
+### Non-Standard Evaluation
+
+`tidyverse` functions often use **data masking** so that you can use **data-variables** as if they were **env(ironment)-variables**.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+Env-variable: `pdxTrees`
+
+```{r}
+pdxTrees <- get_pdxTrees_parks()
+```
+
+:::
+
+::: {.column width='50%'}
+
+Data-variable: `Common_Name`
+
+```{r}
+pdxTrees$Common_Name
+```
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+### Non-Standard Evaluation
+
+```{r}
+#| output-location: column
+library(pdxTrees)
+pdxTrees_parks <- get_pdxTrees_parks()
+# Minimal viable product working code
+ggplot(data = pdxTrees_parks, mapping = aes(x = DBH)) +
+  geom_histogram()
+```
+
+------------------------------------------------------------------------
+
+### Non-Standard Evaluation
+
+```{r, error=TRUE}
+# Shorthand histogram function
+histo <- function(data, x, ...){
+  ggplot(data = data, mapping = aes(x = x)) +
+    geom_histogram()
+}
+# Test it
+histo(pdxTrees_parks, DBH)
+```
+
+------------------------------------------------------------------------
+
+### Non-Standard Evaluation
+
+```{r, error=TRUE}
+# Shorthand histogram function
+histo <- function(data, x, ...){
+  ggplot(data = data, mapping = aes(x = x)) +
+    geom_histogram()
+}
+# Test it
+histo(pdxTrees_parks, "DBH")
+```
+
+------------------------------------------------------------------------
+
+### Non-Standard Evaluation
+
+**Solution 1**: Supply the column name as a character vector and then use the `.data` pronoun and `[[ ]]` to access the correct column.
+
+```{r}
+#| output-location: column
+# Shorthand histogram function
+histo <- function(data, x, ...){
+  ggplot(data = data, mapping = aes(x = .data[[ x ]])) +
+    geom_histogram()
+}
+# Test it
+histo(pdxTrees_parks, "DBH")
+```
+
+------------------------------------------------------------------------
+
+### Non-Standard Evaluation
+
+Still good to check inputs! Notice I don't use tidy evaluation there.
+
+```{r}
+#| output-location: column
+# Shorthand histogram function
+histo <- function(data, x, ...){
+  stopifnot(is.numeric(data[[x]]))
+  ggplot(data = data, mapping = aes(x = .data[[ x ]])) +
+    geom_histogram()
+}
+# Test it
+histo(pdxTrees_parks, "DBH")
+```
+
+------------------------------------------------------------------------
+
+### Non-Standard Evaluation
+
+**Solution 2**: Provide the column name as if it were an environment variable and then use the embrace operation `{{}}`.
+
+```{r}
+#| output-location: column
+# Shorthand histogram function
+histo <- function(data, x, ...){
+  ggplot(data = data, mapping = aes(x = {{ x }})) +
+    geom_histogram()
+}
+# Test it
+histo(pdxTrees_parks, DBH)
+```
+
+------------------------------------------------------------------------
+
+### Non-Standard Evaluation
+
+Why is the `stopifnot()` we used in **Solution 1** erroring for **Solution 2**?
+
+```{r, error=TRUE}
+histo <- function(data, x, ...){
+  stopifnot(is.numeric(data[[x]]))
+  ggplot(data = data, mapping = aes(x = {{ x }})) +
+    geom_histogram()
+}
+histo(pdxTrees_parks, DBH)
+```
+
+------------------------------------------------------------------------
+
+### Non-Standard Evaluation
+
+Need to embrace `x`!
+
+```{r}
+#| output-location: column
+histo <- function(data, x, ...){
+  #Determine if x is numeric
+  x_class <- data %>%
+    pull({{ x }}) %>%
+    is.numeric()
+  stopifnot(x_class)
+  
+  ggplot(data = data, mapping = aes(x = {{ x }})) +
+    geom_histogram()
+}
+histo(pdxTrees_parks, DBH)
+```
+
+------------------------------------------------------------------------
+
+### Non-Standard Evaluation
+
+```{r, error=TRUE}
+histo <- function(data, x, ...){
+  #Determine if x is numeric
+  x_class <- data %>%
+    pull({{ x }}) %>%
+    is.numeric()
+  stopifnot(x_class)
+  
+  ggplot(data = data, mapping = aes(x = {{ x }})) +
+    geom_histogram()
+}
+histo(pdxTrees_parks, Condition)
+```
+
+------------------------------------------------------------------------
+
+### Functions Recap
+
+* Start with an MVP.
+* Then start generalizing.
+* For inputs:
+    + Check their class.
+    + Consider their order.
+    + Determine whether or not to supply a default.
+* Remember that names are important for readability.
+* And don't forget to test your function thoroughly!
+
+
