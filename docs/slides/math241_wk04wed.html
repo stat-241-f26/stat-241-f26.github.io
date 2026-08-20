@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <title>Stat 241 – Joining and Reshaping Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,10 +19,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -248,15 +251,15 @@
 <p><br></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>messy4324 <span class="ot">&lt;-</span><span class="fu">select</span>(dataset,thing1,thing2)<span class="sc">%&gt;%</span><span class="fu">filter</span>(thing1<span class="sc">==</span><span class="st">"uncool"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a>messy4324 <span class="ot">&lt;-</span><span class="fu">select</span>(dataset,thing1,thing2)<span class="sc">%&gt;%</span><span class="fu">filter</span>(thing1<span class="sc">==</span><span class="st">"uncool"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p><br></p>
 <p><br></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>clean <span class="ot">&lt;-</span> <span class="fu">select</span>(dataset, thing1, thing2) <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a></a>  <span class="fu">filter</span>(thing1 <span class="sc">==</span> <span class="st">"uncool"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a>clean <span class="ot">&lt;-</span> <span class="fu">select</span>(dataset, thing1, thing2) <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a aria-label="2"></a>  <span class="fu">filter</span>(thing1 <span class="sc">==</span> <span class="st">"uncool"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -284,15 +287,15 @@
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-2"><a></a>boop <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="st">"bird"</span>))</span>
-<span id="cb3-3"><a></a>beep <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="st">"bird"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a aria-label="2"></a>boop <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="st">"bird"</span>))</span>
+<span id="cb3-3"><a aria-label="3"></a>beep <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="st">"bird"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="columns fragment">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>boop</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>boop</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  x    y
 1 1  cat
@@ -302,7 +305,7 @@
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>beep</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a>beep</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
       x y    
@@ -319,21 +322,21 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>boop[<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a>boop[<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     y
 1  cat
 2  dog
 3 bird</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">class</span>(boop[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">class</span>(boop[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "data.frame"</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>beep[<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a>beep[<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 1
   y    
@@ -342,7 +345,7 @@
 2 dog  
 3 bird </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">class</span>(beep[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a><span class="fu">class</span>(beep[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "tbl_df"     "tbl"        "data.frame"</code></pre>
 </div>
@@ -352,25 +355,25 @@
 <div class="columns fragment">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>boop[<span class="dv">1</span>, <span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a>boop[<span class="dv">1</span>, <span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "cat"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">class</span>(boop[<span class="dv">1</span>, <span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a><span class="fu">class</span>(boop[<span class="dv">1</span>, <span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>beep[<span class="dv">1</span>, <span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a>beep[<span class="dv">1</span>, <span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   y    
   &lt;chr&gt;
 1 cat  </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">class</span>(beep[<span class="dv">1</span>, <span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a><span class="fu">class</span>(beep[<span class="dv">1</span>, <span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "tbl_df"     "tbl"        "data.frame"</code></pre>
 </div>
@@ -380,14 +383,14 @@
 <div class="columns fragment">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>boop[[<span class="dv">1</span>, <span class="dv">2</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a>boop[[<span class="dv">1</span>, <span class="dv">2</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "cat"</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>beep[[<span class="dv">1</span>, <span class="dv">2</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a>beep[[<span class="dv">1</span>, <span class="dv">2</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "cat"</code></pre>
 </div>
@@ -470,14 +473,14 @@
 <h2>Example Data</h2>
 <p>For the following examples of data joins, we will use the data frames from the first slide. We can load this data into <code>R</code>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb28-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">spp_code =</span> <span class="fu">c</span>(<span class="st">"ABBA"</span>, <span class="st">"BEPA"</span>, <span class="st">"PIST"</span>),</span>
-<span id="cb28-3"><a></a>                <span class="at">common_name =</span> <span class="fu">c</span>(<span class="st">"balsum fir"</span>, <span class="st">"paper birch"</span>, <span class="st">"white pine"</span>))</span>
-<span id="cb28-4"><a></a></span>
-<span id="cb28-5"><a></a>y <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">spp_code =</span> <span class="fu">c</span>(<span class="st">"ABBA"</span>, <span class="st">"BEPA"</span>, <span class="st">"LALA"</span>),</span>
-<span id="cb28-6"><a></a>                <span class="at">latin_name =</span> <span class="fu">c</span>(<span class="st">"Abies balsamea"</span>, </span>
-<span id="cb28-7"><a></a>                               <span class="st">"Betula papyrifera"</span>,</span>
-<span id="cb28-8"><a></a>                               <span class="st">"Larix laricina"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb28-2"><a aria-label="2"></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">spp_code =</span> <span class="fu">c</span>(<span class="st">"ABBA"</span>, <span class="st">"BEPA"</span>, <span class="st">"PIST"</span>),</span>
+<span id="cb28-3"><a aria-label="3"></a>                <span class="at">common_name =</span> <span class="fu">c</span>(<span class="st">"balsum fir"</span>, <span class="st">"paper birch"</span>, <span class="st">"white pine"</span>))</span>
+<span id="cb28-4"><a aria-label="4"></a></span>
+<span id="cb28-5"><a aria-label="5"></a>y <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">spp_code =</span> <span class="fu">c</span>(<span class="st">"ABBA"</span>, <span class="st">"BEPA"</span>, <span class="st">"LALA"</span>),</span>
+<span id="cb28-6"><a aria-label="6"></a>                <span class="at">latin_name =</span> <span class="fu">c</span>(<span class="st">"Abies balsamea"</span>, </span>
+<span id="cb28-7"><a aria-label="7"></a>                               <span class="st">"Betula papyrifera"</span>,</span>
+<span id="cb28-8"><a aria-label="8"></a>                               <span class="st">"Larix laricina"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="mutating-joins" class="slide level2">
@@ -495,14 +498,14 @@
 <h2>Examples: Mutating Joins</h2>
 <p>Recall our example data</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code common_name
 1     ABBA  balsum fir
 2     BEPA paper birch
 3     PIST  white pine</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a>y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code        latin_name
 1     ABBA    Abies balsamea
@@ -514,7 +517,7 @@
 <section id="left_join" class="slide level2">
 <h2><code>left_join()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">left_join</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a><span class="fu">left_join</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(spp_code)`</code></pre>
 </div>
@@ -529,7 +532,7 @@
 <section id="left_join-1" class="slide level2">
 <h2><code>left_join()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">left_join</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a><span class="fu">left_join</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(spp_code)`</code></pre>
 </div>
@@ -553,7 +556,7 @@
 <section id="left_join-with-a" class="slide level2">
 <h2><code>left_join()</code>, with a 🔑</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">left_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-label="1"></a><span class="fu">left_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code common_name        latin_name
 1     ABBA  balsum fir    Abies balsamea
@@ -568,7 +571,7 @@
 <section id="right_join" class="slide level2">
 <h2><code>right_join()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">right_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-label="1"></a><span class="fu">right_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code        latin_name common_name
 1     ABBA    Abies balsamea  balsum fir
@@ -580,7 +583,7 @@
 <section id="right_join-1" class="slide level2">
 <h2><code>right_join()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">right_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-label="1"></a><span class="fu">right_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code        latin_name common_name
 1     ABBA    Abies balsamea  balsum fir
@@ -591,13 +594,13 @@
 <p>Notice that this is the same as our previous <code>left_join()</code>.</p>
 <p>What happens if we try switching the order of <code>x</code> and <code>y</code>?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">right_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-label="1"></a><span class="fu">right_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="right_join-2" class="slide level2">
 <h2><code>right_join()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">right_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a aria-label="1"></a><span class="fu">right_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code        latin_name common_name
 1     ABBA    Abies balsamea  balsum fir
@@ -608,7 +611,7 @@
 <p>Notice that this is the same as our previous <code>left_join()</code>.</p>
 <p>What happens if we try switching the order of <code>x</code> and <code>y</code>?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">right_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a aria-label="1"></a><span class="fu">right_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code common_name        latin_name
 1     ABBA  balsum fir    Abies balsamea
@@ -621,14 +624,14 @@
 <h2><code>inner_join()</code></h2>
 <p>How many rows will the output have?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a><span class="fu">inner_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a aria-label="1"></a><span class="fu">inner_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="inner_join-1" class="slide level2">
 <h2><code>inner_join()</code></h2>
 <p>How many rows will the output have?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a><span class="fu">inner_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a aria-label="1"></a><span class="fu">inner_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code common_name        latin_name
 1     ABBA  balsum fir    Abies balsamea
@@ -641,14 +644,14 @@
 <h2><code>full_join()</code></h2>
 <p>How many rows will the output have?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a><span class="fu">full_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a aria-label="1"></a><span class="fu">full_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="full_join-1" class="slide level2">
 <h2><code>full_join()</code></h2>
 <p>How many rows will the output have?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="fu">full_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a aria-label="1"></a><span class="fu">full_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code common_name        latin_name
 1     ABBA  balsum fir    Abies balsamea
@@ -674,14 +677,14 @@
 <h2><code>semi_join()</code></h2>
 <p>How many rows will this <code>semi_join</code> return? How many columns?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a><span class="fu">semi_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a aria-label="1"></a><span class="fu">semi_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="semi_join-1" class="slide level2">
 <h2><code>semi_join()</code></h2>
 <p>How many rows will this <code>semi_join</code> return? How many columns?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a><span class="fu">semi_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a aria-label="1"></a><span class="fu">semi_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code common_name
 1     ABBA  balsum fir
@@ -693,14 +696,14 @@
 <h2><code>semi_join()</code></h2>
 <p>What about this <code>semi_join</code>? Will it be the same as <code>semi_join(x, y)</code>?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a><span class="fu">semi_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a aria-label="1"></a><span class="fu">semi_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="semi_join-3" class="slide level2">
 <h2><code>semi_join()</code></h2>
 <p>What about this <code>semi_join</code>? Will it be the same as <code>semi_join(x, y)</code>?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a><span class="fu">semi_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a aria-label="1"></a><span class="fu">semi_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code        latin_name
 1     ABBA    Abies balsamea
@@ -712,14 +715,14 @@
 <h2><code>anti_join()</code></h2>
 <p>Let’s see what <code>anti_join</code> does:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a><span class="fu">anti_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a aria-label="1"></a><span class="fu">anti_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="anti_join-1" class="slide level2">
 <h2><code>anti_join()</code></h2>
 <p>Let’s see what <code>anti_join</code> does:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a><span class="fu">anti_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a aria-label="1"></a><span class="fu">anti_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code common_name
 1     PIST  white pine</code></pre>
@@ -731,14 +734,14 @@
 <h2><code>anti_join()</code></h2>
 <p>What happens if we switch the order of <code>x</code> and <code>y</code>?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a><span class="fu">anti_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a aria-label="1"></a><span class="fu">anti_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="anti_join-3" class="slide level2">
 <h2><code>anti_join()</code></h2>
 <p>What happens if we switch the order of <code>x</code> and <code>y</code>?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a><span class="fu">anti_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a aria-label="1"></a><span class="fu">anti_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code     latin_name
 1     LALA Larix laricina</code></pre>
@@ -750,9 +753,9 @@
 <p>So far, we have joined <code>x</code> and <code>y</code> by the <code>spp_code</code> column.</p>
 <p>But what if <code>y</code> had the same column named differently:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a>y <span class="ot">&lt;-</span> y <span class="sc">%&gt;%</span></span>
-<span id="cb69-2"><a></a>  <span class="fu">rename</span>(<span class="at">species_code =</span> spp_code)</span>
-<span id="cb69-3"><a></a>y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a aria-label="1"></a>y <span class="ot">&lt;-</span> y <span class="sc">%&gt;%</span></span>
+<span id="cb69-2"><a aria-label="2"></a>  <span class="fu">rename</span>(<span class="at">species_code =</span> spp_code)</span>
+<span id="cb69-3"><a aria-label="3"></a>y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  species_code        latin_name
 1         ABBA    Abies balsamea
@@ -764,7 +767,7 @@
 <section id="how-do-we-join-x-and-y" class="slide level2">
 <h2>How Do We Join <code>x</code> and <code>y</code>?</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a><span class="fu">left_join</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a aria-label="1"></a><span class="fu">left_join</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `left_join()`:
 ! `by` must be supplied when `x` and `y` have no common variables.
@@ -776,7 +779,7 @@
 <section id="how-do-we-join-x-and-y-1" class="slide level2">
 <h2>How Do We Join <code>x</code> and <code>y</code>?</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a></a><span class="fu">left_join</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a aria-label="1"></a><span class="fu">left_join</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `left_join()`:
 ! `by` must be supplied when `x` and `y` have no common variables.
@@ -786,7 +789,7 @@
 <p>Looks like we need to specify <code>by</code> (our 🔑)</p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a><span class="fu">left_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a aria-label="1"></a><span class="fu">left_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `left_join()`:
 ! Join columns in `y` must be present in the data.
@@ -798,7 +801,7 @@
 <section id="how-do-we-join-x-and-y-2" class="slide level2">
 <h2>How Do We Join <code>x</code> and <code>y</code>?</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a></a><span class="fu">left_join</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a aria-label="1"></a><span class="fu">left_join</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `left_join()`:
 ! `by` must be supplied when `x` and `y` have no common variables.
@@ -808,7 +811,7 @@
 <p>Looks like we need to specify <code>by</code> (our 🔑)</p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a></a><span class="fu">left_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a aria-label="1"></a><span class="fu">left_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `left_join()`:
 ! Join columns in `y` must be present in the data.
@@ -818,7 +821,7 @@
 <p>Still not working!</p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a></a><span class="fu">left_join</span>(x, y, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"spp_code"</span> <span class="ot">=</span> <span class="st">"species_code"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a aria-label="1"></a><span class="fu">left_join</span>(x, y, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"spp_code"</span> <span class="ot">=</span> <span class="st">"species_code"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code common_name        latin_name
 1     ABBA  balsum fir    Abies balsamea
@@ -884,7 +887,7 @@
 <section id="tidy-data" class="slide level2">
 <h2>Tidy Data</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a aria-label="1"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code common_name
 1     ABBA  balsum fir
@@ -897,10 +900,10 @@
 <h2>Un-Tidy Data</h2>
 <p>The <code>face</code> dataset from <a href="https://www.finley-lab.com/ifdar/overview#face">IFDAR</a>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a></a>face <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/FACE_aspen_core_growth.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb85-2"><a></a>  <span class="fu">select</span>(Rep, Treat, Clone, <span class="at">ID =</span> <span class="st">`</span><span class="at">ID #</span><span class="st">`</span>,</span>
-<span id="cb85-3"><a></a>        <span class="fu">contains</span>(<span class="fu">as.character</span>(<span class="dv">2001</span><span class="sc">:</span><span class="dv">2005</span>)) <span class="sc">&amp;</span> <span class="fu">contains</span>(<span class="st">"Height"</span>))</span>
-<span id="cb85-4"><a></a><span class="fu">glimpse</span>(face)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a aria-label="1"></a>face <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/FACE_aspen_core_growth.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb85-2"><a aria-label="2"></a>  <span class="fu">select</span>(Rep, Treat, Clone, <span class="at">ID =</span> <span class="st">`</span><span class="at">ID #</span><span class="st">`</span>,</span>
+<span id="cb85-3"><a aria-label="3"></a>        <span class="fu">contains</span>(<span class="fu">as.character</span>(<span class="dv">2001</span><span class="sc">:</span><span class="dv">2005</span>)) <span class="sc">&amp;</span> <span class="fu">contains</span>(<span class="st">"Height"</span>))</span>
+<span id="cb85-4"><a aria-label="4"></a><span class="fu">glimpse</span>(face)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,991
 Columns: 9
@@ -922,7 +925,7 @@ $ `2005_Height` &lt;dbl&gt; NA, 817, 323, 738, 366, 669, 647, 269, NA, 270, NA, 
 <section id="face-data" class="slide level2">
 <h2>FACE data</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a></a>face</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a aria-label="1"></a>face</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,991 × 9
      Rep Treat Clone    ID `2001_Height` `2002_Height` `2003_Height`
@@ -949,7 +952,7 @@ $ `2005_Height` &lt;dbl&gt; NA, 817, 323, 738, 366, 669, 647, 269, NA, 270, NA, 
 <section id="how-do-we-make-this-data-tidy" class="slide level2">
 <h2>How do we make this data tidy? 🤔</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a></a>face</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a aria-label="1"></a>face</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,991 × 9
      Rep Treat Clone    ID `2001_Height` `2002_Height` `2003_Height`
@@ -988,33 +991,33 @@ $ `2005_Height` &lt;dbl&gt; NA, 817, 323, 738, 366, 669, 647, 269, NA, 270, NA, 
 <section id="why-the-long-face" class="slide level2">
 <h2>Why the long <code>face</code>?</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a></a>face_long <span class="ot">&lt;-</span> face <span class="sc">%&gt;%</span></span>
-<span id="cb91-2"><a></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb91-3"><a></a>    <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"2001_Height"</span>, <span class="st">"2002_Height"</span>, <span class="st">"2003_Height"</span>, </span>
-<span id="cb91-4"><a></a>             <span class="st">"2004_Height"</span>, <span class="st">"2005_Height"</span>),</span>
-<span id="cb91-5"><a></a>    <span class="at">names_to =</span> <span class="st">"Year_Type"</span>,</span>
-<span id="cb91-6"><a></a>    <span class="at">values_to =</span> <span class="st">"Height_cm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a aria-label="1"></a>face_long <span class="ot">&lt;-</span> face <span class="sc">%&gt;%</span></span>
+<span id="cb91-2"><a aria-label="2"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb91-3"><a aria-label="3"></a>    <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"2001_Height"</span>, <span class="st">"2002_Height"</span>, <span class="st">"2003_Height"</span>, </span>
+<span id="cb91-4"><a aria-label="4"></a>             <span class="st">"2004_Height"</span>, <span class="st">"2005_Height"</span>),</span>
+<span id="cb91-5"><a aria-label="5"></a>    <span class="at">names_to =</span> <span class="st">"Year_Type"</span>,</span>
+<span id="cb91-6"><a aria-label="6"></a>    <span class="at">values_to =</span> <span class="st">"Height_cm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="why-the-long-face-1" class="slide level2">
 <h2>Why the long <code>face</code>?</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92" data-code-line-numbers="3,4|5|6|3,4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a></a>face_long <span class="ot">&lt;-</span> face <span class="sc">%&gt;%</span></span>
-<span id="cb92-2"><a></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb92-3"><a></a>    <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"2001_Height"</span>, <span class="st">"2002_Height"</span>, <span class="st">"2003_Height"</span>, </span>
-<span id="cb92-4"><a></a>             <span class="st">"2004_Height"</span>, <span class="st">"2005_Height"</span>),</span>
-<span id="cb92-5"><a></a>    <span class="at">names_to =</span> <span class="st">"Year_Type"</span>,</span>
-<span id="cb92-6"><a></a>    <span class="at">values_to =</span> <span class="st">"Height_cm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92" data-code-line-numbers="3,4|5|6|3,4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a aria-label="1"></a>face_long <span class="ot">&lt;-</span> face <span class="sc">%&gt;%</span></span>
+<span id="cb92-2"><a aria-label="2"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb92-3"><a aria-label="3"></a>    <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"2001_Height"</span>, <span class="st">"2002_Height"</span>, <span class="st">"2003_Height"</span>, </span>
+<span id="cb92-4"><a aria-label="4"></a>             <span class="st">"2004_Height"</span>, <span class="st">"2005_Height"</span>),</span>
+<span id="cb92-5"><a aria-label="5"></a>    <span class="at">names_to =</span> <span class="st">"Year_Type"</span>,</span>
+<span id="cb92-6"><a aria-label="6"></a>    <span class="at">values_to =</span> <span class="st">"Height_cm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="why-the-long-face-2" class="slide level2">
 <h2>Why the long <code>face</code>?</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a></a>face_long <span class="ot">&lt;-</span> face <span class="sc">%&gt;%</span></span>
-<span id="cb93-2"><a></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb93-3"><a></a>    <span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"Height"</span>),</span>
-<span id="cb93-4"><a></a>    <span class="at">names_to =</span> <span class="st">"Year_Type"</span>,</span>
-<span id="cb93-5"><a></a>    <span class="at">values_to =</span> <span class="st">"Height_cm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a aria-label="1"></a>face_long <span class="ot">&lt;-</span> face <span class="sc">%&gt;%</span></span>
+<span id="cb93-2"><a aria-label="2"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb93-3"><a aria-label="3"></a>    <span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"Height"</span>),</span>
+<span id="cb93-4"><a aria-label="4"></a>    <span class="at">names_to =</span> <span class="st">"Year_Type"</span>,</span>
+<span id="cb93-5"><a aria-label="5"></a>    <span class="at">values_to =</span> <span class="st">"Height_cm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li class="fragment">A cleaner way to select these columns is to use <code>dplyr</code>’s <code>contains()</code> function.</li>
@@ -1023,7 +1026,7 @@ $ `2005_Height` &lt;dbl&gt; NA, 817, 323, 738, 366, 669, 647, 269, NA, 270, NA, 
 <section id="why-the-long-face-3" class="slide level2">
 <h2>Why the long <code>face</code>?</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a></a>face_long</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a aria-label="1"></a>face_long</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9,955 × 6
      Rep Treat Clone    ID Year_Type   Height_cm
@@ -1062,10 +1065,10 @@ $ `2005_Height` &lt;dbl&gt; NA, 817, 323, 738, 366, 669, 647, 269, NA, 270, NA, 
 <section id="pivoting-wider" class="slide level2">
 <h2>Pivoting wider</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a></a>face_wide <span class="ot">&lt;-</span> face_long <span class="sc">%&gt;%</span></span>
-<span id="cb96-2"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"Year_Type"</span>, <span class="at">values_from =</span> <span class="st">"Height_cm"</span>)</span>
-<span id="cb96-3"><a></a></span>
-<span id="cb96-4"><a></a><span class="fu">all_equal</span>(face, face_wide)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a aria-label="1"></a>face_wide <span class="ot">&lt;-</span> face_long <span class="sc">%&gt;%</span></span>
+<span id="cb96-2"><a aria-label="2"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"Year_Type"</span>, <span class="at">values_from =</span> <span class="st">"Height_cm"</span>)</span>
+<span id="cb96-3"><a aria-label="3"></a></span>
+<span id="cb96-4"><a aria-label="4"></a><span class="fu">all_equal</span>(face, face_wide)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -1091,7 +1094,7 @@ $ `2005_Height` &lt;dbl&gt; NA, 817, 323, 738, 366, 669, 647, 269, NA, 270, NA, 
 <section id="unite-examples" class="slide level2">
 <h2><code>unite()</code>: examples</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a></a>face_long</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a aria-label="1"></a>face_long</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9,955 × 6
      Rep Treat Clone    ID Year_Type   Height_cm
@@ -1113,8 +1116,8 @@ $ `2005_Height` &lt;dbl&gt; NA, 817, 323, 738, 366, 669, 647, 269, NA, 270, NA, 
 <section id="unite-examples-1" class="slide level2">
 <h2><code>unite()</code>: examples</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a></a>face_long <span class="sc">%&gt;%</span></span>
-<span id="cb100-2"><a></a>  <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">"Design"</span>, Rep, Treat, Clone, <span class="at">sep =</span> <span class="st">"_"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a aria-label="1"></a>face_long <span class="sc">%&gt;%</span></span>
+<span id="cb100-2"><a aria-label="2"></a>  <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">"Design"</span>, Rep, Treat, Clone, <span class="at">sep =</span> <span class="st">"_"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9,955 × 4
    Design     ID Year_Type   Height_cm
@@ -1136,9 +1139,9 @@ $ `2005_Height` &lt;dbl&gt; NA, 817, 323, 738, 366, 669, 647, 269, NA, 270, NA, 
 <section id="unite-examples-2" class="slide level2">
 <h2><code>unite()</code>: examples</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a></a>face_long_dot <span class="ot">&lt;-</span> face_long <span class="sc">%&gt;%</span></span>
-<span id="cb102-2"><a></a>  <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">"Design"</span>, Rep, Treat, Clone, <span class="at">sep =</span> <span class="st">"."</span>)</span>
-<span id="cb102-3"><a></a>face_long_dot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a aria-label="1"></a>face_long_dot <span class="ot">&lt;-</span> face_long <span class="sc">%&gt;%</span></span>
+<span id="cb102-2"><a aria-label="2"></a>  <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">"Design"</span>, Rep, Treat, Clone, <span class="at">sep =</span> <span class="st">"."</span>)</span>
+<span id="cb102-3"><a aria-label="3"></a>face_long_dot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9,955 × 4
    Design     ID Year_Type   Height_cm
@@ -1160,10 +1163,10 @@ $ `2005_Height` &lt;dbl&gt; NA, 817, 323, 738, 366, 669, 647, 269, NA, 270, NA, 
 <section id="separate_wider_delim-example" class="slide level2">
 <h2><code>separate_wider_delim()</code> example</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a></a>face_long_dot <span class="sc">%&gt;%</span></span>
-<span id="cb104-2"><a></a>  <span class="fu">separate_wider_delim</span>(<span class="at">cols =</span> <span class="st">"Design"</span>, </span>
-<span id="cb104-3"><a></a>                       <span class="at">delim =</span> <span class="st">"."</span>,</span>
-<span id="cb104-4"><a></a>                       <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"Rep"</span>, <span class="st">"Treat"</span>, <span class="st">"Clone"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a aria-label="1"></a>face_long_dot <span class="sc">%&gt;%</span></span>
+<span id="cb104-2"><a aria-label="2"></a>  <span class="fu">separate_wider_delim</span>(<span class="at">cols =</span> <span class="st">"Design"</span>, </span>
+<span id="cb104-3"><a aria-label="3"></a>                       <span class="at">delim =</span> <span class="st">"."</span>,</span>
+<span id="cb104-4"><a aria-label="4"></a>                       <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"Rep"</span>, <span class="st">"Treat"</span>, <span class="st">"Clone"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9,955 × 6
    Rep   Treat Clone    ID Year_Type   Height_cm
@@ -1185,7 +1188,7 @@ $ `2005_Height` &lt;dbl&gt; NA, 817, 323, 738, 366, 669, 647, 269, NA, 270, NA, 
 <section id="nice-trick-remove-unnecessary-text" class="slide level2">
 <h2>Nice trick: remove unnecessary text</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a></a><span class="fu">head</span>(face_long)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a aria-label="1"></a><span class="fu">head</span>(face_long)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 6
     Rep Treat Clone    ID Year_Type   Height_cm
@@ -1200,10 +1203,10 @@ $ `2005_Height` &lt;dbl&gt; NA, 817, 323, 738, 366, 669, 647, 269, NA, 270, NA, 
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a></a>face_long <span class="sc">%&gt;%</span></span>
-<span id="cb108-2"><a></a>  <span class="fu">separate_wider_delim</span>(<span class="at">cols =</span> <span class="st">"Year_Type"</span>, </span>
-<span id="cb108-3"><a></a>                       <span class="at">delim =</span> <span class="st">"_"</span>,</span>
-<span id="cb108-4"><a></a>                       <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"Year"</span>, <span class="cn">NA</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a aria-label="1"></a>face_long <span class="sc">%&gt;%</span></span>
+<span id="cb108-2"><a aria-label="2"></a>  <span class="fu">separate_wider_delim</span>(<span class="at">cols =</span> <span class="st">"Year_Type"</span>, </span>
+<span id="cb108-3"><a aria-label="3"></a>                       <span class="at">delim =</span> <span class="st">"_"</span>,</span>
+<span id="cb108-4"><a aria-label="4"></a>                       <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"Year"</span>, <span class="cn">NA</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9,955 × 6
      Rep Treat Clone    ID Year  Height_cm
@@ -1424,7 +1427,7 @@ $ `2005_Height` &lt;dbl&gt; NA, 817, 323, 738, 366, 669, 647, 269, NA, 270, NA, 
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
