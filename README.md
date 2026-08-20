@@ -1,4 +1,4 @@
-## [www.reed-data-science.github.io](https://reed-data-science.github.io/)
+## [stat-241-f26.github.io](https://stat-241-f26.github.io/)
 
 This repository contains source code for the course website for Stat 241: Data Science at Reed College, Fall 2026.
 
