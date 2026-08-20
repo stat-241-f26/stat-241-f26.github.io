@@ -49,8 +49,9 @@ format:
       - assets/styles.scss
     toc: true
 
-resources: 
+resources:
   - CNAME
+  - .nojekyll
 
 editor: visual
 
