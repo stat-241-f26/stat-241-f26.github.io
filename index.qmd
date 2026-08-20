@@ -15,7 +15,7 @@ listing:
 ::::: {#banner .g-col-12 .g-col-md-6 style="margin: -4em 1em 0em 0em"}
 
 ::: banner-text
-Data Science!!!
+Data Science
 :::
 
 [Stat 241 Reed College, Fall 2026]{.smallcaps}
