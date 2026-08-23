@@ -54,7 +54,7 @@ scheduled-docs:
               href: slides/math241_wk02mon.qmd
             - type: Slides (PDF)
               href: pdfs/math241_wk02mon.pdf
-        - topic: "Problem Set 0 Due, Problem Set 1 Released"
+        - topic: "Problem Set 0 Due"
           display-date: Thursday, Sep 10 9:00am
           date: 9/10/26
           docs:
@@ -74,6 +74,12 @@ scheduled-docs:
               href: slides/math241_wk02wed.qmd
             - type: Slides (PDF)
               href: pdfs/math241_wk02wed.pdf
+        - topic: "Problem Set 1 Released"
+          display-date: Tuesday, Sep 15 @ noon
+          date: 9/15/26
+          docs:
+            - type: Problem Set 1
+              href: psets/pset01.qmd
         - topic: "Data Wrangling and asking good questions"
           display-date: Wednesday, Sep 16
           date: 9/16/26
@@ -88,12 +94,6 @@ scheduled-docs:
               href: in_class/activity2.qmd
             - type: Activity (download)
               href: in_class/activity2_download.qmd
-        - topic: "Problem Set 1 Due, Problem Set 2 Released"
-          display-date: Thursday, Sep 17 9:00am
-          date: 9/17/26
-          docs:
-            - type: Problem Set 2
-              href: psets/pset02.qmd
       # resources:
       #   - 'Some text'
     - week: 4
@@ -108,6 +108,12 @@ scheduled-docs:
               href: slides/math241_wk03wed.qmd
             - type: Slides (PDF)
               href: pdfs/math241_wk03wed.pdf
+        - topic: "Problem Set 1 Due, Problem Set 2 Released"
+          display-date: Tuesday, Sep 22 @ noon
+          date: 9/22/26
+          docs:
+            - type: Problem Set 2
+              href: psets/pset02.qmd
         - topic: "Data types and more wrangling"
           display-date: Wednesday, Sep 23
           date: 9/23/26
@@ -116,12 +122,6 @@ scheduled-docs:
               href: slides/math241_wk04mon.qmd
             - type: Slides (PDF)
               href: pdfs/math241_wk04mon.pdf
-        - topic: "Problem Set 2 Due, Problem Set 3 Released"
-          display-date: Thursday, Sep 24 9:00am
-          date: 9/24/26
-          docs:
-            - type: Problem Set 3
-              href: psets/pset03.qmd
       # resources:
       #   - 'Some text'
     - week: 5
@@ -138,6 +138,12 @@ scheduled-docs:
               href: pdfs/math241_wk04wed.pdf
             - type: Activity
               href: slides/math241_wk04wed_activity.qmd
+        - topic: "Problem Set 2 Due, Problem Set 3 Released"
+          display-date: Tuesday, Sep 29 @ noon
+          date: 9/29/26
+          docs:
+            - type: Problem Set 3
+              href: psets/pset03.qmd
         - topic: "Spatial data I"
           display-date: Wednesday, Sep 30
           date: 9/30/26
@@ -148,14 +154,8 @@ scheduled-docs:
               href: slides/math241_wk05mon.qmd
             - type: Slides (PDF)
               href: pdfs/math241_wk05mon.pdf
-        - topic: "Problem Set 3 Due, Problem Set 4 Released"
-          display-date: Thursday, Oct 1 9:00am
-          date: 10/1/26
-          docs:
-            - type: Problem Set 4
-              href: psets/pset04.qmd
       resources:
-        - 'Fill out the <a href="https://forms.gle/Q3pk5LhZAJohpbHT6">Project 1 Preferences Form</a>'
+        # - 'Fill out the <a href="https://forms.gle/Q3pk5LhZAJohpbHT6">Project 1 Preferences Form</a>'
     - week: 6
       days:
         - topic: "Spatial data II"
@@ -170,6 +170,12 @@ scheduled-docs:
               href: pdfs/math241_wk05wed.pdf
             - type: Activity (Download)
               href: in_class/activity3_download.qmd
+        - topic: "Problem Set 3 Due, Problem Set 4 Released"
+          display-date: Tuesday, Oct 6 @ noon
+          date: 10/6/26
+          docs:
+            - type: Problem Set 4
+              href: psets/pset04.qmd
         - topic: "shiny I (Project I Groups Assigned)"
           display-date: Wednesday, Oct 7
           date: 10/7/26
@@ -197,6 +203,9 @@ scheduled-docs:
               href: slides/math241_wk06wed.qmd
             - type: Project I Instructions
               href: projects/proj01.qmd
+        - topic: "Problem Set 4 Due"
+          display-date: Tuesday, Oct 13 @ noon
+          date: 10/13/26
         - topic: "Project 1 Work Day"
           display-date: Wednesday, Oct 14
           date: 10/14/26

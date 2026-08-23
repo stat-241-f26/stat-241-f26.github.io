@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-28">
 
-<title>readings_wk01wed – Stat 241</title>
+<title>proj02 – Stat 241</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -140,51 +139,123 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#math-241-suggested-readings-for-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206d6574612064617465203e7d7d" id="toc-math-241-suggested-readings-for-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206d6574612064617465203e7d7d" class="nav-link active" data-scroll-target="#math-241-suggested-readings-for-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206d6574612064617465203e7d7d">Math 241: Suggested readings for January 28, 2026</a>
+  <li><a href="#project-guidelines" id="toc-project-guidelines" class="nav-link active" data-scroll-target="#project-guidelines">Project Guidelines</a>
   <ul class="collapse">
-  <li><a href="#reading" id="toc-reading" class="nav-link" data-scroll-target="#reading">Reading</a></li>
+  <li><a href="#requirements-for-both-options" id="toc-requirements-for-both-options" class="nav-link" data-scroll-target="#requirements-for-both-options">Requirements for Both Options:</a></li>
+  <li><a href="#requirements-specific-to-option-1" id="toc-requirements-specific-to-option-1" class="nav-link" data-scroll-target="#requirements-specific-to-option-1">Requirements specific to Option 1:</a></li>
+  <li><a href="#requirements-specific-to-option-2" id="toc-requirements-specific-to-option-2" class="nav-link" data-scroll-target="#requirements-specific-to-option-2">Requirements specific to Option 2:</a></li>
+  <li><a href="#extra-credit" id="toc-extra-credit" class="nav-link" data-scroll-target="#extra-credit">Extra Credit</a></li>
+  <li><a href="#tips-for-getting-started" id="toc-tips-for-getting-started" class="nav-link" data-scroll-target="#tips-for-getting-started">Tips for getting started</a></li>
   </ul></li>
+  <li><a href="#timeline" id="toc-timeline" class="nav-link" data-scroll-target="#timeline">Timeline</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 28, 2026</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="math-241-suggested-readings-for-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206d6574612064617465203e7d7d" class="level1">
-<h1>Math 241: Suggested readings for January 28, 2026</h1>
-<section id="reading" class="level2">
-<h2 class="anchored" data-anchor-id="reading">Reading</h2>
-<p>Before coming to lecture today, please read the following material:</p>
+<p><strong>You may not use any form of generative AI to complete your project</strong></p>
+<section id="project-guidelines" class="level2">
+<h2 class="anchored" data-anchor-id="project-guidelines">Project Guidelines</h2>
+<p>In this project, your group will create an <code>R</code> package and give a 10 minute presentation about your package. You have two options for your package:</p>
 <ul>
-<li>MDSR Chapter 2</li>
+<li><strong>Option 1</strong>: a package that primarily shares a suite of functions but also includes data for demoing functionality.</li>
+<li><strong>Option 2</strong>: a package that primarily shares a dataset or dataset(s) but also includes a couple functions that help the user interact with the data effectively.</li>
+</ul>
+<section id="requirements-for-both-options" class="level3">
+<h3 class="anchored" data-anchor-id="requirements-for-both-options">Requirements for Both Options:</h3>
+<ul>
+<li>Package contains
+<ul>
+<li>A complete and informative <code>DESCRIPTION</code> file.</li>
+<li>A README (both the <code>Rmd</code> and <code>md</code>) which answers the questions: Why should I use this package? How do I access the package? How do I use the package?
+<ul>
+<li>The README should include 1-2 brief examples. Place more extended examples in the vignette.</li>
+</ul></li>
+<li>An R documentation file for each function and each dataset.</li>
+<li>A reasonable name that is not already in use on CRAN or GitHub.<br>
+</li>
+</ul></li>
+<li>A ten minute presentation about the package, with slides. Similar to the README, the presentation should motivate the viewer to use the package and should include an example of how to use the package.</li>
+<li>A <code>data-raw</code> folder for handling data wrangling, that allows for going from raw data to the polished data you include in the package.</li>
+<li>A <code>data</code> folder for holding the finalized, polished dataset.</li>
+</ul>
+</section>
+<section id="requirements-specific-to-option-1" class="level3">
+<h3 class="anchored" data-anchor-id="requirements-specific-to-option-1">Requirements specific to Option 1:</h3>
+<ul>
+<li>At least 4 functions.</li>
+<li>At least 8 unit tests.</li>
+<li>A dataset for demonstrating how to use the functions in the package.
+<ul>
+<li>There are no requirements on the size of the dataset.</li>
+</ul></li>
+<li>A 400 - 800 word vignette with at least 1 example that showcases a problem that your package is designed to solve.
+<ul>
+<li>Note: It is completely fine to use additional packages and functions in the vignette.</li>
+</ul></li>
+</ul>
+</section>
+<section id="requirements-specific-to-option-2" class="level3">
+<h3 class="anchored" data-anchor-id="requirements-specific-to-option-2">Requirements specific to Option 2:</h3>
+<ul>
+<li>A dataset with at least 8 variables and at least 30 observations.</li>
+<li>At least 2 functions, such as ones that carry out common operations of interest on the dataset.
+<ul>
+<li>At least 1 of these functions should create a polished, well-constructed graph.</li>
+</ul></li>
+<li>At least 2 unit tests.</li>
+<li>A 600 - 1000 word vignette with at least 3 examples that showcase the questions you can answer with the provided dataset and functions.
+<ul>
+<li>Note: It is completely fine to use additional packages and functions in the vignette.</li>
+</ul></li>
+</ul>
+</section>
+<section id="extra-credit" class="level3">
+<h3 class="anchored" data-anchor-id="extra-credit">Extra Credit</h3>
+<ul>
+<li>A hex sticker that contains the package name and a design that relates to the package in some way.</li>
+</ul>
+</section>
+<section id="tips-for-getting-started" class="level3">
+<h3 class="anchored" data-anchor-id="tips-for-getting-started">Tips for getting started</h3>
+<ul>
+<li>As a group, brainstorm ideas and decide whether you want to focus more on functions (Option 1) or data (Option 2) in your package.</li>
+<li>Remember to use class resources:
+<ul>
+<li>The Week 10 &amp; Week 11 lecture slides</li>
+<li>The <a href="../in_class/R_Package.html">Creating an R Package handout</a> which outlines the initial steps.</li>
+<li>The <a href="https://github.com/Reed-Data-Science/pdxHoles"><code>pdxHoles</code> package</a> we live-coded in lecture. (Note: <code>pdxHoles</code> is still mostly the skeleton of a package.)</li>
+</ul></li>
+<li>Check out well-written and well-documented <code>R</code> packages. Here are some examples:
+<ul>
+<li><a href="https://reprex.tidyverse.org/">https://reprex.tidyverse.org/</a> and the <a href="https://github.com/tidyverse/reprex"><code>reprex</code> GitHub repo</a></li>
+<li><a href="https://glue.tidyverse.org/">https://glue.tidyverse.org/</a> and the <a href="https://github.com/tidyverse/glue"><code>glue</code> GitHub repo</a></li>
+<li><a href="https://allisonhorst.github.io/palmerpenguins/">https://allisonhorst.github.io/palmerpenguins/</a> and the <a href="https://github.com/allisonhorst/palmerpenguins"><code>palmerpenguins</code> GitHub repo</a></li>
+</ul></li>
+<li>Create a <code>sandbox</code> folder and add it to the <code>.Rbuildignore</code>. Use this folder for exploring different ideas and creating MVPs.</li>
+</ul>
+</section>
+</section>
+<section id="timeline" class="level2">
+<h2 class="anchored" data-anchor-id="timeline">Timeline</h2>
+<ul>
+<li>4/20: Receive project instructions, <a href="../projects/proj02_groups.html">group assignment</a>, and invite to your group’s GitHub repo.</li>
+<li>4/27: Come to class for a project work day instead of lecture.</li>
+<li>5/13 (noon): Make sure the final version of your package is in your GitHub repo.</li>
+<li>5/13 (1pm): Give a 10 minute presentation of your package during our final exam time slot, in Library 389 (our classroom).</li>
+<li>5/13: Decide as a group whether or not you want to make your GitHub repo (and so <code>R</code> package) public.
+<ul>
+<li>If at least one group member does not want to make the repo public, you must leave it private.</li>
+<li>Email me with your decision.</li>
+<li>Your grade on this project does not at all depend on this decision.</li>
+</ul></li>
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

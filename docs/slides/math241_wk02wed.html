@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.18">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <title>Stat 241 – More ggplot2</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,13 +19,10 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
+    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: 1.5em;}
-    div.column{flex: auto;}
-    @media screen {
-    div.columns{gap: min(4vw, 1.5em);}
-    div.column{overflow-x: auto;}
-    }
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -276,16 +273,16 @@
 <section id="recap-data-births2015" class="slide level2">
 <h2>Recap Data: Births2015</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="co"># Load libraries</span></span>
-<span id="cb1-2"><a aria-label="2"></a><span class="fu">library</span>(mosaicData)</span>
-<span id="cb1-3"><a aria-label="3"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a aria-label="4"></a></span>
-<span id="cb1-5"><a aria-label="5"></a></span>
-<span id="cb1-6"><a aria-label="6"></a><span class="co"># Grab data</span></span>
-<span id="cb1-7"><a aria-label="7"></a><span class="fu">data</span>(Births2015)</span>
-<span id="cb1-8"><a aria-label="8"></a></span>
-<span id="cb1-9"><a aria-label="9"></a><span class="co"># Inspect data</span></span>
-<span id="cb1-10"><a aria-label="10"></a><span class="fu">glimpse</span>(Births2015)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Load libraries</span></span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(mosaicData)</span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a></a></span>
+<span id="cb1-5"><a></a></span>
+<span id="cb1-6"><a></a><span class="co"># Grab data</span></span>
+<span id="cb1-7"><a></a><span class="fu">data</span>(Births2015)</span>
+<span id="cb1-8"><a></a></span>
+<span id="cb1-9"><a></a><span class="co"># Inspect data</span></span>
+<span id="cb1-10"><a></a><span class="fu">glimpse</span>(Births2015)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 365
 Columns: 8
@@ -304,10 +301,10 @@ $ day_of_week  &lt;dbl&gt; 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1,
 <h2>Recap Data: Births2015</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb3-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb3-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb3-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb3-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb3-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb3-4"><a></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -326,16 +323,16 @@ $ day_of_week  &lt;dbl&gt; 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1,
 <h2>Scales</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb4-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb4-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb4-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-5"><a aria-label="5"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%b"</span>,</span>
-<span id="cb4-6"><a aria-label="6"></a>               <span class="at">date_breaks =</span> <span class="st">"1 month"</span>) <span class="sc">+</span></span>
-<span id="cb4-7"><a aria-label="7"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">6000</span>,</span>
-<span id="cb4-8"><a aria-label="8"></a>                            <span class="dv">14000</span>, <span class="at">by =</span> <span class="dv">500</span>)) <span class="sc">+</span></span>
-<span id="cb4-9"><a aria-label="9"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">type =</span> <span class="st">"qual"</span>,</span>
-<span id="cb4-10"><a aria-label="10"></a>                     <span class="at">palette =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb4-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb4-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb4-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-5"><a></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%b"</span>,</span>
+<span id="cb4-6"><a></a>               <span class="at">date_breaks =</span> <span class="st">"1 month"</span>) <span class="sc">+</span></span>
+<span id="cb4-7"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">6000</span>,</span>
+<span id="cb4-8"><a></a>                            <span class="dv">14000</span>, <span class="at">by =</span> <span class="dv">500</span>)) <span class="sc">+</span></span>
+<span id="cb4-9"><a></a>  <span class="fu">scale_color_brewer</span>(<span class="at">type =</span> <span class="st">"qual"</span>,</span>
+<span id="cb4-10"><a></a>                     <span class="at">palette =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -354,17 +351,17 @@ $ day_of_week  &lt;dbl&gt; 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1,
 <h2>Context: Labels</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb5-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb5-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb5-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb5-5"><a aria-label="5"></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-6"><a aria-label="6"></a>    <span class="at">x =</span> <span class="st">"Date"</span>,</span>
-<span id="cb5-7"><a aria-label="7"></a>    <span class="at">y =</span> <span class="st">"Number of Births in US"</span>,</span>
-<span id="cb5-8"><a aria-label="8"></a>    <span class="at">title =</span> <span class="st">"Trend of Births in 2015"</span>,</span>
-<span id="cb5-9"><a aria-label="9"></a>    <span class="at">subtitle =</span> <span class="st">"Data: National Vital Statistics System"</span>,</span>
-<span id="cb5-10"><a aria-label="10"></a>    <span class="at">color =</span> <span class="st">"Week Days"</span></span>
-<span id="cb5-11"><a aria-label="11"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb5-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb5-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb5-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb5-5"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-6"><a></a>    <span class="at">x =</span> <span class="st">"Date"</span>,</span>
+<span id="cb5-7"><a></a>    <span class="at">y =</span> <span class="st">"Number of Births in US"</span>,</span>
+<span id="cb5-8"><a></a>    <span class="at">title =</span> <span class="st">"Trend of Births in 2015"</span>,</span>
+<span id="cb5-9"><a></a>    <span class="at">subtitle =</span> <span class="st">"Data: National Vital Statistics System"</span>,</span>
+<span id="cb5-10"><a></a>    <span class="at">color =</span> <span class="st">"Week Days"</span></span>
+<span id="cb5-11"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -382,17 +379,17 @@ $ day_of_week  &lt;dbl&gt; 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1,
 <h2>Context: Labels</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb6-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb6-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb6-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb6-5"><a aria-label="5"></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-6"><a aria-label="6"></a>    <span class="at">x =</span> <span class="st">"Date"</span>,</span>
-<span id="cb6-7"><a aria-label="7"></a>    <span class="at">y =</span> <span class="st">"Number of Births in US"</span>,</span>
-<span id="cb6-8"><a aria-label="8"></a>    <span class="at">title =</span> <span class="st">"Trend of Births in 2015"</span>,</span>
-<span id="cb6-9"><a aria-label="9"></a>    <span class="at">caption =</span> <span class="st">"Data: National Vital Statistics System"</span>,</span>
-<span id="cb6-10"><a aria-label="10"></a>    <span class="at">color =</span> <span class="st">"Week Days"</span></span>
-<span id="cb6-11"><a aria-label="11"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb6-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb6-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb6-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-5"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-6"><a></a>    <span class="at">x =</span> <span class="st">"Date"</span>,</span>
+<span id="cb6-7"><a></a>    <span class="at">y =</span> <span class="st">"Number of Births in US"</span>,</span>
+<span id="cb6-8"><a></a>    <span class="at">title =</span> <span class="st">"Trend of Births in 2015"</span>,</span>
+<span id="cb6-9"><a></a>    <span class="at">caption =</span> <span class="st">"Data: National Vital Statistics System"</span>,</span>
+<span id="cb6-10"><a></a>    <span class="at">color =</span> <span class="st">"Week Days"</span></span>
+<span id="cb6-11"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -411,25 +408,25 @@ $ day_of_week  &lt;dbl&gt; 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1,
 <section id="context-adding-holidays" class="slide level2">
 <h2>Context: Adding Holidays</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb7-2"><a aria-label="2"></a>holidays <span class="ot">&lt;-</span> </span>
-<span id="cb7-3"><a aria-label="3"></a>  <span class="fu">data.frame</span>(<span class="at">date =</span> <span class="fu">ymd</span>(<span class="st">"2015-01-01"</span>,<span class="st">"2015-05-25"</span>, <span class="st">"2015-07-04"</span>,</span>
-<span id="cb7-4"><a aria-label="4"></a>                        <span class="st">"2015-12-25"</span>, <span class="st">"2015-11-26"</span>, <span class="st">"2015-12-24"</span>,</span>
-<span id="cb7-5"><a aria-label="5"></a>                        <span class="st">"2015-09-07"</span>), </span>
-<span id="cb7-6"><a aria-label="6"></a>            <span class="at">occasion =</span> <span class="fu">c</span>(<span class="st">"New Year"</span>, <span class="st">"Memorial Day"</span>, </span>
-<span id="cb7-7"><a aria-label="7"></a>                         <span class="st">"Independence Day"</span>, <span class="st">"Christmas"</span>,</span>
-<span id="cb7-8"><a aria-label="8"></a>                         <span class="st">"Thanksgiving"</span>, <span class="st">"Christmas Eve"</span>, </span>
-<span id="cb7-9"><a aria-label="9"></a>                         <span class="st">"Labor Day"</span>),</span>
-<span id="cb7-10"><a aria-label="10"></a>            <span class="at">emoji =</span> <span class="fu">c</span>(<span class="st">"1f389"</span>, <span class="st">"1f396"</span>, <span class="st">"1f386"</span>, <span class="st">"1f384"</span>, </span>
-<span id="cb7-11"><a aria-label="11"></a>                      <span class="st">"1f983"</span>, <span class="st">"1f381"</span>, <span class="st">"1f477"</span>))</span>
-<span id="cb7-12"><a aria-label="12"></a></span>
-<span id="cb7-13"><a aria-label="13"></a>holidays <span class="ot">&lt;-</span> <span class="fu">left_join</span>(holidays, Births2015)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb7-2"><a></a>holidays <span class="ot">&lt;-</span> </span>
+<span id="cb7-3"><a></a>  <span class="fu">data.frame</span>(<span class="at">date =</span> <span class="fu">ymd</span>(<span class="st">"2015-01-01"</span>,<span class="st">"2015-05-25"</span>, <span class="st">"2015-07-04"</span>,</span>
+<span id="cb7-4"><a></a>                        <span class="st">"2015-12-25"</span>, <span class="st">"2015-11-26"</span>, <span class="st">"2015-12-24"</span>,</span>
+<span id="cb7-5"><a></a>                        <span class="st">"2015-09-07"</span>), </span>
+<span id="cb7-6"><a></a>            <span class="at">occasion =</span> <span class="fu">c</span>(<span class="st">"New Year"</span>, <span class="st">"Memorial Day"</span>, </span>
+<span id="cb7-7"><a></a>                         <span class="st">"Independence Day"</span>, <span class="st">"Christmas"</span>,</span>
+<span id="cb7-8"><a></a>                         <span class="st">"Thanksgiving"</span>, <span class="st">"Christmas Eve"</span>, </span>
+<span id="cb7-9"><a></a>                         <span class="st">"Labor Day"</span>),</span>
+<span id="cb7-10"><a></a>            <span class="at">emoji =</span> <span class="fu">c</span>(<span class="st">"1f389"</span>, <span class="st">"1f396"</span>, <span class="st">"1f386"</span>, <span class="st">"1f384"</span>, </span>
+<span id="cb7-11"><a></a>                      <span class="st">"1f983"</span>, <span class="st">"1f381"</span>, <span class="st">"1f477"</span>))</span>
+<span id="cb7-12"><a></a></span>
+<span id="cb7-13"><a></a>holidays <span class="ot">&lt;-</span> <span class="fu">left_join</span>(holidays, Births2015)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="context-adding-holidays-1" class="slide level2">
 <h2>Context: Adding Holidays</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="fu">glimpse</span>(holidays)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">glimpse</span>(holidays)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 7
 Columns: 10
@@ -453,13 +450,13 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Context: Adding Holidays</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb10-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb10-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb10-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb10-5"><a aria-label="5"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> holidays, </span>
-<span id="cb10-6"><a aria-label="6"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births), </span>
-<span id="cb10-7"><a aria-label="7"></a>             <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb10-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb10-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb10-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb10-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> holidays, </span>
+<span id="cb10-6"><a></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births), </span>
+<span id="cb10-7"><a></a>             <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -474,12 +471,12 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Context: Adding Holidays</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb11-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb11-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb11-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb11-5"><a aria-label="5"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> holidays,</span>
-<span id="cb11-6"><a aria-label="6"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> occasion))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb11-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb11-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb11-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb11-5"><a></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> holidays,</span>
+<span id="cb11-6"><a></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> occasion))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -497,13 +494,13 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Context: Adding Holidays</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb12-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb12-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb12-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb12-5"><a aria-label="5"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> holidays,</span>
-<span id="cb12-6"><a aria-label="6"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> occasion), </span>
-<span id="cb12-7"><a aria-label="7"></a>            <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb12-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb12-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb12-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb12-5"><a></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> holidays,</span>
+<span id="cb12-6"><a></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> occasion), </span>
+<span id="cb12-7"><a></a>            <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -518,14 +515,14 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Context: Adding Holidays</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a><span class="fu">library</span>(ggrepel)</span>
-<span id="cb13-2"><a aria-label="2"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb13-3"><a aria-label="3"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb13-4"><a aria-label="4"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb13-5"><a aria-label="5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb13-6"><a aria-label="6"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> holidays,</span>
-<span id="cb13-7"><a aria-label="7"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> occasion), </span>
-<span id="cb13-8"><a aria-label="8"></a>            <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb13-2"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb13-3"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb13-4"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb13-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb13-6"><a></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> holidays,</span>
+<span id="cb13-7"><a></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> occasion), </span>
+<span id="cb13-8"><a></a>            <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -540,14 +537,14 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Context: Adding Holidays</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb14-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb14-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb14-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"black"</span>,</span>
-<span id="cb14-5"><a aria-label="5"></a>             <span class="at">data =</span> holidays) <span class="sc">+</span> </span>
-<span id="cb14-6"><a aria-label="6"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">"grey90"</span>,</span>
-<span id="cb14-7"><a aria-label="7"></a>             <span class="at">data =</span> holidays) <span class="sc">+</span> </span>
-<span id="cb14-8"><a aria-label="8"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb14-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb14-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb14-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb14-5"><a></a>             <span class="at">data =</span> holidays) <span class="sc">+</span> </span>
+<span id="cb14-6"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">"grey90"</span>,</span>
+<span id="cb14-7"><a></a>             <span class="at">data =</span> holidays) <span class="sc">+</span> </span>
+<span id="cb14-8"><a></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -562,17 +559,17 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Context: Adding Holidays</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb15-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb15-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb15-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"black"</span>,</span>
-<span id="cb15-5"><a aria-label="5"></a>             <span class="at">data =</span> holidays) <span class="sc">+</span> </span>
-<span id="cb15-6"><a aria-label="6"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">"grey90"</span>,</span>
-<span id="cb15-7"><a aria-label="7"></a>             <span class="at">data =</span> holidays) <span class="sc">+</span> </span>
-<span id="cb15-8"><a aria-label="8"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb15-9"><a aria-label="9"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">as_date</span>(<span class="st">"2015-09-01"</span>),</span>
-<span id="cb15-10"><a aria-label="10"></a>           <span class="at">y =</span> <span class="dv">7500</span>, <span class="at">label =</span> <span class="st">"Holidays"</span>,</span>
-<span id="cb15-11"><a aria-label="11"></a>           <span class="at">color=</span><span class="st">"black"</span>, <span class="at">size=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb15-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb15-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb15-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb15-5"><a></a>             <span class="at">data =</span> holidays) <span class="sc">+</span> </span>
+<span id="cb15-6"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">"grey90"</span>,</span>
+<span id="cb15-7"><a></a>             <span class="at">data =</span> holidays) <span class="sc">+</span> </span>
+<span id="cb15-8"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb15-9"><a></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">as_date</span>(<span class="st">"2015-09-01"</span>),</span>
+<span id="cb15-10"><a></a>           <span class="at">y =</span> <span class="dv">7500</span>, <span class="at">label =</span> <span class="st">"Holidays"</span>,</span>
+<span id="cb15-11"><a></a>           <span class="at">color=</span><span class="st">"black"</span>, <span class="at">size=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -587,22 +584,22 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Context: Adding Holidays</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb16-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb16-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb16-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"black"</span>,</span>
-<span id="cb16-5"><a aria-label="5"></a>             <span class="at">data =</span> holidays) <span class="sc">+</span> </span>
-<span id="cb16-6"><a aria-label="6"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">"grey90"</span>,</span>
-<span id="cb16-7"><a aria-label="7"></a>             <span class="at">data =</span> holidays) <span class="sc">+</span> </span>
-<span id="cb16-8"><a aria-label="8"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb16-9"><a aria-label="9"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">colour =</span> <span class="st">"black"</span>,</span>
-<span id="cb16-10"><a aria-label="10"></a>           <span class="at">x =</span> <span class="fu">as_date</span>(<span class="st">"2015-09-01"</span>), </span>
-<span id="cb16-11"><a aria-label="11"></a>           <span class="at">xend =</span> holidays<span class="sc">$</span>date,</span>
-<span id="cb16-12"><a aria-label="12"></a>           <span class="at">y =</span> <span class="dv">6800</span>, <span class="at">yend =</span> holidays<span class="sc">$</span>births, </span>
-<span id="cb16-13"><a aria-label="13"></a>           <span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>())<span class="sc">+</span> </span>
-<span id="cb16-14"><a aria-label="14"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">as_date</span>(<span class="st">"2015-09-01"</span>),</span>
-<span id="cb16-15"><a aria-label="15"></a>           <span class="at">y =</span> <span class="dv">7500</span>, <span class="at">label =</span> <span class="st">"Holidays"</span>,</span>
-<span id="cb16-16"><a aria-label="16"></a>           <span class="at">color=</span><span class="st">"black"</span>, <span class="at">size=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb16-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb16-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb16-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb16-5"><a></a>             <span class="at">data =</span> holidays) <span class="sc">+</span> </span>
+<span id="cb16-6"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">"grey90"</span>,</span>
+<span id="cb16-7"><a></a>             <span class="at">data =</span> holidays) <span class="sc">+</span> </span>
+<span id="cb16-8"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb16-9"><a></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">colour =</span> <span class="st">"black"</span>,</span>
+<span id="cb16-10"><a></a>           <span class="at">x =</span> <span class="fu">as_date</span>(<span class="st">"2015-09-01"</span>), </span>
+<span id="cb16-11"><a></a>           <span class="at">xend =</span> holidays<span class="sc">$</span>date,</span>
+<span id="cb16-12"><a></a>           <span class="at">y =</span> <span class="dv">6800</span>, <span class="at">yend =</span> holidays<span class="sc">$</span>births, </span>
+<span id="cb16-13"><a></a>           <span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>())<span class="sc">+</span> </span>
+<span id="cb16-14"><a></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">as_date</span>(<span class="st">"2015-09-01"</span>),</span>
+<span id="cb16-15"><a></a>           <span class="at">y =</span> <span class="dv">7500</span>, <span class="at">label =</span> <span class="st">"Holidays"</span>,</span>
+<span id="cb16-16"><a></a>           <span class="at">color=</span><span class="st">"black"</span>, <span class="at">size=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -616,12 +613,12 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <section id="context-adding-holidays-9" class="slide level2">
 <h2>Context: Adding Holidays</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a><span class="co"># Create a story label</span></span>
-<span id="cb17-2"><a aria-label="2"></a>label_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb17-3"><a aria-label="3"></a>  <span class="at">date =</span> <span class="fu">ymd</span>(<span class="st">"2015-01-01"</span>),</span>
-<span id="cb17-4"><a aria-label="4"></a>  <span class="at">births =</span> <span class="fu">max</span>(Births2015<span class="sc">$</span>births),</span>
-<span id="cb17-5"><a aria-label="5"></a>  <span class="at">label =</span> <span class="st">"The frequency of births on holidays </span><span class="sc">\n</span><span class="st">follows weekend </span><span class="sc">\n</span><span class="st">trends."</span></span>
-<span id="cb17-6"><a aria-label="6"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co"># Create a story label</span></span>
+<span id="cb17-2"><a></a>label_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb17-3"><a></a>  <span class="at">date =</span> <span class="fu">ymd</span>(<span class="st">"2015-01-01"</span>),</span>
+<span id="cb17-4"><a></a>  <span class="at">births =</span> <span class="fu">max</span>(Births2015<span class="sc">$</span>births),</span>
+<span id="cb17-5"><a></a>  <span class="at">label =</span> <span class="st">"The frequency of births on holidays </span><span class="sc">\n</span><span class="st">follows weekend </span><span class="sc">\n</span><span class="st">trends."</span></span>
+<span id="cb17-6"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li class="fragment">What do you think “\n” does?</li>
@@ -631,14 +628,14 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Context: Adding Holidays</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb18-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb18-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span></span>
-<span id="cb18-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb18-5"><a aria-label="5"></a>  <span class="fu">geom_text</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> label),</span>
-<span id="cb18-6"><a aria-label="6"></a>            <span class="at">data =</span> label_data, </span>
-<span id="cb18-7"><a aria-label="7"></a>            <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">vjust =</span> <span class="st">"top"</span>,</span>
-<span id="cb18-8"><a aria-label="8"></a>            <span class="at">hjust =</span> <span class="st">"left"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb18-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb18-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span></span>
+<span id="cb18-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb18-5"><a></a>  <span class="fu">geom_text</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> label),</span>
+<span id="cb18-6"><a></a>            <span class="at">data =</span> label_data, </span>
+<span id="cb18-7"><a></a>            <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">vjust =</span> <span class="st">"top"</span>,</span>
+<span id="cb18-8"><a></a>            <span class="at">hjust =</span> <span class="st">"left"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -653,20 +650,20 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Context: Adding Holidays</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a><span class="co"># devtools::install_github("dill/emoGG")</span></span>
-<span id="cb19-2"><a aria-label="2"></a><span class="fu">library</span>(emoGG)</span>
-<span id="cb19-3"><a aria-label="3"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb19-4"><a aria-label="4"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb19-5"><a aria-label="5"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span></span>
-<span id="cb19-6"><a aria-label="6"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb19-7"><a aria-label="7"></a>  <span class="fu">geom_text</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> label),</span>
-<span id="cb19-8"><a aria-label="8"></a>            <span class="at">data =</span> label_data, </span>
-<span id="cb19-9"><a aria-label="9"></a>            <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">vjust =</span> <span class="st">"top"</span>,</span>
-<span id="cb19-10"><a aria-label="10"></a>            <span class="at">hjust =</span> <span class="st">"left"</span>) <span class="sc">+</span> </span>
-<span id="cb19-11"><a aria-label="11"></a>  <span class="fu">geom_emoji</span>(<span class="at">data =</span> holidays,</span>
-<span id="cb19-12"><a aria-label="12"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">emoji =</span> emoji, </span>
-<span id="cb19-13"><a aria-label="13"></a>                           <span class="at">x =</span> date,</span>
-<span id="cb19-14"><a aria-label="14"></a>                           <span class="at">y =</span> births))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># devtools::install_github("dill/emoGG")</span></span>
+<span id="cb19-2"><a></a><span class="fu">library</span>(emoGG)</span>
+<span id="cb19-3"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb19-4"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb19-5"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span></span>
+<span id="cb19-6"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb19-7"><a></a>  <span class="fu">geom_text</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> label),</span>
+<span id="cb19-8"><a></a>            <span class="at">data =</span> label_data, </span>
+<span id="cb19-9"><a></a>            <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">vjust =</span> <span class="st">"top"</span>,</span>
+<span id="cb19-10"><a></a>            <span class="at">hjust =</span> <span class="st">"left"</span>) <span class="sc">+</span> </span>
+<span id="cb19-11"><a></a>  <span class="fu">geom_emoji</span>(<span class="at">data =</span> holidays,</span>
+<span id="cb19-12"><a></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">emoji =</span> emoji, </span>
+<span id="cb19-13"><a></a>                           <span class="at">x =</span> date,</span>
+<span id="cb19-14"><a></a>                           <span class="at">y =</span> births))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -705,12 +702,12 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <p>Let’s return to the US Forest Inventory and Analysis Program Idaho data</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a>dat <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/IDdata.rds"</span>)</span>
-<span id="cb20-2"><a aria-label="2"></a>idaho_plots <span class="ot">&lt;-</span> dat<span class="sc">$</span>pltassgn</span>
-<span id="cb20-3"><a aria-label="3"></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
-<span id="cb20-4"><a aria-label="4"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
-<span id="cb20-5"><a aria-label="5"></a>                     <span class="at">y =</span> BA_TPA_ADJ)) <span class="sc">+</span></span>
-<span id="cb20-6"><a aria-label="6"></a>  <span class="fu">geom_point</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>dat <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/IDdata.rds"</span>)</span>
+<span id="cb20-2"><a></a>idaho_plots <span class="ot">&lt;-</span> dat<span class="sc">$</span>pltassgn</span>
+<span id="cb20-3"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
+<span id="cb20-4"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
+<span id="cb20-5"><a></a>                     <span class="at">y =</span> BA_TPA_ADJ)) <span class="sc">+</span></span>
+<span id="cb20-6"><a></a>  <span class="fu">geom_point</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -725,10 +722,10 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Handling Over-plotting</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
-<span id="cb21-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
-<span id="cb21-3"><a aria-label="3"></a>                     <span class="at">y =</span> BA_TPA_ADJ)) <span class="sc">+</span></span>
-<span id="cb21-4"><a aria-label="4"></a>  <span class="fu">geom_jitter</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
+<span id="cb21-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
+<span id="cb21-3"><a></a>                     <span class="at">y =</span> BA_TPA_ADJ)) <span class="sc">+</span></span>
+<span id="cb21-4"><a></a>  <span class="fu">geom_jitter</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -743,10 +740,10 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Handling Over-plotting</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
-<span id="cb22-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
-<span id="cb22-3"><a aria-label="3"></a>                     <span class="at">y =</span> BA_TPA_ADJ)) <span class="sc">+</span></span>
-<span id="cb22-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
+<span id="cb22-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
+<span id="cb22-3"><a></a>                     <span class="at">y =</span> BA_TPA_ADJ)) <span class="sc">+</span></span>
+<span id="cb22-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -761,10 +758,10 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Handling Over-plotting</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
-<span id="cb23-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
-<span id="cb23-3"><a aria-label="3"></a>                     <span class="at">y =</span> BA_TPA_ADJ)) <span class="sc">+</span></span>
-<span id="cb23-4"><a aria-label="4"></a>  <span class="fu">geom_bin2d</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
+<span id="cb23-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
+<span id="cb23-3"><a></a>                     <span class="at">y =</span> BA_TPA_ADJ)) <span class="sc">+</span></span>
+<span id="cb23-4"><a></a>  <span class="fu">geom_bin2d</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -779,10 +776,10 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Handling Transformations</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
-<span id="cb24-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
-<span id="cb24-3"><a aria-label="3"></a>                     <span class="at">y =</span> <span class="fu">log10</span>(BA_TPA_ADJ))) <span class="sc">+</span></span>
-<span id="cb24-4"><a aria-label="4"></a>  <span class="fu">geom_bin2d</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
+<span id="cb24-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
+<span id="cb24-3"><a></a>                     <span class="at">y =</span> <span class="fu">log10</span>(BA_TPA_ADJ))) <span class="sc">+</span></span>
+<span id="cb24-4"><a></a>  <span class="fu">geom_bin2d</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -800,11 +797,11 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Handling Transformations</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
-<span id="cb25-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
-<span id="cb25-3"><a aria-label="3"></a>                     <span class="at">y =</span> BA_TPA_ADJ)) <span class="sc">+</span></span>
-<span id="cb25-4"><a aria-label="4"></a>  <span class="fu">geom_bin2d</span>() <span class="sc">+</span></span>
-<span id="cb25-5"><a aria-label="5"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
+<span id="cb25-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
+<span id="cb25-3"><a></a>                     <span class="at">y =</span> BA_TPA_ADJ)) <span class="sc">+</span></span>
+<span id="cb25-4"><a></a>  <span class="fu">geom_bin2d</span>() <span class="sc">+</span></span>
+<span id="cb25-5"><a></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -821,7 +818,7 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <section id="colorbrewer" class="slide level2">
 <h2>ColorBrewer</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a>RColorBrewer<span class="sc">::</span><span class="fu">display.brewer.all</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>RColorBrewer<span class="sc">::</span><span class="fu">display.brewer.all</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -835,11 +832,11 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Color Options: Saturation</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
-<span id="cb27-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
-<span id="cb27-3"><a aria-label="3"></a>                     <span class="at">y =</span> <span class="fu">log10</span>(COUNT_TPA_ADJ))) <span class="sc">+</span></span>
-<span id="cb27-4"><a aria-label="4"></a>  <span class="fu">geom_bin2d</span>() <span class="sc">+</span> </span>
-<span id="cb27-5"><a aria-label="5"></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"Purples"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
+<span id="cb27-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
+<span id="cb27-3"><a></a>                     <span class="at">y =</span> <span class="fu">log10</span>(COUNT_TPA_ADJ))) <span class="sc">+</span></span>
+<span id="cb27-4"><a></a>  <span class="fu">geom_bin2d</span>() <span class="sc">+</span> </span>
+<span id="cb27-5"><a></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"Purples"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -854,12 +851,12 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Color Options: Saturation</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
-<span id="cb28-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
-<span id="cb28-3"><a aria-label="3"></a>                     <span class="at">y =</span> <span class="fu">log10</span>(COUNT_TPA_ADJ))) <span class="sc">+</span></span>
-<span id="cb28-4"><a aria-label="4"></a>  <span class="fu">geom_bin2d</span>() <span class="sc">+</span> </span>
-<span id="cb28-5"><a aria-label="5"></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"Purples"</span>, </span>
-<span id="cb28-6"><a aria-label="6"></a>                       <span class="at">direction =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
+<span id="cb28-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
+<span id="cb28-3"><a></a>                     <span class="at">y =</span> <span class="fu">log10</span>(COUNT_TPA_ADJ))) <span class="sc">+</span></span>
+<span id="cb28-4"><a></a>  <span class="fu">geom_bin2d</span>() <span class="sc">+</span> </span>
+<span id="cb28-5"><a></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"Purples"</span>, </span>
+<span id="cb28-6"><a></a>                       <span class="at">direction =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -874,12 +871,12 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>ColorBrewer YlGn palette</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
-<span id="cb29-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
-<span id="cb29-3"><a aria-label="3"></a>                     <span class="at">y =</span> <span class="fu">log10</span>(COUNT_TPA_ADJ))) <span class="sc">+</span></span>
-<span id="cb29-4"><a aria-label="4"></a>  <span class="fu">geom_bin2d</span>() <span class="sc">+</span></span>
-<span id="cb29-5"><a aria-label="5"></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"YlGn"</span>,</span>
-<span id="cb29-6"><a aria-label="6"></a>                       <span class="at">direction =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
+<span id="cb29-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
+<span id="cb29-3"><a></a>                     <span class="at">y =</span> <span class="fu">log10</span>(COUNT_TPA_ADJ))) <span class="sc">+</span></span>
+<span id="cb29-4"><a></a>  <span class="fu">geom_bin2d</span>() <span class="sc">+</span></span>
+<span id="cb29-5"><a></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"YlGn"</span>,</span>
+<span id="cb29-6"><a></a>                       <span class="at">direction =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -894,13 +891,13 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2><a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html">Viridis Palette</a></h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-label="1"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb30-2"><a aria-label="2"></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
-<span id="cb30-3"><a aria-label="3"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
-<span id="cb30-4"><a aria-label="4"></a>                     <span class="at">y =</span> <span class="fu">log10</span>(COUNT_TPA_ADJ))) <span class="sc">+</span></span>
-<span id="cb30-5"><a aria-label="5"></a>  <span class="fu">geom_bin2d</span>() <span class="sc">+</span></span>
-<span id="cb30-6"><a aria-label="6"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
-<span id="cb30-7"><a aria-label="7"></a>                       <span class="at">option =</span> <span class="st">"A"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">library</span>(viridis)</span>
+<span id="cb30-2"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
+<span id="cb30-3"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
+<span id="cb30-4"><a></a>                     <span class="at">y =</span> <span class="fu">log10</span>(COUNT_TPA_ADJ))) <span class="sc">+</span></span>
+<span id="cb30-5"><a></a>  <span class="fu">geom_bin2d</span>() <span class="sc">+</span></span>
+<span id="cb30-6"><a></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb30-7"><a></a>                       <span class="at">option =</span> <span class="st">"A"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -915,13 +912,13 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2><a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html">Viridis Palette</a></h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb31-2"><a aria-label="2"></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
-<span id="cb31-3"><a aria-label="3"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
-<span id="cb31-4"><a aria-label="4"></a>                     <span class="at">y =</span> <span class="fu">log10</span>(COUNT_TPA_ADJ))) <span class="sc">+</span></span>
-<span id="cb31-5"><a aria-label="5"></a>  <span class="fu">geom_bin2d</span>() <span class="sc">+</span></span>
-<span id="cb31-6"><a aria-label="6"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
-<span id="cb31-7"><a aria-label="7"></a>                       <span class="at">option =</span> <span class="st">"C"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">library</span>(viridis)</span>
+<span id="cb31-2"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
+<span id="cb31-3"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
+<span id="cb31-4"><a></a>                     <span class="at">y =</span> <span class="fu">log10</span>(COUNT_TPA_ADJ))) <span class="sc">+</span></span>
+<span id="cb31-5"><a></a>  <span class="fu">geom_bin2d</span>() <span class="sc">+</span></span>
+<span id="cb31-6"><a></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb31-7"><a></a>                       <span class="at">option =</span> <span class="st">"C"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -936,13 +933,13 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2><a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html">Viridis Palette</a></h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-label="1"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb32-2"><a aria-label="2"></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
-<span id="cb32-3"><a aria-label="3"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
-<span id="cb32-4"><a aria-label="4"></a>                     <span class="at">y =</span> <span class="fu">log10</span>(COUNT_TPA_ADJ))) <span class="sc">+</span></span>
-<span id="cb32-5"><a aria-label="5"></a>  <span class="fu">geom_bin2d</span>() <span class="sc">+</span></span>
-<span id="cb32-6"><a aria-label="6"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
-<span id="cb32-7"><a aria-label="7"></a>                       <span class="at">option =</span> <span class="st">"D"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">library</span>(viridis)</span>
+<span id="cb32-2"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> idaho_plots,</span>
+<span id="cb32-3"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> elev,</span>
+<span id="cb32-4"><a></a>                     <span class="at">y =</span> <span class="fu">log10</span>(COUNT_TPA_ADJ))) <span class="sc">+</span></span>
+<span id="cb32-5"><a></a>  <span class="fu">geom_bin2d</span>() <span class="sc">+</span></span>
+<span id="cb32-6"><a></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb32-7"><a></a>                       <span class="at">option =</span> <span class="st">"D"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -956,7 +953,7 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <section id="color-options-hue" class="slide level2">
 <h2>Color Options: Hue</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a><span class="fu">colors</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">colors</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] "white"                "aliceblue"            "antiquewhite"        
   [4] "antiquewhite1"        "antiquewhite2"        "antiquewhite3"       
@@ -1184,12 +1181,12 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Color Options: Hue</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb35-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb35-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb35-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb35-5"><a aria-label="5"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> </span>
-<span id="cb35-6"><a aria-label="6"></a>                       <span class="fu">sample</span>(<span class="fu">colors</span>(), <span class="dv">7</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb35-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb35-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb35-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb35-5"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> </span>
+<span id="cb35-6"><a></a>                       <span class="fu">sample</span>(<span class="fu">colors</span>(), <span class="dv">7</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1204,15 +1201,15 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Color Options: <a href="http://www.colourlovers.com/palette/694737/Thought_Provoking">Hue</a></h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb36-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb36-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb36-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb36-5"><a aria-label="5"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span></span>
-<span id="cb36-6"><a aria-label="6"></a>                       <span class="fu">c</span>(<span class="st">"#ECD078"</span>, <span class="st">"#D95B43"</span>,</span>
-<span id="cb36-7"><a aria-label="7"></a>                         <span class="st">"#C02942"</span>, <span class="st">"#8A9B0F"</span>,</span>
-<span id="cb36-8"><a aria-label="8"></a>                         <span class="st">"#542437"</span>, <span class="st">"#53777A"</span>, </span>
-<span id="cb36-9"><a aria-label="9"></a>                         <span class="st">"#6A4A3C"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb36-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb36-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb36-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb36-5"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span></span>
+<span id="cb36-6"><a></a>                       <span class="fu">c</span>(<span class="st">"#ECD078"</span>, <span class="st">"#D95B43"</span>,</span>
+<span id="cb36-7"><a></a>                         <span class="st">"#C02942"</span>, <span class="st">"#8A9B0F"</span>,</span>
+<span id="cb36-8"><a></a>                         <span class="st">"#542437"</span>, <span class="st">"#53777A"</span>, </span>
+<span id="cb36-9"><a></a>                         <span class="st">"#6A4A3C"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1227,11 +1224,11 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>ColorBrewer Hue</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb37-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb37-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb37-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb37-5"><a aria-label="5"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb37-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb37-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb37-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb37-5"><a></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1245,7 +1242,7 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <section id="themes" class="slide level2">
 <h2>Themes</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-label="1"></a><span class="co"># ?theme</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="co"># ?theme</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li class="fragment">Can override specific aspects of the theme
@@ -1256,7 +1253,7 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-label="1"></a><span class="fu">theme_update</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">theme_update</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -1264,18 +1261,18 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Themes</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb40-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb40-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb40-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span></span>
-<span id="cb40-5"><a aria-label="5"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> </span>
-<span id="cb40-6"><a aria-label="6"></a>        <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#C1D82F"</span>, <span class="at">size =</span> <span class="dv">20</span>), </span>
-<span id="cb40-7"><a aria-label="7"></a>        <span class="at">axis.title.y =</span> </span>
-<span id="cb40-8"><a aria-label="8"></a>        <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#00857D"</span>, <span class="at">size =</span> <span class="dv">25</span>),</span>
-<span id="cb40-9"><a aria-label="9"></a>        <span class="at">axis.text.x =</span> </span>
-<span id="cb40-10"><a aria-label="10"></a>        <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#C1D82F"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
-<span id="cb40-11"><a aria-label="11"></a>        <span class="at">axis.text.y =</span> </span>
-<span id="cb40-12"><a aria-label="12"></a>        <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#FF7401"</span>, <span class="at">size =</span> <span class="dv">18</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb40-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb40-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb40-4"><a></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span></span>
+<span id="cb40-5"><a></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> </span>
+<span id="cb40-6"><a></a>        <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#C1D82F"</span>, <span class="at">size =</span> <span class="dv">20</span>), </span>
+<span id="cb40-7"><a></a>        <span class="at">axis.title.y =</span> </span>
+<span id="cb40-8"><a></a>        <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#00857D"</span>, <span class="at">size =</span> <span class="dv">25</span>),</span>
+<span id="cb40-9"><a></a>        <span class="at">axis.text.x =</span> </span>
+<span id="cb40-10"><a></a>        <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#C1D82F"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb40-11"><a></a>        <span class="at">axis.text.y =</span> </span>
+<span id="cb40-12"><a></a>        <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#FF7401"</span>, <span class="at">size =</span> <span class="dv">18</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1291,11 +1288,11 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h3 id="built-in-themes"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">Built-in Themes</a></h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb41-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb41-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb41-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
-<span id="cb41-5"><a aria-label="5"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb41-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb41-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb41-4"><a></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
+<span id="cb41-5"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1311,11 +1308,11 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h3 id="built-in-themes-1">Built-in Themes</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb42-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb42-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb42-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
-<span id="cb42-5"><a aria-label="5"></a>  <span class="fu">theme_dark</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb42-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb42-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb42-4"><a></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
+<span id="cb42-5"><a></a>  <span class="fu">theme_dark</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1331,11 +1328,11 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h3 id="built-in-themes-2">Built-in Themes</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb43-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb43-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb43-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
-<span id="cb43-5"><a aria-label="5"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb43-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb43-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb43-4"><a></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
+<span id="cb43-5"><a></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1354,12 +1351,12 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h3 id="additional-themes-package-ggthemes">Additional Themes Package: <a href="https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/">ggthemes</a></h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-label="1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb44-2"><a aria-label="2"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb44-3"><a aria-label="3"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb44-4"><a aria-label="4"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb44-5"><a aria-label="5"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
-<span id="cb44-6"><a aria-label="6"></a>  <span class="fu">theme_economist</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb44-2"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb44-3"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb44-4"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb44-5"><a></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
+<span id="cb44-6"><a></a>  <span class="fu">theme_economist</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1375,11 +1372,11 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h3 id="additional-themes-package">Additional Themes Package</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb45-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb45-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb45-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
-<span id="cb45-5"><a aria-label="5"></a>  <span class="fu">theme_wsj</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb45-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb45-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb45-4"><a></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
+<span id="cb45-5"><a></a>  <span class="fu">theme_wsj</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1395,13 +1392,13 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h3 id="savingexporting-your-figures">Saving/exporting your figures</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-label="1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb46-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb46-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb46-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb46-5"><a aria-label="5"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb46-6"><a aria-label="6"></a></span>
-<span id="cb46-7"><a aria-label="7"></a>p1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb46-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb46-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb46-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb46-5"><a></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb46-6"><a></a></span>
+<span id="cb46-7"><a></a>p1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1413,11 +1410,11 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 </div></div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a aria-label="1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">"my_nice_figure.png"</span>, </span>
-<span id="cb47-2"><a aria-label="2"></a>       <span class="at">plot =</span> p1, </span>
-<span id="cb47-3"><a aria-label="3"></a>       <span class="at">width =</span> <span class="dv">10</span>, </span>
-<span id="cb47-4"><a aria-label="4"></a>       <span class="at">height =</span> <span class="dv">6</span>, </span>
-<span id="cb47-5"><a aria-label="5"></a>       <span class="at">units =</span> <span class="st">"in"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">"my_nice_figure.png"</span>, </span>
+<span id="cb47-2"><a></a>       <span class="at">plot =</span> p1, </span>
+<span id="cb47-3"><a></a>       <span class="at">width =</span> <span class="dv">10</span>, </span>
+<span id="cb47-4"><a></a>       <span class="at">height =</span> <span class="dv">6</span>, </span>
+<span id="cb47-5"><a></a>       <span class="at">units =</span> <span class="st">"in"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -1490,21 +1487,21 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <p><br></p>
 <p>I want to reorder the bars of my plot but can’t get it working. Help!</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb48-2"><a aria-label="2"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb48-3"><a aria-label="3"></a></span>
-<span id="cb48-4"><a aria-label="4"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
-<span id="cb48-5"><a aria-label="5"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
-<span id="cb48-6"><a aria-label="6"></a>  <span class="fu">mutate</span>(<span class="at">mean_flipper =</span> <span class="fu">mean</span>(flipper_length_mm)) <span class="sc">%&gt;%</span></span>
-<span id="cb48-7"><a aria-label="7"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb48-8"><a aria-label="8"></a>  <span class="fu">mutate</span>(<span class="at">long =</span> <span class="fu">case_when</span>(flipper_length_mm <span class="sc">&lt;</span> <span class="fu">mean</span>(flipper_length_mm) <span class="sc">~</span> <span class="st">"no"</span>,</span>
-<span id="cb48-9"><a aria-label="9"></a>                           flipper_length_mm <span class="sc">&gt;=</span> <span class="fu">mean</span>(flipper_length_mm) <span class="sc">~</span> <span class="st">"yes"</span>))  </span>
-<span id="cb48-10"><a aria-label="10"></a></span>
-<span id="cb48-11"><a aria-label="11"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb48-12"><a aria-label="12"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
-<span id="cb48-13"><a aria-label="13"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a aria-label="1"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb49-2"><a aria-label="2"></a>  <span class="fu">count</span>(species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb48-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb48-3"><a></a></span>
+<span id="cb48-4"><a></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
+<span id="cb48-5"><a></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb48-6"><a></a>  <span class="fu">mutate</span>(<span class="at">mean_flipper =</span> <span class="fu">mean</span>(flipper_length_mm)) <span class="sc">%&gt;%</span></span>
+<span id="cb48-7"><a></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb48-8"><a></a>  <span class="fu">mutate</span>(<span class="at">long =</span> <span class="fu">case_when</span>(flipper_length_mm <span class="sc">&lt;</span> <span class="fu">mean</span>(flipper_length_mm) <span class="sc">~</span> <span class="st">"no"</span>,</span>
+<span id="cb48-9"><a></a>                           flipper_length_mm <span class="sc">&gt;=</span> <span class="fu">mean</span>(flipper_length_mm) <span class="sc">~</span> <span class="st">"yes"</span>))  </span>
+<span id="cb48-10"><a></a></span>
+<span id="cb48-11"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb48-12"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
+<span id="cb48-13"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a></a>  <span class="fu">count</span>(species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="what-is-wrong-with-this-coding-question-3" class="slide level2">
@@ -1512,14 +1509,14 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <p><br></p>
 <p>I want to reorder the bars of my plot but can’t get it working. Help!</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a aria-label="1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb50-2"><a aria-label="2"></a></span>
-<span id="cb50-3"><a aria-label="3"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb50-4"><a aria-label="4"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb50-5"><a aria-label="5"></a></span>
-<span id="cb50-6"><a aria-label="6"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb50-7"><a aria-label="7"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
-<span id="cb50-8"><a aria-label="8"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb50-2"><a></a></span>
+<span id="cb50-3"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb50-4"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb50-5"><a></a></span>
+<span id="cb50-6"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb50-7"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
+<span id="cb50-8"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="what-makes-a-good-coding-question" class="slide level2">
@@ -1545,9 +1542,9 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <div class="fragment">
 <p>Create a toy data frame.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a aria-label="1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">animal =</span> <span class="fu">c</span>(<span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="st">"mouse"</span>), </span>
-<span id="cb51-2"><a aria-label="2"></a>                  <span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="fl">0.5</span>))</span>
-<span id="cb51-3"><a aria-label="3"></a>dat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">animal =</span> <span class="fu">c</span>(<span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="st">"mouse"</span>), </span>
+<span id="cb51-2"><a></a>                  <span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="fl">0.5</span>))</span>
+<span id="cb51-3"><a></a>dat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  animal weight
 1    cat    5.0
@@ -1559,8 +1556,8 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <div class="fragment">
 <p>Use a built-in dataset or a dataset from a particular package.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a aria-label="1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb53-2"><a aria-label="2"></a>penguins</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb53-2"><a></a>penguins</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 344 × 10
    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
@@ -1586,12 +1583,12 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <p>Include the <strong>necessary</strong> libraries.</p>
 <p>Test run the code in a restarted R session to make sure it is runnable!</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb55-2"><a aria-label="2"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb55-3"><a aria-label="3"></a></span>
-<span id="cb55-4"><a aria-label="4"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb55-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
-<span id="cb55-6"><a aria-label="6"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb55-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb55-3"><a></a></span>
+<span id="cb55-4"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb55-5"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
+<span id="cb55-6"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1605,12 +1602,12 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <h2>Make sure your code is copy-and-paste-able!</h2>
 <p>Don’t copy from the console.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a aria-label="1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
-<span id="cb56-2"><a aria-label="2"></a><span class="sc">&gt;</span> <span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb56-3"><a aria-label="3"></a><span class="sc">&gt;</span> </span>
-<span id="cb56-4"><a aria-label="4"></a><span class="er">&gt;</span> penguins <span class="sc">%&gt;%</span></span>
-<span id="cb56-5"><a aria-label="5"></a><span class="sc">+</span>     <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
-<span id="cb56-6"><a aria-label="6"></a><span class="sc">+</span>     <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
+<span id="cb56-2"><a></a><span class="sc">&gt;</span> <span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb56-3"><a></a><span class="sc">&gt;</span> </span>
+<span id="cb56-4"><a></a><span class="er">&gt;</span> penguins <span class="sc">%&gt;%</span></span>
+<span id="cb56-5"><a></a><span class="sc">+</span>     <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
+<span id="cb56-6"><a></a><span class="sc">+</span>     <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="make-sure-your-code-is-copy-and-paste-able-1" class="slide level2">
@@ -1623,12 +1620,12 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <p>How can I reorder the bars in the ggplot to go from the most frequent to the least frequent category?</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb57-2"><a aria-label="2"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb57-3"><a aria-label="3"></a></span>
-<span id="cb57-4"><a aria-label="4"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb57-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
-<span id="cb57-6"><a aria-label="6"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb57-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb57-3"><a></a></span>
+<span id="cb57-4"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb57-5"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
+<span id="cb57-6"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1674,18 +1671,18 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <li><p>Open a script file and include in the top line:</p></li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a aria-label="1"></a><span class="fu">library</span>(reprex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a><span class="fu">library</span>(reprex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="3" type="1">
 <li>Put the code you want to use in the script file and make sure it runs.</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb59-2"><a aria-label="2"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb59-3"><a aria-label="3"></a></span>
-<span id="cb59-4"><a aria-label="4"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb59-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
-<span id="cb59-6"><a aria-label="6"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb59-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb59-3"><a></a></span>
+<span id="cb59-4"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb59-5"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
+<span id="cb59-6"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="4" type="1">
 <li><p>Surround the code with <code>reprex({ ... }, venue = "slack")</code> and run it.</p></li>
@@ -1897,7 +1894,7 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

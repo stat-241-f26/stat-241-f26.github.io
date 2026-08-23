@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.18">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <title>Stat 241 – Parallelism, Ethics, and AI</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,13 +19,10 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
+    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: 1.5em;}
-    div.column{flex: auto;}
-    @media screen {
-    div.columns{gap: min(4vw, 1.5em);}
-    div.column{overflow-x: auto;}
-    }
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -355,11 +352,11 @@
 <div class="column">
 <p><strong>Standard <code>for()</code> loop</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a>vec <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">12</span>)</span>
-<span id="cb1-2"><a aria-label="2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>) {</span>
-<span id="cb1-3"><a aria-label="3"></a>  vec[i] <span class="ot">&lt;-</span> i <span class="sc">*</span> <span class="dv">10</span></span>
-<span id="cb1-4"><a aria-label="4"></a>}</span>
-<span id="cb1-5"><a aria-label="5"></a>vec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>vec <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">12</span>)</span>
+<span id="cb1-2"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>) {</span>
+<span id="cb1-3"><a></a>  vec[i] <span class="ot">&lt;-</span> i <span class="sc">*</span> <span class="dv">10</span></span>
+<span id="cb1-4"><a></a>}</span>
+<span id="cb1-5"><a></a>vec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  10  20  30  40  50  60  70  80  90 100 110 120</code></pre>
 </div>
@@ -367,11 +364,11 @@
 </div><div class="column">
 <p><strong>Loop made with <code>foreach()</code></strong></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">library</span>(foreach)</span>
-<span id="cb3-2"><a aria-label="2"></a>vec <span class="ot">&lt;-</span> <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">.combine =</span> <span class="st">'c'</span>) <span class="sc">%do%</span> {</span>
-<span id="cb3-3"><a aria-label="3"></a>  i <span class="sc">*</span> <span class="dv">10</span></span>
-<span id="cb3-4"><a aria-label="4"></a>}</span>
-<span id="cb3-5"><a aria-label="5"></a>vec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(foreach)</span>
+<span id="cb3-2"><a></a>vec <span class="ot">&lt;-</span> <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">.combine =</span> <span class="st">'c'</span>) <span class="sc">%do%</span> {</span>
+<span id="cb3-3"><a></a>  i <span class="sc">*</span> <span class="dv">10</span></span>
+<span id="cb3-4"><a></a>}</span>
+<span id="cb3-5"><a></a>vec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  10  20  30  40  50  60  70  80  90 100 110 120</code></pre>
 </div>
@@ -394,17 +391,17 @@
 <div class="column">
 <p><strong>Sequential</strong>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="fu">system.time</span>({</span>
-<span id="cb5-2"><a aria-label="2"></a>  vec <span class="ot">&lt;-</span> <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">.combine =</span> <span class="st">'c'</span>) <span class="sc">%do%</span> {</span>
-<span id="cb5-3"><a aria-label="3"></a>    <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)  <span class="co"># Sleep for 1 second</span></span>
-<span id="cb5-4"><a aria-label="4"></a>    i <span class="sc">*</span> <span class="dv">10</span></span>
-<span id="cb5-5"><a aria-label="5"></a>  }</span>
-<span id="cb5-6"><a aria-label="6"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">system.time</span>({</span>
+<span id="cb5-2"><a></a>  vec <span class="ot">&lt;-</span> <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">.combine =</span> <span class="st">'c'</span>) <span class="sc">%do%</span> {</span>
+<span id="cb5-3"><a></a>    <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)  <span class="co"># Sleep for 1 second</span></span>
+<span id="cb5-4"><a></a>    i <span class="sc">*</span> <span class="dv">10</span></span>
+<span id="cb5-5"><a></a>  }</span>
+<span id="cb5-6"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
   0.010   0.001  12.046 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a>vec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>vec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  10  20  30  40  50  60  70  80  90 100 110 120</code></pre>
 </div>
@@ -412,26 +409,26 @@
 </div><div class="column fragment">
 <p><strong>In parallel</strong>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">library</span>(doParallel)</span>
-<span id="cb9-2"><a aria-label="2"></a><span class="fu">detectCores</span>(<span class="at">logical =</span> <span class="cn">FALSE</span>) <span class="co"># my laptop has 12 cores</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(doParallel)</span>
+<span id="cb9-2"><a></a><span class="fu">detectCores</span>(<span class="at">logical =</span> <span class="cn">FALSE</span>) <span class="co"># my laptop has 12 cores</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 12</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">registerDoParallel</span>(<span class="dv">4</span>) <span class="co"># Initialize 4 parallel processes</span></span>
-<span id="cb11-2"><a aria-label="2"></a></span>
-<span id="cb11-3"><a aria-label="3"></a><span class="fu">system.time</span>({</span>
-<span id="cb11-4"><a aria-label="4"></a>  vec <span class="ot">&lt;-</span> <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">.combine =</span> <span class="st">'c'</span>) <span class="sc">%dopar%</span> {</span>
-<span id="cb11-5"><a aria-label="5"></a>    <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)  <span class="co"># sleep for 1 second</span></span>
-<span id="cb11-6"><a aria-label="6"></a>    i <span class="sc">*</span> <span class="dv">10</span></span>
-<span id="cb11-7"><a aria-label="7"></a>  }</span>
-<span id="cb11-8"><a aria-label="8"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">registerDoParallel</span>(<span class="dv">4</span>) <span class="co"># Initialize 4 parallel processes</span></span>
+<span id="cb11-2"><a></a></span>
+<span id="cb11-3"><a></a><span class="fu">system.time</span>({</span>
+<span id="cb11-4"><a></a>  vec <span class="ot">&lt;-</span> <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">.combine =</span> <span class="st">'c'</span>) <span class="sc">%dopar%</span> {</span>
+<span id="cb11-5"><a></a>    <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)  <span class="co"># sleep for 1 second</span></span>
+<span id="cb11-6"><a></a>    i <span class="sc">*</span> <span class="dv">10</span></span>
+<span id="cb11-7"><a></a>  }</span>
+<span id="cb11-8"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
   0.006   0.029   3.025 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a><span class="fu">stopImplicitCluster</span>() <span class="co"># stop the parallel processes</span></span>
-<span id="cb13-2"><a aria-label="2"></a></span>
-<span id="cb13-3"><a aria-label="3"></a>vec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">stopImplicitCluster</span>() <span class="co"># stop the parallel processes</span></span>
+<span id="cb13-2"><a></a></span>
+<span id="cb13-3"><a></a>vec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  10  20  30  40  50  60  70  80  90 100 110 120</code></pre>
 </div>
@@ -448,15 +445,15 @@
 <div class="column">
 <p>Last time, we created a bootstrap distribution for the mean <code>DBH</code> for our sample of Portland trees:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a>pdxTrees <span class="ot">&lt;-</span> pdxTrees<span class="sc">::</span><span class="fu">get_pdxTrees_parks</span>()</span>
-<span id="cb15-2"><a aria-label="2"></a></span>
-<span id="cb15-3"><a aria-label="3"></a>boot <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">avg =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">100000</span>))</span>
-<span id="cb15-4"><a aria-label="4"></a></span>
-<span id="cb15-5"><a aria-label="5"></a><span class="fu">system.time</span>({</span>
-<span id="cb15-6"><a aria-label="6"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(boot)) {</span>
-<span id="cb15-7"><a aria-label="7"></a>    boot[i, ] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sample</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb15-8"><a aria-label="8"></a>  }</span>
-<span id="cb15-9"><a aria-label="9"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>pdxTrees <span class="ot">&lt;-</span> pdxTrees<span class="sc">::</span><span class="fu">get_pdxTrees_parks</span>()</span>
+<span id="cb15-2"><a></a></span>
+<span id="cb15-3"><a></a>boot <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">avg =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">100000</span>))</span>
+<span id="cb15-4"><a></a></span>
+<span id="cb15-5"><a></a><span class="fu">system.time</span>({</span>
+<span id="cb15-6"><a></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(boot)) {</span>
+<span id="cb15-7"><a></a>    boot[i, ] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sample</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb15-8"><a></a>  }</span>
+<span id="cb15-9"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
  45.559   4.198  49.791 </code></pre>
@@ -465,24 +462,24 @@
 </div><div class="column fragment">
 <p>Now, we can do this <strong>in parallel</strong>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a><span class="fu">library</span>(doRNG) <span class="co"># thread-safe RNG</span></span>
-<span id="cb17-2"><a aria-label="2"></a>pdxTrees <span class="ot">&lt;-</span> pdxTrees<span class="sc">::</span><span class="fu">get_pdxTrees_parks</span>()</span>
-<span id="cb17-3"><a aria-label="3"></a></span>
-<span id="cb17-4"><a aria-label="4"></a><span class="fu">registerDoParallel</span>(<span class="dv">10</span>)</span>
-<span id="cb17-5"><a aria-label="5"></a></span>
-<span id="cb17-6"><a aria-label="6"></a><span class="fu">system.time</span>({</span>
-<span id="cb17-7"><a aria-label="7"></a>  boot <span class="ot">&lt;-</span> <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100000</span>, <span class="at">.combine =</span> <span class="st">'rbind'</span>) <span class="sc">%dorng%</span> {</span>
-<span id="cb17-8"><a aria-label="8"></a>    <span class="fu">tibble</span>(</span>
-<span id="cb17-9"><a aria-label="9"></a>      <span class="at">avg =</span> <span class="fu">mean</span>(<span class="fu">sample</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb17-10"><a aria-label="10"></a>    )</span>
-<span id="cb17-11"><a aria-label="11"></a>    </span>
-<span id="cb17-12"><a aria-label="12"></a>  }</span>
-<span id="cb17-13"><a aria-label="13"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">library</span>(doRNG) <span class="co"># thread-safe RNG</span></span>
+<span id="cb17-2"><a></a>pdxTrees <span class="ot">&lt;-</span> pdxTrees<span class="sc">::</span><span class="fu">get_pdxTrees_parks</span>()</span>
+<span id="cb17-3"><a></a></span>
+<span id="cb17-4"><a></a><span class="fu">registerDoParallel</span>(<span class="dv">10</span>)</span>
+<span id="cb17-5"><a></a></span>
+<span id="cb17-6"><a></a><span class="fu">system.time</span>({</span>
+<span id="cb17-7"><a></a>  boot <span class="ot">&lt;-</span> <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100000</span>, <span class="at">.combine =</span> <span class="st">'rbind'</span>) <span class="sc">%dorng%</span> {</span>
+<span id="cb17-8"><a></a>    <span class="fu">tibble</span>(</span>
+<span id="cb17-9"><a></a>      <span class="at">avg =</span> <span class="fu">mean</span>(<span class="fu">sample</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb17-10"><a></a>    )</span>
+<span id="cb17-11"><a></a>    </span>
+<span id="cb17-12"><a></a>  }</span>
+<span id="cb17-13"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
  86.100   2.016  15.534 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a><span class="fu">stopImplicitCluster</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">stopImplicitCluster</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 <ul>
@@ -504,14 +501,14 @@
 <div class="column fragment">
 <p><strong>Last time</strong>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb20-2"><a aria-label="2"></a>boot_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb20-3"><a aria-label="3"></a>  <span class="fu">mean</span>(<span class="fu">sample</span>(x, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb20-4"><a aria-label="4"></a>}</span>
-<span id="cb20-5"><a aria-label="5"></a></span>
-<span id="cb20-6"><a aria-label="6"></a><span class="fu">system.time</span>({</span>
-<span id="cb20-7"><a aria-label="7"></a>  <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100000</span>, <span class="sc">~</span> <span class="fu">boot_mean</span>(pdxTrees<span class="sc">$</span>DBH))</span>
-<span id="cb20-8"><a aria-label="8"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">library</span>(purrr)</span>
+<span id="cb20-2"><a></a>boot_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb20-3"><a></a>  <span class="fu">mean</span>(<span class="fu">sample</span>(x, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb20-4"><a></a>}</span>
+<span id="cb20-5"><a></a></span>
+<span id="cb20-6"><a></a><span class="fu">system.time</span>({</span>
+<span id="cb20-7"><a></a>  <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100000</span>, <span class="sc">~</span> <span class="fu">boot_mean</span>(pdxTrees<span class="sc">$</span>DBH))</span>
+<span id="cb20-8"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
  38.085   1.732  39.849 </code></pre>
@@ -520,17 +517,17 @@
 </div><div class="column fragment">
 <p>Now, <strong>in parallel</strong>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a><span class="fu">library</span>(furrr)</span>
-<span id="cb22-2"><a aria-label="2"></a>boot_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb22-3"><a aria-label="3"></a>  <span class="fu">mean</span>(<span class="fu">sample</span>(x, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb22-4"><a aria-label="4"></a>}</span>
-<span id="cb22-5"><a aria-label="5"></a></span>
-<span id="cb22-6"><a aria-label="6"></a>future<span class="sc">::</span><span class="fu">plan</span>(multisession, <span class="at">workers =</span> <span class="dv">10</span>)</span>
-<span id="cb22-7"><a aria-label="7"></a></span>
-<span id="cb22-8"><a aria-label="8"></a><span class="fu">system.time</span>({</span>
-<span id="cb22-9"><a aria-label="9"></a>  <span class="fu">future_map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100000</span>, <span class="sc">~</span> <span class="fu">boot_mean</span>(pdxTrees<span class="sc">$</span>DBH), </span>
-<span id="cb22-10"><a aria-label="10"></a>                 <span class="at">.options =</span> <span class="fu">furrr_options</span>(<span class="at">seed =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb22-11"><a aria-label="11"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">library</span>(furrr)</span>
+<span id="cb22-2"><a></a>boot_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb22-3"><a></a>  <span class="fu">mean</span>(<span class="fu">sample</span>(x, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb22-4"><a></a>}</span>
+<span id="cb22-5"><a></a></span>
+<span id="cb22-6"><a></a>future<span class="sc">::</span><span class="fu">plan</span>(multisession, <span class="at">workers =</span> <span class="dv">10</span>)</span>
+<span id="cb22-7"><a></a></span>
+<span id="cb22-8"><a></a><span class="fu">system.time</span>({</span>
+<span id="cb22-9"><a></a>  <span class="fu">future_map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100000</span>, <span class="sc">~</span> <span class="fu">boot_mean</span>(pdxTrees<span class="sc">$</span>DBH), </span>
+<span id="cb22-10"><a></a>                 <span class="at">.options =</span> <span class="fu">furrr_options</span>(<span class="at">seed =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb22-11"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
   0.499   0.087   7.733 </code></pre>
@@ -827,8 +824,8 @@
 <li>Once your account is created, find your API key and set it in your <code>R</code> environment:</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a><span class="co"># This will open a file called .Renviron</span></span>
-<span id="cb24-2"><a aria-label="2"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="co"># This will open a file called .Renviron</span></span>
+<span id="cb24-2"><a></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then add:</p>
 <p><code>OPENAI_API_KEY=INSERT_YOUR_KEY_HERE</code></p>
@@ -841,19 +838,19 @@
 <section id="ellmer-basics" class="slide level2">
 <h2><code>ellmer</code>: basics</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a><span class="fu">library</span>(ellmer)</span>
-<span id="cb25-2"><a aria-label="2"></a></span>
-<span id="cb25-3"><a aria-label="3"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
-<span id="cb25-4"><a aria-label="4"></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
-<span id="cb25-5"><a aria-label="5"></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span></span>
-<span id="cb25-6"><a aria-label="6"></a>)</span>
-<span id="cb25-7"><a aria-label="7"></a></span>
-<span id="cb25-8"><a aria-label="8"></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Who are you?"</span>)</span>
-<span id="cb25-9"><a aria-label="9"></a><span class="co">#&gt; Hello! I'm Qwen, a large-scale language model independently developed by the </span></span>
-<span id="cb25-10"><a aria-label="10"></a><span class="co">#&gt; Tongyi Lab under Alibaba Group. I can assist you with answering questions, </span></span>
-<span id="cb25-11"><a aria-label="11"></a><span class="co">#&gt; writing, logical reasoning, programming, and more. I aim to provide helpful and </span></span>
-<span id="cb25-12"><a aria-label="12"></a><span class="co">#&gt; accurate information. Feel free to let me know if you have any questions or need</span></span>
-<span id="cb25-13"><a aria-label="13"></a><span class="co">#&gt; assistance!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">library</span>(ellmer)</span>
+<span id="cb25-2"><a></a></span>
+<span id="cb25-3"><a></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
+<span id="cb25-4"><a></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
+<span id="cb25-5"><a></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span></span>
+<span id="cb25-6"><a></a>)</span>
+<span id="cb25-7"><a></a></span>
+<span id="cb25-8"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Who are you?"</span>)</span>
+<span id="cb25-9"><a></a><span class="co">#&gt; Hello! I'm Qwen, a large-scale language model independently developed by the </span></span>
+<span id="cb25-10"><a></a><span class="co">#&gt; Tongyi Lab under Alibaba Group. I can assist you with answering questions, </span></span>
+<span id="cb25-11"><a></a><span class="co">#&gt; writing, logical reasoning, programming, and more. I aim to provide helpful and </span></span>
+<span id="cb25-12"><a></a><span class="co">#&gt; accurate information. Feel free to let me know if you have any questions or need</span></span>
+<span id="cb25-13"><a></a><span class="co">#&gt; assistance!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><img data-src="img/ellmer.png" class="absolute" style="top: 0px; right: 0px; height: 250px; " alt="The ellmer hex sticker, a colorful elephant in a patchwork of fabrics."></p>
 <div class="fragment">
@@ -871,14 +868,14 @@
 <h2><code>ellmer</code>: Structured data</h2>
 <p>How would you extract name and age from this data?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a>prompts <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb26-2"><a aria-label="2"></a>  <span class="st">"I go by Alex. 42 years on this planet and counting."</span>,</span>
-<span id="cb26-3"><a aria-label="3"></a>  <span class="st">"Pleased to meet you! I'm Jamal, age 27."</span>,</span>
-<span id="cb26-4"><a aria-label="4"></a>  <span class="st">"They call me Li Wei. Nineteen years young."</span>,</span>
-<span id="cb26-5"><a aria-label="5"></a>  <span class="st">"Fatima here. Just celebrated my 35th birthday last week."</span>,</span>
-<span id="cb26-6"><a aria-label="6"></a>  <span class="st">"The name's Robert - 51 years old and proud of it."</span>,</span>
-<span id="cb26-7"><a aria-label="7"></a>  <span class="st">"Kwame here - just hit the big 5-0 this year."</span></span>
-<span id="cb26-8"><a aria-label="8"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>prompts <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb26-2"><a></a>  <span class="st">"I go by Alex. 42 years on this planet and counting."</span>,</span>
+<span id="cb26-3"><a></a>  <span class="st">"Pleased to meet you! I'm Jamal, age 27."</span>,</span>
+<span id="cb26-4"><a></a>  <span class="st">"They call me Li Wei. Nineteen years young."</span>,</span>
+<span id="cb26-5"><a></a>  <span class="st">"Fatima here. Just celebrated my 35th birthday last week."</span>,</span>
+<span id="cb26-6"><a></a>  <span class="st">"The name's Robert - 51 years old and proud of it."</span>,</span>
+<span id="cb26-7"><a></a>  <span class="st">"Kwame here - just hit the big 5-0 this year."</span></span>
+<span id="cb26-8"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li class="fragment">Regular expressions?</li>
@@ -888,47 +885,47 @@
 <h2><code>ellmer</code>: Structured data</h2>
 <p>LLMs are generally good at this sort of task</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
-<span id="cb27-2"><a aria-label="2"></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
-<span id="cb27-3"><a aria-label="3"></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span>,</span>
-<span id="cb27-4"><a aria-label="4"></a>)</span>
-<span id="cb27-5"><a aria-label="5"></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Extract the name and age from each sentence I give you"</span>)</span>
-<span id="cb27-6"><a aria-label="6"></a>chat<span class="sc">$</span><span class="fu">chat</span>(prompts[[<span class="dv">1</span>]])</span>
-<span id="cb27-7"><a aria-label="7"></a><span class="co">#&gt; **Name: Alex, Age: 42**</span></span>
-<span id="cb27-8"><a aria-label="8"></a>chat<span class="sc">$</span><span class="fu">chat</span>(prompts[[<span class="dv">2</span>]])</span>
-<span id="cb27-9"><a aria-label="9"></a><span class="co">#&gt; **Name: Jamal, Age: 27**</span></span>
-<span id="cb27-10"><a aria-label="10"></a>chat<span class="sc">$</span><span class="fu">chat</span>(prompts[[<span class="dv">3</span>]])</span>
-<span id="cb27-11"><a aria-label="11"></a><span class="co">#&gt; **Name: Li Wei, Age: 19**</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
+<span id="cb27-2"><a></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
+<span id="cb27-3"><a></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span>,</span>
+<span id="cb27-4"><a></a>)</span>
+<span id="cb27-5"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Extract the name and age from each sentence I give you"</span>)</span>
+<span id="cb27-6"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(prompts[[<span class="dv">1</span>]])</span>
+<span id="cb27-7"><a></a><span class="co">#&gt; **Name: Alex, Age: 42**</span></span>
+<span id="cb27-8"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(prompts[[<span class="dv">2</span>]])</span>
+<span id="cb27-9"><a></a><span class="co">#&gt; **Name: Jamal, Age: 27**</span></span>
+<span id="cb27-10"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(prompts[[<span class="dv">3</span>]])</span>
+<span id="cb27-11"><a></a><span class="co">#&gt; **Name: Li Wei, Age: 19**</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="ellmer-structured-data-2" class="slide level2">
 <h2><code>ellmer</code>: Structured data</h2>
 <p>But wouldn’t it be nice to get an R data structure?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-label="1"></a>chat<span class="sc">$</span><span class="fu">chat</span>(prompts[[<span class="dv">3</span>]])</span>
-<span id="cb28-2"><a aria-label="2"></a></span>
-<span id="cb28-3"><a aria-label="3"></a><span class="co"># Want this:</span></span>
-<span id="cb28-4"><a aria-label="4"></a><span class="co">#&gt; list(</span></span>
-<span id="cb28-5"><a aria-label="5"></a><span class="co">#&gt;   name = "Li Wei",</span></span>
-<span id="cb28-6"><a aria-label="6"></a><span class="co">#&gt;   age = 19</span></span>
-<span id="cb28-7"><a aria-label="7"></a><span class="co">#&gt; )</span></span>
-<span id="cb28-8"><a aria-label="8"></a></span>
-<span id="cb28-9"><a aria-label="9"></a><span class="co"># Instead of:</span></span>
-<span id="cb28-10"><a aria-label="10"></a><span class="co">#&gt; **Name: Li Wei, Age: 19**</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(prompts[[<span class="dv">3</span>]])</span>
+<span id="cb28-2"><a></a></span>
+<span id="cb28-3"><a></a><span class="co"># Want this:</span></span>
+<span id="cb28-4"><a></a><span class="co">#&gt; list(</span></span>
+<span id="cb28-5"><a></a><span class="co">#&gt;   name = "Li Wei",</span></span>
+<span id="cb28-6"><a></a><span class="co">#&gt;   age = 19</span></span>
+<span id="cb28-7"><a></a><span class="co">#&gt; )</span></span>
+<span id="cb28-8"><a></a></span>
+<span id="cb28-9"><a></a><span class="co"># Instead of:</span></span>
+<span id="cb28-10"><a></a><span class="co">#&gt; **Name: Li Wei, Age: 19**</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <div class="fragment">
 <p><code>ellmer</code> let’s us do this with <code>chat_structured()</code>!</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a>type_person <span class="ot">&lt;-</span> <span class="fu">type_object</span>(</span>
-<span id="cb29-2"><a aria-label="2"></a>  <span class="at">name =</span> <span class="fu">type_string</span>(),</span>
-<span id="cb29-3"><a aria-label="3"></a>  <span class="at">age =</span> <span class="fu">type_number</span>()</span>
-<span id="cb29-4"><a aria-label="4"></a>)</span>
-<span id="cb29-5"><a aria-label="5"></a></span>
-<span id="cb29-6"><a aria-label="6"></a>chat<span class="sc">$</span><span class="fu">chat_structured</span>(prompts[[<span class="dv">1</span>]], <span class="at">type =</span> type_person)</span>
-<span id="cb29-7"><a aria-label="7"></a><span class="co">#&gt; List of 2</span></span>
-<span id="cb29-8"><a aria-label="8"></a><span class="co">#&gt;  $ name: chr "Alex"</span></span>
-<span id="cb29-9"><a aria-label="9"></a><span class="co">#&gt;  $ age : int 42</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>type_person <span class="ot">&lt;-</span> <span class="fu">type_object</span>(</span>
+<span id="cb29-2"><a></a>  <span class="at">name =</span> <span class="fu">type_string</span>(),</span>
+<span id="cb29-3"><a></a>  <span class="at">age =</span> <span class="fu">type_number</span>()</span>
+<span id="cb29-4"><a></a>)</span>
+<span id="cb29-5"><a></a></span>
+<span id="cb29-6"><a></a>chat<span class="sc">$</span><span class="fu">chat_structured</span>(prompts[[<span class="dv">1</span>]], <span class="at">type =</span> type_person)</span>
+<span id="cb29-7"><a></a><span class="co">#&gt; List of 2</span></span>
+<span id="cb29-8"><a></a><span class="co">#&gt;  $ name: chr "Alex"</span></span>
+<span id="cb29-9"><a></a><span class="co">#&gt;  $ age : int 42</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -936,19 +933,19 @@
 <h2><code>ellmer</code>: Structured data</h2>
 <p><code>parallel_chat_structured()</code>: many prompts at once</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-label="1"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
-<span id="cb30-2"><a aria-label="2"></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
-<span id="cb30-3"><a aria-label="3"></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span>,</span>
-<span id="cb30-4"><a aria-label="4"></a>  <span class="at">params   =</span> <span class="fu">params</span>(<span class="at">max_tokens =</span> <span class="dv">500</span>)</span>
-<span id="cb30-5"><a aria-label="5"></a>)</span>
-<span id="cb30-6"><a aria-label="6"></a><span class="fu">parallel_chat_structured</span>(chat, prompts, <span class="at">type =</span> type_person, <span class="at">rpm =</span> <span class="dv">30</span>)</span>
-<span id="cb30-7"><a aria-label="7"></a><span class="co">#&gt;     name age</span></span>
-<span id="cb30-8"><a aria-label="8"></a><span class="co">#&gt; 1   Alex  42</span></span>
-<span id="cb30-9"><a aria-label="9"></a><span class="co">#&gt; 2  Jamal  27</span></span>
-<span id="cb30-10"><a aria-label="10"></a><span class="co">#&gt; 3 Li Wei  19</span></span>
-<span id="cb30-11"><a aria-label="11"></a><span class="co">#&gt; 4 Fatima  35</span></span>
-<span id="cb30-12"><a aria-label="12"></a><span class="co">#&gt; 5 Robert  51</span></span>
-<span id="cb30-13"><a aria-label="13"></a><span class="co">#&gt; 6  Kwame  50</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
+<span id="cb30-2"><a></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
+<span id="cb30-3"><a></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span>,</span>
+<span id="cb30-4"><a></a>  <span class="at">params   =</span> <span class="fu">params</span>(<span class="at">max_tokens =</span> <span class="dv">500</span>)</span>
+<span id="cb30-5"><a></a>)</span>
+<span id="cb30-6"><a></a><span class="fu">parallel_chat_structured</span>(chat, prompts, <span class="at">type =</span> type_person, <span class="at">rpm =</span> <span class="dv">30</span>)</span>
+<span id="cb30-7"><a></a><span class="co">#&gt;     name age</span></span>
+<span id="cb30-8"><a></a><span class="co">#&gt; 1   Alex  42</span></span>
+<span id="cb30-9"><a></a><span class="co">#&gt; 2  Jamal  27</span></span>
+<span id="cb30-10"><a></a><span class="co">#&gt; 3 Li Wei  19</span></span>
+<span id="cb30-11"><a></a><span class="co">#&gt; 4 Fatima  35</span></span>
+<span id="cb30-12"><a></a><span class="co">#&gt; 5 Robert  51</span></span>
+<span id="cb30-13"><a></a><span class="co">#&gt; 6  Kwame  50</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li class="fragment"><p>Not parallel in the sense of parallelized R code: just sending many API calls at once.</p></li>
@@ -959,52 +956,52 @@
 <h2><code>ellmer</code>: Structured data</h2>
 <p>Can also send attach images or other files by pointing to their directory on your computer.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a>paths <span class="ot">&lt;-</span> <span class="fu">dir</span>(<span class="st">"animals"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb31-2"><a aria-label="2"></a>images <span class="ot">&lt;-</span> <span class="fu">map</span>(paths, <span class="sc">~</span> <span class="fu">list</span>(<span class="fu">content_image_file</span>(.x)))</span>
-<span id="cb31-3"><a aria-label="3"></a></span>
-<span id="cb31-4"><a aria-label="4"></a>type_animal_photo <span class="ot">&lt;-</span> <span class="fu">type_object</span>(</span>
-<span id="cb31-5"><a aria-label="5"></a>  <span class="at">animal =</span> <span class="fu">type_string</span>(),</span>
-<span id="cb31-6"><a aria-label="6"></a>  <span class="at">background_colour =</span> <span class="fu">type_string</span>()</span>
-<span id="cb31-7"><a aria-label="7"></a>)</span>
-<span id="cb31-8"><a aria-label="8"></a></span>
-<span id="cb31-9"><a aria-label="9"></a><span class="fu">parallel_chat_structured</span>(chat, images, <span class="at">type =</span> type_animal_photo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>paths <span class="ot">&lt;-</span> <span class="fu">dir</span>(<span class="st">"animals"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-2"><a></a>images <span class="ot">&lt;-</span> <span class="fu">map</span>(paths, <span class="sc">~</span> <span class="fu">list</span>(<span class="fu">content_image_file</span>(.x)))</span>
+<span id="cb31-3"><a></a></span>
+<span id="cb31-4"><a></a>type_animal_photo <span class="ot">&lt;-</span> <span class="fu">type_object</span>(</span>
+<span id="cb31-5"><a></a>  <span class="at">animal =</span> <span class="fu">type_string</span>(),</span>
+<span id="cb31-6"><a></a>  <span class="at">background_colour =</span> <span class="fu">type_string</span>()</span>
+<span id="cb31-7"><a></a>)</span>
+<span id="cb31-8"><a></a></span>
+<span id="cb31-9"><a></a><span class="fu">parallel_chat_structured</span>(chat, images, <span class="at">type =</span> type_animal_photo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="ellmer-tool-calling" class="slide level2">
 <h2><code>ellmer</code>: Tool calling</h2>
 <!-- LLMs don't have access to live data about the world -->
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-label="1"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
-<span id="cb32-2"><a aria-label="2"></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
-<span id="cb32-3"><a aria-label="3"></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span></span>
-<span id="cb32-4"><a aria-label="4"></a>)</span>
-<span id="cb32-5"><a aria-label="5"></a></span>
-<span id="cb32-6"><a aria-label="6"></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"What day is it?"</span>)</span>
-<span id="cb32-7"><a aria-label="7"></a><span class="co">#&gt; I don't have access to real-time information, so I can't tell you today's</span></span>
-<span id="cb32-8"><a aria-label="8"></a><span class="co">#&gt; date. You can check the current date on your device's calendar or by </span></span>
-<span id="cb32-9"><a aria-label="9"></a><span class="co">#&gt; asking a voice assistant like Siri, Google Assistant, or Alexa.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
+<span id="cb32-2"><a></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
+<span id="cb32-3"><a></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span></span>
+<span id="cb32-4"><a></a>)</span>
+<span id="cb32-5"><a></a></span>
+<span id="cb32-6"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"What day is it?"</span>)</span>
+<span id="cb32-7"><a></a><span class="co">#&gt; I don't have access to real-time information, so I can't tell you today's</span></span>
+<span id="cb32-8"><a></a><span class="co">#&gt; date. You can check the current date on your device's calendar or by </span></span>
+<span id="cb32-9"><a></a><span class="co">#&gt; asking a voice assistant like Siri, Google Assistant, or Alexa.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="ellmer-tool-calling-1" class="slide level2">
 <h2><code>ellmer</code>: Tool calling</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a>today <span class="ot">&lt;-</span> <span class="fu">tool</span>(</span>
-<span id="cb33-2"><a aria-label="2"></a>  <span class="cf">function</span>() <span class="fu">Sys.Date</span>(),</span>
-<span id="cb33-3"><a aria-label="3"></a>  <span class="at">name =</span> <span class="st">"today"</span>,</span>
-<span id="cb33-4"><a aria-label="4"></a>  <span class="at">description =</span> <span class="st">"Get the current date"</span>,</span>
-<span id="cb33-5"><a aria-label="5"></a>  <span class="at">arguments =</span> <span class="fu">list</span>()</span>
-<span id="cb33-6"><a aria-label="6"></a>)</span>
-<span id="cb33-7"><a aria-label="7"></a>chat<span class="sc">$</span><span class="fu">register_tool</span>(today)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>today <span class="ot">&lt;-</span> <span class="fu">tool</span>(</span>
+<span id="cb33-2"><a></a>  <span class="cf">function</span>() <span class="fu">Sys.Date</span>(),</span>
+<span id="cb33-3"><a></a>  <span class="at">name =</span> <span class="st">"today"</span>,</span>
+<span id="cb33-4"><a></a>  <span class="at">description =</span> <span class="st">"Get the current date"</span>,</span>
+<span id="cb33-5"><a></a>  <span class="at">arguments =</span> <span class="fu">list</span>()</span>
+<span id="cb33-6"><a></a>)</span>
+<span id="cb33-7"><a></a>chat<span class="sc">$</span><span class="fu">register_tool</span>(today)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="ellmer-tool-calling-2" class="slide level2">
 <h2><code>ellmer</code>: Tool calling</h2>
 <!-- Now the model can know what day it is -->
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"What day is it today?"</span>)</span>
-<span id="cb34-2"><a aria-label="2"></a><span class="co">#&gt; ◯ [tool call] today()</span></span>
-<span id="cb34-3"><a aria-label="3"></a><span class="co">#&gt; ● #&gt; "2026-04-05"</span></span>
-<span id="cb34-4"><a aria-label="4"></a><span class="co">#&gt; Today is Sunday, April 5, 2026.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"What day is it today?"</span>)</span>
+<span id="cb34-2"><a></a><span class="co">#&gt; ◯ [tool call] today()</span></span>
+<span id="cb34-3"><a></a><span class="co">#&gt; ● #&gt; "2026-04-05"</span></span>
+<span id="cb34-4"><a></a><span class="co">#&gt; Today is Sunday, April 5, 2026.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
@@ -1019,48 +1016,48 @@
 <section id="coding-agents-1" class="slide level2">
 <h2>Coding agents</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-label="1"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
-<span id="cb35-2"><a aria-label="2"></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
-<span id="cb35-3"><a aria-label="3"></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span></span>
-<span id="cb35-4"><a aria-label="4"></a>)</span>
-<span id="cb35-5"><a aria-label="5"></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Delete the csv files in my working directory"</span>)</span>
-<span id="cb35-6"><a aria-label="6"></a><span class="co">#&gt; I **cannot** delete files from your computer or working directory. I don't have </span></span>
-<span id="cb35-7"><a aria-label="7"></a><span class="co">#&gt; access to your file system for security reasons.</span></span>
-<span id="cb35-8"><a aria-label="8"></a><span class="co">#&gt; </span></span>
-<span id="cb35-9"><a aria-label="9"></a><span class="co">#&gt; However, here are safe ways you can delete CSV files in your working directory </span></span>
-<span id="cb35-10"><a aria-label="10"></a><span class="co">#&gt; depending on your environment:</span></span>
-<span id="cb35-11"><a aria-label="11"></a><span class="co">#&gt; </span></span>
-<span id="cb35-12"><a aria-label="12"></a><span class="co">#&gt; </span><span class="al">###</span><span class="co"> Option 1: Using Python</span></span>
-<span id="cb35-13"><a aria-label="13"></a><span class="co">#&gt; If you're using Python and want to delete all `.csv` files in the current </span></span>
-<span id="cb35-14"><a aria-label="14"></a><span class="co">#&gt; directory:</span></span>
-<span id="cb35-15"><a aria-label="15"></a><span class="co">#&gt; ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
+<span id="cb35-2"><a></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
+<span id="cb35-3"><a></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span></span>
+<span id="cb35-4"><a></a>)</span>
+<span id="cb35-5"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Delete the csv files in my working directory"</span>)</span>
+<span id="cb35-6"><a></a><span class="co">#&gt; I **cannot** delete files from your computer or working directory. I don't have </span></span>
+<span id="cb35-7"><a></a><span class="co">#&gt; access to your file system for security reasons.</span></span>
+<span id="cb35-8"><a></a><span class="co">#&gt; </span></span>
+<span id="cb35-9"><a></a><span class="co">#&gt; However, here are safe ways you can delete CSV files in your working directory </span></span>
+<span id="cb35-10"><a></a><span class="co">#&gt; depending on your environment:</span></span>
+<span id="cb35-11"><a></a><span class="co">#&gt; </span></span>
+<span id="cb35-12"><a></a><span class="co">#&gt; </span><span class="al">###</span><span class="co"> Option 1: Using Python</span></span>
+<span id="cb35-13"><a></a><span class="co">#&gt; If you're using Python and want to delete all `.csv` files in the current </span></span>
+<span id="cb35-14"><a></a><span class="co">#&gt; directory:</span></span>
+<span id="cb35-15"><a></a><span class="co">#&gt; ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="coding-agents-2" class="slide level2">
 <h2>Coding agents</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
-<span id="cb36-2"><a aria-label="2"></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
-<span id="cb36-3"><a aria-label="3"></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span></span>
-<span id="cb36-4"><a aria-label="4"></a>)</span>
-<span id="cb36-5"><a aria-label="5"></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Delete the csv files in my working directory"</span>)</span>
-<span id="cb36-6"><a aria-label="6"></a><span class="co">#&gt; To delete all CSV files in your current working directory, you can use one of the</span></span>
-<span id="cb36-7"><a aria-label="7"></a><span class="co">#&gt; following methods depending on your operating system:</span></span>
-<span id="cb36-8"><a aria-label="8"></a><span class="co">#&gt; </span></span>
-<span id="cb36-9"><a aria-label="9"></a><span class="co">#&gt; </span><span class="al">###</span><span class="co"> **Method 1: Using Command Line / Terminal**</span></span>
-<span id="cb36-10"><a aria-label="10"></a><span class="co">#&gt; </span></span>
-<span id="cb36-11"><a aria-label="11"></a><span class="co">#&gt; #### **On Windows (Command Prompt):**</span></span>
-<span id="cb36-12"><a aria-label="12"></a><span class="co">#&gt; ```cmd</span></span>
-<span id="cb36-13"><a aria-label="13"></a><span class="co">#&gt; del *.csv</span></span>
-<span id="cb36-14"><a aria-label="14"></a><span class="co">#&gt; ```</span></span>
-<span id="cb36-15"><a aria-label="15"></a><span class="co">#&gt; </span></span>
-<span id="cb36-16"><a aria-label="16"></a><span class="co">#&gt; #### **On macOS or Linux (Terminal):**</span></span>
-<span id="cb36-17"><a aria-label="17"></a><span class="co">#&gt; ```bash</span></span>
-<span id="cb36-18"><a aria-label="18"></a><span class="co">#&gt; rm *.csv</span></span>
-<span id="cb36-19"><a aria-label="19"></a><span class="co">#&gt; ```</span></span>
-<span id="cb36-20"><a aria-label="20"></a><span class="co">#&gt; </span></span>
-<span id="cb36-21"><a aria-label="21"></a><span class="co">#&gt; &gt; ⚠️ **Warning**: This permanently deletes all `.csv` files in the current </span></span>
-<span id="cb36-22"><a aria-label="22"></a><span class="co">#&gt; directory. Make sure you don’t need any of them!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
+<span id="cb36-2"><a></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
+<span id="cb36-3"><a></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span></span>
+<span id="cb36-4"><a></a>)</span>
+<span id="cb36-5"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Delete the csv files in my working directory"</span>)</span>
+<span id="cb36-6"><a></a><span class="co">#&gt; To delete all CSV files in your current working directory, you can use one of the</span></span>
+<span id="cb36-7"><a></a><span class="co">#&gt; following methods depending on your operating system:</span></span>
+<span id="cb36-8"><a></a><span class="co">#&gt; </span></span>
+<span id="cb36-9"><a></a><span class="co">#&gt; </span><span class="al">###</span><span class="co"> **Method 1: Using Command Line / Terminal**</span></span>
+<span id="cb36-10"><a></a><span class="co">#&gt; </span></span>
+<span id="cb36-11"><a></a><span class="co">#&gt; #### **On Windows (Command Prompt):**</span></span>
+<span id="cb36-12"><a></a><span class="co">#&gt; ```cmd</span></span>
+<span id="cb36-13"><a></a><span class="co">#&gt; del *.csv</span></span>
+<span id="cb36-14"><a></a><span class="co">#&gt; ```</span></span>
+<span id="cb36-15"><a></a><span class="co">#&gt; </span></span>
+<span id="cb36-16"><a></a><span class="co">#&gt; #### **On macOS or Linux (Terminal):**</span></span>
+<span id="cb36-17"><a></a><span class="co">#&gt; ```bash</span></span>
+<span id="cb36-18"><a></a><span class="co">#&gt; rm *.csv</span></span>
+<span id="cb36-19"><a></a><span class="co">#&gt; ```</span></span>
+<span id="cb36-20"><a></a><span class="co">#&gt; </span></span>
+<span id="cb36-21"><a></a><span class="co">#&gt; &gt; ⚠️ **Warning**: This permanently deletes all `.csv` files in the current </span></span>
+<span id="cb36-22"><a></a><span class="co">#&gt; directory. Make sure you don’t need any of them!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Needs to be able to:</p>
 <ul>
@@ -1072,24 +1069,24 @@
 <h2>Coding agents</h2>
 <p>The LLM needs to be able to <strong>read</strong> our working directory:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-label="1"></a>chat<span class="sc">$</span><span class="fu">register_tool</span>(<span class="fu">tool</span>(</span>
-<span id="cb37-2"><a aria-label="2"></a>  <span class="cf">function</span>() <span class="fu">dir</span>(),</span>
-<span id="cb37-3"><a aria-label="3"></a>  <span class="at">name =</span> <span class="st">"ls"</span>,</span>
-<span id="cb37-4"><a aria-label="4"></a>  <span class="at">description =</span> <span class="st">"Lists the files in the current directory"</span></span>
-<span id="cb37-5"><a aria-label="5"></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>chat<span class="sc">$</span><span class="fu">register_tool</span>(<span class="fu">tool</span>(</span>
+<span id="cb37-2"><a></a>  <span class="cf">function</span>() <span class="fu">dir</span>(),</span>
+<span id="cb37-3"><a></a>  <span class="at">name =</span> <span class="st">"ls"</span>,</span>
+<span id="cb37-4"><a></a>  <span class="at">description =</span> <span class="st">"Lists the files in the current directory"</span></span>
+<span id="cb37-5"><a></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <div class="fragment">
 <p>And be able to remove files:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-label="1"></a>chat<span class="sc">$</span><span class="fu">register_tool</span>(<span class="fu">tool</span>(</span>
-<span id="cb38-2"><a aria-label="2"></a>  <span class="cf">function</span>(path) <span class="fu">unlink</span>(path),</span>
-<span id="cb38-3"><a aria-label="3"></a>  <span class="at">name =</span> <span class="st">"rm"</span>,</span>
-<span id="cb38-4"><a aria-label="4"></a>  <span class="at">description =</span> <span class="st">"Delete one or more files"</span>,</span>
-<span id="cb38-5"><a aria-label="5"></a>  <span class="at">arguments =</span> <span class="fu">list</span>(</span>
-<span id="cb38-6"><a aria-label="6"></a>    <span class="at">path =</span> <span class="fu">type_array</span>(<span class="fu">type_string</span>())</span>
-<span id="cb38-7"><a aria-label="7"></a>  )</span>
-<span id="cb38-8"><a aria-label="8"></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>chat<span class="sc">$</span><span class="fu">register_tool</span>(<span class="fu">tool</span>(</span>
+<span id="cb38-2"><a></a>  <span class="cf">function</span>(path) <span class="fu">unlink</span>(path),</span>
+<span id="cb38-3"><a></a>  <span class="at">name =</span> <span class="st">"rm"</span>,</span>
+<span id="cb38-4"><a></a>  <span class="at">description =</span> <span class="st">"Delete one or more files"</span>,</span>
+<span id="cb38-5"><a></a>  <span class="at">arguments =</span> <span class="fu">list</span>(</span>
+<span id="cb38-6"><a></a>    <span class="at">path =</span> <span class="fu">type_array</span>(<span class="fu">type_string</span>())</span>
+<span id="cb38-7"><a></a>  )</span>
+<span id="cb38-8"><a></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -1097,11 +1094,11 @@
 <h2>Coding agents</h2>
 <p>Create some dummy <code>.csv</code> files</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-label="1"></a><span class="fu">file.create</span>(<span class="fu">c</span>(<span class="st">"a.csv"</span>, <span class="st">"a_please_dont_delete_me.csv"</span>, <span class="st">"b.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">file.create</span>(<span class="fu">c</span>(<span class="st">"a.csv"</span>, <span class="st">"a_please_dont_delete_me.csv"</span>, <span class="st">"b.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE TRUE TRUE</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a aria-label="1"></a><span class="fu">dir</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">dir</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "a_please_dont_delete_me.csv"  "a.csv"                       
  [3] "b.csv"                        "custom.scss"                 
@@ -1128,27 +1125,27 @@
 <h2>Coding agents</h2>
 <p>Now ask it to delete csv’s that</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a aria-label="1"></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Delete all the csv files in the current directory, unless they ask to not be deleted."</span>)</span>
-<span id="cb43-2"><a aria-label="2"></a><span class="co">#&gt; ◯ [tool call] ls()</span></span>
-<span id="cb43-3"><a aria-label="3"></a><span class="co">#&gt; ● #&gt; a_please_dont_delete_me.csv</span></span>
-<span id="cb43-4"><a aria-label="4"></a><span class="co">#&gt;   #&gt; a.csv</span></span>
-<span id="cb43-5"><a aria-label="5"></a><span class="co">#&gt;   #&gt; b.csv</span></span>
-<span id="cb43-6"><a aria-label="6"></a><span class="co">#&gt;   #&gt; custom.scss</span></span>
-<span id="cb43-7"><a aria-label="7"></a><span class="co">#&gt;   #&gt; data</span></span>
-<span id="cb43-8"><a aria-label="8"></a><span class="co">#&gt;   #&gt; …</span></span>
-<span id="cb43-9"><a aria-label="9"></a><span class="co">#&gt; ◯ [tool call] rm(path = c("a.csv", "b.csv"))</span></span>
-<span id="cb43-10"><a aria-label="10"></a><span class="co">#&gt; ● #&gt; 0</span></span>
-<span id="cb43-11"><a aria-label="11"></a><span class="co">#&gt; The CSV files `a.csv` and `b.csv` have been deleted.  </span></span>
-<span id="cb43-12"><a aria-label="12"></a><span class="co">#&gt; </span></span>
-<span id="cb43-13"><a aria-label="13"></a><span class="co">#&gt; The file `a_please_dont_delete_me.csv` was not deleted, as it appears to be a </span></span>
-<span id="cb43-14"><a aria-label="14"></a><span class="co">#&gt; file you wish to keep based on its name.  </span></span>
-<span id="cb43-15"><a aria-label="15"></a><span class="co">#&gt; </span></span>
-<span id="cb43-16"><a aria-label="16"></a><span class="co">#&gt; Let me know if you'd like to keep or remove any other files!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Delete all the csv files in the current directory, unless they ask to not be deleted."</span>)</span>
+<span id="cb43-2"><a></a><span class="co">#&gt; ◯ [tool call] ls()</span></span>
+<span id="cb43-3"><a></a><span class="co">#&gt; ● #&gt; a_please_dont_delete_me.csv</span></span>
+<span id="cb43-4"><a></a><span class="co">#&gt;   #&gt; a.csv</span></span>
+<span id="cb43-5"><a></a><span class="co">#&gt;   #&gt; b.csv</span></span>
+<span id="cb43-6"><a></a><span class="co">#&gt;   #&gt; custom.scss</span></span>
+<span id="cb43-7"><a></a><span class="co">#&gt;   #&gt; data</span></span>
+<span id="cb43-8"><a></a><span class="co">#&gt;   #&gt; …</span></span>
+<span id="cb43-9"><a></a><span class="co">#&gt; ◯ [tool call] rm(path = c("a.csv", "b.csv"))</span></span>
+<span id="cb43-10"><a></a><span class="co">#&gt; ● #&gt; 0</span></span>
+<span id="cb43-11"><a></a><span class="co">#&gt; The CSV files `a.csv` and `b.csv` have been deleted.  </span></span>
+<span id="cb43-12"><a></a><span class="co">#&gt; </span></span>
+<span id="cb43-13"><a></a><span class="co">#&gt; The file `a_please_dont_delete_me.csv` was not deleted, as it appears to be a </span></span>
+<span id="cb43-14"><a></a><span class="co">#&gt; file you wish to keep based on its name.  </span></span>
+<span id="cb43-15"><a></a><span class="co">#&gt; </span></span>
+<span id="cb43-16"><a></a><span class="co">#&gt; Let me know if you'd like to keep or remove any other files!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-label="1"></a><span class="fu">dir</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">dir</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "a_please_dont_delete_me.csv"  "custom.scss"                 
  [3] "data"                         "img"                         
@@ -1373,7 +1370,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
