@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <title>Stat 241 – Animation and Interactivity</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,10 +19,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -256,12 +259,12 @@
 <h2>Inheriting <code>aes</code> from <code>ggplot()</code></h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015, </span>
-<span id="cb1-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb1-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb1-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> holidays, <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb1-6"><a></a>             <span class="at">color =</span> <span class="st">"black"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015, </span>
+<span id="cb1-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb1-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb1-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1-5"><a aria-label="5"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> holidays, <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb1-6"><a aria-label="6"></a>             <span class="at">color =</span> <span class="st">"black"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -278,7 +281,7 @@
 <section class="slide level2">
 
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">glimpse</span>(Births2015)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="fu">glimpse</span>(Births2015)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 365
 Columns: 8
@@ -291,7 +294,7 @@ $ day_of_year  &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
 $ day_of_month &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…
 $ day_of_week  &lt;dbl&gt; 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, …</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">glimpse</span>(holidays)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a><span class="fu">glimpse</span>(holidays)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 7
 Columns: 9
@@ -313,14 +316,14 @@ $ day_of_week  &lt;dbl&gt; 5, 2, 7, 6, 5, 5, 2</code></pre>
 <li>What <code>aes</code>thetics did the second <code>geom_point()</code> inherit? What didn’t it inherit?</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>holidays <span class="ot">&lt;-</span> <span class="fu">rename</span>(holidays, <span class="at">Dates =</span> date)</span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015, </span>
-<span id="cb6-4"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb6-5"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb6-6"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb6-7"><a></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> holidays, <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb6-8"><a></a>             <span class="at">color =</span> <span class="st">"black"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a>holidays <span class="ot">&lt;-</span> <span class="fu">rename</span>(holidays, <span class="at">Dates =</span> date)</span>
+<span id="cb6-2"><a aria-label="2"></a></span>
+<span id="cb6-3"><a aria-label="3"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015, </span>
+<span id="cb6-4"><a aria-label="4"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb6-5"><a aria-label="5"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb6-6"><a aria-label="6"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-7"><a aria-label="7"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> holidays, <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb6-8"><a aria-label="8"></a>             <span class="at">color =</span> <span class="st">"black"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `geom_point()`:
 ! Problem while computing aesthetics.
@@ -337,13 +340,13 @@ Caused by error:
 <h2>Inheriting <code>aes</code> from <code>ggplot()</code></h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015, </span>
-<span id="cb8-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb8-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb8-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb8-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> holidays, <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb8-6"><a></a>             <span class="at">color =</span> <span class="st">"black"</span>, </span>
-<span id="cb8-7"><a></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Dates))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015, </span>
+<span id="cb8-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb8-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb8-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-5"><a aria-label="5"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> holidays, <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb8-6"><a aria-label="6"></a>             <span class="at">color =</span> <span class="st">"black"</span>, </span>
+<span id="cb8-7"><a aria-label="7"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Dates))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -360,14 +363,14 @@ Caused by error:
 <section id="inheriting-aes-from-ggplot-3" class="slide level2">
 <h2>Inheriting <code>aes</code> from <code>ggplot()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015, </span>
-<span id="cb9-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb9-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb9-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb9-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> holidays, <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb9-6"><a></a>             <span class="at">color =</span> <span class="st">"black"</span>, </span>
-<span id="cb9-7"><a></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Dates),</span>
-<span id="cb9-8"><a></a>             <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015, </span>
+<span id="cb9-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb9-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb9-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-5"><a aria-label="5"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> holidays, <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb9-6"><a aria-label="6"></a>             <span class="at">color =</span> <span class="st">"black"</span>, </span>
+<span id="cb9-7"><a aria-label="7"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Dates),</span>
+<span id="cb9-8"><a aria-label="8"></a>             <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `geom_point()`:
 ! Problem while setting up geom.
@@ -384,15 +387,15 @@ Caused by error in `compute_geom_1()`:
 <h2>Inheriting <code>aes</code> from <code>ggplot()</code></h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015, </span>
-<span id="cb11-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb11-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb11-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb11-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> holidays, <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb11-6"><a></a>             <span class="at">color =</span> <span class="st">"black"</span>, </span>
-<span id="cb11-7"><a></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Dates,</span>
-<span id="cb11-8"><a></a>                           <span class="at">y =</span> births),</span>
-<span id="cb11-9"><a></a>             <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015, </span>
+<span id="cb11-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb11-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb11-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb11-5"><a aria-label="5"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> holidays, <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb11-6"><a aria-label="6"></a>             <span class="at">color =</span> <span class="st">"black"</span>, </span>
+<span id="cb11-7"><a aria-label="7"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Dates,</span>
+<span id="cb11-8"><a aria-label="8"></a>                           <span class="at">y =</span> births),</span>
+<span id="cb11-9"><a aria-label="9"></a>             <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -409,20 +412,20 @@ Caused by error in `compute_geom_1()`:
 <section id="inheriting-aes-from-ggplot-5" class="slide level2">
 <h2>Inheriting <code>aes</code> from <code>ggplot()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co">#Add a box around Thanksgiving to Christmas</span></span>
-<span id="cb12-2"><a></a>holidays_season <span class="ot">&lt;-</span> </span>
-<span id="cb12-3"><a></a>  <span class="fu">data.frame</span>(<span class="at">start =</span> <span class="fu">as_date</span>(<span class="st">"2015-11-26"</span>), </span>
-<span id="cb12-4"><a></a>             <span class="at">end =</span> <span class="fu">as_date</span>(<span class="st">"2015-12-24"</span>))</span>
-<span id="cb12-5"><a></a></span>
-<span id="cb12-6"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015, </span>
-<span id="cb12-7"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb12-8"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span></span>
-<span id="cb12-9"><a></a>  <span class="fu">geom_rect</span>(<span class="at">data =</span> holidays_season,</span>
-<span id="cb12-10"><a></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">xmin =</span> start,</span>
-<span id="cb12-11"><a></a>                          <span class="at">xmax =</span> end,</span>
-<span id="cb12-12"><a></a>                          <span class="at">ymin =</span> <span class="dv">6000</span>,</span>
-<span id="cb12-13"><a></a>                          <span class="at">ymax =</span> <span class="dv">14000</span>)) <span class="sc">+</span> </span>
-<span id="cb12-14"><a></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a><span class="co">#Add a box around Thanksgiving to Christmas</span></span>
+<span id="cb12-2"><a aria-label="2"></a>holidays_season <span class="ot">&lt;-</span> </span>
+<span id="cb12-3"><a aria-label="3"></a>  <span class="fu">data.frame</span>(<span class="at">start =</span> <span class="fu">as_date</span>(<span class="st">"2015-11-26"</span>), </span>
+<span id="cb12-4"><a aria-label="4"></a>             <span class="at">end =</span> <span class="fu">as_date</span>(<span class="st">"2015-12-24"</span>))</span>
+<span id="cb12-5"><a aria-label="5"></a></span>
+<span id="cb12-6"><a aria-label="6"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015, </span>
+<span id="cb12-7"><a aria-label="7"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb12-8"><a aria-label="8"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span></span>
+<span id="cb12-9"><a aria-label="9"></a>  <span class="fu">geom_rect</span>(<span class="at">data =</span> holidays_season,</span>
+<span id="cb12-10"><a aria-label="10"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">xmin =</span> start,</span>
+<span id="cb12-11"><a aria-label="11"></a>                          <span class="at">xmax =</span> end,</span>
+<span id="cb12-12"><a aria-label="12"></a>                          <span class="at">ymin =</span> <span class="dv">6000</span>,</span>
+<span id="cb12-13"><a aria-label="13"></a>                          <span class="at">ymax =</span> <span class="dv">14000</span>)) <span class="sc">+</span> </span>
+<span id="cb12-14"><a aria-label="14"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `geom_rect()`:
 ! Problem while computing aesthetics.
@@ -439,16 +442,16 @@ Caused by error:
 <h2>Inheriting <code>aes</code> from <code>ggplot()</code></h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015, </span>
-<span id="cb14-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb14-3"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span></span>
-<span id="cb14-4"><a></a>  <span class="fu">geom_rect</span>(<span class="at">data =</span> holidays_season,</span>
-<span id="cb14-5"><a></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">xmin =</span> start,</span>
-<span id="cb14-6"><a></a>                          <span class="at">xmax =</span> end,</span>
-<span id="cb14-7"><a></a>                          <span class="at">ymin =</span> <span class="dv">6000</span>,</span>
-<span id="cb14-8"><a></a>                          <span class="at">ymax =</span> <span class="dv">14000</span>),</span>
-<span id="cb14-9"><a></a>             <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb14-10"><a></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015, </span>
+<span id="cb14-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb14-3"><a aria-label="3"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span></span>
+<span id="cb14-4"><a aria-label="4"></a>  <span class="fu">geom_rect</span>(<span class="at">data =</span> holidays_season,</span>
+<span id="cb14-5"><a aria-label="5"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">xmin =</span> start,</span>
+<span id="cb14-6"><a aria-label="6"></a>                          <span class="at">xmax =</span> end,</span>
+<span id="cb14-7"><a aria-label="7"></a>                          <span class="at">ymin =</span> <span class="dv">6000</span>,</span>
+<span id="cb14-8"><a aria-label="8"></a>                          <span class="at">ymax =</span> <span class="dv">14000</span>),</span>
+<span id="cb14-9"><a aria-label="9"></a>             <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb14-10"><a aria-label="10"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -467,16 +470,16 @@ Caused by error:
 <h2>Safe Play: Put the mappings in the individual <code>geoms</code></h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015) <span class="sc">+</span></span>
-<span id="cb15-2"><a></a>  <span class="fu">geom_rect</span>(<span class="at">data =</span> holidays_season,</span>
-<span id="cb15-3"><a></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">xmin =</span> start,</span>
-<span id="cb15-4"><a></a>                          <span class="at">xmax =</span> end,</span>
-<span id="cb15-5"><a></a>                          <span class="at">ymin =</span> <span class="dv">6000</span>,</span>
-<span id="cb15-6"><a></a>                          <span class="at">ymax =</span> <span class="dv">14000</span>),</span>
-<span id="cb15-7"><a></a>             <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb15-8"><a></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date,</span>
-<span id="cb15-9"><a></a>                           <span class="at">y =</span> births,</span>
-<span id="cb15-10"><a></a>                           <span class="at">color =</span> wday))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Births2015) <span class="sc">+</span></span>
+<span id="cb15-2"><a aria-label="2"></a>  <span class="fu">geom_rect</span>(<span class="at">data =</span> holidays_season,</span>
+<span id="cb15-3"><a aria-label="3"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">xmin =</span> start,</span>
+<span id="cb15-4"><a aria-label="4"></a>                          <span class="at">xmax =</span> end,</span>
+<span id="cb15-5"><a aria-label="5"></a>                          <span class="at">ymin =</span> <span class="dv">6000</span>,</span>
+<span id="cb15-6"><a aria-label="6"></a>                          <span class="at">ymax =</span> <span class="dv">14000</span>),</span>
+<span id="cb15-7"><a aria-label="7"></a>             <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb15-8"><a aria-label="8"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date,</span>
+<span id="cb15-9"><a aria-label="9"></a>                           <span class="at">y =</span> births,</span>
+<span id="cb15-10"><a aria-label="10"></a>                           <span class="at">color =</span> wday))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -547,8 +550,8 @@ Caused by error:
 <section id="recall-the-babynames-dataset" class="slide level2">
 <h2>Recall the <code>babynames</code> dataset</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">library</span>(babynames)</span>
-<span id="cb16-2"><a></a><span class="fu">head</span>(babynames)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a><span class="fu">library</span>(babynames)</span>
+<span id="cb16-2"><a aria-label="2"></a><span class="fu">head</span>(babynames)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
    year sex   name          n   prop
@@ -565,15 +568,15 @@ Caused by error:
 <section id="and-our-data-wrangling" class="slide level2">
 <h2>And our data wrangling</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>babynames_math241 <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
-<span id="cb18-3"><a></a>                     <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb18-4"><a></a>  <span class="fu">group_by</span>(year, name) <span class="sc">%&gt;%</span></span>
-<span id="cb18-5"><a></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
-<span id="cb18-6"><a></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb18-7"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(year))</span>
-<span id="cb18-8"><a></a></span>
-<span id="cb18-9"><a></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a>babynames_math241 <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a aria-label="2"></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
+<span id="cb18-3"><a aria-label="3"></a>                     <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a aria-label="4"></a>  <span class="fu">group_by</span>(year, name) <span class="sc">%&gt;%</span></span>
+<span id="cb18-5"><a aria-label="5"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-6"><a aria-label="6"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb18-7"><a aria-label="7"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(year))</span>
+<span id="cb18-8"><a aria-label="8"></a></span>
+<span id="cb18-9"><a aria-label="9"></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 431 × 3
     year name        n
@@ -596,15 +599,15 @@ Caused by error:
 <h2>Now let’s make a plot</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> babynames_math241, </span>
-<span id="cb20-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> n)) <span class="sc">+</span></span>
-<span id="cb20-3"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> name), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb20-4"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>, </span>
-<span id="cb20-5"><a></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>)) <span class="sc">+</span></span>
-<span id="cb20-6"><a></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">2</span>)) <span class="sc">+</span></span>
-<span id="cb20-7"><a></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Number of Births"</span>,</span>
-<span id="cb20-8"><a></a>       <span class="at">x =</span> <span class="st">"Year"</span>, </span>
-<span id="cb20-9"><a></a>       <span class="at">color =</span> <span class="st">"Baby Name"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> babynames_math241, </span>
+<span id="cb20-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb20-3"><a aria-label="3"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> name), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb20-4"><a aria-label="4"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>, </span>
+<span id="cb20-5"><a aria-label="5"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>)) <span class="sc">+</span></span>
+<span id="cb20-6"><a aria-label="6"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb20-7"><a aria-label="7"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Number of Births"</span>,</span>
+<span id="cb20-8"><a aria-label="8"></a>       <span class="at">x =</span> <span class="st">"Year"</span>, </span>
+<span id="cb20-9"><a aria-label="9"></a>       <span class="at">color =</span> <span class="st">"Baby Name"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -619,7 +622,7 @@ Caused by error:
 <h2>Sidebar: saving plots to your computer</h2>
 <p>Here, I have an empty folder called “my_plots” in my working directory.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">list.files</span>(<span class="st">"my_plots"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a><span class="fu">list.files</span>(<span class="st">"my_plots"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "stats_profs_an.gif"</code></pre>
 </div>
@@ -628,15 +631,15 @@ Caused by error:
 <div class="fragment">
 <p>Now, I save the plot <strong>in my <code>R</code> environment</strong> as the object <code>p</code></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> babynames_math241, </span>
-<span id="cb23-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> n)) <span class="sc">+</span></span>
-<span id="cb23-3"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> name), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb23-4"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>, </span>
-<span id="cb23-5"><a></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>)) <span class="sc">+</span></span>
-<span id="cb23-6"><a></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">2</span>)) <span class="sc">+</span></span>
-<span id="cb23-7"><a></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Number of Births"</span>,</span>
-<span id="cb23-8"><a></a>       <span class="at">x =</span> <span class="st">"Year"</span>, </span>
-<span id="cb23-9"><a></a>       <span class="at">color =</span> <span class="st">"Baby Name"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> babynames_math241, </span>
+<span id="cb23-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb23-3"><a aria-label="3"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> name), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb23-4"><a aria-label="4"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>, </span>
+<span id="cb23-5"><a aria-label="5"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>)) <span class="sc">+</span></span>
+<span id="cb23-6"><a aria-label="6"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb23-7"><a aria-label="7"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Number of Births"</span>,</span>
+<span id="cb23-8"><a aria-label="8"></a>       <span class="at">x =</span> <span class="st">"Year"</span>, </span>
+<span id="cb23-9"><a aria-label="9"></a>       <span class="at">color =</span> <span class="st">"Baby Name"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p><br></p>
@@ -644,16 +647,16 @@ Caused by error:
 <div class="fragment column" style="width:45%;">
 <p>Finally, I use <code>ggsave()</code> to save the object to my computer</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">"my_plots/stats_names.png"</span>, </span>
-<span id="cb24-2"><a></a>       <span class="at">width =</span> <span class="dv">10</span>, </span>
-<span id="cb24-3"><a></a>       <span class="at">height =</span> <span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">"my_plots/stats_names.png"</span>, </span>
+<span id="cb24-2"><a aria-label="2"></a>       <span class="at">width =</span> <span class="dv">10</span>, </span>
+<span id="cb24-3"><a aria-label="3"></a>       <span class="at">height =</span> <span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:10%;">
 
 </div><div class="fragment column" style="width:45%;">
 <p>Checking for files in “my_plots” directory</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">list.files</span>(<span class="st">"my_plots"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a><span class="fu">list.files</span>(<span class="st">"my_plots"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "stats_names.png"    "stats_profs_an.gif"</code></pre>
 </div>
@@ -664,7 +667,7 @@ Caused by error:
 <h2>Back to animation</h2>
 <p>We’d like to animate this plot</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a>p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -679,15 +682,15 @@ Caused by error:
 <p><code>transition_reveal()</code>: reveal the graph along a variable in the plot</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">library</span>(gganimate)</span>
-<span id="cb28-2"><a></a>p_animate <span class="ot">&lt;-</span> p <span class="sc">+</span></span>
-<span id="cb28-3"><a></a>  <span class="fu">transition_reveal</span>(<span class="at">along =</span> year)</span>
-<span id="cb28-4"><a></a><span class="fu">animate</span>(p_animate, </span>
-<span id="cb28-5"><a></a>        <span class="at">fps =</span> <span class="dv">5</span>, </span>
-<span id="cb28-6"><a></a>        <span class="at">end_pause =</span> <span class="dv">40</span>, </span>
-<span id="cb28-7"><a></a>        <span class="at">height =</span> <span class="dv">4</span>, <span class="at">width =</span> <span class="fl">6.5</span>,</span>
-<span id="cb28-8"><a></a>        <span class="at">units =</span> <span class="st">"in"</span>, </span>
-<span id="cb28-9"><a></a>        <span class="at">res =</span> <span class="dv">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-label="1"></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb28-2"><a aria-label="2"></a>p_animate <span class="ot">&lt;-</span> p <span class="sc">+</span></span>
+<span id="cb28-3"><a aria-label="3"></a>  <span class="fu">transition_reveal</span>(<span class="at">along =</span> year)</span>
+<span id="cb28-4"><a aria-label="4"></a><span class="fu">animate</span>(p_animate, </span>
+<span id="cb28-5"><a aria-label="5"></a>        <span class="at">fps =</span> <span class="dv">5</span>, </span>
+<span id="cb28-6"><a aria-label="6"></a>        <span class="at">end_pause =</span> <span class="dv">40</span>, </span>
+<span id="cb28-7"><a aria-label="7"></a>        <span class="at">height =</span> <span class="dv">4</span>, <span class="at">width =</span> <span class="fl">6.5</span>,</span>
+<span id="cb28-8"><a aria-label="8"></a>        <span class="at">units =</span> <span class="st">"in"</span>, </span>
+<span id="cb28-9"><a aria-label="9"></a>        <span class="at">res =</span> <span class="dv">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -709,13 +712,13 @@ Caused by error:
 <p>Static graph by island</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb29-2"><a></a><span class="fu">ggplot</span>(penguins,</span>
-<span id="cb29-3"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, </span>
-<span id="cb29-4"><a></a>           <span class="at">y =</span> body_mass_g, </span>
-<span id="cb29-5"><a></a>           <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
-<span id="cb29-6"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb29-7"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>island)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb29-2"><a aria-label="2"></a><span class="fu">ggplot</span>(penguins,</span>
+<span id="cb29-3"><a aria-label="3"></a>       <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, </span>
+<span id="cb29-4"><a aria-label="4"></a>           <span class="at">y =</span> body_mass_g, </span>
+<span id="cb29-5"><a aria-label="5"></a>           <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
+<span id="cb29-6"><a aria-label="6"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb29-7"><a aria-label="7"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>island)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -731,18 +734,18 @@ Caused by error:
 <p><code>transition_states()</code>: display graph for each category of a variable</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>p2_anim <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(penguins, </span>
-<span id="cb30-2"><a></a>                  <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm,</span>
-<span id="cb30-3"><a></a>                      <span class="at">y =</span> body_mass_g,</span>
-<span id="cb30-4"><a></a>                      <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
-<span id="cb30-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb30-6"><a></a>  <span class="fu">transition_states</span>(</span>
-<span id="cb30-7"><a></a>    <span class="at">states =</span> island, <span class="at">wrap =</span> <span class="cn">TRUE</span></span>
-<span id="cb30-8"><a></a>  ) <span class="sc">+</span> </span>
-<span id="cb30-9"><a></a>  <span class="fu">enter_fade</span>() <span class="sc">+</span></span>
-<span id="cb30-10"><a></a>  <span class="fu">exit_shrink</span>()</span>
-<span id="cb30-11"><a></a></span>
-<span id="cb30-12"><a></a><span class="fu">animate</span>(p2_anim) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-label="1"></a>p2_anim <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(penguins, </span>
+<span id="cb30-2"><a aria-label="2"></a>                  <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm,</span>
+<span id="cb30-3"><a aria-label="3"></a>                      <span class="at">y =</span> body_mass_g,</span>
+<span id="cb30-4"><a aria-label="4"></a>                      <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
+<span id="cb30-5"><a aria-label="5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb30-6"><a aria-label="6"></a>  <span class="fu">transition_states</span>(</span>
+<span id="cb30-7"><a aria-label="7"></a>    <span class="at">states =</span> island, <span class="at">wrap =</span> <span class="cn">TRUE</span></span>
+<span id="cb30-8"><a aria-label="8"></a>  ) <span class="sc">+</span> </span>
+<span id="cb30-9"><a aria-label="9"></a>  <span class="fu">enter_fade</span>() <span class="sc">+</span></span>
+<span id="cb30-10"><a aria-label="10"></a>  <span class="fu">exit_shrink</span>()</span>
+<span id="cb30-11"><a aria-label="11"></a></span>
+<span id="cb30-12"><a aria-label="12"></a><span class="fu">animate</span>(p2_anim) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -758,16 +761,16 @@ Caused by error:
 <p><code>transition_states()</code>: display graph for each category of a variable</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>p2_anim <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> body_mass_g, <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
-<span id="cb31-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb31-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Island: {closest_state}"</span>) <span class="sc">+</span> </span>
-<span id="cb31-4"><a></a>  <span class="fu">transition_states</span>(</span>
-<span id="cb31-5"><a></a>    <span class="at">states =</span> island, <span class="at">wrap =</span> <span class="cn">TRUE</span></span>
-<span id="cb31-6"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb31-7"><a></a>  <span class="fu">enter_fade</span>() <span class="sc">+</span></span>
-<span id="cb31-8"><a></a>  <span class="fu">exit_shrink</span>()</span>
-<span id="cb31-9"><a></a></span>
-<span id="cb31-10"><a></a><span class="fu">animate</span>(p2_anim) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a>p2_anim <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> body_mass_g, <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
+<span id="cb31-2"><a aria-label="2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb31-3"><a aria-label="3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Island: {closest_state}"</span>) <span class="sc">+</span> </span>
+<span id="cb31-4"><a aria-label="4"></a>  <span class="fu">transition_states</span>(</span>
+<span id="cb31-5"><a aria-label="5"></a>    <span class="at">states =</span> island, <span class="at">wrap =</span> <span class="cn">TRUE</span></span>
+<span id="cb31-6"><a aria-label="6"></a>  ) <span class="sc">+</span></span>
+<span id="cb31-7"><a aria-label="7"></a>  <span class="fu">enter_fade</span>() <span class="sc">+</span></span>
+<span id="cb31-8"><a aria-label="8"></a>  <span class="fu">exit_shrink</span>()</span>
+<span id="cb31-9"><a aria-label="9"></a></span>
+<span id="cb31-10"><a aria-label="10"></a><span class="fu">animate</span>(p2_anim) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -783,17 +786,17 @@ Caused by error:
 <p><code>transition_filter()</code>: display graph for multiple filtering conditions</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>stats_profs_anim <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
-<span id="cb32-2"><a></a>  <span class="fu">transition_filter</span>(</span>
-<span id="cb32-3"><a></a>    <span class="at">Lenny =</span> name <span class="sc">==</span> <span class="st">"Lenny"</span>,</span>
-<span id="cb32-4"><a></a>    <span class="at">Grayson =</span> name <span class="sc">==</span> <span class="st">"Grayson"</span>,</span>
-<span id="cb32-5"><a></a>    <span class="at">Michael =</span> name <span class="sc">==</span> <span class="st">"Michael"</span>,</span>
-<span id="cb32-6"><a></a>    <span class="at">Megan =</span> name <span class="sc">==</span> <span class="st">"Megan"</span>,</span>
-<span id="cb32-7"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb32-8"><a></a>  <span class="fu">enter_fade</span>() <span class="sc">+</span></span>
-<span id="cb32-9"><a></a>  <span class="fu">exit_fade</span>()</span>
-<span id="cb32-10"><a></a></span>
-<span id="cb32-11"><a></a><span class="fu">animate</span>(stats_profs_anim) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-label="1"></a>stats_profs_anim <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
+<span id="cb32-2"><a aria-label="2"></a>  <span class="fu">transition_filter</span>(</span>
+<span id="cb32-3"><a aria-label="3"></a>    <span class="at">Lenny =</span> name <span class="sc">==</span> <span class="st">"Lenny"</span>,</span>
+<span id="cb32-4"><a aria-label="4"></a>    <span class="at">Grayson =</span> name <span class="sc">==</span> <span class="st">"Grayson"</span>,</span>
+<span id="cb32-5"><a aria-label="5"></a>    <span class="at">Michael =</span> name <span class="sc">==</span> <span class="st">"Michael"</span>,</span>
+<span id="cb32-6"><a aria-label="6"></a>    <span class="at">Megan =</span> name <span class="sc">==</span> <span class="st">"Megan"</span>,</span>
+<span id="cb32-7"><a aria-label="7"></a>  ) <span class="sc">+</span></span>
+<span id="cb32-8"><a aria-label="8"></a>  <span class="fu">enter_fade</span>() <span class="sc">+</span></span>
+<span id="cb32-9"><a aria-label="9"></a>  <span class="fu">exit_fade</span>()</span>
+<span id="cb32-10"><a aria-label="10"></a></span>
+<span id="cb32-11"><a aria-label="11"></a><span class="fu">animate</span>(stats_profs_anim) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -809,18 +812,18 @@ Caused by error:
 <p><code>view_follow()</code>: let’s us adjust the axis as we view</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>stats_profs_anim <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
-<span id="cb33-2"><a></a>  <span class="fu">transition_filter</span>(</span>
-<span id="cb33-3"><a></a>    <span class="at">Lenny =</span> name <span class="sc">==</span> <span class="st">"Lenny"</span>,</span>
-<span id="cb33-4"><a></a>    <span class="at">Grayson =</span> name <span class="sc">==</span> <span class="st">"Grayson"</span>,</span>
-<span id="cb33-5"><a></a>    <span class="at">Michael =</span> name <span class="sc">==</span> <span class="st">"Michael"</span>,</span>
-<span id="cb33-6"><a></a>    <span class="at">Megan =</span> name <span class="sc">==</span> <span class="st">"Megan"</span>,</span>
-<span id="cb33-7"><a></a>  ) <span class="sc">+</span> </span>
-<span id="cb33-8"><a></a>  <span class="fu">enter_grow</span>() <span class="sc">+</span></span>
-<span id="cb33-9"><a></a>  <span class="fu">exit_fade</span>() <span class="sc">+</span> </span>
-<span id="cb33-10"><a></a>  <span class="fu">view_follow</span>()</span>
-<span id="cb33-11"><a></a></span>
-<span id="cb33-12"><a></a><span class="fu">animate</span>(stats_profs_anim) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a>stats_profs_anim <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
+<span id="cb33-2"><a aria-label="2"></a>  <span class="fu">transition_filter</span>(</span>
+<span id="cb33-3"><a aria-label="3"></a>    <span class="at">Lenny =</span> name <span class="sc">==</span> <span class="st">"Lenny"</span>,</span>
+<span id="cb33-4"><a aria-label="4"></a>    <span class="at">Grayson =</span> name <span class="sc">==</span> <span class="st">"Grayson"</span>,</span>
+<span id="cb33-5"><a aria-label="5"></a>    <span class="at">Michael =</span> name <span class="sc">==</span> <span class="st">"Michael"</span>,</span>
+<span id="cb33-6"><a aria-label="6"></a>    <span class="at">Megan =</span> name <span class="sc">==</span> <span class="st">"Megan"</span>,</span>
+<span id="cb33-7"><a aria-label="7"></a>  ) <span class="sc">+</span> </span>
+<span id="cb33-8"><a aria-label="8"></a>  <span class="fu">enter_grow</span>() <span class="sc">+</span></span>
+<span id="cb33-9"><a aria-label="9"></a>  <span class="fu">exit_fade</span>() <span class="sc">+</span> </span>
+<span id="cb33-10"><a aria-label="10"></a>  <span class="fu">view_follow</span>()</span>
+<span id="cb33-11"><a aria-label="11"></a></span>
+<span id="cb33-12"><a aria-label="12"></a><span class="fu">animate</span>(stats_profs_anim) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -834,7 +837,7 @@ Caused by error:
 <section id="how-do-i-save-an-animation" class="slide level2">
 <h2>How do I save an animation?</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">anim_save</span>(<span class="st">"my_plots/stats_profs_an.gif"</span>, <span class="fu">animate</span>(stats_profs_anim))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a><span class="fu">anim_save</span>(<span class="st">"my_plots/stats_profs_an.gif"</span>, <span class="fu">animate</span>(stats_profs_anim))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="why-add-animation-to-a-graph" class="slide level2">
@@ -861,7 +864,7 @@ Caused by error:
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">apropos</span>(<span class="st">"transition_"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-label="1"></a><span class="fu">apropos</span>(<span class="st">"transition_"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "transition_components" "transition_events"     "transition_filter"    
 [4] "transition_layers"     "transition_manual"     "transition_null"      
@@ -871,7 +874,7 @@ Caused by error:
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">apropos</span>(<span class="st">"exit_"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-label="1"></a><span class="fu">apropos</span>(<span class="st">"exit_"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "exit_disappear" "exit_drift"     "exit_fade"      "exit_fly"      
 [5] "exit_manual"    "exit_recolor"   "exit_recolour"  "exit_reset"    
@@ -881,7 +884,7 @@ Caused by error:
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">apropos</span>(<span class="st">"^view_"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-label="1"></a><span class="fu">apropos</span>(<span class="st">"^view_"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "view_follow"      "view_static"      "view_step"        "view_step_manual"
 [5] "view_zoom"        "view_zoom_manual"</code></pre>
@@ -903,14 +906,14 @@ Caused by error:
 <p>We can use the <code>plotly</code> package to convert a static <code>ggplot</code> to an interactive plot.</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">library</span>(mosaicData)</span>
-<span id="cb41-2"><a></a><span class="fu">data</span>(Births2015)</span>
-<span id="cb41-3"><a></a></span>
-<span id="cb41-4"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> Births2015, </span>
-<span id="cb41-5"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
-<span id="cb41-6"><a></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb41-7"><a></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb41-8"><a></a>p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a aria-label="1"></a><span class="fu">library</span>(mosaicData)</span>
+<span id="cb41-2"><a aria-label="2"></a><span class="fu">data</span>(Births2015)</span>
+<span id="cb41-3"><a aria-label="3"></a></span>
+<span id="cb41-4"><a aria-label="4"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> Births2015, </span>
+<span id="cb41-5"><a aria-label="5"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> births,</span>
+<span id="cb41-6"><a aria-label="6"></a>                     <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb41-7"><a aria-label="7"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb41-8"><a aria-label="8"></a>p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -927,8 +930,8 @@ Caused by error:
 <div class="columns">
 <div class="fragment column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">library</span>(plotly)</span>
-<span id="cb42-2"><a></a><span class="fu">ggplotly</span>(p) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-label="1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb42-2"><a aria-label="2"></a><span class="fu">ggplotly</span>(p) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="plotly html-widget html-fill-item" id="htmlwidget-a30837d4e8b7acdafc26" style="width:768px;height:576px;"></div>
 <script type="application/json" data-for="htmlwidget-a30837d4e8b7acdafc26">{"x":{"data":[{"x":[16439,16446,16453,16460,16467,16474,16481,16488,16495,16502,16509,16516,16523,16530,16537,16544,16551,16558,16565,16572,16579,16586,16593,16600,16607,16614,16621,16628,16635,16642,16649,16656,16663,16670,16677,16684,16691,16698,16705,16712,16719,16726,16733,16740,16747,16754,16761,16768,16775,16782,16789,16796],"y":[7065,7172,7195,7186,7139,7265,7508,7254,7273,6929,7202,7171,7125,6821,7141,7180,7178,7195,7246,7354,7261,7367,7230,7292,7580,7371,7164,7591,7681,7836,7907,7726,7896,7821,7805,7778,7900,8078,7778,7530,7571,7211,7288,7731,7324,7378,7427,7230,7194,7262,7361,7518],"text":["date: 2015-01-04<br />births:  7065<br />wday: Sun","date: 2015-01-11<br />births:  7172<br />wday: Sun","date: 2015-01-18<br />births:  7195<br />wday: Sun","date: 2015-01-25<br />births:  7186<br />wday: Sun","date: 2015-02-01<br />births:  7139<br />wday: Sun","date: 2015-02-08<br />births:  7265<br />wday: Sun","date: 2015-02-15<br />births:  7508<br />wday: Sun","date: 2015-02-22<br />births:  7254<br />wday: Sun","date: 2015-03-01<br />births:  7273<br />wday: Sun","date: 2015-03-08<br />births:  6929<br />wday: Sun","date: 2015-03-15<br />births:  7202<br />wday: Sun","date: 2015-03-22<br />births:  7171<br />wday: Sun","date: 2015-03-29<br />births:  7125<br />wday: Sun","date: 2015-04-05<br />births:  6821<br />wday: Sun","date: 2015-04-12<br />births:  7141<br />wday: Sun","date: 2015-04-19<br />births:  7180<br />wday: Sun","date: 2015-04-26<br />births:  7178<br />wday: Sun","date: 2015-05-03<br />births:  7195<br />wday: Sun","date: 2015-05-10<br />births:  7246<br />wday: Sun","date: 2015-05-17<br />births:  7354<br />wday: Sun","date: 2015-05-24<br />births:  7261<br />wday: Sun","date: 2015-05-31<br />births:  7367<br />wday: Sun","date: 2015-06-07<br />births:  7230<br />wday: Sun","date: 2015-06-14<br />births:  7292<br />wday: Sun","date: 2015-06-21<br />births:  7580<br />wday: Sun","date: 2015-06-28<br />births:  7371<br />wday: Sun","date: 2015-07-05<br />births:  7164<br />wday: Sun","date: 2015-07-12<br />births:  7591<br />wday: Sun","date: 2015-07-19<br />births:  7681<br />wday: Sun","date: 2015-07-26<br />births:  7836<br />wday: Sun","date: 2015-08-02<br />births:  7907<br />wday: Sun","date: 2015-08-09<br />births:  7726<br />wday: Sun","date: 2015-08-16<br />births:  7896<br />wday: Sun","date: 2015-08-23<br />births:  7821<br />wday: Sun","date: 2015-08-30<br />births:  7805<br />wday: Sun","date: 2015-09-06<br />births:  7778<br />wday: Sun","date: 2015-09-13<br />births:  7900<br />wday: Sun","date: 2015-09-20<br />births:  8078<br />wday: Sun","date: 2015-09-27<br />births:  7778<br />wday: Sun","date: 2015-10-04<br />births:  7530<br />wday: Sun","date: 2015-10-11<br />births:  7571<br />wday: Sun","date: 2015-10-18<br />births:  7211<br />wday: Sun","date: 2015-10-25<br />births:  7288<br />wday: Sun","date: 2015-11-01<br />births:  7731<br />wday: Sun","date: 2015-11-08<br />births:  7324<br />wday: Sun","date: 2015-11-15<br />births:  7378<br />wday: Sun","date: 2015-11-22<br />births:  7427<br />wday: Sun","date: 2015-11-29<br />births:  7230<br />wday: Sun","date: 2015-12-06<br />births:  7194<br />wday: Sun","date: 2015-12-13<br />births:  7262<br />wday: Sun","date: 2015-12-20<br />births:  7361<br />wday: Sun","date: 2015-12-27<br />births:  7518<br />wday: Sun"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"Sun","legendgroup":"Sun","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[16440,16447,16454,16461,16468,16475,16482,16489,16496,16503,16510,16517,16524,16531,16538,16545,16552,16559,16566,16573,16580,16587,16594,16601,16608,16615,16622,16629,16636,16643,16650,16657,16664,16671,16678,16685,16692,16699,16706,16713,16720,16727,16734,16741,16748,16755,16762,16769,16776,16783,16790,16797],"y":[11892,11479,10602,11728,11480,11937,11038,11260,11609,11678,11537,11674,11500,11455,11503,11513,11494,11724,11549,11708,7746,11793,11938,12348,11883,11961,12088,11835,12424,12416,12449,12333,12337,12274,12142,8127,12699,12567,12158,12166,11633,11388,11923,12236,11688,11791,12419,12214,11567,11753,12692,13100],"text":["date: 2015-01-05<br />births: 11892<br />wday: Mon","date: 2015-01-12<br />births: 11479<br />wday: Mon","date: 2015-01-19<br />births: 10602<br />wday: Mon","date: 2015-01-26<br />births: 11728<br />wday: Mon","date: 2015-02-02<br />births: 11480<br />wday: Mon","date: 2015-02-09<br />births: 11937<br />wday: Mon","date: 2015-02-16<br />births: 11038<br />wday: Mon","date: 2015-02-23<br />births: 11260<br />wday: Mon","date: 2015-03-02<br />births: 11609<br />wday: Mon","date: 2015-03-09<br />births: 11678<br />wday: Mon","date: 2015-03-16<br />births: 11537<br />wday: Mon","date: 2015-03-23<br />births: 11674<br />wday: Mon","date: 2015-03-30<br />births: 11500<br />wday: Mon","date: 2015-04-06<br />births: 11455<br />wday: Mon","date: 2015-04-13<br />births: 11503<br />wday: Mon","date: 2015-04-20<br />births: 11513<br />wday: Mon","date: 2015-04-27<br />births: 11494<br />wday: Mon","date: 2015-05-04<br />births: 11724<br />wday: Mon","date: 2015-05-11<br />births: 11549<br />wday: Mon","date: 2015-05-18<br />births: 11708<br />wday: Mon","date: 2015-05-25<br />births:  7746<br />wday: Mon","date: 2015-06-01<br />births: 11793<br />wday: Mon","date: 2015-06-08<br />births: 11938<br />wday: Mon","date: 2015-06-15<br />births: 12348<br />wday: Mon","date: 2015-06-22<br />births: 11883<br />wday: Mon","date: 2015-06-29<br />births: 11961<br />wday: Mon","date: 2015-07-06<br />births: 12088<br />wday: Mon","date: 2015-07-13<br />births: 11835<br />wday: Mon","date: 2015-07-20<br />births: 12424<br />wday: Mon","date: 2015-07-27<br />births: 12416<br />wday: Mon","date: 2015-08-03<br />births: 12449<br />wday: Mon","date: 2015-08-10<br />births: 12333<br />wday: Mon","date: 2015-08-17<br />births: 12337<br />wday: Mon","date: 2015-08-24<br />births: 12274<br />wday: Mon","date: 2015-08-31<br />births: 12142<br />wday: Mon","date: 2015-09-07<br />births:  8127<br />wday: Mon","date: 2015-09-14<br />births: 12699<br />wday: Mon","date: 2015-09-21<br />births: 12567<br />wday: Mon","date: 2015-09-28<br />births: 12158<br />wday: Mon","date: 2015-10-05<br />births: 12166<br />wday: Mon","date: 2015-10-12<br />births: 11633<br />wday: Mon","date: 2015-10-19<br />births: 11388<br />wday: Mon","date: 2015-10-26<br />births: 11923<br />wday: Mon","date: 2015-11-02<br />births: 12236<br />wday: Mon","date: 2015-11-09<br />births: 11688<br />wday: Mon","date: 2015-11-16<br />births: 11791<br />wday: Mon","date: 2015-11-23<br />births: 12419<br />wday: Mon","date: 2015-11-30<br />births: 12214<br />wday: Mon","date: 2015-12-07<br />births: 11567<br />wday: Mon","date: 2015-12-14<br />births: 11753<br />wday: Mon","date: 2015-12-21<br />births: 12692<br />wday: Mon","date: 2015-12-28<br />births: 13100<br />wday: Mon"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,58,131,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(68,58,131,1)"}},"hoveron":"points","name":"Mon","legendgroup":"Mon","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[16441,16448,16455,16462,16469,16476,16483,16490,16497,16504,16511,16518,16525,16532,16539,16546,16553,16560,16567,16574,16581,16588,16595,16602,16609,16616,16623,16630,16637,16644,16651,16658,16665,16672,16679,16686,16693,16700,16707,16714,16721,16728,16735,16742,16749,16756,16763,16770,16777,16784,16791,16798],"y":[12425,11924,12242,11882,12079,12291,11952,11941,12402,12282,12312,12333,12362,12334,12309,12173,12221,12618,12400,12469,12242,11994,12479,12400,12351,12932,13426,12862,13264,13240,13149,13010,13197,13149,13231,12823,13439,13047,12791,12520,12094,12500,12485,12524,12451,12321,13051,13185,12328,12437,13131,13458],"text":["date: 2015-01-06<br />births: 12425<br />wday: Tue","date: 2015-01-13<br />births: 11924<br />wday: Tue","date: 2015-01-20<br />births: 12242<br />wday: Tue","date: 2015-01-27<br />births: 11882<br />wday: Tue","date: 2015-02-03<br />births: 12079<br />wday: Tue","date: 2015-02-10<br />births: 12291<br />wday: Tue","date: 2015-02-17<br />births: 11952<br />wday: Tue","date: 2015-02-24<br />births: 11941<br />wday: Tue","date: 2015-03-03<br />births: 12402<br />wday: Tue","date: 2015-03-10<br />births: 12282<br />wday: Tue","date: 2015-03-17<br />births: 12312<br />wday: Tue","date: 2015-03-24<br />births: 12333<br />wday: Tue","date: 2015-03-31<br />births: 12362<br />wday: Tue","date: 2015-04-07<br />births: 12334<br />wday: Tue","date: 2015-04-14<br />births: 12309<br />wday: Tue","date: 2015-04-21<br />births: 12173<br />wday: Tue","date: 2015-04-28<br />births: 12221<br />wday: Tue","date: 2015-05-05<br />births: 12618<br />wday: Tue","date: 2015-05-12<br />births: 12400<br />wday: Tue","date: 2015-05-19<br />births: 12469<br />wday: Tue","date: 2015-05-26<br />births: 12242<br />wday: Tue","date: 2015-06-02<br />births: 11994<br />wday: Tue","date: 2015-06-09<br />births: 12479<br />wday: Tue","date: 2015-06-16<br />births: 12400<br />wday: Tue","date: 2015-06-23<br />births: 12351<br />wday: Tue","date: 2015-06-30<br />births: 12932<br />wday: Tue","date: 2015-07-07<br />births: 13426<br />wday: Tue","date: 2015-07-14<br />births: 12862<br />wday: Tue","date: 2015-07-21<br />births: 13264<br />wday: Tue","date: 2015-07-28<br />births: 13240<br />wday: Tue","date: 2015-08-04<br />births: 13149<br />wday: Tue","date: 2015-08-11<br />births: 13010<br />wday: Tue","date: 2015-08-18<br />births: 13197<br />wday: Tue","date: 2015-08-25<br />births: 13149<br />wday: Tue","date: 2015-09-01<br />births: 13231<br />wday: Tue","date: 2015-09-08<br />births: 12823<br />wday: Tue","date: 2015-09-15<br />births: 13439<br />wday: Tue","date: 2015-09-22<br />births: 13047<br />wday: Tue","date: 2015-09-29<br />births: 12791<br />wday: Tue","date: 2015-10-06<br />births: 12520<br />wday: Tue","date: 2015-10-13<br />births: 12094<br />wday: Tue","date: 2015-10-20<br />births: 12500<br />wday: Tue","date: 2015-10-27<br />births: 12485<br />wday: Tue","date: 2015-11-03<br />births: 12524<br />wday: Tue","date: 2015-11-10<br />births: 12451<br />wday: Tue","date: 2015-11-17<br />births: 12321<br />wday: Tue","date: 2015-11-24<br />births: 13051<br />wday: Tue","date: 2015-12-01<br />births: 13185<br />wday: Tue","date: 2015-12-08<br />births: 12328<br />wday: Tue","date: 2015-12-15<br />births: 12437<br />wday: Tue","date: 2015-12-22<br />births: 13131<br />wday: Tue","date: 2015-12-29<br />births: 13458<br />wday: Tue"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(49,104,142,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(49,104,142,1)"}},"hoveron":"points","name":"Tue","legendgroup":"Tue","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[16442,16449,16456,16463,16470,16477,16484,16491,16498,16505,16512,16519,16526,16533,16540,16547,16554,16561,16568,16575,16582,16589,16596,16603,16610,16617,16624,16631,16638,16645,16652,16659,16666,16673,16680,16687,16694,16701,16708,16715,16722,16729,16736,16743,16750,16757,16764,16771,16778,16785,16792,16799],"y":[12141,12013,12086,11602,11924,11911,12061,11828,11927,11850,11807,11872,11596,11976,11794,11917,11775,11924,11572,12352,12845,11890,12123,12192,12292,13033,12788,12853,12519,12739,12793,12960,12966,12729,12799,13949,13136,12595,12284,12429,12205,12093,12266,12279,12311,12230,11745,12708,11857,12282,11595,13100],"text":["date: 2015-01-07<br />births: 12141<br />wday: Wed","date: 2015-01-14<br />births: 12013<br />wday: Wed","date: 2015-01-21<br />births: 12086<br />wday: Wed","date: 2015-01-28<br />births: 11602<br />wday: Wed","date: 2015-02-04<br />births: 11924<br />wday: Wed","date: 2015-02-11<br />births: 11911<br />wday: Wed","date: 2015-02-18<br />births: 12061<br />wday: Wed","date: 2015-02-25<br />births: 11828<br />wday: Wed","date: 2015-03-04<br />births: 11927<br />wday: Wed","date: 2015-03-11<br />births: 11850<br />wday: Wed","date: 2015-03-18<br />births: 11807<br />wday: Wed","date: 2015-03-25<br />births: 11872<br />wday: Wed","date: 2015-04-01<br />births: 11596<br />wday: Wed","date: 2015-04-08<br />births: 11976<br />wday: Wed","date: 2015-04-15<br />births: 11794<br />wday: Wed","date: 2015-04-22<br />births: 11917<br />wday: Wed","date: 2015-04-29<br />births: 11775<br />wday: Wed","date: 2015-05-06<br />births: 11924<br />wday: Wed","date: 2015-05-13<br />births: 11572<br />wday: Wed","date: 2015-05-20<br />births: 12352<br />wday: Wed","date: 2015-05-27<br />births: 12845<br />wday: Wed","date: 2015-06-03<br />births: 11890<br />wday: Wed","date: 2015-06-10<br />births: 12123<br />wday: Wed","date: 2015-06-17<br />births: 12192<br />wday: Wed","date: 2015-06-24<br />births: 12292<br />wday: Wed","date: 2015-07-01<br />births: 13033<br />wday: Wed","date: 2015-07-08<br />births: 12788<br />wday: Wed","date: 2015-07-15<br />births: 12853<br />wday: Wed","date: 2015-07-22<br />births: 12519<br />wday: Wed","date: 2015-07-29<br />births: 12739<br />wday: Wed","date: 2015-08-05<br />births: 12793<br />wday: Wed","date: 2015-08-12<br />births: 12960<br />wday: Wed","date: 2015-08-19<br />births: 12966<br />wday: Wed","date: 2015-08-26<br />births: 12729<br />wday: Wed","date: 2015-09-02<br />births: 12799<br />wday: Wed","date: 2015-09-09<br />births: 13949<br />wday: Wed","date: 2015-09-16<br />births: 13136<br />wday: Wed","date: 2015-09-23<br />births: 12595<br />wday: Wed","date: 2015-09-30<br />births: 12284<br />wday: Wed","date: 2015-10-07<br />births: 12429<br />wday: Wed","date: 2015-10-14<br />births: 12205<br />wday: Wed","date: 2015-10-21<br />births: 12093<br />wday: Wed","date: 2015-10-28<br />births: 12266<br />wday: Wed","date: 2015-11-04<br />births: 12279<br />wday: Wed","date: 2015-11-11<br />births: 12311<br />wday: Wed","date: 2015-11-18<br />births: 12230<br />wday: Wed","date: 2015-11-25<br />births: 11745<br />wday: Wed","date: 2015-12-02<br />births: 12708<br />wday: Wed","date: 2015-12-09<br />births: 11857<br />wday: Wed","date: 2015-12-16<br />births: 12282<br />wday: Wed","date: 2015-12-23<br />births: 11595<br />wday: Wed","date: 2015-12-30<br />births: 13100<br />wday: Wed"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"Wed","legendgroup":"Wed","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[16436,16443,16450,16457,16464,16471,16478,16485,16492,16499,16506,16513,16520,16527,16534,16541,16548,16555,16562,16569,16576,16583,16590,16597,16604,16611,16618,16625,16632,16639,16646,16653,16660,16667,16674,16681,16688,16695,16702,16709,16716,16723,16730,16737,16744,16751,16758,16765,16772,16779,16786,16793,16800],"y":[8068,12094,12339,11949,11967,11821,12285,11968,11672,11681,12042,11721,12065,12296,11874,11947,11877,11831,11649,11793,12246,12722,11918,12029,12323,12416,13038,12517,12502,12852,12797,12872,12591,13002,12829,12839,13925,13319,12942,13043,12458,12522,12013,11950,12452,12329,12504,7332,12281,12259,12339,8714,11608],"text":["date: 2015-01-01<br />births:  8068<br />wday: Thu","date: 2015-01-08<br />births: 12094<br />wday: Thu","date: 2015-01-15<br />births: 12339<br />wday: Thu","date: 2015-01-22<br />births: 11949<br />wday: Thu","date: 2015-01-29<br />births: 11967<br />wday: Thu","date: 2015-02-05<br />births: 11821<br />wday: Thu","date: 2015-02-12<br />births: 12285<br />wday: Thu","date: 2015-02-19<br />births: 11968<br />wday: Thu","date: 2015-02-26<br />births: 11672<br />wday: Thu","date: 2015-03-05<br />births: 11681<br />wday: Thu","date: 2015-03-12<br />births: 12042<br />wday: Thu","date: 2015-03-19<br />births: 11721<br />wday: Thu","date: 2015-03-26<br />births: 12065<br />wday: Thu","date: 2015-04-02<br />births: 12296<br />wday: Thu","date: 2015-04-09<br />births: 11874<br />wday: Thu","date: 2015-04-16<br />births: 11947<br />wday: Thu","date: 2015-04-23<br />births: 11877<br />wday: Thu","date: 2015-04-30<br />births: 11831<br />wday: Thu","date: 2015-05-07<br />births: 11649<br />wday: Thu","date: 2015-05-14<br />births: 11793<br />wday: Thu","date: 2015-05-21<br />births: 12246<br />wday: Thu","date: 2015-05-28<br />births: 12722<br />wday: Thu","date: 2015-06-04<br />births: 11918<br />wday: Thu","date: 2015-06-11<br />births: 12029<br />wday: Thu","date: 2015-06-18<br />births: 12323<br />wday: Thu","date: 2015-06-25<br />births: 12416<br />wday: Thu","date: 2015-07-02<br />births: 13038<br />wday: Thu","date: 2015-07-09<br />births: 12517<br />wday: Thu","date: 2015-07-16<br />births: 12502<br />wday: Thu","date: 2015-07-23<br />births: 12852<br />wday: Thu","date: 2015-07-30<br />births: 12797<br />wday: Thu","date: 2015-08-06<br />births: 12872<br />wday: Thu","date: 2015-08-13<br />births: 12591<br />wday: Thu","date: 2015-08-20<br />births: 13002<br />wday: Thu","date: 2015-08-27<br />births: 12829<br />wday: Thu","date: 2015-09-03<br />births: 12839<br />wday: Thu","date: 2015-09-10<br />births: 13925<br />wday: Thu","date: 2015-09-17<br />births: 13319<br />wday: Thu","date: 2015-09-24<br />births: 12942<br />wday: Thu","date: 2015-10-01<br />births: 13043<br />wday: Thu","date: 2015-10-08<br />births: 12458<br />wday: Thu","date: 2015-10-15<br />births: 12522<br />wday: Thu","date: 2015-10-22<br />births: 12013<br />wday: Thu","date: 2015-10-29<br />births: 11950<br />wday: Thu","date: 2015-11-05<br />births: 12452<br />wday: Thu","date: 2015-11-12<br />births: 12329<br />wday: Thu","date: 2015-11-19<br />births: 12504<br />wday: Thu","date: 2015-11-26<br />births:  7332<br />wday: Thu","date: 2015-12-03<br />births: 12281<br />wday: Thu","date: 2015-12-10<br />births: 12259<br />wday: Thu","date: 2015-12-17<br />births: 12339<br />wday: Thu","date: 2015-12-24<br />births:  8714<br />wday: Thu","date: 2015-12-31<br />births: 11608<br />wday: Thu"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(53,183,121,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(53,183,121,1)"}},"hoveron":"points","name":"Thu","legendgroup":"Thu","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[16437,16444,16451,16458,16465,16472,16479,16486,16493,16500,16507,16514,16521,16528,16535,16542,16549,16556,16563,16570,16577,16584,16591,16598,16605,16612,16619,16626,16633,16640,16647,16654,16661,16668,16675,16682,16689,16696,16703,16710,16717,16724,16731,16738,16745,16752,16759,16766,16773,16780,16787,16794],"y":[10850,11868,11861,11910,11571,11656,11321,11864,11596,11612,10940,12040,11629,11234,11724,11718,11749,12178,11810,12306,12147,12168,12303,12064,11767,12152,10375,12396,12291,12612,12269,12770,12861,12834,12719,12862,12295,13229,12792,12399,12282,11917,11942,11529,11909,11643,12495,8942,11828,11406,12247,6515],"text":["date: 2015-01-02<br />births: 10850<br />wday: Fri","date: 2015-01-09<br />births: 11868<br />wday: Fri","date: 2015-01-16<br />births: 11861<br />wday: Fri","date: 2015-01-23<br />births: 11910<br />wday: Fri","date: 2015-01-30<br />births: 11571<br />wday: Fri","date: 2015-02-06<br />births: 11656<br />wday: Fri","date: 2015-02-13<br />births: 11321<br />wday: Fri","date: 2015-02-20<br />births: 11864<br />wday: Fri","date: 2015-02-27<br />births: 11596<br />wday: Fri","date: 2015-03-06<br />births: 11612<br />wday: Fri","date: 2015-03-13<br />births: 10940<br />wday: Fri","date: 2015-03-20<br />births: 12040<br />wday: Fri","date: 2015-03-27<br />births: 11629<br />wday: Fri","date: 2015-04-03<br />births: 11234<br />wday: Fri","date: 2015-04-10<br />births: 11724<br />wday: Fri","date: 2015-04-17<br />births: 11718<br />wday: Fri","date: 2015-04-24<br />births: 11749<br />wday: Fri","date: 2015-05-01<br />births: 12178<br />wday: Fri","date: 2015-05-08<br />births: 11810<br />wday: Fri","date: 2015-05-15<br />births: 12306<br />wday: Fri","date: 2015-05-22<br />births: 12147<br />wday: Fri","date: 2015-05-29<br />births: 12168<br />wday: Fri","date: 2015-06-05<br />births: 12303<br />wday: Fri","date: 2015-06-12<br />births: 12064<br />wday: Fri","date: 2015-06-19<br />births: 11767<br />wday: Fri","date: 2015-06-26<br />births: 12152<br />wday: Fri","date: 2015-07-03<br />births: 10375<br />wday: Fri","date: 2015-07-10<br />births: 12396<br />wday: Fri","date: 2015-07-17<br />births: 12291<br />wday: Fri","date: 2015-07-24<br />births: 12612<br />wday: Fri","date: 2015-07-31<br />births: 12269<br />wday: Fri","date: 2015-08-07<br />births: 12770<br />wday: Fri","date: 2015-08-14<br />births: 12861<br />wday: Fri","date: 2015-08-21<br />births: 12834<br />wday: Fri","date: 2015-08-28<br />births: 12719<br />wday: Fri","date: 2015-09-04<br />births: 12862<br />wday: Fri","date: 2015-09-11<br />births: 12295<br />wday: Fri","date: 2015-09-18<br />births: 13229<br />wday: Fri","date: 2015-09-25<br />births: 12792<br />wday: Fri","date: 2015-10-02<br />births: 12399<br />wday: Fri","date: 2015-10-09<br />births: 12282<br />wday: Fri","date: 2015-10-16<br />births: 11917<br />wday: Fri","date: 2015-10-23<br />births: 11942<br />wday: Fri","date: 2015-10-30<br />births: 11529<br />wday: Fri","date: 2015-11-06<br />births: 11909<br />wday: Fri","date: 2015-11-13<br />births: 11643<br />wday: Fri","date: 2015-11-20<br />births: 12495<br />wday: Fri","date: 2015-11-27<br />births:  8942<br />wday: Fri","date: 2015-12-04<br />births: 11828<br />wday: Fri","date: 2015-12-11<br />births: 11406<br />wday: Fri","date: 2015-12-18<br />births: 12247<br />wday: Fri","date: 2015-12-25<br />births:  6515<br />wday: Fri"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(143,215,68,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(143,215,68,1)"}},"hoveron":"points","name":"Fri","legendgroup":"Fri","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[16438,16445,16452,16459,16466,16473,16480,16487,16494,16501,16508,16515,16522,16529,16536,16543,16550,16557,16564,16571,16578,16585,16592,16599,16606,16613,16620,16627,16634,16641,16648,16655,16662,16669,16676,16683,16690,16697,16704,16711,16718,16725,16732,16739,16746,16753,16760,16767,16774,16781,16788,16795],"y":[8328,8014,8280,8235,7987,8285,8390,8343,7989,7980,8217,8080,8071,7981,8092,8028,8101,8075,8216,8337,8267,8431,8313,8104,8451,8652,7944,8769,8546,8748,8851,8956,8938,9153,8772,8950,9062,9195,8927,8579,8550,8233,8239,8049,8517,8221,8392,7734,8262,8073,8368,7294],"text":["date: 2015-01-03<br />births:  8328<br />wday: Sat","date: 2015-01-10<br />births:  8014<br />wday: Sat","date: 2015-01-17<br />births:  8280<br />wday: Sat","date: 2015-01-24<br />births:  8235<br />wday: Sat","date: 2015-01-31<br />births:  7987<br />wday: Sat","date: 2015-02-07<br />births:  8285<br />wday: Sat","date: 2015-02-14<br />births:  8390<br />wday: Sat","date: 2015-02-21<br />births:  8343<br />wday: Sat","date: 2015-02-28<br />births:  7989<br />wday: Sat","date: 2015-03-07<br />births:  7980<br />wday: Sat","date: 2015-03-14<br />births:  8217<br />wday: Sat","date: 2015-03-21<br />births:  8080<br />wday: Sat","date: 2015-03-28<br />births:  8071<br />wday: Sat","date: 2015-04-04<br />births:  7981<br />wday: Sat","date: 2015-04-11<br />births:  8092<br />wday: Sat","date: 2015-04-18<br />births:  8028<br />wday: Sat","date: 2015-04-25<br />births:  8101<br />wday: Sat","date: 2015-05-02<br />births:  8075<br />wday: Sat","date: 2015-05-09<br />births:  8216<br />wday: Sat","date: 2015-05-16<br />births:  8337<br />wday: Sat","date: 2015-05-23<br />births:  8267<br />wday: Sat","date: 2015-05-30<br />births:  8431<br />wday: Sat","date: 2015-06-06<br />births:  8313<br />wday: Sat","date: 2015-06-13<br />births:  8104<br />wday: Sat","date: 2015-06-20<br />births:  8451<br />wday: Sat","date: 2015-06-27<br />births:  8652<br />wday: Sat","date: 2015-07-04<br />births:  7944<br />wday: Sat","date: 2015-07-11<br />births:  8769<br />wday: Sat","date: 2015-07-18<br />births:  8546<br />wday: Sat","date: 2015-07-25<br />births:  8748<br />wday: Sat","date: 2015-08-01<br />births:  8851<br />wday: Sat","date: 2015-08-08<br />births:  8956<br />wday: Sat","date: 2015-08-15<br />births:  8938<br />wday: Sat","date: 2015-08-22<br />births:  9153<br />wday: Sat","date: 2015-08-29<br />births:  8772<br />wday: Sat","date: 2015-09-05<br />births:  8950<br />wday: Sat","date: 2015-09-12<br />births:  9062<br />wday: Sat","date: 2015-09-19<br />births:  9195<br />wday: Sat","date: 2015-09-26<br />births:  8927<br />wday: Sat","date: 2015-10-03<br />births:  8579<br />wday: Sat","date: 2015-10-10<br />births:  8550<br />wday: Sat","date: 2015-10-17<br />births:  8233<br />wday: Sat","date: 2015-10-24<br />births:  8239<br />wday: Sat","date: 2015-10-31<br />births:  8049<br />wday: Sat","date: 2015-11-07<br />births:  8517<br />wday: Sat","date: 2015-11-14<br />births:  8221<br />wday: Sat","date: 2015-11-21<br />births:  8392<br />wday: Sat","date: 2015-11-28<br />births:  7734<br />wday: Sat","date: 2015-12-05<br />births:  8262<br />wday: Sat","date: 2015-12-12<br />births:  8073<br />wday: Sat","date: 2015-12-19<br />births:  8368<br />wday: Sat","date: 2015-12-26<br />births:  7294<br />wday: Sat"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"Sat","legendgroup":"Sat","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":23.305936073059364,"r":7.3059360730593621,"b":58.779576587795773,"l":90.660024906600256},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":26.567040265670411},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[16417.799999999999,16818.200000000001],"tickmode":"array","ticktext":["Jan 2015","Apr 2015","Jul 2015","Oct 2015","Jan 2016"],"tickvals":[16436,16526,16617,16709,16801],"categoryorder":"array","categoryarray":["Jan 2015","Apr 2015","Jul 2015","Oct 2015","Jan 2016"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":21.253632212536321},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"date","font":{"color":"rgba(0,0,0,1)","family":"","size":26.567040265670411}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[6143.3000000000002,14320.700000000001],"tickmode":"array","ticktext":["8000","10000","12000","14000"],"tickvals":[8000,10000,12000,14000],"categoryorder":"array","categoryarray":["8000","10000","12000","14000"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":21.253632212536321},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"births","font":{"color":"rgba(0,0,0,1)","family":"","size":26.567040265670411}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":21.253632212536321},"title":{"text":"wday","font":{"color":"rgba(0,0,0,1)","family":"","size":26.567040265670411}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"1379d7d481364":{"x":{},"y":{},"colour":{},"type":"scatter"}},"cur_data":"1379d7d481364","visdat":{"1379d7d481364":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
@@ -950,9 +953,9 @@ Caused by error:
 <h2>Simple Interactivity with <code>ggplotly</code></h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">ggplotly</span>(p, <span class="at">dynamicTicks =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb43-2"><a></a>  <span class="fu">rangeslider</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb43-3"><a></a>  <span class="fu">layout</span>(<span class="at">hovermode =</span> <span class="st">"x"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a aria-label="1"></a><span class="fu">ggplotly</span>(p, <span class="at">dynamicTicks =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a aria-label="2"></a>  <span class="fu">rangeslider</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a aria-label="3"></a>  <span class="fu">layout</span>(<span class="at">hovermode =</span> <span class="st">"x"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="plotly html-widget html-fill-item" id="htmlwidget-53ce090f65030fd64acf" style="width:768px;height:576px;"></div>
@@ -968,18 +971,18 @@ Caused by error:
 <h2>Simple Interactivity with <code>ggplotly</code></h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> holidays, </span>
-<span id="cb44-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">text =</span> occasion)) <span class="sc">+</span> </span>
-<span id="cb44-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> Births2015,</span>
-<span id="cb44-4"><a></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date,</span>
-<span id="cb44-5"><a></a>                           <span class="at">y =</span> births,</span>
-<span id="cb44-6"><a></a>                           <span class="at">color =</span> wday),</span>
-<span id="cb44-7"><a></a>             <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb44-8"><a></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> holidays, <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb44-9"><a></a>             <span class="at">color =</span> <span class="st">"black"</span>, </span>
-<span id="cb44-10"><a></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Dates,</span>
-<span id="cb44-11"><a></a>                           <span class="at">y =</span> births))</span>
-<span id="cb44-12"><a></a><span class="fu">ggplotly</span>(p, <span class="at">tooltip =</span> <span class="st">"text"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-label="1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> holidays, </span>
+<span id="cb44-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">text =</span> occasion)) <span class="sc">+</span> </span>
+<span id="cb44-3"><a aria-label="3"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> Births2015,</span>
+<span id="cb44-4"><a aria-label="4"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date,</span>
+<span id="cb44-5"><a aria-label="5"></a>                           <span class="at">y =</span> births,</span>
+<span id="cb44-6"><a aria-label="6"></a>                           <span class="at">color =</span> wday),</span>
+<span id="cb44-7"><a aria-label="7"></a>             <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb44-8"><a aria-label="8"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> holidays, <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb44-9"><a aria-label="9"></a>             <span class="at">color =</span> <span class="st">"black"</span>, </span>
+<span id="cb44-10"><a aria-label="10"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Dates,</span>
+<span id="cb44-11"><a aria-label="11"></a>                           <span class="at">y =</span> births))</span>
+<span id="cb44-12"><a aria-label="12"></a><span class="fu">ggplotly</span>(p, <span class="at">tooltip =</span> <span class="st">"text"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="plotly html-widget html-fill-item" id="htmlwidget-3e95f58cc8e4c57117c3" style="width:768px;height:576px;"></div>
@@ -1034,7 +1037,7 @@ Caused by error:
 </div>
 </div></div>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">getwd</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a aria-label="1"></a><span class="fu">getwd</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/Users/grwhite/courses/f26/stat-241/stat-241-f26.github.io/slides"</code></pre>
 </div>
@@ -1062,7 +1065,7 @@ Caused by error:
 <li><strong>Question</strong>: My RStudio Project is <code>Reed-Data-Science.github.io</code>. Why does the file path end a folder furhter there when I run the following?</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">getwd</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a aria-label="1"></a><span class="fu">getwd</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/Users/grwhite/courses/f26/stat-241/stat-241-f26.github.io/slides"</code></pre>
 </div>
@@ -1365,7 +1368,7 @@ Caused by error:
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

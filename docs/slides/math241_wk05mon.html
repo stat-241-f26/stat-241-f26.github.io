@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <title>Stat 241 – Spatial Data and Mapping</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,10 +19,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -492,9 +495,9 @@
 
 <h3 id="lets-begin-with-data-from-the-forested-r-package">Let’s begin with data from the <code>forested</code> R package</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(forested)</span>
-<span id="cb1-2"><a></a><span class="fu">data</span>(forested)</span>
-<span id="cb1-3"><a></a><span class="fu">glimpse</span>(forested)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(forested)</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">data</span>(forested)</span>
+<span id="cb1-3"><a aria-label="3"></a><span class="fu">glimpse</span>(forested)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 7,107
 Columns: 20
@@ -527,13 +530,13 @@ $ county           &lt;fct&gt; Ferry, Thurston, Whatcom, Skamania, Stevens, Stev
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(forested, <span class="fu">aes</span>(<span class="at">x =</span> lon, </span>
-<span id="cb3-2"><a></a>                     <span class="at">y =</span> lat,</span>
-<span id="cb3-3"><a></a>                     <span class="at">color =</span> forested)) <span class="sc">+</span> </span>
-<span id="cb3-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb3-5"><a></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb3-6"><a></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"forestgreen"</span>, <span class="st">"goldenrod3"</span>)</span>
-<span id="cb3-7"><a></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">ggplot</span>(forested, <span class="fu">aes</span>(<span class="at">x =</span> lon, </span>
+<span id="cb3-2"><a aria-label="2"></a>                     <span class="at">y =</span> lat,</span>
+<span id="cb3-3"><a aria-label="3"></a>                     <span class="at">color =</span> forested)) <span class="sc">+</span> </span>
+<span id="cb3-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb3-5"><a aria-label="5"></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb3-6"><a aria-label="6"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"forestgreen"</span>, <span class="st">"goldenrod3"</span>)</span>
+<span id="cb3-7"><a aria-label="7"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -585,15 +588,15 @@ $ county           &lt;fct&gt; Ferry, Thurston, Whatcom, Skamania, Stevens, Stev
 <p><code>sf</code> R package: <strong>s</strong>imple <strong>f</strong>eatures.</p>
 <p><code>sf</code> objects contain projection information and allow us to plot spatial data more accurately.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">class</span>(forested)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a><span class="fu">class</span>(forested)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "tbl_df"     "tbl"        "data.frame"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(sf)</span>
-<span id="cb6-2"><a></a>forested_sf <span class="ot">&lt;-</span> forested <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"lon"</span>, <span class="st">"lat"</span>), <span class="co"># columns in df that correspond to x and y coordinates</span></span>
-<span id="cb6-4"><a></a>           <span class="at">crs =</span> <span class="st">"EPSG:4269"</span>) <span class="co"># the projection the coordinates are in</span></span>
-<span id="cb6-5"><a></a><span class="fu">class</span>(forested_sf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb6-2"><a aria-label="2"></a>forested_sf <span class="ot">&lt;-</span> forested <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a aria-label="3"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"lon"</span>, <span class="st">"lat"</span>), <span class="co"># columns in df that correspond to x and y coordinates</span></span>
+<span id="cb6-4"><a aria-label="4"></a>           <span class="at">crs =</span> <span class="st">"EPSG:4269"</span>) <span class="co"># the projection the coordinates are in</span></span>
+<span id="cb6-5"><a aria-label="5"></a><span class="fu">class</span>(forested_sf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "sf"         "tbl_df"     "tbl"        "data.frame"</code></pre>
 </div>
@@ -603,7 +606,7 @@ $ county           &lt;fct&gt; Ferry, Thurston, Whatcom, Skamania, Stevens, Stev
 
 <h3 id="making-forested-spatial-1">Making <code>forested</code> spatial</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">glimpse</span>(forested_sf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="fu">glimpse</span>(forested_sf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 7,107
 Columns: 19
@@ -642,9 +645,9 @@ $ geometry         &lt;POINT [°]&gt; POINT (-118.6865 48.69537), POINT (-123.08
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(forested_sf, <span class="fu">aes</span>(<span class="at">color =</span> forested)) <span class="sc">+</span></span>
-<span id="cb10-2"><a></a>  <span class="fu">geom_sf</span>(<span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb10-3"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"forestgreen"</span>, <span class="st">"goldenrod3"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">ggplot</span>(forested_sf, <span class="fu">aes</span>(<span class="at">color =</span> forested)) <span class="sc">+</span></span>
+<span id="cb10-2"><a aria-label="2"></a>  <span class="fu">geom_sf</span>(<span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb10-3"><a aria-label="3"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"forestgreen"</span>, <span class="st">"goldenrod3"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -655,9 +658,9 @@ $ geometry         &lt;POINT [°]&gt; POINT (-118.6865 48.69537), POINT (-123.08
 </div>
 </div><div class="column fragment" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(forested, <span class="fu">aes</span>(<span class="at">x =</span> lon, <span class="at">y =</span> lat, <span class="at">color =</span> forested)) <span class="sc">+</span> </span>
-<span id="cb11-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb11-3"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"forestgreen"</span>, <span class="st">"goldenrod3"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">ggplot</span>(forested, <span class="fu">aes</span>(<span class="at">x =</span> lon, <span class="at">y =</span> lat, <span class="at">color =</span> forested)) <span class="sc">+</span> </span>
+<span id="cb11-2"><a aria-label="2"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb11-3"><a aria-label="3"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"forestgreen"</span>, <span class="st">"goldenrod3"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -675,9 +678,9 @@ $ geometry         &lt;POINT [°]&gt; POINT (-118.6865 48.69537), POINT (-123.08
 
 <h3 id="plotting-forested_sf-1">Plotting <code>forested_sf</code></h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(forested_sf, <span class="fu">aes</span>(<span class="at">color =</span> forested)) <span class="sc">+</span></span>
-<span id="cb12-2"><a></a>  <span class="fu">geom_sf</span>(<span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb12-3"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"forestgreen"</span>, <span class="st">"goldenrod3"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a><span class="fu">ggplot</span>(forested_sf, <span class="fu">aes</span>(<span class="at">color =</span> forested)) <span class="sc">+</span></span>
+<span id="cb12-2"><a aria-label="2"></a>  <span class="fu">geom_sf</span>(<span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb12-3"><a aria-label="3"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"forestgreen"</span>, <span class="st">"goldenrod3"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -727,14 +730,14 @@ $ geometry         &lt;POINT [°]&gt; POINT (-118.6865 48.69537), POINT (-123.08
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>api_key <span class="ot">&lt;-</span> <span class="st">"insert key"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a>api_key <span class="ot">&lt;-</span> <span class="st">"insert key"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">library</span>(tidycensus)</span>
-<span id="cb14-2"><a></a><span class="fu">options</span>(<span class="at">tigris_use_cache =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb14-3"><a></a>wa <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">state =</span> <span class="st">"WA"</span>,  <span class="at">geography =</span> <span class="st">"county"</span>,</span>
-<span id="cb14-4"><a></a>              <span class="at">variables =</span> <span class="st">"B19013_001"</span>,</span>
-<span id="cb14-5"><a></a>              <span class="at">geometry =</span> <span class="cn">TRUE</span>, <span class="at">key =</span> api_key) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a><span class="fu">library</span>(tidycensus)</span>
+<span id="cb14-2"><a aria-label="2"></a><span class="fu">options</span>(<span class="at">tigris_use_cache =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-3"><a aria-label="3"></a>wa <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">state =</span> <span class="st">"WA"</span>,  <span class="at">geography =</span> <span class="st">"county"</span>,</span>
+<span id="cb14-4"><a aria-label="4"></a>              <span class="at">variables =</span> <span class="st">"B19013_001"</span>,</span>
+<span id="cb14-5"><a aria-label="5"></a>              <span class="at">geometry =</span> <span class="cn">TRUE</span>, <span class="at">key =</span> api_key) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -742,11 +745,11 @@ $ geometry         &lt;POINT [°]&gt; POINT (-118.6865 48.69537), POINT (-123.08
 
 <h3 id="what-is-the-structure-of-wa">What is the structure of <code>wa</code>?</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">class</span>(wa)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a><span class="fu">class</span>(wa)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "sf"         "data.frame"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">head</span>(wa<span class="sc">$</span>geometry)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a><span class="fu">head</span>(wa<span class="sc">$</span>geometry)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Geometry set for 6 features 
 Geometry type: MULTIPOLYGON
@@ -763,7 +766,7 @@ First 5 geometries:</code></pre>
 <div class="fragment">
 <h3 id="compared-to-forested_sf">Compared to <code>forested_sf</code></h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">head</span>(forested_sf<span class="sc">$</span>geometry)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a><span class="fu">head</span>(forested_sf<span class="sc">$</span>geometry)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Geometry set for 6 features 
 Geometry type: POINT
@@ -782,10 +785,10 @@ First 5 geometries:</code></pre>
 
 <h3 id="adding-a-base-layer-to-our-original-map">Adding a base layer to our original map</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb21-2"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> wa) <span class="sc">+</span> </span>
-<span id="cb21-3"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> forested_sf, <span class="fu">aes</span>(<span class="at">color =</span> forested), <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
-<span id="cb21-4"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"forestgreen"</span>, <span class="st">"goldenrod3"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb21-2"><a aria-label="2"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> wa) <span class="sc">+</span> </span>
+<span id="cb21-3"><a aria-label="3"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> forested_sf, <span class="fu">aes</span>(<span class="at">color =</span> forested), <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
+<span id="cb21-4"><a aria-label="4"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"forestgreen"</span>, <span class="st">"goldenrod3"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -799,11 +802,11 @@ First 5 geometries:</code></pre>
 
 <h3 id="what-if-wed-like-to-map-the-proportion-of-forested-plots-in-each-county-in-wa">What if we’d like to map the proportion of forested plots in each county in WA?</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>forested_props <span class="ot">&lt;-</span> forested <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a></a>  <span class="fu">group_by</span>(county) <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a></a>  <span class="fu">summarize</span>(<span class="at">prop_forested =</span> <span class="fu">mean</span>(forested <span class="sc">==</span> <span class="st">"Yes"</span>))</span>
-<span id="cb22-4"><a></a></span>
-<span id="cb22-5"><a></a>forested_props</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a>forested_props <span class="ot">&lt;-</span> forested <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(county) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a aria-label="3"></a>  <span class="fu">summarize</span>(<span class="at">prop_forested =</span> <span class="fu">mean</span>(forested <span class="sc">==</span> <span class="st">"Yes"</span>))</span>
+<span id="cb22-4"><a aria-label="4"></a></span>
+<span id="cb22-5"><a aria-label="5"></a>forested_props</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 39 × 2
    county   prop_forested
@@ -829,7 +832,7 @@ First 5 geometries:</code></pre>
 
 <h3 id="need-to-join-with-wa">Need to join with <code>wa</code>… 🤔</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">head</span>(forested_props)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a><span class="fu">head</span>(forested_props)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   county  prop_forested
@@ -841,7 +844,7 @@ First 5 geometries:</code></pre>
 5 Clallam         0.928
 6 Clark           0.535</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">head</span>(wa)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a><span class="fu">head</span>(wa)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 6 features and 5 fields
 Geometry type: MULTIPOLYGON
@@ -872,11 +875,11 @@ Geodetic CRS:  NAD83
 
 <h3 id="solution-use-the-stringr-package">Solution: use the <code>stringr</code> package!</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>wa <span class="ot">&lt;-</span> wa <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a></a>  <span class="fu">mutate</span>(<span class="at">short_name =</span> <span class="fu">str_replace_all</span>(NAME, </span>
-<span id="cb28-3"><a></a>                                      <span class="at">pattern =</span> <span class="st">" County, Washington"</span>,</span>
-<span id="cb28-4"><a></a>                                      <span class="at">replacement =</span> <span class="st">""</span>))</span>
-<span id="cb28-5"><a></a><span class="fu">head</span>(wa<span class="sc">$</span>short_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-label="1"></a>wa <span class="ot">&lt;-</span> wa <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">short_name =</span> <span class="fu">str_replace_all</span>(NAME, </span>
+<span id="cb28-3"><a aria-label="3"></a>                                      <span class="at">pattern =</span> <span class="st">" County, Washington"</span>,</span>
+<span id="cb28-4"><a aria-label="4"></a>                                      <span class="at">replacement =</span> <span class="st">""</span>))</span>
+<span id="cb28-5"><a aria-label="5"></a><span class="fu">head</span>(wa<span class="sc">$</span>short_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Thurston" "Island"   "Lewis"    "Stevens"  "Douglas"  "San Juan"</code></pre>
 </div>
@@ -885,15 +888,15 @@ Geodetic CRS:  NAD83
 <div class="fragment">
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="co"># join</span></span>
-<span id="cb30-2"><a></a><span class="fu">left_join</span>(forested_props,</span>
-<span id="cb30-3"><a></a>          wa,</span>
-<span id="cb30-4"><a></a>          <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"county"</span> <span class="ot">=</span> <span class="st">"short_name"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb30-5"><a></a>  <span class="co"># make R remember this is an sf object </span></span>
-<span id="cb30-6"><a></a>  <span class="co"># (R keeps the class of the primary dataset)</span></span>
-<span id="cb30-7"><a></a>  <span class="fu">st_as_sf</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb30-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> prop_forested)) <span class="sc">+</span> </span>
-<span id="cb30-9"><a></a>  <span class="fu">geom_sf</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-label="1"></a><span class="co"># join</span></span>
+<span id="cb30-2"><a aria-label="2"></a><span class="fu">left_join</span>(forested_props,</span>
+<span id="cb30-3"><a aria-label="3"></a>          wa,</span>
+<span id="cb30-4"><a aria-label="4"></a>          <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"county"</span> <span class="ot">=</span> <span class="st">"short_name"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-5"><a aria-label="5"></a>  <span class="co"># make R remember this is an sf object </span></span>
+<span id="cb30-6"><a aria-label="6"></a>  <span class="co"># (R keeps the class of the primary dataset)</span></span>
+<span id="cb30-7"><a aria-label="7"></a>  <span class="fu">st_as_sf</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb30-8"><a aria-label="8"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> prop_forested)) <span class="sc">+</span> </span>
+<span id="cb30-9"><a aria-label="9"></a>  <span class="fu">geom_sf</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -909,11 +912,11 @@ Geodetic CRS:  NAD83
 
 <h3 id="some-mapping-suggestions">Some mapping suggestions</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>wa <span class="ot">&lt;-</span> wa <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a></a>  <span class="fu">mutate</span>(<span class="at">short_name =</span> <span class="fu">str_replace_all</span>(NAME, </span>
-<span id="cb31-3"><a></a>                                      <span class="at">pattern =</span> <span class="st">" County, Washington"</span>,</span>
-<span id="cb31-4"><a></a>                                      <span class="at">replacement =</span> <span class="st">""</span>))</span>
-<span id="cb31-5"><a></a><span class="fu">head</span>(wa<span class="sc">$</span>short_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a>wa <span class="ot">&lt;-</span> wa <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">short_name =</span> <span class="fu">str_replace_all</span>(NAME, </span>
+<span id="cb31-3"><a aria-label="3"></a>                                      <span class="at">pattern =</span> <span class="st">" County, Washington"</span>,</span>
+<span id="cb31-4"><a aria-label="4"></a>                                      <span class="at">replacement =</span> <span class="st">""</span>))</span>
+<span id="cb31-5"><a aria-label="5"></a><span class="fu">head</span>(wa<span class="sc">$</span>short_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Thurston" "Island"   "Lewis"    "Stevens"  "Douglas"  "San Juan"</code></pre>
 </div>
@@ -921,23 +924,23 @@ Geodetic CRS:  NAD83
 <p><br></p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="co"># join</span></span>
-<span id="cb33-2"><a></a><span class="fu">left_join</span>(forested_props,</span>
-<span id="cb33-3"><a></a>          wa,</span>
-<span id="cb33-4"><a></a>          <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"county"</span> <span class="ot">=</span> <span class="st">"short_name"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb33-5"><a></a>  <span class="co"># make R remember this is an sf object </span></span>
-<span id="cb33-6"><a></a>  <span class="co"># (R keeps the class of the primary dataset)</span></span>
-<span id="cb33-7"><a></a>  <span class="fu">st_as_sf</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb33-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> prop_forested)) <span class="sc">+</span> </span>
-<span id="cb33-9"><a></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span> </span>
-<span id="cb33-10"><a></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">type =</span> <span class="st">"seq"</span>, </span>
-<span id="cb33-11"><a></a>                       <span class="at">palette =</span> <span class="st">"Greens"</span>, </span>
-<span id="cb33-12"><a></a>                       <span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb33-13"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Proportion of forested FIA plots in each county of Washington"</span>,</span>
-<span id="cb33-14"><a></a>       <span class="at">fill =</span> <span class="st">""</span>) <span class="sc">+</span></span>
-<span id="cb33-15"><a></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
-<span id="cb33-16"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
-<span id="cb33-17"><a></a>        <span class="at">legend.key.height =</span> <span class="fu">unit</span>(<span class="fl">0.9</span>, <span class="st">"in"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a><span class="co"># join</span></span>
+<span id="cb33-2"><a aria-label="2"></a><span class="fu">left_join</span>(forested_props,</span>
+<span id="cb33-3"><a aria-label="3"></a>          wa,</span>
+<span id="cb33-4"><a aria-label="4"></a>          <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"county"</span> <span class="ot">=</span> <span class="st">"short_name"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-5"><a aria-label="5"></a>  <span class="co"># make R remember this is an sf object </span></span>
+<span id="cb33-6"><a aria-label="6"></a>  <span class="co"># (R keeps the class of the primary dataset)</span></span>
+<span id="cb33-7"><a aria-label="7"></a>  <span class="fu">st_as_sf</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb33-8"><a aria-label="8"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> prop_forested)) <span class="sc">+</span> </span>
+<span id="cb33-9"><a aria-label="9"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span> </span>
+<span id="cb33-10"><a aria-label="10"></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">type =</span> <span class="st">"seq"</span>, </span>
+<span id="cb33-11"><a aria-label="11"></a>                       <span class="at">palette =</span> <span class="st">"Greens"</span>, </span>
+<span id="cb33-12"><a aria-label="12"></a>                       <span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb33-13"><a aria-label="13"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Proportion of forested FIA plots in each county of Washington"</span>,</span>
+<span id="cb33-14"><a aria-label="14"></a>       <span class="at">fill =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb33-15"><a aria-label="15"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb33-16"><a aria-label="16"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb33-17"><a aria-label="17"></a>        <span class="at">legend.key.height =</span> <span class="fu">unit</span>(<span class="fl">0.9</span>, <span class="st">"in"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -953,14 +956,14 @@ Geodetic CRS:  NAD83
 <h3 id="back-to-tidycensus">Back to <a href="https://walkerke.github.io/tidycensus/articles/spatial-data.html"><code>tidycensus</code></a></h3>
 <p>Recall our call to get county polygons:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>api_key <span class="ot">&lt;-</span> <span class="st">"insert key"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a>api_key <span class="ot">&lt;-</span> <span class="st">"insert key"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">library</span>(tidycensus)</span>
-<span id="cb35-2"><a></a><span class="fu">options</span>(<span class="at">tigris_use_cache =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb35-3"><a></a>wa <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">state =</span> <span class="st">"WA"</span>,  <span class="at">geography =</span> <span class="st">"county"</span>,</span>
-<span id="cb35-4"><a></a>              <span class="at">variables =</span> <span class="st">"B19013_001"</span>,</span>
-<span id="cb35-5"><a></a>              <span class="at">geometry =</span> <span class="cn">TRUE</span>, <span class="at">key =</span> api_key) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-label="1"></a><span class="fu">library</span>(tidycensus)</span>
+<span id="cb35-2"><a aria-label="2"></a><span class="fu">options</span>(<span class="at">tigris_use_cache =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb35-3"><a aria-label="3"></a>wa <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">state =</span> <span class="st">"WA"</span>,  <span class="at">geography =</span> <span class="st">"county"</span>,</span>
+<span id="cb35-4"><a aria-label="4"></a>              <span class="at">variables =</span> <span class="st">"B19013_001"</span>,</span>
+<span id="cb35-5"><a aria-label="5"></a>              <span class="at">geometry =</span> <span class="cn">TRUE</span>, <span class="at">key =</span> api_key) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li class="fragment">What is going on with <code>variables = "B19013_001"</code>?</li>
@@ -971,8 +974,8 @@ Geodetic CRS:  NAD83
 <h3 id="back-to-tidycensus-1">Back to <a href="https://walkerke.github.io/tidycensus/articles/spatial-data.html"><code>tidycensus</code></a></h3>
 <p>B19013_001 = Median Household Income</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>vars <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2021</span>, <span class="st">"acs5"</span>, <span class="at">cache =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb36-2"><a></a>vars</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a>vars <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2021</span>, <span class="st">"acs5"</span>, <span class="at">cache =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb36-2"><a aria-label="2"></a>vars</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 27,886 × 4
    name        label                                    concept        geography
@@ -996,15 +999,15 @@ Geodetic CRS:  NAD83
 <h3 id="choropleth-map-showing-median-household-income">Choropleth Map Showing Median Household Income</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> wa, </span>
-<span id="cb38-2"><a></a>       <span class="at">mapping =</span> </span>
-<span id="cb38-3"><a></a>         <span class="fu">aes</span>(<span class="at">geometry =</span> geometry,</span>
-<span id="cb38-4"><a></a>             <span class="at">fill =</span> estimate)) <span class="sc">+</span> </span>
-<span id="cb38-5"><a></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
-<span id="cb38-6"><a></a>  <span class="fu">scale_fill_distiller</span>(</span>
-<span id="cb38-7"><a></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
-<span id="cb38-8"><a></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb38-9"><a></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> wa, </span>
+<span id="cb38-2"><a aria-label="2"></a>       <span class="at">mapping =</span> </span>
+<span id="cb38-3"><a aria-label="3"></a>         <span class="fu">aes</span>(<span class="at">geometry =</span> geometry,</span>
+<span id="cb38-4"><a aria-label="4"></a>             <span class="at">fill =</span> estimate)) <span class="sc">+</span> </span>
+<span id="cb38-5"><a aria-label="5"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
+<span id="cb38-6"><a aria-label="6"></a>  <span class="fu">scale_fill_distiller</span>(</span>
+<span id="cb38-7"><a aria-label="7"></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
+<span id="cb38-8"><a aria-label="8"></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb38-9"><a aria-label="9"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1020,16 +1023,16 @@ Geodetic CRS:  NAD83
 <h3 id="choropleth-map">Choropleth Map</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> wa, </span>
-<span id="cb39-2"><a></a>       <span class="at">mapping =</span> </span>
-<span id="cb39-3"><a></a>         <span class="fu">aes</span>(<span class="at">geometry =</span> geometry,</span>
-<span id="cb39-4"><a></a>             <span class="at">fill =</span> estimate)) <span class="sc">+</span> </span>
-<span id="cb39-5"><a></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
-<span id="cb39-6"><a></a>  <span class="fu">geom_sf_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> NAME)) <span class="sc">+</span></span>
-<span id="cb39-7"><a></a>  <span class="fu">scale_fill_distiller</span>(</span>
-<span id="cb39-8"><a></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
-<span id="cb39-9"><a></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb39-10"><a></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> wa, </span>
+<span id="cb39-2"><a aria-label="2"></a>       <span class="at">mapping =</span> </span>
+<span id="cb39-3"><a aria-label="3"></a>         <span class="fu">aes</span>(<span class="at">geometry =</span> geometry,</span>
+<span id="cb39-4"><a aria-label="4"></a>             <span class="at">fill =</span> estimate)) <span class="sc">+</span> </span>
+<span id="cb39-5"><a aria-label="5"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
+<span id="cb39-6"><a aria-label="6"></a>  <span class="fu">geom_sf_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> NAME)) <span class="sc">+</span></span>
+<span id="cb39-7"><a aria-label="7"></a>  <span class="fu">scale_fill_distiller</span>(</span>
+<span id="cb39-8"><a aria-label="8"></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
+<span id="cb39-9"><a aria-label="9"></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb39-10"><a aria-label="10"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1048,16 +1051,16 @@ Geodetic CRS:  NAD83
 <h3 id="choropleth-map-1">Choropleth Map</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> wa, </span>
-<span id="cb40-2"><a></a>       <span class="at">mapping =</span> </span>
-<span id="cb40-3"><a></a>         <span class="fu">aes</span>(<span class="at">geometry =</span> geometry)) <span class="sc">+</span> </span>
-<span id="cb40-4"><a></a>  <span class="fu">geom_sf</span>(<span class="at">mapping =</span> </span>
-<span id="cb40-5"><a></a>            <span class="fu">aes</span>(<span class="at">fill =</span> estimate)) <span class="sc">+</span></span>
-<span id="cb40-6"><a></a>  <span class="fu">geom_sf_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> NAME)) <span class="sc">+</span></span>
-<span id="cb40-7"><a></a>  <span class="fu">scale_fill_distiller</span>(</span>
-<span id="cb40-8"><a></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
-<span id="cb40-9"><a></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb40-10"><a></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> wa, </span>
+<span id="cb40-2"><a aria-label="2"></a>       <span class="at">mapping =</span> </span>
+<span id="cb40-3"><a aria-label="3"></a>         <span class="fu">aes</span>(<span class="at">geometry =</span> geometry)) <span class="sc">+</span> </span>
+<span id="cb40-4"><a aria-label="4"></a>  <span class="fu">geom_sf</span>(<span class="at">mapping =</span> </span>
+<span id="cb40-5"><a aria-label="5"></a>            <span class="fu">aes</span>(<span class="at">fill =</span> estimate)) <span class="sc">+</span></span>
+<span id="cb40-6"><a aria-label="6"></a>  <span class="fu">geom_sf_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> NAME)) <span class="sc">+</span></span>
+<span id="cb40-7"><a aria-label="7"></a>  <span class="fu">scale_fill_distiller</span>(</span>
+<span id="cb40-8"><a aria-label="8"></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
+<span id="cb40-9"><a aria-label="9"></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb40-10"><a aria-label="10"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1079,15 +1082,15 @@ Geodetic CRS:  NAD83
 <div class="column" style="width:50%;">
 <p>Last time:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>wa <span class="ot">&lt;-</span> wa <span class="sc">%&gt;%</span></span>
-<span id="cb41-2"><a></a>  <span class="fu">mutate</span>(<span class="at">short_name =</span> </span>
-<span id="cb41-3"><a></a>           <span class="fu">str_replace_all</span>(</span>
-<span id="cb41-4"><a></a>             NAME, </span>
-<span id="cb41-5"><a></a>             <span class="at">pattern =</span> <span class="st">" County, Washington"</span>, </span>
-<span id="cb41-6"><a></a>             <span class="at">replacement =</span> <span class="st">""</span></span>
-<span id="cb41-7"><a></a>            )</span>
-<span id="cb41-8"><a></a>         )</span>
-<span id="cb41-9"><a></a><span class="fu">head</span>(wa<span class="sc">$</span>short_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a aria-label="1"></a>wa <span class="ot">&lt;-</span> wa <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">short_name =</span> </span>
+<span id="cb41-3"><a aria-label="3"></a>           <span class="fu">str_replace_all</span>(</span>
+<span id="cb41-4"><a aria-label="4"></a>             NAME, </span>
+<span id="cb41-5"><a aria-label="5"></a>             <span class="at">pattern =</span> <span class="st">" County, Washington"</span>, </span>
+<span id="cb41-6"><a aria-label="6"></a>             <span class="at">replacement =</span> <span class="st">""</span></span>
+<span id="cb41-7"><a aria-label="7"></a>            )</span>
+<span id="cb41-8"><a aria-label="8"></a>         )</span>
+<span id="cb41-9"><a aria-label="9"></a><span class="fu">head</span>(wa<span class="sc">$</span>short_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Thurston" "Island"   "Lewis"    "Stevens"  "Douglas"  "San Juan"</code></pre>
 </div>
@@ -1095,12 +1098,12 @@ Geodetic CRS:  NAD83
 </div><div class="column fragment" style="width:50%;">
 <p>This time:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>wa <span class="ot">&lt;-</span> wa <span class="sc">%&gt;%</span></span>
-<span id="cb43-2"><a></a>  <span class="fu">mutate</span>(<span class="at">short_name =</span> </span>
-<span id="cb43-3"><a></a>           <span class="fu">str_sub</span>(NAME,</span>
-<span id="cb43-4"><a></a>                   <span class="at">start =</span> <span class="dv">1</span>, </span>
-<span id="cb43-5"><a></a>                   <span class="at">end =</span> <span class="sc">-</span><span class="dv">20</span>))</span>
-<span id="cb43-6"><a></a><span class="fu">head</span>(wa<span class="sc">$</span>short_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a aria-label="1"></a>wa <span class="ot">&lt;-</span> wa <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">short_name =</span> </span>
+<span id="cb43-3"><a aria-label="3"></a>           <span class="fu">str_sub</span>(NAME,</span>
+<span id="cb43-4"><a aria-label="4"></a>                   <span class="at">start =</span> <span class="dv">1</span>, </span>
+<span id="cb43-5"><a aria-label="5"></a>                   <span class="at">end =</span> <span class="sc">-</span><span class="dv">20</span>))</span>
+<span id="cb43-6"><a aria-label="6"></a><span class="fu">head</span>(wa<span class="sc">$</span>short_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Thurston" "Island"   "Lewis"    "Stevens"  "Douglas"  "San Juan"</code></pre>
 </div>
@@ -1112,16 +1115,16 @@ Geodetic CRS:  NAD83
 <h3 id="choropleth-map-2">Choropleth Map</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> wa, </span>
-<span id="cb45-2"><a></a>       <span class="at">mapping =</span> </span>
-<span id="cb45-3"><a></a>         <span class="fu">aes</span>(<span class="at">geometry =</span> geometry)) <span class="sc">+</span> </span>
-<span id="cb45-4"><a></a>  <span class="fu">geom_sf</span>(<span class="at">mapping =</span> </span>
-<span id="cb45-5"><a></a>            <span class="fu">aes</span>(<span class="at">fill =</span> estimate)) <span class="sc">+</span></span>
-<span id="cb45-6"><a></a>  <span class="fu">geom_sf_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> short_name)) <span class="sc">+</span></span>
-<span id="cb45-7"><a></a>  <span class="fu">scale_fill_distiller</span>(</span>
-<span id="cb45-8"><a></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
-<span id="cb45-9"><a></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb45-10"><a></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> wa, </span>
+<span id="cb45-2"><a aria-label="2"></a>       <span class="at">mapping =</span> </span>
+<span id="cb45-3"><a aria-label="3"></a>         <span class="fu">aes</span>(<span class="at">geometry =</span> geometry)) <span class="sc">+</span> </span>
+<span id="cb45-4"><a aria-label="4"></a>  <span class="fu">geom_sf</span>(<span class="at">mapping =</span> </span>
+<span id="cb45-5"><a aria-label="5"></a>            <span class="fu">aes</span>(<span class="at">fill =</span> estimate)) <span class="sc">+</span></span>
+<span id="cb45-6"><a aria-label="6"></a>  <span class="fu">geom_sf_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> short_name)) <span class="sc">+</span></span>
+<span id="cb45-7"><a aria-label="7"></a>  <span class="fu">scale_fill_distiller</span>(</span>
+<span id="cb45-8"><a aria-label="8"></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
+<span id="cb45-9"><a aria-label="9"></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb45-10"><a aria-label="10"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1140,19 +1143,19 @@ Geodetic CRS:  NAD83
 <h3 id="choropleth-map-3">Choropleth Map</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="co">#devtools::install_github("yutannihilation/ggsflabel")</span></span>
-<span id="cb46-2"><a></a><span class="fu">library</span>(ggsflabel)</span>
-<span id="cb46-3"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> wa, </span>
-<span id="cb46-4"><a></a>       <span class="at">mapping =</span> </span>
-<span id="cb46-5"><a></a>         <span class="fu">aes</span>(<span class="at">geometry =</span> geometry)) <span class="sc">+</span> </span>
-<span id="cb46-6"><a></a>  <span class="fu">geom_sf</span>(<span class="at">mapping =</span> </span>
-<span id="cb46-7"><a></a>            <span class="fu">aes</span>(<span class="at">fill =</span> estimate)) <span class="sc">+</span></span>
-<span id="cb46-8"><a></a>  <span class="fu">geom_sf_label_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> short_name),</span>
-<span id="cb46-9"><a></a>                      <span class="at">force =</span> <span class="dv">40</span>) <span class="sc">+</span></span>
-<span id="cb46-10"><a></a>  <span class="fu">scale_fill_distiller</span>(</span>
-<span id="cb46-11"><a></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
-<span id="cb46-12"><a></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb46-13"><a></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-label="1"></a><span class="co">#devtools::install_github("yutannihilation/ggsflabel")</span></span>
+<span id="cb46-2"><a aria-label="2"></a><span class="fu">library</span>(ggsflabel)</span>
+<span id="cb46-3"><a aria-label="3"></a><span class="fu">ggplot</span>(<span class="at">data =</span> wa, </span>
+<span id="cb46-4"><a aria-label="4"></a>       <span class="at">mapping =</span> </span>
+<span id="cb46-5"><a aria-label="5"></a>         <span class="fu">aes</span>(<span class="at">geometry =</span> geometry)) <span class="sc">+</span> </span>
+<span id="cb46-6"><a aria-label="6"></a>  <span class="fu">geom_sf</span>(<span class="at">mapping =</span> </span>
+<span id="cb46-7"><a aria-label="7"></a>            <span class="fu">aes</span>(<span class="at">fill =</span> estimate)) <span class="sc">+</span></span>
+<span id="cb46-8"><a aria-label="8"></a>  <span class="fu">geom_sf_label_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> short_name),</span>
+<span id="cb46-9"><a aria-label="9"></a>                      <span class="at">force =</span> <span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb46-10"><a aria-label="10"></a>  <span class="fu">scale_fill_distiller</span>(</span>
+<span id="cb46-11"><a aria-label="11"></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
+<span id="cb46-12"><a aria-label="12"></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb46-13"><a aria-label="13"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1167,12 +1170,12 @@ Geodetic CRS:  NAD83
 
 <h3 id="can-add-information-from-another-dataset">Can Add Information from Another Dataset</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>wa_cities <span class="ot">&lt;-</span> <span class="fu">data_frame</span>(<span class="at">city =</span> <span class="fu">c</span>(<span class="st">"Seattle"</span>, <span class="st">"Bellingham"</span>, </span>
-<span id="cb47-2"><a></a>                                 <span class="st">"Walla Walla"</span>, <span class="st">"Spokane"</span>),</span>
-<span id="cb47-3"><a></a>                        <span class="at">lat =</span> <span class="fu">c</span>(<span class="fl">47.6061</span>, <span class="fl">48.7519</span>, <span class="fl">46.0646</span>, <span class="fl">47.6580</span>),</span>
-<span id="cb47-4"><a></a>                        <span class="at">long =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">122.3328</span>, <span class="sc">-</span><span class="fl">122.4787</span>,</span>
-<span id="cb47-5"><a></a>                                 <span class="sc">-</span><span class="fl">118.3430</span>, <span class="sc">-</span><span class="fl">117.4235</span>))</span>
-<span id="cb47-6"><a></a>wa_cities</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a aria-label="1"></a>wa_cities <span class="ot">&lt;-</span> <span class="fu">data_frame</span>(<span class="at">city =</span> <span class="fu">c</span>(<span class="st">"Seattle"</span>, <span class="st">"Bellingham"</span>, </span>
+<span id="cb47-2"><a aria-label="2"></a>                                 <span class="st">"Walla Walla"</span>, <span class="st">"Spokane"</span>),</span>
+<span id="cb47-3"><a aria-label="3"></a>                        <span class="at">lat =</span> <span class="fu">c</span>(<span class="fl">47.6061</span>, <span class="fl">48.7519</span>, <span class="fl">46.0646</span>, <span class="fl">47.6580</span>),</span>
+<span id="cb47-4"><a aria-label="4"></a>                        <span class="at">long =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">122.3328</span>, <span class="sc">-</span><span class="fl">122.4787</span>,</span>
+<span id="cb47-5"><a aria-label="5"></a>                                 <span class="sc">-</span><span class="fl">118.3430</span>, <span class="sc">-</span><span class="fl">117.4235</span>))</span>
+<span id="cb47-6"><a aria-label="6"></a>wa_cities</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
   city          lat  long
@@ -1189,27 +1192,27 @@ Geodetic CRS:  NAD83
 <h3 id="can-add-information-from-another-dataset-1">Can Add Information from Another Dataset</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">library</span>(ggrepel)</span>
-<span id="cb49-2"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb49-3"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> wa,</span>
-<span id="cb49-4"><a></a>          <span class="at">mapping =</span> </span>
-<span id="cb49-5"><a></a>            <span class="fu">aes</span>(<span class="at">geometry =</span> geometry, </span>
-<span id="cb49-6"><a></a>                <span class="at">fill =</span> estimate)) <span class="sc">+</span></span>
-<span id="cb49-7"><a></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> wa_cities,</span>
-<span id="cb49-8"><a></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> long,</span>
-<span id="cb49-9"><a></a>                           <span class="at">y =</span> lat),</span>
-<span id="cb49-10"><a></a>             <span class="at">shape =</span> <span class="dv">21</span>,</span>
-<span id="cb49-11"><a></a>             <span class="at">fill =</span> <span class="st">"white"</span>,</span>
-<span id="cb49-12"><a></a>             <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb49-13"><a></a>  <span class="fu">geom_label_repel</span>(<span class="at">data =</span> wa_cities,</span>
-<span id="cb49-14"><a></a>                   <span class="at">mapping =</span> </span>
-<span id="cb49-15"><a></a>                     <span class="fu">aes</span>(<span class="at">x =</span> long,</span>
-<span id="cb49-16"><a></a>                         <span class="at">y =</span> lat,</span>
-<span id="cb49-17"><a></a>                         <span class="at">label =</span> city)) <span class="sc">+</span></span>
-<span id="cb49-18"><a></a>  <span class="fu">scale_fill_distiller</span>(</span>
-<span id="cb49-19"><a></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
-<span id="cb49-20"><a></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb49-21"><a></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a aria-label="1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb49-2"><a aria-label="2"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb49-3"><a aria-label="3"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> wa,</span>
+<span id="cb49-4"><a aria-label="4"></a>          <span class="at">mapping =</span> </span>
+<span id="cb49-5"><a aria-label="5"></a>            <span class="fu">aes</span>(<span class="at">geometry =</span> geometry, </span>
+<span id="cb49-6"><a aria-label="6"></a>                <span class="at">fill =</span> estimate)) <span class="sc">+</span></span>
+<span id="cb49-7"><a aria-label="7"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> wa_cities,</span>
+<span id="cb49-8"><a aria-label="8"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> long,</span>
+<span id="cb49-9"><a aria-label="9"></a>                           <span class="at">y =</span> lat),</span>
+<span id="cb49-10"><a aria-label="10"></a>             <span class="at">shape =</span> <span class="dv">21</span>,</span>
+<span id="cb49-11"><a aria-label="11"></a>             <span class="at">fill =</span> <span class="st">"white"</span>,</span>
+<span id="cb49-12"><a aria-label="12"></a>             <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb49-13"><a aria-label="13"></a>  <span class="fu">geom_label_repel</span>(<span class="at">data =</span> wa_cities,</span>
+<span id="cb49-14"><a aria-label="14"></a>                   <span class="at">mapping =</span> </span>
+<span id="cb49-15"><a aria-label="15"></a>                     <span class="fu">aes</span>(<span class="at">x =</span> long,</span>
+<span id="cb49-16"><a aria-label="16"></a>                         <span class="at">y =</span> lat,</span>
+<span id="cb49-17"><a aria-label="17"></a>                         <span class="at">label =</span> city)) <span class="sc">+</span></span>
+<span id="cb49-18"><a aria-label="18"></a>  <span class="fu">scale_fill_distiller</span>(</span>
+<span id="cb49-19"><a aria-label="19"></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
+<span id="cb49-20"><a aria-label="20"></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb49-21"><a aria-label="21"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1225,7 +1228,7 @@ Geodetic CRS:  NAD83
 <h3 id="coordinate-reference-system">Coordinate Reference System</h3>
 <p>Census defaults to NAD 1983 (EPSG: 4269) for its coordinate reference system</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a>wa</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a aria-label="1"></a>wa</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 39 features and 6 fields
 Geometry type: MULTIPOLYGON
@@ -1263,8 +1266,8 @@ First 10 features:
 <h3 id="coordinate-reference-system-1">Coordinate Reference System</h3>
 <p>Census defaults to NAD 1983 (EPSG: 4269) for its coordinate reference system</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a><span class="fu">library</span>(sf)</span>
-<span id="cb52-2"><a></a><span class="fu">st_crs</span>(wa)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a aria-label="1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb52-2"><a aria-label="2"></a><span class="fu">st_crs</span>(wa)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Coordinate Reference System:
   User input: NAD83 
@@ -1295,8 +1298,8 @@ GEOGCRS["NAD83",
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a>wa_transf <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_transform</span>(wa, <span class="st">"EPSG:32610"</span>)</span>
-<span id="cb54-2"><a></a>wa_transf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a aria-label="1"></a>wa_transf <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_transform</span>(wa, <span class="st">"EPSG:32610"</span>)</span>
+<span id="cb54-2"><a aria-label="2"></a>wa_transf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 39 features and 6 fields
 Geometry type: MULTIPOLYGON
@@ -1336,16 +1339,16 @@ First 10 features:
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb56-2"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> wa,</span>
-<span id="cb56-3"><a></a>          <span class="at">mapping =</span> </span>
-<span id="cb56-4"><a></a>            <span class="fu">aes</span>(<span class="at">geometry =</span> geometry, </span>
-<span id="cb56-5"><a></a>                <span class="at">fill =</span> estimate)) <span class="sc">+</span></span>
-<span id="cb56-6"><a></a>  <span class="fu">coord_sf</span>() <span class="sc">+</span></span>
-<span id="cb56-7"><a></a>  <span class="fu">scale_fill_distiller</span>(</span>
-<span id="cb56-8"><a></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
-<span id="cb56-9"><a></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb56-10"><a></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a aria-label="1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb56-2"><a aria-label="2"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> wa,</span>
+<span id="cb56-3"><a aria-label="3"></a>          <span class="at">mapping =</span> </span>
+<span id="cb56-4"><a aria-label="4"></a>            <span class="fu">aes</span>(<span class="at">geometry =</span> geometry, </span>
+<span id="cb56-5"><a aria-label="5"></a>                <span class="at">fill =</span> estimate)) <span class="sc">+</span></span>
+<span id="cb56-6"><a aria-label="6"></a>  <span class="fu">coord_sf</span>() <span class="sc">+</span></span>
+<span id="cb56-7"><a aria-label="7"></a>  <span class="fu">scale_fill_distiller</span>(</span>
+<span id="cb56-8"><a aria-label="8"></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
+<span id="cb56-9"><a aria-label="9"></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb56-10"><a aria-label="10"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1356,16 +1359,16 @@ First 10 features:
 </div>
 </div><div class="column fragment" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb57-2"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> wa_transf,</span>
-<span id="cb57-3"><a></a>          <span class="at">mapping =</span> </span>
-<span id="cb57-4"><a></a>            <span class="fu">aes</span>(<span class="at">geometry =</span> geometry, </span>
-<span id="cb57-5"><a></a>                <span class="at">fill =</span> estimate)) <span class="sc">+</span></span>
-<span id="cb57-6"><a></a>  <span class="fu">coord_sf</span>() <span class="sc">+</span></span>
-<span id="cb57-7"><a></a>  <span class="fu">scale_fill_distiller</span>(</span>
-<span id="cb57-8"><a></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
-<span id="cb57-9"><a></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb57-10"><a></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a aria-label="1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb57-2"><a aria-label="2"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> wa_transf,</span>
+<span id="cb57-3"><a aria-label="3"></a>          <span class="at">mapping =</span> </span>
+<span id="cb57-4"><a aria-label="4"></a>            <span class="fu">aes</span>(<span class="at">geometry =</span> geometry, </span>
+<span id="cb57-5"><a aria-label="5"></a>                <span class="at">fill =</span> estimate)) <span class="sc">+</span></span>
+<span id="cb57-6"><a aria-label="6"></a>  <span class="fu">coord_sf</span>() <span class="sc">+</span></span>
+<span id="cb57-7"><a aria-label="7"></a>  <span class="fu">scale_fill_distiller</span>(</span>
+<span id="cb57-8"><a aria-label="8"></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
+<span id="cb57-9"><a aria-label="9"></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb57-10"><a aria-label="10"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1382,20 +1385,20 @@ First 10 features:
 <p>Scale polygons by a variable.</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a><span class="fu">library</span>(cartogram)</span>
-<span id="cb58-2"><a></a>wa_carto <span class="ot">&lt;-</span> <span class="fu">cartogram_cont</span>(wa_transf, </span>
-<span id="cb58-3"><a></a>                           <span class="at">weight =</span> <span class="st">"estimate"</span>)</span>
-<span id="cb58-4"><a></a></span>
-<span id="cb58-5"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb58-6"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> wa_carto,</span>
-<span id="cb58-7"><a></a>          <span class="at">mapping =</span> </span>
-<span id="cb58-8"><a></a>            <span class="fu">aes</span>(<span class="at">geometry =</span> geometry, </span>
-<span id="cb58-9"><a></a>                <span class="at">fill =</span> estimate)) <span class="sc">+</span></span>
-<span id="cb58-10"><a></a>  <span class="fu">coord_sf</span>() <span class="sc">+</span></span>
-<span id="cb58-11"><a></a>  <span class="fu">scale_fill_distiller</span>(</span>
-<span id="cb58-12"><a></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
-<span id="cb58-13"><a></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb58-14"><a></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a aria-label="1"></a><span class="fu">library</span>(cartogram)</span>
+<span id="cb58-2"><a aria-label="2"></a>wa_carto <span class="ot">&lt;-</span> <span class="fu">cartogram_cont</span>(wa_transf, </span>
+<span id="cb58-3"><a aria-label="3"></a>                           <span class="at">weight =</span> <span class="st">"estimate"</span>)</span>
+<span id="cb58-4"><a aria-label="4"></a></span>
+<span id="cb58-5"><a aria-label="5"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb58-6"><a aria-label="6"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> wa_carto,</span>
+<span id="cb58-7"><a aria-label="7"></a>          <span class="at">mapping =</span> </span>
+<span id="cb58-8"><a aria-label="8"></a>            <span class="fu">aes</span>(<span class="at">geometry =</span> geometry, </span>
+<span id="cb58-9"><a aria-label="9"></a>                <span class="at">fill =</span> estimate)) <span class="sc">+</span></span>
+<span id="cb58-10"><a aria-label="10"></a>  <span class="fu">coord_sf</span>() <span class="sc">+</span></span>
+<span id="cb58-11"><a aria-label="11"></a>  <span class="fu">scale_fill_distiller</span>(</span>
+<span id="cb58-12"><a aria-label="12"></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
+<span id="cb58-13"><a aria-label="13"></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb58-14"><a aria-label="14"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1411,11 +1414,11 @@ First 10 features:
 <h3 id="cartograms-1">Cartograms</h3>
 <p>Often scaled by a population size type variable.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>wa_pop <span class="ot">&lt;-</span> <span class="fu">get_decennial</span>(<span class="at">state =</span> <span class="st">"WA"</span>, <span class="at">geography =</span> <span class="st">"county"</span>,</span>
-<span id="cb59-2"><a></a>                        <span class="at">variables =</span> <span class="st">"P001001"</span>, <span class="at">year =</span> <span class="dv">2010</span>, <span class="at">api_key =</span> api_key)</span>
-<span id="cb59-3"><a></a></span>
-<span id="cb59-4"><a></a>wa_transf_pop <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(wa_transf, wa_pop, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"GEOID"</span> <span class="ot">=</span> <span class="st">"GEOID"</span>))</span>
-<span id="cb59-5"><a></a>wa_transf_pop</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a aria-label="1"></a>wa_pop <span class="ot">&lt;-</span> <span class="fu">get_decennial</span>(<span class="at">state =</span> <span class="st">"WA"</span>, <span class="at">geography =</span> <span class="st">"county"</span>,</span>
+<span id="cb59-2"><a aria-label="2"></a>                        <span class="at">variables =</span> <span class="st">"P001001"</span>, <span class="at">year =</span> <span class="dv">2010</span>, <span class="at">api_key =</span> api_key)</span>
+<span id="cb59-3"><a aria-label="3"></a></span>
+<span id="cb59-4"><a aria-label="4"></a>wa_transf_pop <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(wa_transf, wa_pop, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"GEOID"</span> <span class="ot">=</span> <span class="st">"GEOID"</span>))</span>
+<span id="cb59-5"><a aria-label="5"></a>wa_transf_pop</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -1424,25 +1427,25 @@ First 10 features:
 <p>Often scaled by a population size type variable.</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a>wa_transf_pop <span class="ot">&lt;-</span> wa_transf_pop <span class="sc">%&gt;%</span></span>
-<span id="cb60-2"><a></a>  <span class="fu">rename</span>(<span class="at">population_size =</span> value, </span>
-<span id="cb60-3"><a></a>         <span class="at">median_income =</span> estimate)</span>
-<span id="cb60-4"><a></a></span>
-<span id="cb60-5"><a></a>wa_transf_pop <span class="ot">&lt;-</span> <span class="fu">cartogram_cont</span>(</span>
-<span id="cb60-6"><a></a>  wa_transf_pop,                                 </span>
-<span id="cb60-7"><a></a>  <span class="at">weight =</span> <span class="st">"population_size"</span></span>
-<span id="cb60-8"><a></a>  )</span>
-<span id="cb60-9"><a></a></span>
-<span id="cb60-10"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb60-11"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> wa_transf_pop,</span>
-<span id="cb60-12"><a></a>          <span class="at">mapping =</span> </span>
-<span id="cb60-13"><a></a>            <span class="fu">aes</span>(<span class="at">geometry =</span> geometry, </span>
-<span id="cb60-14"><a></a>                <span class="at">fill =</span> median_income)) <span class="sc">+</span></span>
-<span id="cb60-15"><a></a>  <span class="fu">coord_sf</span>() <span class="sc">+</span></span>
-<span id="cb60-16"><a></a>  <span class="fu">scale_fill_distiller</span>(</span>
-<span id="cb60-17"><a></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
-<span id="cb60-18"><a></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb60-19"><a></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a aria-label="1"></a>wa_transf_pop <span class="ot">&lt;-</span> wa_transf_pop <span class="sc">%&gt;%</span></span>
+<span id="cb60-2"><a aria-label="2"></a>  <span class="fu">rename</span>(<span class="at">population_size =</span> value, </span>
+<span id="cb60-3"><a aria-label="3"></a>         <span class="at">median_income =</span> estimate)</span>
+<span id="cb60-4"><a aria-label="4"></a></span>
+<span id="cb60-5"><a aria-label="5"></a>wa_transf_pop <span class="ot">&lt;-</span> <span class="fu">cartogram_cont</span>(</span>
+<span id="cb60-6"><a aria-label="6"></a>  wa_transf_pop,                                 </span>
+<span id="cb60-7"><a aria-label="7"></a>  <span class="at">weight =</span> <span class="st">"population_size"</span></span>
+<span id="cb60-8"><a aria-label="8"></a>  )</span>
+<span id="cb60-9"><a aria-label="9"></a></span>
+<span id="cb60-10"><a aria-label="10"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb60-11"><a aria-label="11"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> wa_transf_pop,</span>
+<span id="cb60-12"><a aria-label="12"></a>          <span class="at">mapping =</span> </span>
+<span id="cb60-13"><a aria-label="13"></a>            <span class="fu">aes</span>(<span class="at">geometry =</span> geometry, </span>
+<span id="cb60-14"><a aria-label="14"></a>                <span class="at">fill =</span> median_income)) <span class="sc">+</span></span>
+<span id="cb60-15"><a aria-label="15"></a>  <span class="fu">coord_sf</span>() <span class="sc">+</span></span>
+<span id="cb60-16"><a aria-label="16"></a>  <span class="fu">scale_fill_distiller</span>(</span>
+<span id="cb60-17"><a aria-label="17"></a>   <span class="at">name =</span> <span class="st">"Median </span><span class="sc">\n</span><span class="st">Household </span><span class="sc">\n</span><span class="st">Income"</span>,</span>
+<span id="cb60-18"><a aria-label="18"></a>   <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb60-19"><a aria-label="19"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column fragment">
 
 </div></div>
@@ -1452,8 +1455,8 @@ First 10 features:
 <h3 id="new-dataset">New Dataset</h3>
 <p>State Level Information</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a><span class="fu">library</span>(Lock5Data)</span>
-<span id="cb61-2"><a></a><span class="fu">glimpse</span>(USStates)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a aria-label="1"></a><span class="fu">library</span>(Lock5Data)</span>
+<span id="cb61-2"><a aria-label="2"></a><span class="fu">glimpse</span>(USStates)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 50
 Columns: 22
@@ -1486,16 +1489,16 @@ $ Insured          &lt;dbl&gt; 83.7, 80.2, 83.4, 84.1, 85.2, 87.2, 91.1, 90.7, 7
 
 <h3 id="hexbin-maps-1">Hexbin Maps</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a><span class="co">#install.packages("statebins")</span></span>
-<span id="cb63-2"><a></a><span class="fu">library</span>(statebins)</span>
-<span id="cb63-3"><a></a><span class="fu">statebins</span>(<span class="at">state_data =</span> USStates,</span>
-<span id="cb63-4"><a></a>          <span class="at">state_col =</span> <span class="st">"State"</span>,</span>
-<span id="cb63-5"><a></a>          <span class="at">value_col =</span> <span class="st">"Insured"</span>,</span>
-<span id="cb63-6"><a></a>          <span class="at">ggplot2_scale_function =</span></span>
-<span id="cb63-7"><a></a>            ggplot2<span class="sc">::</span>scale_fill_distiller,</span>
-<span id="cb63-8"><a></a>          <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>,</span>
-<span id="cb63-9"><a></a>          <span class="at">round =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb63-10"><a></a>  <span class="fu">theme_statebins</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a aria-label="1"></a><span class="co">#install.packages("statebins")</span></span>
+<span id="cb63-2"><a aria-label="2"></a><span class="fu">library</span>(statebins)</span>
+<span id="cb63-3"><a aria-label="3"></a><span class="fu">statebins</span>(<span class="at">state_data =</span> USStates,</span>
+<span id="cb63-4"><a aria-label="4"></a>          <span class="at">state_col =</span> <span class="st">"State"</span>,</span>
+<span id="cb63-5"><a aria-label="5"></a>          <span class="at">value_col =</span> <span class="st">"Insured"</span>,</span>
+<span id="cb63-6"><a aria-label="6"></a>          <span class="at">ggplot2_scale_function =</span></span>
+<span id="cb63-7"><a aria-label="7"></a>            ggplot2<span class="sc">::</span>scale_fill_distiller,</span>
+<span id="cb63-8"><a aria-label="8"></a>          <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>,</span>
+<span id="cb63-9"><a aria-label="9"></a>          <span class="at">round =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb63-10"><a aria-label="10"></a>  <span class="fu">theme_statebins</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `nchar()`:
 ! 'nchar()' requires a character vector</code></pre>
@@ -1503,12 +1506,12 @@ $ Insured          &lt;dbl&gt; 83.7, 80.2, 83.4, 84.1, 85.2, 87.2, 91.1, 90.7, 7
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a><span class="fu">class</span>(USStates<span class="sc">$</span>State)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a aria-label="1"></a><span class="fu">class</span>(USStates<span class="sc">$</span>State)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "factor"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a>USStates <span class="ot">&lt;-</span> <span class="fu">mutate</span>(USStates,</span>
-<span id="cb67-2"><a></a>                   <span class="at">State =</span> <span class="fu">as.character</span>(State))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a aria-label="1"></a>USStates <span class="ot">&lt;-</span> <span class="fu">mutate</span>(USStates,</span>
+<span id="cb67-2"><a aria-label="2"></a>                   <span class="at">State =</span> <span class="fu">as.character</span>(State))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -1517,15 +1520,15 @@ $ Insured          &lt;dbl&gt; 83.7, 80.2, 83.4, 84.1, 85.2, 87.2, 91.1, 90.7, 7
 <h3 id="hexbin-maps-2">Hexbin Maps</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a><span class="fu">library</span>(statebins)</span>
-<span id="cb68-2"><a></a><span class="fu">statebins</span>(<span class="at">state_data =</span> USStates,</span>
-<span id="cb68-3"><a></a>          <span class="at">state_col =</span> <span class="st">"State"</span>,</span>
-<span id="cb68-4"><a></a>          <span class="at">value_col =</span> <span class="st">"Insured"</span>,</span>
-<span id="cb68-5"><a></a>          <span class="at">ggplot2_scale_function =</span></span>
-<span id="cb68-6"><a></a>            ggplot2<span class="sc">::</span>scale_fill_distiller,</span>
-<span id="cb68-7"><a></a>          <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>,</span>
-<span id="cb68-8"><a></a>          <span class="at">round =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb68-9"><a></a>  <span class="fu">theme_statebins</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a aria-label="1"></a><span class="fu">library</span>(statebins)</span>
+<span id="cb68-2"><a aria-label="2"></a><span class="fu">statebins</span>(<span class="at">state_data =</span> USStates,</span>
+<span id="cb68-3"><a aria-label="3"></a>          <span class="at">state_col =</span> <span class="st">"State"</span>,</span>
+<span id="cb68-4"><a aria-label="4"></a>          <span class="at">value_col =</span> <span class="st">"Insured"</span>,</span>
+<span id="cb68-5"><a aria-label="5"></a>          <span class="at">ggplot2_scale_function =</span></span>
+<span id="cb68-6"><a aria-label="6"></a>            ggplot2<span class="sc">::</span>scale_fill_distiller,</span>
+<span id="cb68-7"><a aria-label="7"></a>          <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">4</span>,</span>
+<span id="cb68-8"><a aria-label="8"></a>          <span class="at">round =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb68-9"><a aria-label="9"></a>  <span class="fu">theme_statebins</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1540,9 +1543,9 @@ $ Insured          &lt;dbl&gt; 83.7, 80.2, 83.4, 84.1, 85.2, 87.2, 91.1, 90.7, 7
 
 <h3 id="new-data-volcano-eruptions">New data: volcano eruptions</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a>Eruptions <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/GVP_Eruption_Results.csv"</span>)</span>
-<span id="cb69-2"><a></a><span class="fu">select</span>(Eruptions, VolcanoName, StartYear, Latitude, Longitude) <span class="sc">%&gt;%</span></span>
-<span id="cb69-3"><a></a>  <span class="fu">glimpse</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a aria-label="1"></a>Eruptions <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/GVP_Eruption_Results.csv"</span>)</span>
+<span id="cb69-2"><a aria-label="2"></a><span class="fu">select</span>(Eruptions, VolcanoName, StartYear, Latitude, Longitude) <span class="sc">%&gt;%</span></span>
+<span id="cb69-3"><a aria-label="3"></a>  <span class="fu">glimpse</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 11,019
 Columns: 4
@@ -1551,9 +1554,9 @@ $ StartYear   &lt;dbl&gt; 2016, 2016, 2016, 2016, 2016, 2016, 2015, 2015, 2015, 
 $ Latitude    &lt;dbl&gt; 12.770, 50.861, 10.025, 13.434, -36.863, 1.112, 11.984, 37…
 $ Longitude   &lt;dbl&gt; 124.050, 155.565, -83.767, -88.269, -71.377, 124.737, -86.…</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a><span class="fu">library</span>(rnaturalearth)</span>
-<span id="cb71-2"><a></a>world <span class="ot">&lt;-</span> rnaturalearth<span class="sc">::</span>countries110</span>
-<span id="cb71-3"><a></a>world</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a aria-label="1"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb71-2"><a aria-label="2"></a>world <span class="ot">&lt;-</span> rnaturalearth<span class="sc">::</span>countries110</span>
+<span id="cb71-3"><a aria-label="3"></a>world</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 177 features and 168 fields
 Geometry type: MULTIPOLYGON
@@ -1932,18 +1935,18 @@ First 10 features:
 <h3 id="static-maps-1">Static Maps</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a></a>Eruptions_sf <span class="ot">&lt;-</span> Eruptions <span class="sc">%&gt;%</span></span>
-<span id="cb73-2"><a></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"Longitude"</span>,</span>
-<span id="cb73-3"><a></a>                      <span class="st">"Latitude"</span>),</span>
-<span id="cb73-4"><a></a>           <span class="at">crs =</span> <span class="st">"EPSG:4269"</span>)</span>
-<span id="cb73-5"><a></a></span>
-<span id="cb73-6"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> world) <span class="sc">+</span></span>
-<span id="cb73-7"><a></a>  <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">"azure"</span>,</span>
-<span id="cb73-8"><a></a>          <span class="at">color =</span> <span class="st">"olivedrab4"</span>) <span class="sc">+</span></span>
-<span id="cb73-9"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> Eruptions_sf,</span>
-<span id="cb73-10"><a></a>          <span class="at">color =</span> <span class="st">"orange3"</span>,</span>
-<span id="cb73-11"><a></a>          <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb73-12"><a></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a aria-label="1"></a>Eruptions_sf <span class="ot">&lt;-</span> Eruptions <span class="sc">%&gt;%</span></span>
+<span id="cb73-2"><a aria-label="2"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"Longitude"</span>,</span>
+<span id="cb73-3"><a aria-label="3"></a>                      <span class="st">"Latitude"</span>),</span>
+<span id="cb73-4"><a aria-label="4"></a>           <span class="at">crs =</span> <span class="st">"EPSG:4269"</span>)</span>
+<span id="cb73-5"><a aria-label="5"></a></span>
+<span id="cb73-6"><a aria-label="6"></a><span class="fu">ggplot</span>(<span class="at">data =</span> world) <span class="sc">+</span></span>
+<span id="cb73-7"><a aria-label="7"></a>  <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">"azure"</span>,</span>
+<span id="cb73-8"><a aria-label="8"></a>          <span class="at">color =</span> <span class="st">"olivedrab4"</span>) <span class="sc">+</span></span>
+<span id="cb73-9"><a aria-label="9"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> Eruptions_sf,</span>
+<span id="cb73-10"><a aria-label="10"></a>          <span class="at">color =</span> <span class="st">"orange3"</span>,</span>
+<span id="cb73-11"><a aria-label="11"></a>          <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb73-12"><a aria-label="12"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1961,19 +1964,19 @@ First 10 features:
 
 <h3 id="alluetian-islands">Alluetian Islands</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a></a>eruption_count <span class="ot">&lt;-</span> <span class="fu">count</span>(Eruptions,</span>
-<span id="cb74-2"><a></a>                        VolcanoName, </span>
-<span id="cb74-3"><a></a>                        Latitude,</span>
-<span id="cb74-4"><a></a>                        Longitude) <span class="sc">%&gt;%</span></span>
-<span id="cb74-5"><a></a>  <span class="fu">filter</span>(Longitude <span class="sc">&gt;</span> <span class="sc">-</span><span class="fl">172.164</span>,</span>
-<span id="cb74-6"><a></a>         Longitude <span class="sc">&lt;</span> <span class="sc">-</span><span class="fl">157.1507</span>,</span>
-<span id="cb74-7"><a></a>         Latitude <span class="sc">&gt;</span> <span class="fl">50.977</span>,</span>
-<span id="cb74-8"><a></a>         Latitude <span class="sc">&lt;</span> <span class="fl">59.5617</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb74-9"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span></span>
-<span id="cb74-10"><a></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"Longitude"</span>,</span>
-<span id="cb74-11"><a></a>                      <span class="st">"Latitude"</span>),</span>
-<span id="cb74-12"><a></a>           <span class="at">crs =</span> <span class="st">"EPSG:4269"</span>)</span>
-<span id="cb74-13"><a></a>eruption_count</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a aria-label="1"></a>eruption_count <span class="ot">&lt;-</span> <span class="fu">count</span>(Eruptions,</span>
+<span id="cb74-2"><a aria-label="2"></a>                        VolcanoName, </span>
+<span id="cb74-3"><a aria-label="3"></a>                        Latitude,</span>
+<span id="cb74-4"><a aria-label="4"></a>                        Longitude) <span class="sc">%&gt;%</span></span>
+<span id="cb74-5"><a aria-label="5"></a>  <span class="fu">filter</span>(Longitude <span class="sc">&gt;</span> <span class="sc">-</span><span class="fl">172.164</span>,</span>
+<span id="cb74-6"><a aria-label="6"></a>         Longitude <span class="sc">&lt;</span> <span class="sc">-</span><span class="fl">157.1507</span>,</span>
+<span id="cb74-7"><a aria-label="7"></a>         Latitude <span class="sc">&gt;</span> <span class="fl">50.977</span>,</span>
+<span id="cb74-8"><a aria-label="8"></a>         Latitude <span class="sc">&lt;</span> <span class="fl">59.5617</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb74-9"><a aria-label="9"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb74-10"><a aria-label="10"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"Longitude"</span>,</span>
+<span id="cb74-11"><a aria-label="11"></a>                      <span class="st">"Latitude"</span>),</span>
+<span id="cb74-12"><a aria-label="12"></a>           <span class="at">crs =</span> <span class="st">"EPSG:4269"</span>)</span>
+<span id="cb74-13"><a aria-label="13"></a>eruption_count</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 24 features and 2 fields
 Geometry type: POINT
@@ -2002,15 +2005,15 @@ Geodetic CRS:  NAD83
 <h3 id="alluetian-islands-1">Alluetian Islands</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb76-2"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> world, </span>
-<span id="cb76-3"><a></a>          <span class="at">fill =</span> <span class="st">"azure"</span>,</span>
-<span id="cb76-4"><a></a>          <span class="at">color =</span> <span class="st">"olivedrab4"</span>) <span class="sc">+</span></span>
-<span id="cb76-5"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> eruption_count,</span>
-<span id="cb76-6"><a></a>          <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">size =</span> n),</span>
-<span id="cb76-7"><a></a>          <span class="at">color =</span> <span class="st">"orange3"</span>) <span class="sc">+</span></span>
-<span id="cb76-8"><a></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">172.164</span>, <span class="sc">-</span><span class="fl">157.1507</span>),</span>
-<span id="cb76-9"><a></a>           <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">50.977</span>, <span class="fl">59.5617</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a aria-label="1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb76-2"><a aria-label="2"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> world, </span>
+<span id="cb76-3"><a aria-label="3"></a>          <span class="at">fill =</span> <span class="st">"azure"</span>,</span>
+<span id="cb76-4"><a aria-label="4"></a>          <span class="at">color =</span> <span class="st">"olivedrab4"</span>) <span class="sc">+</span></span>
+<span id="cb76-5"><a aria-label="5"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> eruption_count,</span>
+<span id="cb76-6"><a aria-label="6"></a>          <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">size =</span> n),</span>
+<span id="cb76-7"><a aria-label="7"></a>          <span class="at">color =</span> <span class="st">"orange3"</span>) <span class="sc">+</span></span>
+<span id="cb76-8"><a aria-label="8"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">172.164</span>, <span class="sc">-</span><span class="fl">157.1507</span>),</span>
+<span id="cb76-9"><a aria-label="9"></a>           <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">50.977</span>, <span class="fl">59.5617</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2051,14 +2054,14 @@ Geodetic CRS:  NAD83
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb77-2"><a></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb77-3"><a></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb77-4"><a></a>  <span class="fu">addCircleMarkers</span>(<span class="at">data =</span> eruption_count,</span>
-<span id="cb77-5"><a></a>                   <span class="at">radius =</span> <span class="sc">~</span><span class="fu">sqrt</span>(n), </span>
-<span id="cb77-6"><a></a>                   <span class="at">stroke =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb77-7"><a></a>                   <span class="at">fillOpacity =</span> <span class="fl">0.9</span>,</span>
-<span id="cb77-8"><a></a>                   <span class="at">color =</span> <span class="st">"orange"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a aria-label="1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb77-2"><a aria-label="2"></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb77-3"><a aria-label="3"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb77-4"><a aria-label="4"></a>  <span class="fu">addCircleMarkers</span>(<span class="at">data =</span> eruption_count,</span>
+<span id="cb77-5"><a aria-label="5"></a>                   <span class="at">radius =</span> <span class="sc">~</span><span class="fu">sqrt</span>(n), </span>
+<span id="cb77-6"><a aria-label="6"></a>                   <span class="at">stroke =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb77-7"><a aria-label="7"></a>                   <span class="at">fillOpacity =</span> <span class="fl">0.9</span>,</span>
+<span id="cb77-8"><a aria-label="8"></a>                   <span class="at">color =</span> <span class="st">"orange"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:50%;">
 <ul>
@@ -2079,13 +2082,13 @@ Geodetic CRS:  NAD83
 <h3 id="interactive-maps-with-leaflet-2">Interactive Maps with <code>leaflet</code></h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb78-2"><a></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb78-3"><a></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb78-4"><a></a>  <span class="fu">addCircleMarkers</span>(<span class="at">data =</span> eruption_count,</span>
-<span id="cb78-5"><a></a>                   <span class="at">radius =</span> <span class="sc">~</span><span class="fu">sqrt</span>(n), </span>
-<span id="cb78-6"><a></a>                   <span class="at">stroke =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb78-7"><a></a>                   <span class="at">fillOpacity =</span> <span class="fl">0.9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a aria-label="1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb78-2"><a aria-label="2"></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb78-3"><a aria-label="3"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb78-4"><a aria-label="4"></a>  <span class="fu">addCircleMarkers</span>(<span class="at">data =</span> eruption_count,</span>
+<span id="cb78-5"><a aria-label="5"></a>                   <span class="at">radius =</span> <span class="sc">~</span><span class="fu">sqrt</span>(n), </span>
+<span id="cb78-6"><a aria-label="6"></a>                   <span class="at">stroke =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb78-7"><a aria-label="7"></a>                   <span class="at">fillOpacity =</span> <span class="fl">0.9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-44f193fbf4475e93883c" style="width:768px;height:576px;"></div>
@@ -2098,12 +2101,12 @@ Geodetic CRS:  NAD83
 <h3 id="clusters">Clusters</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb79-2"><a></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="dv">160</span>, <span class="at">lat =</span> <span class="dv">55</span>, <span class="at">zoom =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb79-3"><a></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb79-4"><a></a>  <span class="fu">addCircleMarkers</span>(<span class="at">data =</span> eruption_count, </span>
-<span id="cb79-5"><a></a>                   <span class="at">clusterOptions =</span></span>
-<span id="cb79-6"><a></a>                     <span class="fu">markerClusterOptions</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a aria-label="1"></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb79-2"><a aria-label="2"></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="dv">160</span>, <span class="at">lat =</span> <span class="dv">55</span>, <span class="at">zoom =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb79-3"><a aria-label="3"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb79-4"><a aria-label="4"></a>  <span class="fu">addCircleMarkers</span>(<span class="at">data =</span> eruption_count, </span>
+<span id="cb79-5"><a aria-label="5"></a>                   <span class="at">clusterOptions =</span></span>
+<span id="cb79-6"><a aria-label="6"></a>                     <span class="fu">markerClusterOptions</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-5fcaa01dbc2c751252a4" style="width:768px;height:576px;"></div>
@@ -2116,12 +2119,12 @@ Geodetic CRS:  NAD83
 <h3 id="zooming-constraints">Zooming Constraints</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a></a><span class="fu">leaflet</span>(<span class="at">options =</span> </span>
-<span id="cb80-2"><a></a>          <span class="fu">leafletOptions</span>(<span class="at">minZoom =</span> <span class="dv">3</span>,</span>
-<span id="cb80-3"><a></a>                         <span class="at">maxZoom =</span> <span class="dv">7</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb80-4"><a></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb80-5"><a></a>  <span class="fu">addCircleMarkers</span>(<span class="at">data =</span> eruption_count,</span>
-<span id="cb80-6"><a></a>                   <span class="at">radius =</span> <span class="sc">~</span><span class="fu">sqrt</span>(n))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a aria-label="1"></a><span class="fu">leaflet</span>(<span class="at">options =</span> </span>
+<span id="cb80-2"><a aria-label="2"></a>          <span class="fu">leafletOptions</span>(<span class="at">minZoom =</span> <span class="dv">3</span>,</span>
+<span id="cb80-3"><a aria-label="3"></a>                         <span class="at">maxZoom =</span> <span class="dv">7</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb80-4"><a aria-label="4"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb80-5"><a aria-label="5"></a>  <span class="fu">addCircleMarkers</span>(<span class="at">data =</span> eruption_count,</span>
+<span id="cb80-6"><a aria-label="6"></a>                   <span class="at">radius =</span> <span class="sc">~</span><span class="fu">sqrt</span>(n))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-a087d7deb35cbc4ee207" style="width:768px;height:576px;"></div>
@@ -2134,11 +2137,11 @@ Geodetic CRS:  NAD83
 <h3 id="other-markers">Other Markers</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb81-2"><a></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="dv">160</span>, <span class="at">lat =</span> <span class="dv">55</span>, <span class="at">zoom =</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb81-3"><a></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb81-4"><a></a>  <span class="fu">addMarkers</span>(<span class="at">data =</span> eruption_count, </span>
-<span id="cb81-5"><a></a>             <span class="at">label =</span> <span class="sc">~</span><span class="fu">as.character</span>(n))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a aria-label="1"></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb81-2"><a aria-label="2"></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="dv">160</span>, <span class="at">lat =</span> <span class="dv">55</span>, <span class="at">zoom =</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb81-3"><a aria-label="3"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb81-4"><a aria-label="4"></a>  <span class="fu">addMarkers</span>(<span class="at">data =</span> eruption_count, </span>
+<span id="cb81-5"><a aria-label="5"></a>             <span class="at">label =</span> <span class="sc">~</span><span class="fu">as.character</span>(n))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-246993f076c475076038" style="width:768px;height:576px;"></div>
@@ -2150,10 +2153,10 @@ Geodetic CRS:  NAD83
 
 <h3 id="custom-icons">Custom Icons</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a></a>volcano  <span class="ot">&lt;-</span> <span class="fu">makeIcon</span>(</span>
-<span id="cb82-2"><a></a>  <span class="at">iconUrl =</span> <span class="st">"https://raw.githubusercontent.com/Reed-Data-Science/Reed-Data-Science.github.io/refs/heads/main/slides/img/volcano.png"</span>,</span>
-<span id="cb82-3"><a></a>  <span class="at">iconWidth =</span> <span class="dv">20</span>, <span class="at">iconHeight =</span> <span class="dv">20</span>)</span>
-<span id="cb82-4"><a></a>volcano</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a aria-label="1"></a>volcano  <span class="ot">&lt;-</span> <span class="fu">makeIcon</span>(</span>
+<span id="cb82-2"><a aria-label="2"></a>  <span class="at">iconUrl =</span> <span class="st">"https://raw.githubusercontent.com/Reed-Data-Science/Reed-Data-Science.github.io/refs/heads/main/slides/img/volcano.png"</span>,</span>
+<span id="cb82-3"><a aria-label="3"></a>  <span class="at">iconWidth =</span> <span class="dv">20</span>, <span class="at">iconHeight =</span> <span class="dv">20</span>)</span>
+<span id="cb82-4"><a aria-label="4"></a>volcano</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$iconUrl
 [1] "https://raw.githubusercontent.com/Reed-Data-Science/Reed-Data-Science.github.io/refs/heads/main/slides/img/volcano.png"
@@ -2174,12 +2177,12 @@ attr(,"class")
 <h3 id="custom-icons-1">Custom Icons</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb84-2"><a></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="dv">160</span>, <span class="at">lat =</span> <span class="dv">55</span>, <span class="at">zoom =</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb84-3"><a></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb84-4"><a></a>  <span class="fu">addMarkers</span>(<span class="at">data =</span> eruption_count, </span>
-<span id="cb84-5"><a></a>             <span class="at">label =</span> <span class="sc">~</span><span class="fu">as.character</span>(n),</span>
-<span id="cb84-6"><a></a>             <span class="at">icon =</span> volcano)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a aria-label="1"></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb84-2"><a aria-label="2"></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="dv">160</span>, <span class="at">lat =</span> <span class="dv">55</span>, <span class="at">zoom =</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb84-3"><a aria-label="3"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb84-4"><a aria-label="4"></a>  <span class="fu">addMarkers</span>(<span class="at">data =</span> eruption_count, </span>
+<span id="cb84-5"><a aria-label="5"></a>             <span class="at">label =</span> <span class="sc">~</span><span class="fu">as.character</span>(n),</span>
+<span id="cb84-6"><a aria-label="6"></a>             <span class="at">icon =</span> volcano)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-f9d1b7d8966ccb179909" style="width:768px;height:576px;"></div>
@@ -2191,12 +2194,12 @@ attr(,"class")
 
 <h3 id="pop-ups">Pop-Ups</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a></a>content <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"&lt;b&gt;"</span>,</span>
-<span id="cb85-2"><a></a>                 eruption_count<span class="sc">$</span>VolcanoName, </span>
-<span id="cb85-3"><a></a>                 <span class="st">"&lt;/b&gt;&lt;/br&gt;"</span>,</span>
-<span id="cb85-4"><a></a>                 <span class="st">"Number of eruptions:"</span>,</span>
-<span id="cb85-5"><a></a>                 eruption_count<span class="sc">$</span>n)</span>
-<span id="cb85-6"><a></a>content</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a aria-label="1"></a>content <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"&lt;b&gt;"</span>,</span>
+<span id="cb85-2"><a aria-label="2"></a>                 eruption_count<span class="sc">$</span>VolcanoName, </span>
+<span id="cb85-3"><a aria-label="3"></a>                 <span class="st">"&lt;/b&gt;&lt;/br&gt;"</span>,</span>
+<span id="cb85-4"><a aria-label="4"></a>                 <span class="st">"Number of eruptions:"</span>,</span>
+<span id="cb85-5"><a aria-label="5"></a>                 eruption_count<span class="sc">$</span>n)</span>
+<span id="cb85-6"><a aria-label="6"></a>content</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "&lt;b&gt; Shishaldin &lt;/b&gt;&lt;/br&gt; Number of eruptions: 49"    
  [2] "&lt;b&gt; Akutan &lt;/b&gt;&lt;/br&gt; Number of eruptions: 47"        
@@ -2230,12 +2233,12 @@ attr(,"class")
 <h3 id="pop-ups-1">Pop-Ups</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb87-2"><a></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="dv">160</span>, <span class="at">lat =</span> <span class="dv">55</span>, <span class="at">zoom =</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb87-3"><a></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb87-4"><a></a>  <span class="fu">addMarkers</span>(<span class="at">data =</span> eruption_count, </span>
-<span id="cb87-5"><a></a>             <span class="at">popup =</span> content,</span>
-<span id="cb87-6"><a></a>             <span class="at">icon =</span> volcano)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a aria-label="1"></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb87-2"><a aria-label="2"></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="dv">160</span>, <span class="at">lat =</span> <span class="dv">55</span>, <span class="at">zoom =</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb87-3"><a aria-label="3"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb87-4"><a aria-label="4"></a>  <span class="fu">addMarkers</span>(<span class="at">data =</span> eruption_count, </span>
+<span id="cb87-5"><a aria-label="5"></a>             <span class="at">popup =</span> content,</span>
+<span id="cb87-6"><a aria-label="6"></a>             <span class="at">icon =</span> volcano)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-284de4e380c555e69dea" style="width:768px;height:576px;"></div>
@@ -2248,12 +2251,12 @@ attr(,"class")
 <h3 id="other-tiles">Other Tiles</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a></a><span class="fu">library</span>(leaflet.extras)</span>
-<span id="cb88-2"><a></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb88-3"><a></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">122.6308</span>,</span>
-<span id="cb88-4"><a></a>          <span class="at">lat =</span> <span class="fl">45.4811</span>,</span>
-<span id="cb88-5"><a></a>          <span class="at">zoom =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span>     </span>
-<span id="cb88-6"><a></a>  <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>Stadia.StamenWatercolor)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a aria-label="1"></a><span class="fu">library</span>(leaflet.extras)</span>
+<span id="cb88-2"><a aria-label="2"></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb88-3"><a aria-label="3"></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">122.6308</span>,</span>
+<span id="cb88-4"><a aria-label="4"></a>          <span class="at">lat =</span> <span class="fl">45.4811</span>,</span>
+<span id="cb88-5"><a aria-label="5"></a>          <span class="at">zoom =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span>     </span>
+<span id="cb88-6"><a aria-label="6"></a>  <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>Stadia.StamenWatercolor)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-7a61d9d2c008592663a5" style="width:768px;height:576px;"></div>
@@ -2266,13 +2269,13 @@ attr(,"class")
 <h3 id="other-tiles-1">Other Tiles</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb89-2"><a></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">122.6308</span>,</span>
-<span id="cb89-3"><a></a>          <span class="at">lat =</span> <span class="fl">45.4811</span>,</span>
-<span id="cb89-4"><a></a>          <span class="at">zoom =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span>     </span>
-<span id="cb89-5"><a></a> <span class="fu">addProviderTiles</span>(</span>
-<span id="cb89-6"><a></a>   providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">%&gt;%</span></span>
-<span id="cb89-7"><a></a>  <span class="fu">addMiniMap</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a aria-label="1"></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb89-2"><a aria-label="2"></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">122.6308</span>,</span>
+<span id="cb89-3"><a aria-label="3"></a>          <span class="at">lat =</span> <span class="fl">45.4811</span>,</span>
+<span id="cb89-4"><a aria-label="4"></a>          <span class="at">zoom =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span>     </span>
+<span id="cb89-5"><a aria-label="5"></a> <span class="fu">addProviderTiles</span>(</span>
+<span id="cb89-6"><a aria-label="6"></a>   providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">%&gt;%</span></span>
+<span id="cb89-7"><a aria-label="7"></a>  <span class="fu">addMiniMap</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-bb7ed5d9c7595ca72e99" style="width:768px;height:576px;"></div>
@@ -2285,12 +2288,12 @@ attr(,"class")
 <h3 id="other-tiles-2">Other Tiles</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb90-2"><a></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">122.6308</span>,</span>
-<span id="cb90-3"><a></a>          <span class="at">lat =</span> <span class="fl">45.4811</span>,</span>
-<span id="cb90-4"><a></a>          <span class="at">zoom =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span>     </span>
-<span id="cb90-5"><a></a>  <span class="fu">addProviderTiles</span>(</span>
-<span id="cb90-6"><a></a>    <span class="st">"NASAGIBS.ViirsEarthAtNight2012"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a aria-label="1"></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb90-2"><a aria-label="2"></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">122.6308</span>,</span>
+<span id="cb90-3"><a aria-label="3"></a>          <span class="at">lat =</span> <span class="fl">45.4811</span>,</span>
+<span id="cb90-4"><a aria-label="4"></a>          <span class="at">zoom =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span>     </span>
+<span id="cb90-5"><a aria-label="5"></a>  <span class="fu">addProviderTiles</span>(</span>
+<span id="cb90-6"><a aria-label="6"></a>    <span class="st">"NASAGIBS.ViirsEarthAtNight2012"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-a0e73fc0fcfb46d355ab" style="width:768px;height:576px;"></div>
@@ -2302,10 +2305,10 @@ attr(,"class")
 
 <h3 id="interactive-choropleth-map">Interactive Choropleth Map</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a></a>pal <span class="ot">&lt;-</span> <span class="fu">colorNumeric</span>(<span class="at">palette =</span> <span class="st">"GnBu"</span>,</span>
-<span id="cb91-2"><a></a>                    <span class="at">domain =</span> wa<span class="sc">$</span>estimate,</span>
-<span id="cb91-3"><a></a>                    <span class="at">reverse =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb91-4"><a></a><span class="fu">pal</span>(wa<span class="sc">$</span>estimate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a aria-label="1"></a>pal <span class="ot">&lt;-</span> <span class="fu">colorNumeric</span>(<span class="at">palette =</span> <span class="st">"GnBu"</span>,</span>
+<span id="cb91-2"><a aria-label="2"></a>                    <span class="at">domain =</span> wa<span class="sc">$</span>estimate,</span>
+<span id="cb91-3"><a aria-label="3"></a>                    <span class="at">reverse =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb91-4"><a aria-label="4"></a><span class="fu">pal</span>(wa<span class="sc">$</span>estimate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "#5CB9CF" "#77CAC6" "#CDEBC6" "#D2EECC" "#A1DAB8" "#90D3BD" "#45A8CD"
  [8] "#56B6D1" "#AADEB6" "#4CB1D2" "#F7FCF0" "#F2FAEC" "#D1EDCB" "#E3F4DE"
@@ -2321,13 +2324,13 @@ attr(,"class")
 <h3 id="interactive-choropleth-map-1">Interactive Choropleth Map</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a></a>wa <span class="sc">%&gt;%</span></span>
-<span id="cb93-2"><a></a>  <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb93-3"><a></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb93-4"><a></a>  <span class="fu">addPolygons</span>(<span class="at">popup =</span> <span class="sc">~</span>NAME,</span>
-<span id="cb93-5"><a></a>              <span class="at">color =</span> <span class="sc">~</span><span class="fu">pal</span>(estimate),</span>
-<span id="cb93-6"><a></a>              <span class="at">stroke =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb93-7"><a></a>              <span class="at">fillOpacity =</span> <span class="fl">0.9</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a aria-label="1"></a>wa <span class="sc">%&gt;%</span></span>
+<span id="cb93-2"><a aria-label="2"></a>  <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb93-3"><a aria-label="3"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb93-4"><a aria-label="4"></a>  <span class="fu">addPolygons</span>(<span class="at">popup =</span> <span class="sc">~</span>NAME,</span>
+<span id="cb93-5"><a aria-label="5"></a>              <span class="at">color =</span> <span class="sc">~</span><span class="fu">pal</span>(estimate),</span>
+<span id="cb93-6"><a aria-label="6"></a>              <span class="at">stroke =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb93-7"><a aria-label="7"></a>              <span class="at">fillOpacity =</span> <span class="fl">0.9</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: sf layer has inconsistent datum (+proj=longlat +datum=NAD83 +no_defs).
@@ -2347,14 +2350,14 @@ Need '+proj=longlat +datum=WGS84'</code></pre>
 <h3 id="interactive-choropleth-map-2">Interactive Choropleth Map</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a></a>wa <span class="sc">%&gt;%</span></span>
-<span id="cb95-2"><a></a>  sf<span class="sc">::</span><span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="st">"EPSG:4326"</span>) <span class="sc">%&gt;%</span>    </span>
-<span id="cb95-3"><a></a>  <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb95-4"><a></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb95-5"><a></a>  <span class="fu">addPolygons</span>(<span class="at">popup =</span> <span class="sc">~</span>NAME,</span>
-<span id="cb95-6"><a></a>              <span class="at">color =</span> <span class="sc">~</span><span class="fu">pal</span>(estimate),</span>
-<span id="cb95-7"><a></a>              <span class="at">stroke =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb95-8"><a></a>              <span class="at">fillOpacity =</span> <span class="fl">0.9</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a aria-label="1"></a>wa <span class="sc">%&gt;%</span></span>
+<span id="cb95-2"><a aria-label="2"></a>  sf<span class="sc">::</span><span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="st">"EPSG:4326"</span>) <span class="sc">%&gt;%</span>    </span>
+<span id="cb95-3"><a aria-label="3"></a>  <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb95-4"><a aria-label="4"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb95-5"><a aria-label="5"></a>  <span class="fu">addPolygons</span>(<span class="at">popup =</span> <span class="sc">~</span>NAME,</span>
+<span id="cb95-6"><a aria-label="6"></a>              <span class="at">color =</span> <span class="sc">~</span><span class="fu">pal</span>(estimate),</span>
+<span id="cb95-7"><a aria-label="7"></a>              <span class="at">stroke =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb95-8"><a aria-label="8"></a>              <span class="at">fillOpacity =</span> <span class="fl">0.9</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-d7c00323ecf0c4473b1f" style="width:768px;height:576px;"></div>
@@ -2367,18 +2370,18 @@ Need '+proj=longlat +datum=WGS84'</code></pre>
 <h3 id="interactive-choropleth-map-3">Interactive Choropleth Map</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a></a>wa <span class="sc">%&gt;%</span></span>
-<span id="cb96-2"><a></a>  sf<span class="sc">::</span><span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="st">"EPSG:4326"</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb96-3"><a></a>  <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb96-4"><a></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb96-5"><a></a>  <span class="fu">addPolygons</span>(<span class="at">popup =</span> <span class="sc">~</span>NAME,</span>
-<span id="cb96-6"><a></a>              <span class="at">color =</span> <span class="sc">~</span><span class="fu">pal</span>(estimate),</span>
-<span id="cb96-7"><a></a>              <span class="at">stroke =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb96-8"><a></a>              <span class="at">fillOpacity =</span> <span class="fl">0.9</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb96-9"><a></a>  <span class="fu">addLegend</span>(<span class="st">"bottomright"</span>, <span class="at">pal =</span> pal, </span>
-<span id="cb96-10"><a></a>            <span class="at">values =</span> <span class="sc">~</span>estimate,</span>
-<span id="cb96-11"><a></a>            <span class="at">title =</span> <span class="st">"Median Income"</span>,</span>
-<span id="cb96-12"><a></a>            <span class="at">opacity =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a aria-label="1"></a>wa <span class="sc">%&gt;%</span></span>
+<span id="cb96-2"><a aria-label="2"></a>  sf<span class="sc">::</span><span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="st">"EPSG:4326"</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb96-3"><a aria-label="3"></a>  <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb96-4"><a aria-label="4"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb96-5"><a aria-label="5"></a>  <span class="fu">addPolygons</span>(<span class="at">popup =</span> <span class="sc">~</span>NAME,</span>
+<span id="cb96-6"><a aria-label="6"></a>              <span class="at">color =</span> <span class="sc">~</span><span class="fu">pal</span>(estimate),</span>
+<span id="cb96-7"><a aria-label="7"></a>              <span class="at">stroke =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb96-8"><a aria-label="8"></a>              <span class="at">fillOpacity =</span> <span class="fl">0.9</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb96-9"><a aria-label="9"></a>  <span class="fu">addLegend</span>(<span class="st">"bottomright"</span>, <span class="at">pal =</span> pal, </span>
+<span id="cb96-10"><a aria-label="10"></a>            <span class="at">values =</span> <span class="sc">~</span>estimate,</span>
+<span id="cb96-11"><a aria-label="11"></a>            <span class="at">title =</span> <span class="st">"Median Income"</span>,</span>
+<span id="cb96-12"><a aria-label="12"></a>            <span class="at">opacity =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-c2140d640a3832012d4b" style="width:768px;height:576px;"></div>
@@ -2608,7 +2611,7 @@ Need '+proj=longlat +datum=WGS84'</code></pre>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
