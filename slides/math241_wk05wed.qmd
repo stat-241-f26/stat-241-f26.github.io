@@ -51,7 +51,7 @@ theme_update(text = element_text(size = 20))
 
 [Grayson White]{.custom-subtitle}
 
-[Math 241 <br> Week 5 \| Spring 2026]{.custom-subtitle}
+[Stat 241 <br> Week 5 \| Fall 2026]{.custom-subtitle}
 :::
 :::::
 

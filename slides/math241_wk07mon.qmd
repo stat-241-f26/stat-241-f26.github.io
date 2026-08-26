@@ -51,7 +51,7 @@ theme_update(text = element_text(size = 20))
 
 [Grayson White]{.custom-subtitle}
 
-[Math 241 <br> Week 7 \| Spring 2026]{.custom-subtitle}
+[Stat 241 <br> Week 7 \| Fall 2026]{.custom-subtitle}
 :::
 :::::
 
@@ -125,7 +125,7 @@ theme_update(text = element_text(size = 20))
 
 * **3/2**: Receive project groups released
 * **3/4**: Receive project instructions and invite to your group's GitHub repo.
-    + Please use your assigned Math 241 GitHub repo for this project.
+    + Please use your assigned Stat 241 GitHub repo for this project.
 * **3/18 (noon)**: Post a working draft of your dashboard to [https://www.shinyapps.io/](shinyapps.io/)
     <!-- + Working draft must: -->
     <!--     + Make use of at least one real-world dataset. -->

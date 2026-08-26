@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.18">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <title>Stat 241 – Project 1 Work Day</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,13 +19,10 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
+    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: 1.5em;}
-    div.column{flex: auto;}
-    @media screen {
-    div.columns{gap: min(4vw, 1.5em);}
-    div.column{overflow-x: auto;}
-    }
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -210,7 +207,7 @@
 <p><span class="custom-title">Project 1 Work Day</span></p>
 <p><br> <br> <br> <br> <br></p>
 <p><span class="custom-subtitle">Grayson White</span></p>
-<p><span class="custom-subtitle">Math 241 <br> Week 7 | Spring 2026</span></p>
+<p><span class="custom-subtitle">Stat 241 <br> Week 7 | Fall 2026</span></p>
 </div></div>
 </section>
 <section class="slide level2">
@@ -256,7 +253,7 @@
 <li><strong>3/2</strong>: Receive project groups released</li>
 <li><strong>3/4</strong>: Receive project instructions and invite to your group’s GitHub repo.
 <ul>
-<li>Please use your assigned Math 241 GitHub repo for this project.</li>
+<li>Please use your assigned Stat 241 GitHub repo for this project.</li>
 </ul></li>
 <li><strong>3/18 (noon)</strong>: Post a working draft of your dashboard to <a href="shinyapps.io/">https://www.shinyapps.io/</a> <!-- + Working draft must: --> <!--     + Make use of at least one real-world dataset. --> <!--     + Have at least one user input. --> <!--     + Have at least one reactive graph (or map) and at least one reactive table. --> <!--     + Have relevant text so that your peers can navigate around the dashboard independently. --> <!-- + Only one group member needs to post the group's app to shinyapps.io. --></li>
 <li><strong>3/18 (noon)</strong>: Post the link to the group’s dashboard to <a href="https://docs.google.com/spreadsheets/d/1syq0LKBqLVZDkp2qKqD1DGom_Rsmvvrn8s49BOqvzWw/edit?usp=sharing">this spreadsheet</a>.</li>
@@ -362,41 +359,41 @@
 
 <h3 id="data-prep">Data prep</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a aria-label="2"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Math 241_ Check-in (Responses) - Form Responses 1.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-3"><a aria-label="3"></a>  <span class="fu">rename</span>(</span>
-<span id="cb1-4"><a aria-label="4"></a>     <span class="at">problem_sets =</span> <span class="st">`</span><span class="at">Problem sets for this course have been ________ for my learning</span><span class="st">`</span>,</span>
-<span id="cb1-5"><a aria-label="5"></a>     <span class="at">in_class =</span> <span class="st">`</span><span class="at">In class activities for this course have been ________ for my learning</span><span class="st">`</span>,</span>
-<span id="cb1-6"><a aria-label="6"></a>     <span class="at">workload =</span> <span class="st">`</span><span class="at">How has the workload been for the course so far?</span><span class="st">`</span>,</span>
-<span id="cb1-7"><a aria-label="7"></a>     <span class="at">classtime =</span> <span class="st">`</span><span class="at">I wish we had...</span><span class="st">`</span>,</span>
-<span id="cb1-8"><a aria-label="8"></a>     <span class="at">ai =</span> <span class="st">`</span><span class="at">What direction would you like to see the class go in regards to gen AI?</span><span class="st">`</span></span>
-<span id="cb1-9"><a aria-label="9"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb1-10"><a aria-label="10"></a>  <span class="fu">select</span>(problem_sets, in_class, workload, classtime, ai) <span class="sc">%&gt;%</span></span>
-<span id="cb1-11"><a aria-label="11"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb1-12"><a aria-label="12"></a>    <span class="at">problem_sets =</span> <span class="fu">fct_relevel</span>(problem_sets, </span>
-<span id="cb1-13"><a aria-label="13"></a>                               <span class="st">"very helpful"</span>,</span>
-<span id="cb1-14"><a aria-label="14"></a>                               <span class="st">"somewhat helpful"</span>,</span>
-<span id="cb1-15"><a aria-label="15"></a>                               <span class="st">"neutral"</span>,</span>
-<span id="cb1-16"><a aria-label="16"></a>                               <span class="st">"somewhat unhelpful"</span>,</span>
-<span id="cb1-17"><a aria-label="17"></a>                               <span class="st">"very unhelpful"</span>),</span>
-<span id="cb1-18"><a aria-label="18"></a>    <span class="at">in_class =</span> <span class="fu">fct_relevel</span>(in_class, </span>
-<span id="cb1-19"><a aria-label="19"></a>                               <span class="st">"very helpful"</span>,</span>
-<span id="cb1-20"><a aria-label="20"></a>                               <span class="st">"somewhat helpful"</span>,</span>
-<span id="cb1-21"><a aria-label="21"></a>                               <span class="st">"neutral"</span>,</span>
-<span id="cb1-22"><a aria-label="22"></a>                               <span class="st">"somewhat unhelpful"</span>,</span>
-<span id="cb1-23"><a aria-label="23"></a>                               <span class="st">"very unhelpful"</span>),</span>
-<span id="cb1-24"><a aria-label="24"></a>    <span class="at">workload =</span> <span class="fu">fct_relevel</span>(workload, </span>
-<span id="cb1-25"><a aria-label="25"></a>                               <span class="st">"way too much work"</span>,</span>
-<span id="cb1-26"><a aria-label="26"></a>                               <span class="st">"a little too much work"</span>,</span>
-<span id="cb1-27"><a aria-label="27"></a>                               <span class="st">"just the right amount of work"</span>),</span>
-<span id="cb1-28"><a aria-label="28"></a>    <span class="at">ai =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(ai, <span class="dv">1</span>, <span class="dv">8</span>),</span>
-<span id="cb1-29"><a aria-label="29"></a>    <span class="at">ai =</span> <span class="fu">case_when</span>(</span>
-<span id="cb1-30"><a aria-label="30"></a>      ai <span class="sc">%in%</span> <span class="st">"Option 1"</span> <span class="sc">~</span> <span class="st">"Debug"</span>,</span>
-<span id="cb1-31"><a aria-label="31"></a>      ai <span class="sc">%in%</span> <span class="st">"Option 2"</span> <span class="sc">~</span> <span class="st">"Debug + Write code"</span>,</span>
-<span id="cb1-32"><a aria-label="32"></a>      ai <span class="sc">%in%</span> <span class="st">"Option 3"</span> <span class="sc">~</span> <span class="st">"No AI"</span>,</span>
-<span id="cb1-33"><a aria-label="33"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Other"</span></span>
-<span id="cb1-34"><a aria-label="34"></a>    )</span>
-<span id="cb1-35"><a aria-label="35"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Math 241_ Check-in (Responses) - Form Responses 1.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a></a>  <span class="fu">rename</span>(</span>
+<span id="cb1-4"><a></a>     <span class="at">problem_sets =</span> <span class="st">`</span><span class="at">Problem sets for this course have been ________ for my learning</span><span class="st">`</span>,</span>
+<span id="cb1-5"><a></a>     <span class="at">in_class =</span> <span class="st">`</span><span class="at">In class activities for this course have been ________ for my learning</span><span class="st">`</span>,</span>
+<span id="cb1-6"><a></a>     <span class="at">workload =</span> <span class="st">`</span><span class="at">How has the workload been for the course so far?</span><span class="st">`</span>,</span>
+<span id="cb1-7"><a></a>     <span class="at">classtime =</span> <span class="st">`</span><span class="at">I wish we had...</span><span class="st">`</span>,</span>
+<span id="cb1-8"><a></a>     <span class="at">ai =</span> <span class="st">`</span><span class="at">What direction would you like to see the class go in regards to gen AI?</span><span class="st">`</span></span>
+<span id="cb1-9"><a></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-10"><a></a>  <span class="fu">select</span>(problem_sets, in_class, workload, classtime, ai) <span class="sc">%&gt;%</span></span>
+<span id="cb1-11"><a></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-12"><a></a>    <span class="at">problem_sets =</span> <span class="fu">fct_relevel</span>(problem_sets, </span>
+<span id="cb1-13"><a></a>                               <span class="st">"very helpful"</span>,</span>
+<span id="cb1-14"><a></a>                               <span class="st">"somewhat helpful"</span>,</span>
+<span id="cb1-15"><a></a>                               <span class="st">"neutral"</span>,</span>
+<span id="cb1-16"><a></a>                               <span class="st">"somewhat unhelpful"</span>,</span>
+<span id="cb1-17"><a></a>                               <span class="st">"very unhelpful"</span>),</span>
+<span id="cb1-18"><a></a>    <span class="at">in_class =</span> <span class="fu">fct_relevel</span>(in_class, </span>
+<span id="cb1-19"><a></a>                               <span class="st">"very helpful"</span>,</span>
+<span id="cb1-20"><a></a>                               <span class="st">"somewhat helpful"</span>,</span>
+<span id="cb1-21"><a></a>                               <span class="st">"neutral"</span>,</span>
+<span id="cb1-22"><a></a>                               <span class="st">"somewhat unhelpful"</span>,</span>
+<span id="cb1-23"><a></a>                               <span class="st">"very unhelpful"</span>),</span>
+<span id="cb1-24"><a></a>    <span class="at">workload =</span> <span class="fu">fct_relevel</span>(workload, </span>
+<span id="cb1-25"><a></a>                               <span class="st">"way too much work"</span>,</span>
+<span id="cb1-26"><a></a>                               <span class="st">"a little too much work"</span>,</span>
+<span id="cb1-27"><a></a>                               <span class="st">"just the right amount of work"</span>),</span>
+<span id="cb1-28"><a></a>    <span class="at">ai =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(ai, <span class="dv">1</span>, <span class="dv">8</span>),</span>
+<span id="cb1-29"><a></a>    <span class="at">ai =</span> <span class="fu">case_when</span>(</span>
+<span id="cb1-30"><a></a>      ai <span class="sc">%in%</span> <span class="st">"Option 1"</span> <span class="sc">~</span> <span class="st">"Debug"</span>,</span>
+<span id="cb1-31"><a></a>      ai <span class="sc">%in%</span> <span class="st">"Option 2"</span> <span class="sc">~</span> <span class="st">"Debug + Write code"</span>,</span>
+<span id="cb1-32"><a></a>      ai <span class="sc">%in%</span> <span class="st">"Option 3"</span> <span class="sc">~</span> <span class="st">"No AI"</span>,</span>
+<span id="cb1-33"><a></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Other"</span></span>
+<span id="cb1-34"><a></a>    )</span>
+<span id="cb1-35"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -404,10 +401,10 @@
 <h3 id="survey-results-problem-sets">Survey results: Problem Sets</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> problem_sets)) <span class="sc">+</span> </span>
-<span id="cb2-3"><a aria-label="3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
-<span id="cb2-4"><a aria-label="4"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> problem_sets)) <span class="sc">+</span> </span>
+<span id="cb2-3"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb2-4"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -423,10 +420,10 @@
 <h3 id="survey-results-in-class-activities">Survey results: In Class Activities</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> in_class)) <span class="sc">+</span> </span>
-<span id="cb3-3"><a aria-label="3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
-<span id="cb3-4"><a aria-label="4"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> in_class)) <span class="sc">+</span> </span>
+<span id="cb3-3"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb3-4"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -442,10 +439,10 @@
 <h3 id="survey-results-workload">Survey results: Workload</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> workload)) <span class="sc">+</span> </span>
-<span id="cb4-3"><a aria-label="3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
-<span id="cb4-4"><a aria-label="4"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> workload)) <span class="sc">+</span> </span>
+<span id="cb4-3"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb4-4"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -461,10 +458,10 @@
 <h3 id="survey-results-ai">Survey results: AI</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ai)) <span class="sc">+</span> </span>
-<span id="cb5-3"><a aria-label="3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
-<span id="cb5-4"><a aria-label="4"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ai)) <span class="sc">+</span> </span>
+<span id="cb5-3"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb5-4"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -677,7 +674,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

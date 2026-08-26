@@ -51,7 +51,7 @@ theme_update(text = element_text(size = 20))
 
 [Grayson White]{.custom-subtitle}
 
-[Math 241 <br> Week 3 \| Spring 2026]{.custom-subtitle}
+[Stat 241 <br> Week 3 \| Fall 2026]{.custom-subtitle}
 :::
 :::::
 
@@ -581,7 +581,7 @@ knitr::include_graphics("img/data_wrangling_packages.010.jpeg")
 
 ------------------------------------------------------------------------
 
-## Math 241 `dplyr` Experience
+## Stat 241 `dplyr` Experience
 
 ```{r, echo=FALSE, out.width='60%'}
 math241_form <- read_csv("data/Background Survey for Math 241_ Data Science (Responses) - Form Responses 1.csv") %>%

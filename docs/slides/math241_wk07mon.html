@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.18">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <title>Stat 241 – Different Classes in R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,13 +19,10 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
+    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: 1.5em;}
-    div.column{flex: auto;}
-    @media screen {
-    div.columns{gap: min(4vw, 1.5em);}
-    div.column{overflow-x: auto;}
-    }
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -210,7 +207,7 @@
 <p><span class="custom-title">Different Classes in <code>R</code></span></p>
 <p><br> <br> <br> <br> <br></p>
 <p><span class="custom-subtitle">Grayson White</span></p>
-<p><span class="custom-subtitle">Math 241 <br> Week 7 | Spring 2026</span></p>
+<p><span class="custom-subtitle">Stat 241 <br> Week 7 | Fall 2026</span></p>
 </div></div>
 </section>
 <section class="slide level2">
@@ -270,7 +267,7 @@
 <li class="fragment"><strong>3/2</strong>: Receive project groups released</li>
 <li class="fragment"><strong>3/4</strong>: Receive project instructions and invite to your group’s GitHub repo.
 <ul>
-<li class="fragment">Please use your assigned Math 241 GitHub repo for this project.</li>
+<li class="fragment">Please use your assigned Stat 241 GitHub repo for this project.</li>
 </ul></li>
 <li class="fragment"><strong>3/18 (noon)</strong>: Post a working draft of your dashboard to <a href="shinyapps.io/">https://www.shinyapps.io/</a> <!-- + Working draft must: --> <!--     + Make use of at least one real-world dataset. --> <!--     + Have at least one user input. --> <!--     + Have at least one reactive graph (or map) and at least one reactive table. --> <!--     + Have relevant text so that your peers can navigate around the dashboard independently. --> <!-- + Only one group member needs to post the group's app to shinyapps.io. --></li>
 <li class="fragment"><strong>3/18 (noon)</strong>: Post the link to the group’s dashboard to <a href="https://docs.google.com/spreadsheets/d/1syq0LKBqLVZDkp2qKqD1DGom_Rsmvvrn8s49BOqvzWw/edit?usp=sharing">this spreadsheet</a>.</li>
@@ -386,15 +383,15 @@
 <p><strong>Question:</strong> When did the crashes happen?</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a aria-label="2"></a>crashes <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/pdx_crash_2018_page1.csv"</span>)</span>
-<span id="cb1-3"><a aria-label="3"></a></span>
-<span id="cb1-4"><a aria-label="4"></a>crashes <span class="sc">%&gt;%</span></span>
-<span id="cb1-5"><a aria-label="5"></a>  <span class="fu">count</span>(CRASH_DT) <span class="sc">%&gt;%</span></span>
-<span id="cb1-6"><a aria-label="6"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> </span>
-<span id="cb1-7"><a aria-label="7"></a>           <span class="fu">aes</span>(<span class="at">x =</span> CRASH_DT,</span>
-<span id="cb1-8"><a aria-label="8"></a>               <span class="at">y =</span> n)) <span class="sc">+</span></span>
-<span id="cb1-9"><a aria-label="9"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a></a>crashes <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/pdx_crash_2018_page1.csv"</span>)</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a>crashes <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a></a>  <span class="fu">count</span>(CRASH_DT) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> </span>
+<span id="cb1-7"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> CRASH_DT,</span>
+<span id="cb1-8"><a></a>               <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb1-9"><a></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -409,12 +406,12 @@
 
 <h3 id="dates">Dates</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="fu">head</span>(crashes<span class="sc">$</span>CRASH_DT)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">head</span>(crashes<span class="sc">$</span>CRASH_DT)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "02/01/18 00:00:00" "02/11/18 00:00:00" "03/09/18 00:00:00"
 [4] "04/09/18 00:00:00" "10/10/18 00:00:00" "05/24/18 00:00:00"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a><span class="fu">class</span>(crashes<span class="sc">$</span>CRASH_DT)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">class</span>(crashes<span class="sc">$</span>CRASH_DT)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
@@ -432,11 +429,11 @@
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a><span class="fu">class</span>(crashes<span class="sc">$</span>CRASH_DT)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">class</span>(crashes<span class="sc">$</span>CRASH_DT)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="fu">head</span>(crashes<span class="sc">$</span>CRASH_DT)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">head</span>(crashes<span class="sc">$</span>CRASH_DT)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "02/01/18 00:00:00" "02/11/18 00:00:00" "03/09/18 00:00:00"
 [4] "04/09/18 00:00:00" "10/10/18 00:00:00" "05/24/18 00:00:00"</code></pre>
@@ -445,17 +442,17 @@
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb10-2"><a aria-label="2"></a></span>
-<span id="cb10-3"><a aria-label="3"></a>crashes <span class="ot">&lt;-</span> crashes <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a aria-label="4"></a>  <span class="fu">mutate</span>(<span class="at">crash_date_time =</span> <span class="fu">mdy_hms</span>(CRASH_DT),</span>
-<span id="cb10-5"><a aria-label="5"></a>         <span class="at">crash_date =</span> <span class="fu">date</span>(crash_date_time))</span>
-<span id="cb10-6"><a aria-label="6"></a></span>
-<span id="cb10-7"><a aria-label="7"></a><span class="fu">class</span>(crashes<span class="sc">$</span>crash_date)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb10-2"><a></a></span>
+<span id="cb10-3"><a></a>crashes <span class="ot">&lt;-</span> crashes <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a></a>  <span class="fu">mutate</span>(<span class="at">crash_date_time =</span> <span class="fu">mdy_hms</span>(CRASH_DT),</span>
+<span id="cb10-5"><a></a>         <span class="at">crash_date =</span> <span class="fu">date</span>(crash_date_time))</span>
+<span id="cb10-6"><a></a></span>
+<span id="cb10-7"><a></a><span class="fu">class</span>(crashes<span class="sc">$</span>crash_date)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Date"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a><span class="fu">head</span>(crashes<span class="sc">$</span>crash_date)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">head</span>(crashes<span class="sc">$</span>crash_date)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2018-02-01" "2018-02-11" "2018-03-09" "2018-04-09" "2018-10-10"
 [6] "2018-05-24"</code></pre>
@@ -469,12 +466,12 @@
 <p><strong>Question:</strong> When did the crashes happen?</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a>crashes <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a aria-label="2"></a>  <span class="fu">count</span>(crash_date) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> </span>
-<span id="cb14-4"><a aria-label="4"></a>           <span class="fu">aes</span>(<span class="at">x =</span> crash_date,</span>
-<span id="cb14-5"><a aria-label="5"></a>               <span class="at">y =</span> n)) <span class="sc">+</span></span>
-<span id="cb14-6"><a aria-label="6"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>crashes <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a></a>  <span class="fu">count</span>(crash_date) <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> </span>
+<span id="cb14-4"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> crash_date,</span>
+<span id="cb14-5"><a></a>               <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb14-6"><a></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -494,17 +491,17 @@
 <p><strong>Question:</strong> When did the crashes happen?</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a>crashes <span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">month</span>(crash_date, <span class="at">label =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a aria-label="3"></a>  <span class="fu">count</span>(month) <span class="sc">%&gt;%</span></span>
-<span id="cb15-4"><a aria-label="4"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> </span>
-<span id="cb15-5"><a aria-label="5"></a>           <span class="fu">aes</span>(<span class="at">x =</span> month,</span>
-<span id="cb15-6"><a aria-label="6"></a>               <span class="at">y =</span> n)) <span class="sc">+</span></span>
-<span id="cb15-7"><a aria-label="7"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
-<span id="cb15-8"><a aria-label="8"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Number of car crashes per month"</span>,</span>
-<span id="cb15-9"><a aria-label="9"></a>       <span class="at">subtitle =</span> <span class="st">"Portland, OR (2018)"</span>,</span>
-<span id="cb15-10"><a aria-label="10"></a>       <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span> </span>
-<span id="cb15-11"><a aria-label="11"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>crashes <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">month</span>(crash_date, <span class="at">label =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a></a>  <span class="fu">count</span>(month) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> </span>
+<span id="cb15-5"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> month,</span>
+<span id="cb15-6"><a></a>               <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb15-7"><a></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb15-8"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Number of car crashes per month"</span>,</span>
+<span id="cb15-9"><a></a>       <span class="at">subtitle =</span> <span class="st">"Portland, OR (2018)"</span>,</span>
+<span id="cb15-10"><a></a>       <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span> </span>
+<span id="cb15-11"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -523,14 +520,14 @@
 <h3 id="lets-look-at-portlands-biketown-data">Let’s Look at <a href="https://www.biketownpdx.com/system-data">Portland’s Biketown Data</a></h3>
 <p>All check-outs for July - August of 2017</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a>biketown <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/biketown.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a aria-label="2"></a>  <span class="fu">filter</span>(Distance_Miles <span class="sc">&lt;</span> <span class="dv">1000</span>)</span>
-<span id="cb16-3"><a aria-label="3"></a></span>
-<span id="cb16-4"><a aria-label="4"></a>biketown_dt <span class="ot">&lt;-</span> biketown <span class="sc">%&gt;%</span></span>
-<span id="cb16-5"><a aria-label="5"></a>  <span class="fu">select</span>(StartDate, StartTime, EndDate, EndTime, Distance_Miles,</span>
-<span id="cb16-6"><a aria-label="6"></a>         BikeID)</span>
-<span id="cb16-7"><a aria-label="7"></a></span>
-<span id="cb16-8"><a aria-label="8"></a><span class="fu">glimpse</span>(biketown_dt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>biketown <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/biketown.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a></a>  <span class="fu">filter</span>(Distance_Miles <span class="sc">&lt;</span> <span class="dv">1000</span>)</span>
+<span id="cb16-3"><a></a></span>
+<span id="cb16-4"><a></a>biketown_dt <span class="ot">&lt;-</span> biketown <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a></a>  <span class="fu">select</span>(StartDate, StartTime, EndDate, EndTime, Distance_Miles,</span>
+<span id="cb16-6"><a></a>         BikeID)</span>
+<span id="cb16-7"><a></a></span>
+<span id="cb16-8"><a></a><span class="fu">glimpse</span>(biketown_dt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 9,999
 Columns: 6
@@ -554,14 +551,14 @@ $ BikeID         &lt;dbl&gt; 6163, 6843, 6409, 7375, 6354, 6088, 6089, 5988, 685
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb18-2"><a aria-label="2"></a>biketown_dt <span class="ot">&lt;-</span> biketown_dt <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">StartDate =</span> <span class="fu">mdy</span>(StartDate),</span>
-<span id="cb18-4"><a aria-label="4"></a>         <span class="at">EndDate =</span> <span class="fu">mdy</span>(EndDate)) <span class="sc">%&gt;%</span></span>
-<span id="cb18-5"><a aria-label="5"></a>  <span class="fu">mutate</span>(<span class="at">StartDateTime =</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(StartDate, StartTime, <span class="at">sep =</span> <span class="st">" "</span>)),</span>
-<span id="cb18-6"><a aria-label="6"></a>         <span class="at">EndDateTime =</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(EndDate, EndTime, <span class="at">sep =</span> <span class="st">" "</span>))) </span>
-<span id="cb18-7"><a aria-label="7"></a></span>
-<span id="cb18-8"><a aria-label="8"></a><span class="fu">glimpse</span>(biketown_dt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb18-2"><a></a>biketown_dt <span class="ot">&lt;-</span> biketown_dt <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a></a>  <span class="fu">mutate</span>(<span class="at">StartDate =</span> <span class="fu">mdy</span>(StartDate),</span>
+<span id="cb18-4"><a></a>         <span class="at">EndDate =</span> <span class="fu">mdy</span>(EndDate)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-5"><a></a>  <span class="fu">mutate</span>(<span class="at">StartDateTime =</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(StartDate, StartTime, <span class="at">sep =</span> <span class="st">" "</span>)),</span>
+<span id="cb18-6"><a></a>         <span class="at">EndDateTime =</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(EndDate, EndTime, <span class="at">sep =</span> <span class="st">" "</span>))) </span>
+<span id="cb18-7"><a></a></span>
+<span id="cb18-8"><a></a><span class="fu">glimpse</span>(biketown_dt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 9,999
 Columns: 8
@@ -581,20 +578,20 @@ $ EndDateTime    &lt;dttm&gt; 2017-08-17 10:56:00, 2017-07-22 15:00:00, 2017-07-
 
 <h3 id="grabbing-components">Grabbing Components</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a>biketown_dt<span class="sc">$</span>StartDateTime[<span class="dv">1000</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>biketown_dt<span class="sc">$</span>StartDateTime[<span class="dv">1000</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2017-08-26 17:26:00 UTC"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a><span class="fu">year</span>(biketown_dt<span class="sc">$</span>StartDateTime[<span class="dv">1000</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">year</span>(biketown_dt<span class="sc">$</span>StartDateTime[<span class="dv">1000</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2017</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a><span class="fu">month</span>(biketown_dt<span class="sc">$</span>StartDateTime[<span class="dv">1000</span>], <span class="at">label =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">month</span>(biketown_dt<span class="sc">$</span>StartDateTime[<span class="dv">1000</span>], <span class="at">label =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Aug
 12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a><span class="fu">day</span>(biketown_dt<span class="sc">$</span>StartDateTime[<span class="dv">1000</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">day</span>(biketown_dt<span class="sc">$</span>StartDateTime[<span class="dv">1000</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 26</code></pre>
 </div>
@@ -604,20 +601,20 @@ $ EndDateTime    &lt;dttm&gt; 2017-08-17 10:56:00, 2017-07-22 15:00:00, 2017-07-
 
 <h3 id="grabbing-components-1">Grabbing Components</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-label="1"></a><span class="fu">week</span>(biketown_dt<span class="sc">$</span>StartDateTime[<span class="dv">1000</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">week</span>(biketown_dt<span class="sc">$</span>StartDateTime[<span class="dv">1000</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 34</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-label="1"></a><span class="fu">wday</span>(biketown_dt<span class="sc">$</span>StartDateTime[<span class="dv">1000</span>], <span class="at">label =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">wday</span>(biketown_dt<span class="sc">$</span>StartDateTime[<span class="dv">1000</span>], <span class="at">label =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Sat
 Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-label="1"></a><span class="fu">hour</span>(biketown_dt<span class="sc">$</span>StartDateTime[<span class="dv">1000</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">hour</span>(biketown_dt<span class="sc">$</span>StartDateTime[<span class="dv">1000</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 17</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a><span class="fu">minute</span>(biketown_dt<span class="sc">$</span>StartDateTime[<span class="dv">1000</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">minute</span>(biketown_dt<span class="sc">$</span>StartDateTime[<span class="dv">1000</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 26</code></pre>
 </div>
@@ -628,11 +625,11 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <h3 id="grabbing-components-2">Grabbing Components</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> biketown_dt, </span>
-<span id="cb36-2"><a aria-label="2"></a>       <span class="at">mapping =</span> </span>
-<span id="cb36-3"><a aria-label="3"></a>         <span class="fu">aes</span>(<span class="fu">month</span>(StartDateTime,</span>
-<span id="cb36-4"><a aria-label="4"></a>                   <span class="at">label =</span> <span class="cn">TRUE</span>))) <span class="sc">+</span></span>
-<span id="cb36-5"><a aria-label="5"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> biketown_dt, </span>
+<span id="cb36-2"><a></a>       <span class="at">mapping =</span> </span>
+<span id="cb36-3"><a></a>         <span class="fu">aes</span>(<span class="fu">month</span>(StartDateTime,</span>
+<span id="cb36-4"><a></a>                   <span class="at">label =</span> <span class="cn">TRUE</span>))) <span class="sc">+</span></span>
+<span id="cb36-5"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -648,10 +645,10 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <h3 id="grabbing-components-3">Grabbing Components</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> biketown_dt, </span>
-<span id="cb37-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="fu">wday</span>(StartDateTime,</span>
-<span id="cb37-3"><a aria-label="3"></a>                          <span class="at">label =</span> <span class="cn">TRUE</span>))) <span class="sc">+</span></span>
-<span id="cb37-4"><a aria-label="4"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> biketown_dt, </span>
+<span id="cb37-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="fu">wday</span>(StartDateTime,</span>
+<span id="cb37-3"><a></a>                          <span class="at">label =</span> <span class="cn">TRUE</span>))) <span class="sc">+</span></span>
+<span id="cb37-4"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -666,13 +663,13 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 
 <h3 id="and-if-you-are-in-r-and-want-to-know-the-current-datetime">And if you are in R and want to know the current date/time:</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-label="1"></a><span class="fu">today</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">today</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2026-04-06"</code></pre>
+<pre><code>[1] "2026-08-25"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-label="1"></a><span class="fu">now</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">now</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2026-04-06 00:56:53 PDT"</code></pre>
+<pre><code>[1] "2026-08-25 11:53:23 PDT"</code></pre>
 </div>
 </div>
 </section></section>
@@ -697,15 +694,15 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 
 <h3 id="motivation-imposing-structure-on-categorical-variables">Motivation: Imposing Structure on Categorical Variables</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-label="1"></a><span class="fu">library</span>(pdxTrees)</span>
-<span id="cb42-2"><a aria-label="2"></a>pdxTrees <span class="ot">&lt;-</span> <span class="fu">get_pdxTrees_parks</span>()</span>
-<span id="cb42-3"><a aria-label="3"></a></span>
-<span id="cb42-4"><a aria-label="4"></a>five_most_common <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Douglas-Fir"</span>, <span class="st">"Norway Maple"</span>,</span>
-<span id="cb42-5"><a aria-label="5"></a>                      <span class="st">"Western Redcedar"</span>, <span class="st">"Northern Red Oak"</span>,</span>
-<span id="cb42-6"><a aria-label="6"></a>                      <span class="st">"Pin Oak"</span>)</span>
-<span id="cb42-7"><a aria-label="7"></a></span>
-<span id="cb42-8"><a aria-label="8"></a>pdxCommon <span class="ot">&lt;-</span> pdxTrees <span class="sc">%&gt;%</span></span>
-<span id="cb42-9"><a aria-label="9"></a>  <span class="fu">filter</span>(Common_Name <span class="sc">%in%</span> five_most_common)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">library</span>(pdxTrees)</span>
+<span id="cb42-2"><a></a>pdxTrees <span class="ot">&lt;-</span> <span class="fu">get_pdxTrees_parks</span>()</span>
+<span id="cb42-3"><a></a></span>
+<span id="cb42-4"><a></a>five_most_common <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Douglas-Fir"</span>, <span class="st">"Norway Maple"</span>,</span>
+<span id="cb42-5"><a></a>                      <span class="st">"Western Redcedar"</span>, <span class="st">"Northern Red Oak"</span>,</span>
+<span id="cb42-6"><a></a>                      <span class="st">"Pin Oak"</span>)</span>
+<span id="cb42-7"><a></a></span>
+<span id="cb42-8"><a></a>pdxCommon <span class="ot">&lt;-</span> pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb42-9"><a></a>  <span class="fu">filter</span>(Common_Name <span class="sc">%in%</span> five_most_common)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -713,10 +710,10 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <h3 id="motivation-imposing-structure-on-categorical-variables-1">Motivation: Imposing Structure on Categorical Variables</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> pdxCommon,</span>
-<span id="cb43-2"><a aria-label="2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Common_Name)) <span class="sc">+</span> </span>
-<span id="cb43-3"><a aria-label="3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb43-4"><a aria-label="4"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> pdxCommon,</span>
+<span id="cb43-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Common_Name)) <span class="sc">+</span> </span>
+<span id="cb43-3"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb43-4"><a></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -736,7 +733,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <li>Why does <code>Common_Name</code> have no levels?</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-label="1"></a><span class="fu">levels</span>(pdxCommon<span class="sc">$</span>Common_Name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">levels</span>(pdxCommon<span class="sc">$</span>Common_Name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NULL</code></pre>
 </div>
@@ -744,18 +741,18 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-label="1"></a><span class="fu">class</span>(pdxCommon<span class="sc">$</span>Common_Name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">class</span>(pdxCommon<span class="sc">$</span>Common_Name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a aria-label="1"></a>pdxCommon <span class="ot">&lt;-</span> <span class="fu">mutate</span>(pdxCommon, <span class="at">Common_Name =</span> <span class="fu">factor</span>(Common_Name))</span>
-<span id="cb48-2"><a aria-label="2"></a></span>
-<span id="cb48-3"><a aria-label="3"></a><span class="fu">levels</span>(pdxCommon<span class="sc">$</span>Common_Name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a>pdxCommon <span class="ot">&lt;-</span> <span class="fu">mutate</span>(pdxCommon, <span class="at">Common_Name =</span> <span class="fu">factor</span>(Common_Name))</span>
+<span id="cb48-2"><a></a></span>
+<span id="cb48-3"><a></a><span class="fu">levels</span>(pdxCommon<span class="sc">$</span>Common_Name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Douglas-Fir"      "Northern Red Oak" "Norway Maple"     "Pin Oak"         
 [5] "Western Redcedar"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a aria-label="1"></a><span class="fu">class</span>(pdxCommon<span class="sc">$</span>Common_Name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a><span class="fu">class</span>(pdxCommon<span class="sc">$</span>Common_Name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "factor"</code></pre>
 </div>
@@ -769,13 +766,13 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 
 <h3 id="what-are-the-levelscategories">What Are the levels/categories?</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a aria-label="1"></a><span class="fu">fct_unique</span>(pdxCommon<span class="sc">$</span>Common_Name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a><span class="fu">fct_unique</span>(pdxCommon<span class="sc">$</span>Common_Name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Douglas-Fir      Northern Red Oak Norway Maple     Pin Oak         
 [5] Western Redcedar
 5 Levels: Douglas-Fir Northern Red Oak Norway Maple ... Western Redcedar</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a aria-label="1"></a><span class="fu">unique</span>(pdxCommon<span class="sc">$</span>Common_Name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a><span class="fu">unique</span>(pdxCommon<span class="sc">$</span>Common_Name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Douglas-Fir      Northern Red Oak Norway Maple     Pin Oak         
 [5] Western Redcedar
@@ -788,12 +785,12 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <h3 id="reorder-the-levels">Reorder the Levels</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a aria-label="1"></a>pdxCommon <span class="sc">%&gt;%</span></span>
-<span id="cb56-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">Common_Name =</span> </span>
-<span id="cb56-3"><a aria-label="3"></a>           <span class="fu">fct_infreq</span>(Common_Name)) <span class="sc">%&gt;%</span></span>
-<span id="cb56-4"><a aria-label="4"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(Common_Name)) <span class="sc">+</span></span>
-<span id="cb56-5"><a aria-label="5"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb56-6"><a aria-label="6"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a>pdxCommon <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a></a>  <span class="fu">mutate</span>(<span class="at">Common_Name =</span> </span>
+<span id="cb56-3"><a></a>           <span class="fu">fct_infreq</span>(Common_Name)) <span class="sc">%&gt;%</span></span>
+<span id="cb56-4"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(Common_Name)) <span class="sc">+</span></span>
+<span id="cb56-5"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb56-6"><a></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -813,14 +810,14 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <h3 id="reverse-the-levels"><code>rev</code>erse the Levels</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a aria-label="1"></a>pdxCommon <span class="sc">%&gt;%</span></span>
-<span id="cb57-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">Common_Name =</span> </span>
-<span id="cb57-3"><a aria-label="3"></a>           <span class="fu">fct_infreq</span>(Common_Name),</span>
-<span id="cb57-4"><a aria-label="4"></a>         <span class="at">Common_Name =</span> </span>
-<span id="cb57-5"><a aria-label="5"></a>           <span class="fu">fct_rev</span>(Common_Name)) <span class="sc">%&gt;%</span></span>
-<span id="cb57-6"><a aria-label="6"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(Common_Name)) <span class="sc">+</span></span>
-<span id="cb57-7"><a aria-label="7"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb57-8"><a aria-label="8"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>pdxCommon <span class="sc">%&gt;%</span></span>
+<span id="cb57-2"><a></a>  <span class="fu">mutate</span>(<span class="at">Common_Name =</span> </span>
+<span id="cb57-3"><a></a>           <span class="fu">fct_infreq</span>(Common_Name),</span>
+<span id="cb57-4"><a></a>         <span class="at">Common_Name =</span> </span>
+<span id="cb57-5"><a></a>           <span class="fu">fct_rev</span>(Common_Name)) <span class="sc">%&gt;%</span></span>
+<span id="cb57-6"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(Common_Name)) <span class="sc">+</span></span>
+<span id="cb57-7"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb57-8"><a></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -836,13 +833,13 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <h3 id="or-if-you-love-the-pipe">Or, If You Love the Pipe…</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a aria-label="1"></a>pdxCommon <span class="sc">%&gt;%</span></span>
-<span id="cb58-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">Common_Name =</span> </span>
-<span id="cb58-3"><a aria-label="3"></a>           <span class="fu">fct_infreq</span>(Common_Name) <span class="sc">%&gt;%</span></span>
-<span id="cb58-4"><a aria-label="4"></a>           <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb58-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(Common_Name)) <span class="sc">+</span></span>
-<span id="cb58-6"><a aria-label="6"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb58-7"><a aria-label="7"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a>pdxCommon <span class="sc">%&gt;%</span></span>
+<span id="cb58-2"><a></a>  <span class="fu">mutate</span>(<span class="at">Common_Name =</span> </span>
+<span id="cb58-3"><a></a>           <span class="fu">fct_infreq</span>(Common_Name) <span class="sc">%&gt;%</span></span>
+<span id="cb58-4"><a></a>           <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb58-5"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(Common_Name)) <span class="sc">+</span></span>
+<span id="cb58-6"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb58-7"><a></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -858,13 +855,13 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <h3 id="reorder-the-levels-1">Reorder the Levels</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a aria-label="1"></a>pdxCommon <span class="sc">%&gt;%</span></span>
-<span id="cb59-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">Common_Name =</span> </span>
-<span id="cb59-3"><a aria-label="3"></a>           <span class="fu">fct_relevel</span>(Common_Name, </span>
-<span id="cb59-4"><a aria-label="4"></a>                       five_most_common)) <span class="sc">%&gt;%</span></span>
-<span id="cb59-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Common_Name)) <span class="sc">+</span> </span>
-<span id="cb59-6"><a aria-label="6"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb59-7"><a aria-label="7"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>pdxCommon <span class="sc">%&gt;%</span></span>
+<span id="cb59-2"><a></a>  <span class="fu">mutate</span>(<span class="at">Common_Name =</span> </span>
+<span id="cb59-3"><a></a>           <span class="fu">fct_relevel</span>(Common_Name, </span>
+<span id="cb59-4"><a></a>                       five_most_common)) <span class="sc">%&gt;%</span></span>
+<span id="cb59-5"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Common_Name)) <span class="sc">+</span> </span>
+<span id="cb59-6"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb59-7"><a></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -883,14 +880,14 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <h3 id="reorder-the-levels-2">Reorder the Levels</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a aria-label="1"></a>pdxCommon <span class="sc">%&gt;%</span></span>
-<span id="cb60-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">Common_Name =</span> </span>
-<span id="cb60-3"><a aria-label="3"></a>           <span class="fu">fct_relevel</span>(Common_Name,</span>
-<span id="cb60-4"><a aria-label="4"></a>                       <span class="st">"Norway Maple"</span>,</span>
-<span id="cb60-5"><a aria-label="5"></a>                       <span class="st">"Pin Oak"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb60-6"><a aria-label="6"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Common_Name)) <span class="sc">+</span> </span>
-<span id="cb60-7"><a aria-label="7"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb60-8"><a aria-label="8"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a>pdxCommon <span class="sc">%&gt;%</span></span>
+<span id="cb60-2"><a></a>  <span class="fu">mutate</span>(<span class="at">Common_Name =</span> </span>
+<span id="cb60-3"><a></a>           <span class="fu">fct_relevel</span>(Common_Name,</span>
+<span id="cb60-4"><a></a>                       <span class="st">"Norway Maple"</span>,</span>
+<span id="cb60-5"><a></a>                       <span class="st">"Pin Oak"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb60-6"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Common_Name)) <span class="sc">+</span> </span>
+<span id="cb60-7"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb60-8"><a></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -908,12 +905,12 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 
 <h3 id="what-have-we-wrangled-here">What Have We Wrangled Here?</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a aria-label="1"></a>DBH_by_name <span class="ot">&lt;-</span> pdxCommon <span class="sc">%&gt;%</span></span>
-<span id="cb61-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(Common_Name) <span class="sc">%&gt;%</span></span>
-<span id="cb61-3"><a aria-label="3"></a>  <span class="fu">summarize</span>(<span class="at">mean_DBH =</span> <span class="fu">mean</span>(DBH),</span>
-<span id="cb61-4"><a aria-label="4"></a>            <span class="at">lb_DBH =</span> mean_DBH <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span><span class="fu">sd</span>(DBH)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()),</span>
-<span id="cb61-5"><a aria-label="5"></a>            <span class="at">ub_DBH =</span> mean_DBH <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span><span class="fu">sd</span>(DBH<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()))) </span>
-<span id="cb61-6"><a aria-label="6"></a>DBH_by_name</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>DBH_by_name <span class="ot">&lt;-</span> pdxCommon <span class="sc">%&gt;%</span></span>
+<span id="cb61-2"><a></a>  <span class="fu">group_by</span>(Common_Name) <span class="sc">%&gt;%</span></span>
+<span id="cb61-3"><a></a>  <span class="fu">summarize</span>(<span class="at">mean_DBH =</span> <span class="fu">mean</span>(DBH),</span>
+<span id="cb61-4"><a></a>            <span class="at">lb_DBH =</span> mean_DBH <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span><span class="fu">sd</span>(DBH)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()),</span>
+<span id="cb61-5"><a></a>            <span class="at">ub_DBH =</span> mean_DBH <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span><span class="fu">sd</span>(DBH<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()))) </span>
+<span id="cb61-6"><a></a>DBH_by_name</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 4
   Common_Name      mean_DBH lb_DBH ub_DBH
@@ -931,14 +928,14 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <h3 id="reordering-by-another-variable">Reordering by Another Variable</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> DBH_by_name, </span>
-<span id="cb63-2"><a aria-label="2"></a>      <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> mean_DBH,</span>
-<span id="cb63-3"><a aria-label="3"></a>                    <span class="at">x =</span> Common_Name)) <span class="sc">+</span></span>
-<span id="cb63-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb63-5"><a aria-label="5"></a>  <span class="fu">geom_errorbar</span>(<span class="at">mapping =</span></span>
-<span id="cb63-6"><a aria-label="6"></a>                  <span class="fu">aes</span>(<span class="at">ymin =</span> lb_DBH,</span>
-<span id="cb63-7"><a aria-label="7"></a>                      <span class="at">ymax =</span> ub_DBH),</span>
-<span id="cb63-8"><a aria-label="8"></a>                <span class="at">width =</span> <span class="fl">0.4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> DBH_by_name, </span>
+<span id="cb63-2"><a></a>      <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> mean_DBH,</span>
+<span id="cb63-3"><a></a>                    <span class="at">x =</span> Common_Name)) <span class="sc">+</span></span>
+<span id="cb63-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb63-5"><a></a>  <span class="fu">geom_errorbar</span>(<span class="at">mapping =</span></span>
+<span id="cb63-6"><a></a>                  <span class="fu">aes</span>(<span class="at">ymin =</span> lb_DBH,</span>
+<span id="cb63-7"><a></a>                      <span class="at">ymax =</span> ub_DBH),</span>
+<span id="cb63-8"><a></a>                <span class="at">width =</span> <span class="fl">0.4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -957,17 +954,17 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <h3 id="reordering-by-another-variable-1">Reordering by Another Variable</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a aria-label="1"></a>DBH_by_name <span class="sc">%&gt;%</span></span>
-<span id="cb64-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">Common_Name =</span></span>
-<span id="cb64-3"><a aria-label="3"></a>           <span class="fu">fct_reorder</span>(Common_Name,</span>
-<span id="cb64-4"><a aria-label="4"></a>                       <span class="sc">-</span>mean_DBH)) <span class="sc">%&gt;%</span></span>
-<span id="cb64-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> mean_DBH,</span>
-<span id="cb64-6"><a aria-label="6"></a>                       <span class="at">x =</span> Common_Name)) <span class="sc">+</span></span>
-<span id="cb64-7"><a aria-label="7"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb64-8"><a aria-label="8"></a>  <span class="fu">geom_errorbar</span>(<span class="at">mapping =</span></span>
-<span id="cb64-9"><a aria-label="9"></a>                  <span class="fu">aes</span>(<span class="at">ymin =</span> lb_DBH,</span>
-<span id="cb64-10"><a aria-label="10"></a>                      <span class="at">ymax =</span> ub_DBH),</span>
-<span id="cb64-11"><a aria-label="11"></a>                <span class="at">width =</span> <span class="fl">0.4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a>DBH_by_name <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a></a>  <span class="fu">mutate</span>(<span class="at">Common_Name =</span></span>
+<span id="cb64-3"><a></a>           <span class="fu">fct_reorder</span>(Common_Name,</span>
+<span id="cb64-4"><a></a>                       <span class="sc">-</span>mean_DBH)) <span class="sc">%&gt;%</span></span>
+<span id="cb64-5"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> mean_DBH,</span>
+<span id="cb64-6"><a></a>                       <span class="at">x =</span> Common_Name)) <span class="sc">+</span></span>
+<span id="cb64-7"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb64-8"><a></a>  <span class="fu">geom_errorbar</span>(<span class="at">mapping =</span></span>
+<span id="cb64-9"><a></a>                  <span class="fu">aes</span>(<span class="at">ymin =</span> lb_DBH,</span>
+<span id="cb64-10"><a></a>                      <span class="at">ymax =</span> ub_DBH),</span>
+<span id="cb64-11"><a></a>                <span class="at">width =</span> <span class="fl">0.4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -983,12 +980,12 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <h3 id="reordering-by-other-variables">Reordering by Other Variables</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> pdxCommon,</span>
-<span id="cb65-2"><a aria-label="2"></a>       <span class="at">mapping =</span> </span>
-<span id="cb65-3"><a aria-label="3"></a>         <span class="fu">aes</span>(<span class="at">x =</span> DBH,</span>
-<span id="cb65-4"><a aria-label="4"></a>             <span class="at">y =</span> Total_Annual_Services,</span>
-<span id="cb65-5"><a aria-label="5"></a>             <span class="at">color =</span> Condition)) <span class="sc">+</span></span>
-<span id="cb65-6"><a aria-label="6"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> pdxCommon,</span>
+<span id="cb65-2"><a></a>       <span class="at">mapping =</span> </span>
+<span id="cb65-3"><a></a>         <span class="fu">aes</span>(<span class="at">x =</span> DBH,</span>
+<span id="cb65-4"><a></a>             <span class="at">y =</span> Total_Annual_Services,</span>
+<span id="cb65-5"><a></a>             <span class="at">color =</span> Condition)) <span class="sc">+</span></span>
+<span id="cb65-6"><a></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1035,20 +1032,20 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <div class="fragment">
 <p><strong>String</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="st">"lemur"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a>x <span class="ot">&lt;-</span> <span class="st">"lemur"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
 <p><strong>Character vector</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"capybara"</span>, <span class="st">"lemur"</span>, <span class="st">"pigeon"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"capybara"</span>, <span class="st">"lemur"</span>, <span class="st">"pigeon"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
 <p><strong>Factor vector</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="fu">factor</span>(x)</span>
-<span id="cb68-2"><a aria-label="2"></a><span class="fu">levels</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">factor</span>(x)</span>
+<span id="cb68-2"><a></a><span class="fu">levels</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "capybara" "lemur"    "pigeon"  </code></pre>
 </div>
@@ -1071,11 +1068,11 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 
 <h3 id="our-toy-lyric">Our Toy Lyric</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a aria-label="1"></a>lyric <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"But I would walk 500 miles,"</span>,</span>
-<span id="cb70-2"><a aria-label="2"></a>              <span class="st">"And I would walk 500 more,"</span>,</span>
-<span id="cb70-3"><a aria-label="3"></a>              <span class="st">"Just to be the man who walks a 1000 miles,"</span>,</span>
-<span id="cb70-4"><a aria-label="4"></a>              <span class="st">"To fall down at your door"</span>)</span>
-<span id="cb70-5"><a aria-label="5"></a>lyric</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a></a>lyric <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"But I would walk 500 miles,"</span>,</span>
+<span id="cb70-2"><a></a>              <span class="st">"And I would walk 500 more,"</span>,</span>
+<span id="cb70-3"><a></a>              <span class="st">"Just to be the man who walks a 1000 miles,"</span>,</span>
+<span id="cb70-4"><a></a>              <span class="st">"To fall down at your door"</span>)</span>
+<span id="cb70-5"><a></a>lyric</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "But I would walk 500 miles,"               
 [2] "And I would walk 500 more,"                
@@ -1103,15 +1100,15 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 
 <h3 id="string-length">String Length</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a aria-label="1"></a><span class="fu">length</span>(lyric)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a><span class="fu">length</span>(lyric)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a aria-label="1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb74-2"><a aria-label="2"></a><span class="fu">str_length</span>(lyric)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a></a><span class="fu">library</span>(stringr)</span>
+<span id="cb74-2"><a></a><span class="fu">str_length</span>(lyric)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 27 26 42 25</code></pre>
 </div>
@@ -1125,19 +1122,19 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 
 <h3 id="accessing-and-replacing">Accessing and Replacing</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a aria-label="1"></a><span class="fu">str_sub</span>(<span class="at">string =</span> lyric[<span class="dv">1</span>], <span class="at">start =</span> <span class="dv">18</span>, <span class="at">end =</span> <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a><span class="fu">str_sub</span>(<span class="at">string =</span> lyric[<span class="dv">1</span>], <span class="at">start =</span> <span class="dv">18</span>, <span class="at">end =</span> <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "500"</code></pre>
 </div>
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a aria-label="1"></a><span class="fu">str_sub</span>(<span class="at">string =</span> lyric[<span class="dv">1</span>], <span class="at">start =</span> <span class="dv">18</span>, <span class="at">end =</span> <span class="dv">20</span>) <span class="ot">&lt;-</span> <span class="st">"2"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a></a><span class="fu">str_sub</span>(<span class="at">string =</span> lyric[<span class="dv">1</span>], <span class="at">start =</span> <span class="dv">18</span>, <span class="at">end =</span> <span class="dv">20</span>) <span class="ot">&lt;-</span> <span class="st">"2"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a aria-label="1"></a>lyric</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a></a>lyric</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "But I would walk 2 miles,"                 
 [2] "And I would walk 500 more,"                
@@ -1151,7 +1148,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 
 <h3 id="change-cases">Change Cases</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a aria-label="1"></a><span class="fu">str_to_upper</span>(lyric)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a></a><span class="fu">str_to_upper</span>(lyric)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "BUT I WOULD WALK 2 MILES,"                 
 [2] "AND I WOULD WALK 500 MORE,"                
@@ -1161,7 +1158,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 </div>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a aria-label="1"></a><span class="fu">str_to_title</span>(lyric)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a></a><span class="fu">str_to_title</span>(lyric)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "But I Would Walk 2 Miles,"                 
 [2] "And I Would Walk 500 More,"                
@@ -1171,7 +1168,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 </div>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a aria-label="1"></a><span class="fu">str_to_lower</span>(lyric)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a></a><span class="fu">str_to_lower</span>(lyric)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "but i would walk 2 miles,"                 
 [2] "and i would walk 500 more,"                
@@ -1184,7 +1181,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 
 <h3 id="sorting">Sorting</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a aria-label="1"></a><span class="fu">str_sort</span>(lyric)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a></a><span class="fu">str_sort</span>(lyric)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "And I would walk 500 more,"                
 [2] "But I would walk 2 miles,"                 
@@ -1211,7 +1208,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <h3 id="common-goal-match-a-particular-pattern">Common Goal: Match a particular pattern</h3>
 <p>I want to match the pattern <code>500</code> from <code>lyric</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a aria-label="1"></a>lyric</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a></a>lyric</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "But I would walk 2 miles,"                 
 [2] "And I would walk 500 more,"                
@@ -1222,7 +1219,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <p><br></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a aria-label="1"></a><span class="fu">str_view_all</span>(<span class="at">string =</span> lyric, <span class="at">pattern =</span> <span class="st">"500"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a></a><span class="fu">str_view_all</span>(<span class="at">string =</span> lyric, <span class="at">pattern =</span> <span class="st">"500"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ But I would walk 2 miles,
 [2] │ And I would walk &lt;500&gt; more,
@@ -1235,7 +1232,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <div class="fragment">
 <p>or:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a aria-label="1"></a><span class="fu">str_view</span>(<span class="at">string =</span> lyric, <span class="at">pattern =</span> <span class="st">"500"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a></a><span class="fu">str_view</span>(<span class="at">string =</span> lyric, <span class="at">pattern =</span> <span class="st">"500"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[2] │ And I would walk &lt;500&gt; more,</code></pre>
 </div>
@@ -1247,7 +1244,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <h3 id="lets-make-it-more-general.">Let’s make it more general.</h3>
 <p>I want to locate all the numbers.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a aria-label="1"></a>lyric</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a></a>lyric</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "But I would walk 2 miles,"                 
 [2] "And I would walk 500 more,"                
@@ -1258,7 +1255,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <p><br></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a aria-label="1"></a><span class="fu">str_view_all</span>(lyric, <span class="st">"500|1000|2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a></a><span class="fu">str_view_all</span>(lyric, <span class="st">"500|1000|2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ But I would walk &lt;2&gt; miles,
 [2] │ And I would walk &lt;500&gt; more,
@@ -1273,19 +1270,19 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <h3 id="trivia-time">Trivia Time!</h3>
 <p>Name the artist and song title for each of the following!</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a aria-label="1"></a>lyrics <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"But I would walk 500 miles"</span>,</span>
-<span id="cb99-2"><a aria-label="2"></a>            <span class="st">"Yeah, 360. When you're in the mirror, do you like what you see?"</span>, </span>
-<span id="cb99-3"><a aria-label="3"></a>            <span class="st">"I have loved you for a 1000 years, I'll love you for a 1000 more"</span>,</span>
-<span id="cb99-4"><a aria-label="4"></a>            <span class="st">"Where 2 and 2 always makes a 5"</span>,</span>
-<span id="cb99-5"><a aria-label="5"></a>            <span class="st">"17-38, ay"</span>,</span>
-<span id="cb99-6"><a aria-label="6"></a>            <span class="st">"I'm so 3008, You so 2000 and late"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a></a>lyrics <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"But I would walk 500 miles"</span>,</span>
+<span id="cb99-2"><a></a>            <span class="st">"Yeah, 360. When you're in the mirror, do you like what you see?"</span>, </span>
+<span id="cb99-3"><a></a>            <span class="st">"I have loved you for a 1000 years, I'll love you for a 1000 more"</span>,</span>
+<span id="cb99-4"><a></a>            <span class="st">"Where 2 and 2 always makes a 5"</span>,</span>
+<span id="cb99-5"><a></a>            <span class="st">"17-38, ay"</span>,</span>
+<span id="cb99-6"><a></a>            <span class="st">"I'm so 3008, You so 2000 and late"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
 <h3 id="how-should-we-modify-the-code-to-locate-all-the-numbers-from-these-lyrics-of-various-songs">How should we modify the code to locate all the numbers from these lyrics of various songs?</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a aria-label="1"></a>lyrics</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a></a>lyrics</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "But I would walk 500 miles"                                      
 [2] "Yeah, 360. When you're in the mirror, do you like what you see?" 
@@ -1296,7 +1293,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a aria-label="1"></a><span class="fu">str_view_all</span>(lyrics, <span class="st">"500|1000|2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a></a><span class="fu">str_view_all</span>(lyrics, <span class="st">"500|1000|2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ But I would walk &lt;500&gt; miles
 [2] │ Yeah, 360. When you're in the mirror, do you like what you see?
@@ -1311,7 +1308,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 
 <h3 id="how-should-we-modify-the-code-to-locate-all-the-numbers-from-these-lyrics-of-various-songs-1">How should we modify the code to locate all the numbers from these lyrics of various songs?</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a aria-label="1"></a>lyrics</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a></a>lyrics</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "But I would walk 500 miles"                                      
 [2] "Yeah, 360. When you're in the mirror, do you like what you see?" 
@@ -1322,7 +1319,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a aria-label="1"></a><span class="fu">str_view_all</span>(lyrics, <span class="st">"500|1000|2|360|5|17|38|3008|2000"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a></a><span class="fu">str_view_all</span>(lyrics, <span class="st">"500|1000|2|360|5|17|38|3008|2000"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ But I would walk &lt;500&gt; miles
 [2] │ Yeah, &lt;360&gt;. When you're in the mirror, do you like what you see?
@@ -1338,7 +1335,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <h3 id="need-for-more-sophisticated-pattern-matching">Need for More Sophisticated Pattern Matching</h3>
 <p>But now imagine you had a very long vector and you want to locate any number?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a aria-label="1"></a><span class="fu">str_view_all</span>(lyrics, <span class="st">"1|2|3|4..."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a></a><span class="fu">str_view_all</span>(lyrics, <span class="st">"1|2|3|4..."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li class="fragment"><p>Not a good approach!</p></li>
@@ -1539,7 +1536,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

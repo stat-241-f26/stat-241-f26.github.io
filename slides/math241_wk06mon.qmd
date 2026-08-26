@@ -51,7 +51,7 @@ theme_update(text = element_text(size = 20))
 
 [Grayson White]{.custom-subtitle}
 
-[Math 241 <br> Week 6 \| Spring 2026]{.custom-subtitle}
+[Stat 241 <br> Week 6 \| Fall 2026]{.custom-subtitle}
 :::
 :::::
 
@@ -229,7 +229,7 @@ Starting a New App:
 
 ### First App
 
-We want to create an app where someone can type in names from Math 241 and see how their popularity compares.
+We want to create an app where someone can type in names from Stat 241 and see how their popularity compares.
 
 * First write some static code that works.
 
@@ -277,7 +277,7 @@ tail(dat_names)
 
 ### First App
 
-We want to create an app where someone can type in names from Math 241 (or any names) and see how their popularity compares.
+We want to create an app where someone can type in names from Stat 241 (or any names) and see how their popularity compares.
 
 
 :::: .columns
@@ -414,12 +414,12 @@ ui <- fluidPage(
 ```{r}
 # User interface
 ui <- fluidPage(
-  titlePanel("Which Math 241 name is most popular?"),
+  titlePanel("Which Stat 241 name is most popular?"),
   sidebarLayout(
     sidebarPanel(
       # Create a text input widget
       textInput(inputId = "names",
-               label = "Enter Math 241 names here",
+               label = "Enter Stat 241 names here",
                value = "Grayson"),
       p("Put a single space between the names.")
     ),
@@ -443,12 +443,12 @@ ui <- fluidPage(
 ```{r}
 # User interface
 ui <- fluidPage(
-  titlePanel("Which Math 241 name is most popular?"),
+  titlePanel("Which Stat 241 name is most popular?"),
   sidebarLayout(
     sidebarPanel(
       # Create a text input widget
       textInput(inputId = "names",
-               label = "Enter Math 241 names here",
+               label = "Enter Stat 241 names here",
                value = "Grayson"),
       p("Put a single space between the names.")
     ),
@@ -471,7 +471,7 @@ All these UI functions are just a way for us to generate HTML (without needing t
 
 ```{r}
 textInput(inputId = "names",
-          label = "Enter Math 241 names here",
+          label = "Enter Stat 241 names here",
           value = "Grayson")
 ```
 
@@ -572,12 +572,12 @@ library(DT)
 ```{r}
 # User interface
 ui <- fluidPage(
-  titlePanel("Which Math 241 name is most popular?"),
+  titlePanel("Which Stat 241 name is most popular?"),
   sidebarLayout(
     sidebarPanel(
       # Create a text input widget
       textInput(inputId = "names",
-               label = "Enter Math 241 names here",
+               label = "Enter Stat 241 names here",
                value = "Grayson"),
       p("Put a single space between the names.")
     ),
@@ -851,7 +851,7 @@ actionButton("update", "Update Results!")
 
 ```{r, eval=FALSE}
       selectizeInput(inputId = "names",
-                label = "Enter Math 241 names here",
+                label = "Enter Stat 241 names here",
                 choices = NULL,
                 multiple = TRUE)
 ```

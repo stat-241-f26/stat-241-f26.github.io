@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.18">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <title>Stat 241 – Data Wrangling</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,13 +19,10 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
+    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: 1.5em;}
-    div.column{flex: auto;}
-    @media screen {
-    div.columns{gap: min(4vw, 1.5em);}
-    div.column{overflow-x: auto;}
-    }
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -212,7 +209,7 @@
 <p><span class="custom-title">Data Wrangling</span></p>
 <p><br> <br> <br> <br> <br></p>
 <p><span class="custom-subtitle">Grayson White</span></p>
-<p><span class="custom-subtitle">Math 241 <br> Week 3 | Spring 2026</span></p>
+<p><span class="custom-subtitle">Stat 241 <br> Week 3 | Fall 2026</span></p>
 </div></div>
 </section>
 <section id="announcements" class="slide level2">
@@ -310,21 +307,21 @@
 <p><br></p>
 <p>I want to reorder the bars of my plot but can’t get it working. Help!</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a aria-label="2"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-3"><a aria-label="3"></a></span>
-<span id="cb1-4"><a aria-label="4"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
-<span id="cb1-5"><a aria-label="5"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
-<span id="cb1-6"><a aria-label="6"></a>  <span class="fu">mutate</span>(<span class="at">mean_flipper =</span> <span class="fu">mean</span>(flipper_length_mm)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-7"><a aria-label="7"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-8"><a aria-label="8"></a>  <span class="fu">mutate</span>(<span class="at">long =</span> <span class="fu">case_when</span>(flipper_length_mm <span class="sc">&lt;</span> <span class="fu">mean</span>(flipper_length_mm) <span class="sc">~</span> <span class="st">"no"</span>,</span>
-<span id="cb1-9"><a aria-label="9"></a>                           flipper_length_mm <span class="sc">&gt;=</span> <span class="fu">mean</span>(flipper_length_mm) <span class="sc">~</span> <span class="st">"yes"</span>))  </span>
-<span id="cb1-10"><a aria-label="10"></a></span>
-<span id="cb1-11"><a aria-label="11"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb1-12"><a aria-label="12"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
-<span id="cb1-13"><a aria-label="13"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a aria-label="2"></a>  <span class="fu">count</span>(species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a></a>  <span class="fu">mutate</span>(<span class="at">mean_flipper =</span> <span class="fu">mean</span>(flipper_length_mm)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a></a>  <span class="fu">mutate</span>(<span class="at">long =</span> <span class="fu">case_when</span>(flipper_length_mm <span class="sc">&lt;</span> <span class="fu">mean</span>(flipper_length_mm) <span class="sc">~</span> <span class="st">"no"</span>,</span>
+<span id="cb1-9"><a></a>                           flipper_length_mm <span class="sc">&gt;=</span> <span class="fu">mean</span>(flipper_length_mm) <span class="sc">~</span> <span class="st">"yes"</span>))  </span>
+<span id="cb1-10"><a></a></span>
+<span id="cb1-11"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb1-12"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
+<span id="cb1-13"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a></a>  <span class="fu">count</span>(species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="what-is-wrong-with-this-coding-question-3" class="slide level2">
@@ -332,14 +329,14 @@
 <p><br></p>
 <p>I want to reorder the bars of my plot but can’t get it working. Help!</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb3-2"><a aria-label="2"></a></span>
-<span id="cb3-3"><a aria-label="3"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-4"><a aria-label="4"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb3-5"><a aria-label="5"></a></span>
-<span id="cb3-6"><a aria-label="6"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb3-7"><a aria-label="7"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
-<span id="cb3-8"><a aria-label="8"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-4"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb3-5"><a></a></span>
+<span id="cb3-6"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
+<span id="cb3-8"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="what-makes-a-good-coding-question" class="slide level2">
@@ -364,9 +361,9 @@
 <div class="fragment">
 <p>Create a toy data frame.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">animal =</span> <span class="fu">c</span>(<span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="st">"mouse"</span>), </span>
-<span id="cb4-2"><a aria-label="2"></a>                  <span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="fl">0.5</span>))</span>
-<span id="cb4-3"><a aria-label="3"></a>dat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">animal =</span> <span class="fu">c</span>(<span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="st">"mouse"</span>), </span>
+<span id="cb4-2"><a></a>                  <span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="fl">0.5</span>))</span>
+<span id="cb4-3"><a></a>dat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  animal weight
 1    cat    5.0
@@ -378,8 +375,8 @@
 <div class="fragment">
 <p>Use a built-in dataset or a dataset from a particular package.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb6-2"><a aria-label="2"></a>penguins</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb6-2"><a></a>penguins</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 344 × 10
    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
@@ -405,12 +402,12 @@
 <p>Include the <strong>necessary</strong> libraries.</p>
 <p>Test run the code in a restarted R session to make sure it is runnable!</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-2"><a aria-label="2"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb8-3"><a aria-label="3"></a></span>
-<span id="cb8-4"><a aria-label="4"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb8-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
-<span id="cb8-6"><a aria-label="6"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb8-3"><a></a></span>
+<span id="cb8-4"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
+<span id="cb8-6"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -424,12 +421,12 @@
 <h2>Make sure your code is copy-and-paste-able!</h2>
 <p>Don’t copy from the console.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
-<span id="cb9-2"><a aria-label="2"></a><span class="sc">&gt;</span> <span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb9-3"><a aria-label="3"></a><span class="sc">&gt;</span> </span>
-<span id="cb9-4"><a aria-label="4"></a><span class="er">&gt;</span> penguins <span class="sc">%&gt;%</span></span>
-<span id="cb9-5"><a aria-label="5"></a><span class="sc">+</span>     <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
-<span id="cb9-6"><a aria-label="6"></a><span class="sc">+</span>     <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-2"><a></a><span class="sc">&gt;</span> <span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb9-3"><a></a><span class="sc">&gt;</span> </span>
+<span id="cb9-4"><a></a><span class="er">&gt;</span> penguins <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a></a><span class="sc">+</span>     <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
+<span id="cb9-6"><a></a><span class="sc">+</span>     <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="make-sure-your-code-is-copy-and-paste-able-1" class="slide level2">
@@ -442,12 +439,12 @@
 <p>How can I reorder the bars in the ggplot to go from the most frequent to the least frequent category?</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb10-2"><a aria-label="2"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb10-3"><a aria-label="3"></a></span>
-<span id="cb10-4"><a aria-label="4"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb10-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
-<span id="cb10-6"><a aria-label="6"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb10-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb10-3"><a></a></span>
+<span id="cb10-4"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
+<span id="cb10-6"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -493,18 +490,18 @@
 <li><p>Open a script file and include in the top line:</p></li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">library</span>(reprex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">library</span>(reprex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="3" type="1">
 <li>Put the code you want to use in the script file and make sure it runs.</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb12-2"><a aria-label="2"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb12-3"><a aria-label="3"></a></span>
-<span id="cb12-4"><a aria-label="4"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb12-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
-<span id="cb12-6"><a aria-label="6"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb12-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb12-3"><a></a></span>
+<span id="cb12-4"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(species))) <span class="sc">+</span></span>
+<span id="cb12-6"><a></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="4" type="1">
 <li><p>Surround the code with <code>reprex({ ... }, venue = "slack")</code> and run it.</p></li>
@@ -626,8 +623,8 @@
 </div>
 </div></div>
 </section>
-<section id="math-241-dplyr-experience" class="slide level2">
-<h2>Math 241 <code>dplyr</code> Experience</h2>
+<section id="stat-241-dplyr-experience" class="slide level2">
+<h2>Stat 241 <code>dplyr</code> Experience</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -674,8 +671,8 @@
 <section id="new-data-babynames" class="slide level2">
 <h2>New data: <code>babynames</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a><span class="fu">library</span>(babynames)</span>
-<span id="cb13-2"><a aria-label="2"></a><span class="fu">head</span>(babynames)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">library</span>(babynames)</span>
+<span id="cb13-2"><a></a><span class="fu">head</span>(babynames)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
    year sex   name          n   prop
@@ -699,9 +696,9 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a><span class="fu">library</span>(babynames)</span>
-<span id="cb15-2"><a aria-label="2"></a><span class="fu">data</span>(<span class="st">"babynames"</span>)</span>
-<span id="cb15-3"><a aria-label="3"></a><span class="fu">head</span>(babynames)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">library</span>(babynames)</span>
+<span id="cb15-2"><a></a><span class="fu">data</span>(<span class="st">"babynames"</span>)</span>
+<span id="cb15-3"><a></a><span class="fu">head</span>(babynames)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
    year sex   name          n   prop
@@ -716,7 +713,7 @@
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a><span class="fu">head</span>(babynames_math241)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">head</span>(babynames_math241)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
 # Groups:   year [2]
@@ -737,10 +734,10 @@
 <h3 id="wrangling-babynames-1">Wrangling <code>babynames</code></h3>
 <p><code>filter()</code>: Subset rows based on logic statements.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a>babynames_math241 <span class="ot">&lt;-</span> <span class="fu">filter</span>(babynames, </span>
-<span id="cb19-2"><a aria-label="2"></a>                            name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>, </span>
-<span id="cb19-3"><a aria-label="3"></a>                                        <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>))</span>
-<span id="cb19-4"><a aria-label="4"></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>babynames_math241 <span class="ot">&lt;-</span> <span class="fu">filter</span>(babynames, </span>
+<span id="cb19-2"><a></a>                            name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>, </span>
+<span id="cb19-3"><a></a>                                        <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>))</span>
+<span id="cb19-4"><a></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 675 × 5
     year sex   name        n    prop
@@ -764,11 +761,11 @@
 <h3 id="wrangling-babynames-2">Wrangling <code>babynames</code></h3>
 <p><code>%&gt;%</code> (the pipe): Inserts current line as first argument in the next line.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a>babynames_math241 <span class="ot">&lt;-</span> <span class="fu">filter</span>(babynames, </span>
-<span id="cb21-2"><a aria-label="2"></a>                            name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
-<span id="cb21-3"><a aria-label="3"></a>                                        <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>))</span>
-<span id="cb21-4"><a aria-label="4"></a></span>
-<span id="cb21-5"><a aria-label="5"></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>babynames_math241 <span class="ot">&lt;-</span> <span class="fu">filter</span>(babynames, </span>
+<span id="cb21-2"><a></a>                            name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
+<span id="cb21-3"><a></a>                                        <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>))</span>
+<span id="cb21-4"><a></a></span>
+<span id="cb21-5"><a></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 675 × 5
     year sex   name        n    prop
@@ -792,16 +789,16 @@
 <h3 id="wrangling-babynames-3">Wrangling <code>babynames</code></h3>
 <p><code>%&gt;%</code> (the pipe): Inserts current line as first argument in the next line.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a>babynames_math241 <span class="ot">&lt;-</span> <span class="fu">filter</span>(babynames, </span>
-<span id="cb23-2"><a aria-label="2"></a>                            name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
-<span id="cb23-3"><a aria-label="3"></a>                                        <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>))</span>
-<span id="cb23-4"><a aria-label="4"></a></span>
-<span id="cb23-5"><a aria-label="5"></a><span class="co"># this operation does exactly the same thing as above</span></span>
-<span id="cb23-6"><a aria-label="6"></a>babynames_math241 <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
-<span id="cb23-7"><a aria-label="7"></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
-<span id="cb23-8"><a aria-label="8"></a>                     <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>))</span>
-<span id="cb23-9"><a aria-label="9"></a></span>
-<span id="cb23-10"><a aria-label="10"></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>babynames_math241 <span class="ot">&lt;-</span> <span class="fu">filter</span>(babynames, </span>
+<span id="cb23-2"><a></a>                            name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
+<span id="cb23-3"><a></a>                                        <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>))</span>
+<span id="cb23-4"><a></a></span>
+<span id="cb23-5"><a></a><span class="co"># this operation does exactly the same thing as above</span></span>
+<span id="cb23-6"><a></a>babynames_math241 <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
+<span id="cb23-7"><a></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
+<span id="cb23-8"><a></a>                     <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>))</span>
+<span id="cb23-9"><a></a></span>
+<span id="cb23-10"><a></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 675 × 5
     year sex   name        n    prop
@@ -825,12 +822,12 @@
 <h3 id="wrangling-babynames-4">Wrangling <code>babynames</code></h3>
 <p><code>summarize()</code>: Compute an aggregation measure (e.g., mean, standard deviation).</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a>babynames_math241 <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
-<span id="cb25-2"><a aria-label="2"></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
-<span id="cb25-3"><a aria-label="3"></a>                     <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb25-4"><a aria-label="4"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n))</span>
-<span id="cb25-5"><a aria-label="5"></a></span>
-<span id="cb25-6"><a aria-label="6"></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>babynames_math241 <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
+<span id="cb25-3"><a></a>                     <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n))</span>
+<span id="cb25-5"><a></a></span>
+<span id="cb25-6"><a></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
         n
@@ -844,13 +841,13 @@
 <h3 id="wrangling-babynames-5">Wrangling <code>babynames</code></h3>
 <p><code>group_by()</code>: Create groups for how future operations should be computed.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a>babynames_math241 <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
-<span id="cb27-2"><a aria-label="2"></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
-<span id="cb27-3"><a aria-label="3"></a>                     <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb27-4"><a aria-label="4"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
-<span id="cb27-5"><a aria-label="5"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n))</span>
-<span id="cb27-6"><a aria-label="6"></a></span>
-<span id="cb27-7"><a aria-label="7"></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>babynames_math241 <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
+<span id="cb27-3"><a></a>                     <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb27-5"><a></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n))</span>
+<span id="cb27-6"><a></a></span>
+<span id="cb27-7"><a></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
   name          n
@@ -870,13 +867,13 @@
 <h3 id="wrangling-babynames-6">Wrangling <code>babynames</code></h3>
 <p><code>group_by()</code>: Create groups for how future operations should be computed.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a>babynames_math241 <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
-<span id="cb29-2"><a aria-label="2"></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
-<span id="cb29-3"><a aria-label="3"></a>                     <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb29-4"><a aria-label="4"></a>  <span class="fu">group_by</span>(year, name) <span class="sc">%&gt;%</span></span>
-<span id="cb29-5"><a aria-label="5"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) </span>
-<span id="cb29-6"><a aria-label="6"></a></span>
-<span id="cb29-7"><a aria-label="7"></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>babynames_math241 <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
+<span id="cb29-3"><a></a>                     <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a></a>  <span class="fu">group_by</span>(year, name) <span class="sc">%&gt;%</span></span>
+<span id="cb29-5"><a></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) </span>
+<span id="cb29-6"><a></a></span>
+<span id="cb29-7"><a></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 431 × 3
 # Groups:   year [138]
@@ -901,14 +898,14 @@
 <h3 id="wrangling-babynames-7">Wrangling <code>babynames</code></h3>
 <p><code>group_by()</code>: Create groups for how future operations should be computed.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a>babynames_math241 <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a aria-label="2"></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
-<span id="cb31-3"><a aria-label="3"></a>                     <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb31-4"><a aria-label="4"></a>  <span class="fu">group_by</span>(year, name) <span class="sc">%&gt;%</span></span>
-<span id="cb31-5"><a aria-label="5"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
-<span id="cb31-6"><a aria-label="6"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb31-7"><a aria-label="7"></a></span>
-<span id="cb31-8"><a aria-label="8"></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>babynames_math241 <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
+<span id="cb31-3"><a></a>                     <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb31-4"><a></a>  <span class="fu">group_by</span>(year, name) <span class="sc">%&gt;%</span></span>
+<span id="cb31-5"><a></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb31-6"><a></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb31-7"><a></a></span>
+<span id="cb31-8"><a></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 431 × 3
     year name        n
@@ -935,15 +932,15 @@
 <h3 id="wrangling-babynames-8">Wrangling <code>babynames</code></h3>
 <p><code>arrange()</code>: Order the rows by variable(s).</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a>babynames_math241 <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
-<span id="cb33-2"><a aria-label="2"></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
-<span id="cb33-3"><a aria-label="3"></a>                     <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb33-4"><a aria-label="4"></a>  <span class="fu">group_by</span>(year, name) <span class="sc">%&gt;%</span></span>
-<span id="cb33-5"><a aria-label="5"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
-<span id="cb33-6"><a aria-label="6"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb33-7"><a aria-label="7"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(year))</span>
-<span id="cb33-8"><a aria-label="8"></a></span>
-<span id="cb33-9"><a aria-label="9"></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>babynames_math241 <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Michael"</span>,</span>
+<span id="cb33-3"><a></a>                     <span class="st">"Megan"</span>, <span class="st">"Lenny"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb33-4"><a></a>  <span class="fu">group_by</span>(year, name) <span class="sc">%&gt;%</span></span>
+<span id="cb33-5"><a></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb33-6"><a></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb33-7"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(year))</span>
+<span id="cb33-8"><a></a></span>
+<span id="cb33-9"><a></a>babynames_math241</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 431 × 3
     year name        n
@@ -965,14 +962,14 @@
 <section id="new-data-pets-ive-had" class="slide level2">
 <h2>New data: pets I’ve had</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-label="1"></a>my_pets <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb35-2"><a aria-label="2"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Dude"</span>, <span class="st">"Pickle"</span>, <span class="st">"Kyle"</span>, <span class="st">"Nubs"</span>),</span>
-<span id="cb35-3"><a aria-label="3"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"dog"</span>, <span class="st">"cat"</span>, <span class="st">"cat"</span>, <span class="st">"cat"</span>),</span>
-<span id="cb35-4"><a aria-label="4"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="cn">NA</span>),</span>
-<span id="cb35-5"><a aria-label="5"></a>  <span class="at">birthplace =</span> <span class="fu">c</span>(<span class="st">"Washington"</span>, <span class="cn">NA</span>, <span class="st">"Utah"</span>, <span class="cn">NA</span>)</span>
-<span id="cb35-6"><a aria-label="6"></a>)</span>
-<span id="cb35-7"><a aria-label="7"></a></span>
-<span id="cb35-8"><a aria-label="8"></a>my_pets</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>my_pets <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb35-2"><a></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Dude"</span>, <span class="st">"Pickle"</span>, <span class="st">"Kyle"</span>, <span class="st">"Nubs"</span>),</span>
+<span id="cb35-3"><a></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"dog"</span>, <span class="st">"cat"</span>, <span class="st">"cat"</span>, <span class="st">"cat"</span>),</span>
+<span id="cb35-4"><a></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="cn">NA</span>),</span>
+<span id="cb35-5"><a></a>  <span class="at">birthplace =</span> <span class="fu">c</span>(<span class="st">"Washington"</span>, <span class="cn">NA</span>, <span class="st">"Utah"</span>, <span class="cn">NA</span>)</span>
+<span id="cb35-6"><a></a>)</span>
+<span id="cb35-7"><a></a></span>
+<span id="cb35-8"><a></a>my_pets</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    name type age birthplace
 1   Dude  dog   8 Washington
@@ -987,8 +984,8 @@
 <h3 id="wrangling-my_pets">Wrangling <code>my_pets</code></h3>
 <p><code>select()</code>: retain particular columns.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-label="1"></a>my_pets <span class="sc">%&gt;%</span></span>
-<span id="cb37-2"><a aria-label="2"></a>  <span class="fu">select</span>(name, type, age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>my_pets <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a></a>  <span class="fu">select</span>(name, type, age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    name type age
 1   Dude  dog   8
@@ -1003,8 +1000,8 @@
 <h3 id="wrangling-my_pets-1">Wrangling <code>my_pets</code></h3>
 <p><code>select()</code>: retain particular columns.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-label="1"></a>my_pets <span class="sc">%&gt;%</span></span>
-<span id="cb39-2"><a aria-label="2"></a>  <span class="fu">select</span>(<span class="sc">-</span>birthplace)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>my_pets <span class="sc">%&gt;%</span></span>
+<span id="cb39-2"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>birthplace)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    name type age
 1   Dude  dog   8
@@ -1019,8 +1016,8 @@
 <h3 id="wrangling-my_pets-2">Wrangling <code>my_pets</code></h3>
 <p><code>drop_na()</code>: Remove any row that has a missing value for particular variables.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a aria-label="1"></a>my_pets <span class="sc">%&gt;%</span></span>
-<span id="cb41-2"><a aria-label="2"></a>  <span class="fu">drop_na</span>(birthplace)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>my_pets <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a></a>  <span class="fu">drop_na</span>(birthplace)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  name type age birthplace
 1 Dude  dog   8 Washington
@@ -1041,11 +1038,11 @@
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a aria-label="1"></a>my_pets <span class="ot">&lt;-</span> my_pets <span class="sc">%&gt;%</span></span>
-<span id="cb43-2"><a aria-label="2"></a>  <span class="co"># bad solution</span></span>
-<span id="cb43-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">age_pet_years =</span> age <span class="sc">*</span> <span class="fl">7.5</span>)</span>
-<span id="cb43-4"><a aria-label="4"></a></span>
-<span id="cb43-5"><a aria-label="5"></a>my_pets</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>my_pets <span class="ot">&lt;-</span> my_pets <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a></a>  <span class="co"># bad solution</span></span>
+<span id="cb43-3"><a></a>  <span class="fu">mutate</span>(<span class="at">age_pet_years =</span> age <span class="sc">*</span> <span class="fl">7.5</span>)</span>
+<span id="cb43-4"><a></a></span>
+<span id="cb43-5"><a></a>my_pets</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    name type age birthplace age_pet_years
 1   Dude  dog   8 Washington            60
@@ -1069,13 +1066,13 @@
 </ul>
 <p>Better solution: use <code>case_when()</code></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a aria-label="1"></a>my_pets <span class="ot">&lt;-</span> my_pets <span class="sc">%&gt;%</span></span>
-<span id="cb45-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">age_pet_years =</span> <span class="fu">case_when</span>(</span>
-<span id="cb45-3"><a aria-label="3"></a>    type <span class="sc">==</span> <span class="st">"dog"</span> <span class="sc">~</span> <span class="dv">8</span> <span class="sc">*</span> age,</span>
-<span id="cb45-4"><a aria-label="4"></a>    type <span class="sc">==</span> <span class="st">"cat"</span> <span class="sc">~</span> <span class="dv">7</span> <span class="sc">*</span> age</span>
-<span id="cb45-5"><a aria-label="5"></a>    ))</span>
-<span id="cb45-6"><a aria-label="6"></a></span>
-<span id="cb45-7"><a aria-label="7"></a>my_pets</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>my_pets <span class="ot">&lt;-</span> my_pets <span class="sc">%&gt;%</span></span>
+<span id="cb45-2"><a></a>  <span class="fu">mutate</span>(<span class="at">age_pet_years =</span> <span class="fu">case_when</span>(</span>
+<span id="cb45-3"><a></a>    type <span class="sc">==</span> <span class="st">"dog"</span> <span class="sc">~</span> <span class="dv">8</span> <span class="sc">*</span> age,</span>
+<span id="cb45-4"><a></a>    type <span class="sc">==</span> <span class="st">"cat"</span> <span class="sc">~</span> <span class="dv">7</span> <span class="sc">*</span> age</span>
+<span id="cb45-5"><a></a>    ))</span>
+<span id="cb45-6"><a></a></span>
+<span id="cb45-7"><a></a>my_pets</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    name type age birthplace age_pet_years
 1   Dude  dog   8 Washington            64
@@ -1090,10 +1087,10 @@
 <h3 id="wrangling-my_pets-5">Wrangling <code>my_pets</code></h3>
 <p>More <code>filter()</code>ing</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a aria-label="1"></a>pets_who_can_drink <span class="ot">&lt;-</span> my_pets <span class="sc">%&gt;%</span></span>
-<span id="cb47-2"><a aria-label="2"></a>  <span class="fu">filter</span>(age_pet_years <span class="sc">&gt;</span> <span class="dv">21</span>)</span>
-<span id="cb47-3"><a aria-label="3"></a></span>
-<span id="cb47-4"><a aria-label="4"></a>pets_who_can_drink</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>pets_who_can_drink <span class="ot">&lt;-</span> my_pets <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a></a>  <span class="fu">filter</span>(age_pet_years <span class="sc">&gt;</span> <span class="dv">21</span>)</span>
+<span id="cb47-3"><a></a></span>
+<span id="cb47-4"><a></a>pets_who_can_drink</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    name type age birthplace age_pet_years
 1   Dude  dog   8 Washington            64
@@ -1107,10 +1104,10 @@
 <h3 id="wrangling-my_pets-6">Wrangling <code>my_pets</code></h3>
 <p>More <code>filter()</code>ing: Nubs seemed like he was pretty old</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a aria-label="1"></a>pets_who_can_drink <span class="ot">&lt;-</span> my_pets <span class="sc">%&gt;%</span></span>
-<span id="cb49-2"><a aria-label="2"></a>  <span class="fu">filter</span>(age_pet_years <span class="sc">&gt;</span> <span class="dv">21</span> <span class="sc">&amp;</span> <span class="fu">is.na</span>(age_pet_years))</span>
-<span id="cb49-3"><a aria-label="3"></a></span>
-<span id="cb49-4"><a aria-label="4"></a>pets_who_can_drink</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>pets_who_can_drink <span class="ot">&lt;-</span> my_pets <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a></a>  <span class="fu">filter</span>(age_pet_years <span class="sc">&gt;</span> <span class="dv">21</span> <span class="sc">&amp;</span> <span class="fu">is.na</span>(age_pet_years))</span>
+<span id="cb49-3"><a></a></span>
+<span id="cb49-4"><a></a>pets_who_can_drink</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] name          type          age           birthplace    age_pet_years
 &lt;0 rows&gt; (or 0-length row.names)</code></pre>
@@ -1126,10 +1123,10 @@
 <h3 id="wrangling-my_pets-7">Wrangling <code>my_pets</code></h3>
 <p>More <code>filter()</code>ing: Nubs seemed like he was pretty old</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a aria-label="1"></a>pets_who_can_drink <span class="ot">&lt;-</span> my_pets <span class="sc">%&gt;%</span></span>
-<span id="cb51-2"><a aria-label="2"></a>  <span class="fu">filter</span>(age_pet_years <span class="sc">&gt;</span> <span class="dv">21</span> <span class="sc">|</span> <span class="fu">is.na</span>(age_pet_years))</span>
-<span id="cb51-3"><a aria-label="3"></a></span>
-<span id="cb51-4"><a aria-label="4"></a>pets_who_can_drink</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>pets_who_can_drink <span class="ot">&lt;-</span> my_pets <span class="sc">%&gt;%</span></span>
+<span id="cb51-2"><a></a>  <span class="fu">filter</span>(age_pet_years <span class="sc">&gt;</span> <span class="dv">21</span> <span class="sc">|</span> <span class="fu">is.na</span>(age_pet_years))</span>
+<span id="cb51-3"><a></a></span>
+<span id="cb51-4"><a></a>pets_who_can_drink</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    name type age birthplace age_pet_years
 1   Dude  dog   8 Washington            64
@@ -1147,10 +1144,10 @@
 <h3 id="wrangling-my_pets-8">Wrangling <code>my_pets</code></h3>
 <p>More <code>filter()</code>ing</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a aria-label="1"></a>old_cats <span class="ot">&lt;-</span> my_pets <span class="sc">%&gt;%</span></span>
-<span id="cb53-2"><a aria-label="2"></a>  <span class="fu">filter</span>(age_pet_years <span class="sc">&gt;</span> <span class="dv">30</span>, type <span class="sc">==</span> <span class="st">"dog"</span>)</span>
-<span id="cb53-3"><a aria-label="3"></a></span>
-<span id="cb53-4"><a aria-label="4"></a>old_cats</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>old_cats <span class="ot">&lt;-</span> my_pets <span class="sc">%&gt;%</span></span>
+<span id="cb53-2"><a></a>  <span class="fu">filter</span>(age_pet_years <span class="sc">&gt;</span> <span class="dv">30</span>, type <span class="sc">==</span> <span class="st">"dog"</span>)</span>
+<span id="cb53-3"><a></a></span>
+<span id="cb53-4"><a></a>old_cats</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  name type age birthplace age_pet_years
 1 Dude  dog   8 Washington            64</code></pre>
@@ -1165,8 +1162,8 @@
 <h3 id="wrangling-my_pets-9">Wrangling <code>my_pets</code></h3>
 <p><code>%in%</code> vs.&nbsp;<code>==</code></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a aria-label="1"></a>my_pets <span class="sc">%&gt;%</span></span>
-<span id="cb55-2"><a aria-label="2"></a>  <span class="fu">filter</span>(name <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"Dude"</span>, <span class="st">"Kyle"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>my_pets <span class="sc">%&gt;%</span></span>
+<span id="cb55-2"><a></a>  <span class="fu">filter</span>(name <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"Dude"</span>, <span class="st">"Kyle"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  name type age birthplace age_pet_years
 1 Dude  dog   8 Washington            64</code></pre>
@@ -1181,8 +1178,8 @@
 <h3 id="wrangling-my_pets-10">Wrangling <code>my_pets</code></h3>
 <p><code>%in%</code> vs.&nbsp;<code>==</code></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a aria-label="1"></a>my_pets <span class="sc">%&gt;%</span></span>
-<span id="cb57-2"><a aria-label="2"></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Dude"</span>, <span class="st">"Kyle"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>my_pets <span class="sc">%&gt;%</span></span>
+<span id="cb57-2"><a></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Dude"</span>, <span class="st">"Kyle"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  name type age birthplace age_pet_years
 1 Dude  dog   8 Washington            64
@@ -1195,7 +1192,7 @@
 <h1>Activity</h1>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_debb9fc7" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_d82ba3f8" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1402,7 +1399,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

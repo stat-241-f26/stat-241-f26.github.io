@@ -51,7 +51,7 @@ theme_update(text = element_text(size = 20))
 
 [Grayson White]{.custom-subtitle}
 
-[Math 241 <br> Week 5 \| Spring 2026]{.custom-subtitle}
+[Stat 241 <br> Week 5 \| Fall 2026]{.custom-subtitle}
 :::
 :::::
 
@@ -1020,6 +1020,7 @@ ggplot() +
 Often scaled by a population size type variable.
 
 ```{r}
+#| eval: false
 wa_pop <- get_decennial(state = "WA", geography = "county",
                         variables = "P001001", year = 2010, api_key = api_key)
 
@@ -1035,6 +1036,7 @@ Often scaled by a population size type variable.
 
 ```{r}
 #| output-location: column-fragment
+#| eval: false
 
 wa_transf_pop <- wa_transf_pop %>%
   rename(population_size = value, 

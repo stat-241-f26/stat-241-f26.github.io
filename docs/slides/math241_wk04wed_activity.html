@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.18">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <title>Stat 241 – Joining and Reshaping Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,13 +19,10 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
+    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: 1.5em;}
-    div.column{flex: auto;}
-    @media screen {
-    div.columns{gap: min(4vw, 1.5em);}
-    div.column{overflow-x: auto;}
-    }
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -212,35 +209,35 @@
 <p><span class="custom-title">Joining Data Activity</span></p>
 <p><br> <br> <br> <br> <br></p>
 <p><span class="custom-subtitle">Grayson White</span></p>
-<p><span class="custom-subtitle">Math 241 <br> Week 4 | Spring 2026</span></p>
+<p><span class="custom-subtitle">Stat 241 <br> Week 4 | Fall 2026</span></p>
 </div></div>
 </section>
 <section id="loading-data" class="slide level2">
 <h2>Loading data</h2>
 <p>We’ll create the <code>x</code> and <code>y</code> data frames in <code>R</code>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a aria-label="2"></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">spp_code =</span> <span class="fu">c</span>(<span class="st">"ABBA"</span>, <span class="st">"BEPA"</span>, <span class="st">"PIST"</span>),</span>
-<span id="cb1-3"><a aria-label="3"></a>                <span class="at">common_name =</span> <span class="fu">c</span>(<span class="st">"balsum fir"</span>, <span class="st">"paper birch"</span>, <span class="st">"white pine"</span>))</span>
-<span id="cb1-4"><a aria-label="4"></a></span>
-<span id="cb1-5"><a aria-label="5"></a>y <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">spp_code =</span> <span class="fu">c</span>(<span class="st">"ABBA"</span>, <span class="st">"BEPA"</span>, <span class="st">"LALA"</span>),</span>
-<span id="cb1-6"><a aria-label="6"></a>                <span class="at">latin_name =</span> <span class="fu">c</span>(<span class="st">"Abies balsamea"</span>, </span>
-<span id="cb1-7"><a aria-label="7"></a>                               <span class="st">"Betula papyrifera"</span>,</span>
-<span id="cb1-8"><a aria-label="8"></a>                               <span class="st">"Larix laricina"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">spp_code =</span> <span class="fu">c</span>(<span class="st">"ABBA"</span>, <span class="st">"BEPA"</span>, <span class="st">"PIST"</span>),</span>
+<span id="cb1-3"><a></a>                <span class="at">common_name =</span> <span class="fu">c</span>(<span class="st">"balsum fir"</span>, <span class="st">"paper birch"</span>, <span class="st">"white pine"</span>))</span>
+<span id="cb1-4"><a></a></span>
+<span id="cb1-5"><a></a>y <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">spp_code =</span> <span class="fu">c</span>(<span class="st">"ABBA"</span>, <span class="st">"BEPA"</span>, <span class="st">"LALA"</span>),</span>
+<span id="cb1-6"><a></a>                <span class="at">latin_name =</span> <span class="fu">c</span>(<span class="st">"Abies balsamea"</span>, </span>
+<span id="cb1-7"><a></a>                               <span class="st">"Betula papyrifera"</span>,</span>
+<span id="cb1-8"><a></a>                               <span class="st">"Larix laricina"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="loading-data-1" class="slide level2">
 <h2>Loading data</h2>
 <p>We’ll create the <code>x</code> and <code>y</code> data frames in <code>R</code>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code common_name
 1     ABBA  balsum fir
 2     BEPA paper birch
 3     PIST  white pine</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code        latin_name
 1     ABBA    Abies balsamea
@@ -259,7 +256,7 @@
 3     PIST  white pine              &lt;NA&gt;</code></pre>
 </div>
 <div class="cell-output-display">
-<div class="countdown" id="timer_5e517330" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_55f0ac95" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -269,7 +266,7 @@
 <section id="q1.-write-the-code-to-get-this-output-1" class="slide level2">
 <h2>Q1. Write the code to get this output</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="fu">left_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">left_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code common_name        latin_name
 1     ABBA  balsum fir    Abies balsamea
@@ -289,7 +286,7 @@
 4     LALA        &lt;NA&gt;    Larix laricina</code></pre>
 </div>
 <div class="cell-output-display">
-<div class="countdown" id="timer_cd0e4cf5" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_1de73cc6" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -299,7 +296,7 @@
 <section id="q2.-write-the-code-to-get-this-output-1" class="slide level2">
 <h2>Q2. Write the code to get this output</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">full_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">full_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code common_name        latin_name
 1     ABBA  balsum fir    Abies balsamea
@@ -319,7 +316,7 @@
 3     LALA    Larix laricina        &lt;NA&gt;</code></pre>
 </div>
 <div class="cell-output-display">
-<div class="countdown" id="timer_83997796" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_11ccc0c5" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -329,7 +326,7 @@
 <section id="q3.-write-the-code-to-get-this-output-1" class="slide level2">
 <h2>Q3. Write the code to get this output</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a><span class="fu">left_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">left_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code        latin_name common_name
 1     ABBA    Abies balsamea  balsum fir
@@ -348,7 +345,7 @@
 3     LALA        &lt;NA&gt;    Larix laricina</code></pre>
 </div>
 <div class="cell-output-display">
-<div class="countdown" id="timer_b427d69a" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_adea93db" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -358,7 +355,7 @@
 <section id="q4.-write-the-code-to-get-this-output-1" class="slide level2">
 <h2>Q4. Write the code to get this output</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a><span class="fu">right_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">right_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code common_name        latin_name
 1     ABBA  balsum fir    Abies balsamea
@@ -376,7 +373,7 @@
 2     BEPA paper birch Betula papyrifera</code></pre>
 </div>
 <div class="cell-output-display">
-<div class="countdown" id="timer_53619cfc" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_38a1d36a" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -386,7 +383,7 @@
 <section id="q5.-write-the-code-to-get-this-output-1" class="slide level2">
 <h2>Q5. Write the code to get this output</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a><span class="fu">inner_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">inner_join</span>(x, y, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code common_name        latin_name
 1     ABBA  balsum fir    Abies balsamea
@@ -405,7 +402,7 @@
 4     PIST              &lt;NA&gt;  white pine</code></pre>
 </div>
 <div class="cell-output-display">
-<div class="countdown" id="timer_0bc64cd1" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_629cc303" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -415,7 +412,7 @@
 <section id="q6.-write-the-code-to-get-this-output-1" class="slide level2">
 <h2>Q6. Write the code to get this output</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a><span class="fu">full_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">full_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code        latin_name common_name
 1     ABBA    Abies balsamea  balsum fir
@@ -428,9 +425,9 @@
 <section id="consider-a-third-data-frame-z" class="slide level2">
 <h2>Consider a third data frame, <code>z</code>:</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a>z <span class="ot">&lt;-</span> x <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a aria-label="2"></a>  <span class="fu">rename</span>(<span class="at">species_code =</span> spp_code)</span>
-<span id="cb24-3"><a aria-label="3"></a>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>z <span class="ot">&lt;-</span> x <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a></a>  <span class="fu">rename</span>(<span class="at">species_code =</span> spp_code)</span>
+<span id="cb24-3"><a></a>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  species_code common_name
 1         ABBA  balsum fir
@@ -449,7 +446,7 @@
 3         PIST  white pine              &lt;NA&gt;</code></pre>
 </div>
 <div class="cell-output-display">
-<div class="countdown" id="timer_74c8d90c" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_90af478a" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -459,7 +456,7 @@
 <section id="q7.-write-the-code-to-get-this-output-1" class="slide level2">
 <h2>Q7. Write the code to get this output</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a><span class="fu">left_join</span>(z, y, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"species_code"</span> <span class="ot">=</span> <span class="st">"spp_code"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">left_join</span>(z, y, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"species_code"</span> <span class="ot">=</span> <span class="st">"spp_code"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  species_code common_name        latin_name
 1         ABBA  balsum fir    Abies balsamea
@@ -477,7 +474,7 @@
 2     BEPA Betula papyrifera</code></pre>
 </div>
 <div class="cell-output-display">
-<div class="countdown" id="timer_1858fdd4" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_66645811" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -487,7 +484,7 @@
 <section id="q8.-write-the-code-to-get-this-output-hint-use-a-filtering-join-1" class="slide level2">
 <h2>Q8. Write the code to get this output (hint: use a filtering join)</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-label="1"></a><span class="fu">semi_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">semi_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code        latin_name
 1     ABBA    Abies balsamea
@@ -503,7 +500,7 @@
 1         PIST  white pine</code></pre>
 </div>
 <div class="cell-output-display">
-<div class="countdown" id="timer_08dd63c6" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_700dfada" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -513,7 +510,7 @@
 <section id="q9.-write-the-code-to-get-this-output-hint-use-a-filtering-join-1" class="slide level2">
 <h2>Q9. Write the code to get this output (hint: use a filtering join)</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a><span class="fu">anti_join</span>(z, y, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"species_code"</span> <span class="ot">=</span> <span class="st">"spp_code"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">anti_join</span>(z, y, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"species_code"</span> <span class="ot">=</span> <span class="st">"spp_code"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  species_code common_name
 1         PIST  white pine</code></pre>
@@ -528,7 +525,7 @@
 1     LALA Larix laricina</code></pre>
 </div>
 <div class="cell-output-display">
-<div class="countdown" id="timer_f32dd1a2" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_88f9b419" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -538,13 +535,13 @@
 <section id="q10.-write-the-code-to-get-this-output-hint-use-a-filtering-join-1" class="slide level2">
 <h2>Q10. Write the code to get this output (hint: use a filtering join)</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a><span class="fu">anti_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">anti_join</span>(y, x, <span class="at">by =</span> <span class="st">"spp_code"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code     latin_name
 1     LALA Larix laricina</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-label="1"></a><span class="co"># or </span></span>
-<span id="cb38-2"><a aria-label="2"></a><span class="fu">anti_join</span>(y, z, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"spp_code"</span> <span class="ot">=</span> <span class="st">"species_code"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="co"># or </span></span>
+<span id="cb38-2"><a></a><span class="fu">anti_join</span>(y, z, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"spp_code"</span> <span class="ot">=</span> <span class="st">"species_code"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  spp_code     latin_name
 1     LALA Larix laricina</code></pre>
@@ -745,7 +742,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

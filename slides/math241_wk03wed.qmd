@@ -51,7 +51,7 @@ theme_update(text = element_text(size = 20))
 
 [Grayson White]{.custom-subtitle}
 
-[Math 241 <br> Week 3 \| Spring 2026]{.custom-subtitle}
+[Stat 241 <br> Week 3 \| Fall 2026]{.custom-subtitle}
 :::
 :::::
 
@@ -1030,7 +1030,7 @@ getwd()
 ::: {.fragment .nonincremental}
  
 * Under the **Reed-Data-Science** GitHub Organization you currently have 1 repo:
-    + `pset01-username`: Just you and the Math 241 teaching team (me, course assistant, graders) can access
+    + `pset01-username`: Just you and the Stat 241 teaching team (me, course assistant, graders) can access
     + Soon, you'll have `pset02-username`
     
 :::

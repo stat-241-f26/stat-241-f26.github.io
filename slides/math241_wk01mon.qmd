@@ -49,7 +49,7 @@ library(tidyverse)
 
 [Grayson White]{.custom-subtitle}
 
-[Math 241 <br> Week 1 \| Spring 2026]{.custom-subtitle}
+[Stat 241 <br> Week 1 \| Fall 2026]{.custom-subtitle}
 :::
 :::::
 
@@ -67,7 +67,7 @@ library(tidyverse)
 
 **Today:**
 
--   Getting started in Math 241
+-   Getting started in Stat 241
     - Course structure and technologies
     - Where to find resources 
     - Course expectations
@@ -261,7 +261,7 @@ This summer, I'll be hiring Reed students in my undergraduate forestry data scie
 Would love to hear: your name, pronouns, major, what you're excited about in this class, and a fun fact! 
 
 
-## Getting Started in Math 241
+## Getting Started in Stat 241
 
 
 #### Course website
@@ -289,7 +289,7 @@ Would love to hear: your name, pronouns, major, what you're excited about in thi
 
 ------------------------------------------------------------------------
 
-## Getting Started in Math 241
+## Getting Started in Stat 241
 
 #### Other Resources 
 
@@ -929,7 +929,7 @@ I have a few `R` packages on the [Comprehensive R Archival Network](https://cran
 
 ------------------------------------------------------------------------
 
-## A typical week in Math 241 
+## A typical week in Stat 241 
 
 ![](img/course-schedule.png){fig-align="center"}
 
@@ -1044,7 +1044,7 @@ We expect everyone in this class to strive to foster a learning environment that
 **Code of Conduct**:
 
 
-We expect all members of Math 241 to make participation a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+We expect all members of Stat 241 to make participation a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
 We expect everyone to act and interact in ways that contribute to an open, welcoming, inclusive, and healthy community of learners. You can contribute to a positive learning environment by demonstrating empathy and kindness, being respectful of differing viewpoints and experiences, and giving and gracefully accepting constructive feedback.[^1]
 
@@ -1087,7 +1087,7 @@ countdown::countdown(1)
 
 ::: blockquote
 
-Artificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, write, and much more (and they are getting quite good at many of these tasks!). On the other hand, learning to think critically about a problem at hand, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. This dichotomy puts Math 241 in a interesting position as a course which aims to provide a cutting edge data science education at a liberal arts college. One of my main goals as the instructor of this course is to turn each of you into high quality data scientists who have a deep understanding of the R programming language and the ability to communicate insights about data on your own. Because of this, we will take a nuanced approach to engaging with AI tools in this course.
+Artificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, write, and much more (and they are getting quite good at many of these tasks!). On the other hand, learning to think critically about a problem at hand, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. This dichotomy puts Stat 241 in a interesting position as a course which aims to provide a cutting edge data science education at a liberal arts college. One of my main goals as the instructor of this course is to turn each of you into high quality data scientists who have a deep understanding of the R programming language and the ability to communicate insights about data on your own. Because of this, we will take a nuanced approach to engaging with AI tools in this course.
 :::
 
 ```{r}

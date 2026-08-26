@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.18">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <title>Stat 241 – Functions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,13 +19,10 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
+    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: 1.5em;}
-    div.column{flex: auto;}
-    @media screen {
-    div.columns{gap: min(4vw, 1.5em);}
-    div.column{overflow-x: auto;}
-    }
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -210,7 +207,7 @@
 <p><span class="custom-title">Functions</span></p>
 <p><br> <br> <br> <br> <br> <br> <br></p>
 <p><span class="custom-subtitle">Grayson White</span></p>
-<p><span class="custom-subtitle">Math 241 <br> Week 9 | Spring 2026</span></p>
+<p><span class="custom-subtitle">Stat 241 <br> Week 9 | Fall 2026</span></p>
 </div></div>
 </section>
 <section class="slide level2">
@@ -313,15 +310,15 @@
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(pdxTrees)</span>
-<span id="cb1-2"><a aria-label="2"></a>pdxTrees <span class="ot">&lt;-</span> <span class="fu">get_pdxTrees_parks</span>()</span>
-<span id="cb1-3"><a aria-label="3"></a></span>
-<span id="cb1-4"><a aria-label="4"></a>pdxTrees <span class="sc">%&gt;%</span></span>
-<span id="cb1-5"><a aria-label="5"></a>  <span class="fu">rename</span>(<span class="at">ht =</span> Tree_Height, </span>
-<span id="cb1-6"><a aria-label="6"></a>         <span class="at">pol =</span> Pollution_Removal_oz) <span class="sc">%&gt;%</span></span>
-<span id="cb1-7"><a aria-label="7"></a>  <span class="fu">summarize</span>(<span class="at">DBH_cv =</span> <span class="fu">sd</span>(DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-8"><a aria-label="8"></a>            <span class="at">ht_cv =</span> <span class="fu">sd</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb1-9"><a aria-label="9"></a>            <span class="at">pol_cv =</span> <span class="fu">sd</span>(pol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(pol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(pdxTrees)</span>
+<span id="cb1-2"><a></a>pdxTrees <span class="ot">&lt;-</span> <span class="fu">get_pdxTrees_parks</span>()</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a></a>  <span class="fu">rename</span>(<span class="at">ht =</span> Tree_Height, </span>
+<span id="cb1-6"><a></a>         <span class="at">pol =</span> Pollution_Removal_oz) <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a></a>  <span class="fu">summarize</span>(<span class="at">DBH_cv =</span> <span class="fu">sd</span>(DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-8"><a></a>            <span class="at">ht_cv =</span> <span class="fu">sd</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb1-9"><a></a>            <span class="at">pol_cv =</span> <span class="fu">sd</span>(pol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(pol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   DBH_cv ht_cv pol_cv
@@ -344,14 +341,14 @@
 <div class="fragment">
 <p>Where is the bug in my code?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">library</span>(pdxTrees)</span>
-<span id="cb3-2"><a aria-label="2"></a></span>
-<span id="cb3-3"><a aria-label="3"></a>pdxTrees <span class="sc">%&gt;%</span></span>
-<span id="cb3-4"><a aria-label="4"></a>  <span class="fu">rename</span>(<span class="at">ht =</span> Tree_Height, </span>
-<span id="cb3-5"><a aria-label="5"></a>         <span class="at">pol =</span> Pollution_Removal_oz) <span class="sc">%&gt;%</span></span>
-<span id="cb3-6"><a aria-label="6"></a>  <span class="fu">summarize</span>(<span class="at">DBH_cv =</span> <span class="fu">sd</span>(DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-7"><a aria-label="7"></a>            <span class="at">ht_cv =</span> <span class="fu">sd</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb3-8"><a aria-label="8"></a>            <span class="at">pol_cv =</span> <span class="fu">sd</span>(pol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(pdxTrees)</span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a></a>  <span class="fu">rename</span>(<span class="at">ht =</span> Tree_Height, </span>
+<span id="cb3-5"><a></a>         <span class="at">pol =</span> Pollution_Removal_oz) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a></a>  <span class="fu">summarize</span>(<span class="at">DBH_cv =</span> <span class="fu">sd</span>(DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb3-7"><a></a>            <span class="at">ht_cv =</span> <span class="fu">sd</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb3-8"><a></a>            <span class="at">pol_cv =</span> <span class="fu">sd</span>(pol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -374,15 +371,15 @@
 <div class="fragment">
 <p><strong>Question</strong>: For our example, what do we want?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a><span class="fu">library</span>(pdxTrees)</span>
-<span id="cb4-2"><a aria-label="2"></a>pdxTrees <span class="ot">&lt;-</span> <span class="fu">get_pdxTrees_parks</span>()</span>
-<span id="cb4-3"><a aria-label="3"></a></span>
-<span id="cb4-4"><a aria-label="4"></a>pdxTrees <span class="sc">%&gt;%</span></span>
-<span id="cb4-5"><a aria-label="5"></a>  <span class="fu">rename</span>(<span class="at">ht =</span> Tree_Height, </span>
-<span id="cb4-6"><a aria-label="6"></a>         <span class="at">pol =</span> Pollution_Removal_oz) <span class="sc">%&gt;%</span></span>
-<span id="cb4-7"><a aria-label="7"></a>  <span class="fu">summarize</span>(<span class="at">DBH_cv =</span> <span class="fu">sd</span>(DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb4-8"><a aria-label="8"></a>            <span class="at">ht_cv =</span> <span class="fu">sd</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb4-9"><a aria-label="9"></a>            <span class="at">pol_cv =</span> <span class="fu">sd</span>(pol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(pol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(pdxTrees)</span>
+<span id="cb4-2"><a></a>pdxTrees <span class="ot">&lt;-</span> <span class="fu">get_pdxTrees_parks</span>()</span>
+<span id="cb4-3"><a></a></span>
+<span id="cb4-4"><a></a>pdxTrees <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a></a>  <span class="fu">rename</span>(<span class="at">ht =</span> Tree_Height, </span>
+<span id="cb4-6"><a></a>         <span class="at">pol =</span> Pollution_Removal_oz) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a></a>  <span class="fu">summarize</span>(<span class="at">DBH_cv =</span> <span class="fu">sd</span>(DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb4-8"><a></a>            <span class="at">ht_cv =</span> <span class="fu">sd</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb4-9"><a></a>            <span class="at">pol_cv =</span> <span class="fu">sd</span>(pol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(pol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   DBH_cv ht_cv pol_cv
@@ -397,7 +394,7 @@
 <h3 id="function-writing-2">Function Writing</h3>
 <p><strong>Next</strong>: Get Something that Works</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a><span class="fu">sd</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">sd</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6496634</code></pre>
 </div>
@@ -419,19 +416,19 @@
 
 <h3 id="first-function">First Function</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb8-2"><a aria-label="2"></a>  <span class="fu">sd</span>(x) <span class="sc">/</span> <span class="fu">mean</span>(x)</span>
-<span id="cb8-3"><a aria-label="3"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb8-2"><a></a>  <span class="fu">sd</span>(x) <span class="sc">/</span> <span class="fu">mean</span>(x)</span>
+<span id="cb8-3"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <div class="fragment">
 <p>Test it:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> pdxTrees<span class="sc">$</span>DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> pdxTrees<span class="sc">$</span>DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6496634</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">summarize</span>(pdxTrees, <span class="fu">coef_of_var</span>(<span class="at">x =</span> DBH))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">summarize</span>(pdxTrees, <span class="fu">coef_of_var</span>(<span class="at">x =</span> DBH))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   `coef_of_var(x = DBH)`
@@ -445,9 +442,9 @@
 
 <h3 id="structure-of-functions">Structure of Functions</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb13-2"><a aria-label="2"></a>  <span class="fu">sd</span>(x) <span class="sc">/</span> <span class="fu">mean</span>(x)</span>
-<span id="cb13-3"><a aria-label="3"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb13-2"><a></a>  <span class="fu">sd</span>(x) <span class="sc">/</span> <span class="fu">mean</span>(x)</span>
+<span id="cb13-3"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li class="fragment"><p>Name: <code>coef_of_var</code></p></li>
@@ -460,7 +457,7 @@
 <h3 id="test-it-more">Test It More</h3>
 <p>New variable</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> pdxTrees<span class="sc">$</span>Tree_Height)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> pdxTrees<span class="sc">$</span>Tree_Height)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
@@ -471,11 +468,11 @@
 <h3 id="test-it-more-1">Test It More</h3>
 <p>Fix it</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb16-2"><a aria-label="2"></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">/</span><span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb16-3"><a aria-label="3"></a>}</span>
-<span id="cb16-4"><a aria-label="4"></a></span>
-<span id="cb16-5"><a aria-label="5"></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> pdxTrees<span class="sc">$</span>Tree_Height)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb16-2"><a></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">/</span><span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb16-3"><a></a>}</span>
+<span id="cb16-4"><a></a></span>
+<span id="cb16-5"><a></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> pdxTrees<span class="sc">$</span>Tree_Height)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6129159</code></pre>
 </div>
@@ -486,8 +483,8 @@
 <h3 id="test-it-more-2">Test It More</h3>
 <p>New dataset</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a><span class="fu">library</span>(forested)</span>
-<span id="cb18-2"><a aria-label="2"></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> forested<span class="sc">$</span>canopy_cover)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(forested)</span>
+<span id="cb18-2"><a></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> forested<span class="sc">$</span>canopy_cover)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9036806</code></pre>
 </div>
@@ -498,9 +495,9 @@
 <h3 id="test-it-more-3">Test It More</h3>
 <p>Data where you know the answer</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.069534</code></pre>
+<pre><code>[1] 3.91849</code></pre>
 </div>
 </div>
 </section>
@@ -509,18 +506,18 @@
 <h3 id="test-it-more-4">Test It More</h3>
 <p>Weird data</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a>DBH_new <span class="ot">&lt;-</span> <span class="fu">c</span>(pdxTrees<span class="sc">$</span>DBH, <span class="cn">Inf</span>)</span>
-<span id="cb22-2"><a aria-label="2"></a></span>
-<span id="cb22-3"><a aria-label="3"></a><span class="fu">coef_of_var</span>(DBH_new)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>DBH_new <span class="ot">&lt;-</span> <span class="fu">c</span>(pdxTrees<span class="sc">$</span>DBH, <span class="cn">Inf</span>)</span>
+<span id="cb22-2"><a></a></span>
+<span id="cb22-3"><a></a><span class="fu">coef_of_var</span>(DBH_new)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NaN</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(pdxTrees)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">coef_of_var</span>(pdxTrees)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `is.data.frame()`:
 ! 'list' object cannot be coerced to type 'double'</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>Condition)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>Condition)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in var(if (is.vector(x) || is.factor(x)) x else as.double(x), na.rm =
 na.rm): NAs introduced by coercion</code></pre>
@@ -539,7 +536,7 @@ returning NA</code></pre>
 <h3 id="test-it-more-5">Test It More</h3>
 <p>Weird data</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">coef_of_var</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.732051</code></pre>
 </div>
@@ -557,17 +554,17 @@ returning NA</code></pre>
 
 <h3 id="check-the-inputs-stopifnot">Check the Inputs: <code>stopifnot()</code></h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb32-2"><a aria-label="2"></a>  <span class="fu">stopifnot</span>(<span class="fu">is.numeric</span>(x))</span>
-<span id="cb32-3"><a aria-label="3"></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb32-4"><a aria-label="4"></a>}</span>
-<span id="cb32-5"><a aria-label="5"></a></span>
-<span id="cb32-6"><a aria-label="6"></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>Condition)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb32-2"><a></a>  <span class="fu">stopifnot</span>(<span class="fu">is.numeric</span>(x))</span>
+<span id="cb32-3"><a></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb32-4"><a></a>}</span>
+<span id="cb32-5"><a></a></span>
+<span id="cb32-6"><a></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>Condition)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `coef_of_var()`:
 ! is.numeric(x) is not TRUE</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">coef_of_var</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `coef_of_var()`:
 ! is.numeric(x) is not TRUE</code></pre>
@@ -581,21 +578,21 @@ returning NA</code></pre>
 
 <h3 id="check-the-inputs-if-then-stop">Check the Inputs: <code>if()</code> then <code>stop()</code></h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb36-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb36-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb36-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb36-5"><a aria-label="5"></a>  }</span>
-<span id="cb36-6"><a aria-label="6"></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb36-7"><a aria-label="7"></a>}</span>
-<span id="cb36-8"><a aria-label="8"></a></span>
-<span id="cb36-9"><a aria-label="9"></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>Condition)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb36-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb36-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb36-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb36-5"><a></a>  }</span>
+<span id="cb36-6"><a></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb36-7"><a></a>}</span>
+<span id="cb36-8"><a></a></span>
+<span id="cb36-9"><a></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>Condition)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `coef_of_var()`:
 ! Unfortunately this function only works for numeric input.
 You have provided an object of class: character</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">coef_of_var</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `coef_of_var()`:
 ! Unfortunately this function only works for numeric input.
@@ -610,13 +607,13 @@ You have provided an object of class: logical</code></pre>
 
 <h3 id="generalizing-our-function">Generalizing our Function</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb40-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb40-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb40-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb40-5"><a aria-label="5"></a>  }</span>
-<span id="cb40-6"><a aria-label="6"></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb40-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb40-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb40-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb40-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb40-5"><a></a>  }</span>
+<span id="cb40-6"><a></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb40-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li class="fragment"><p>We started with an MVP.</p></li>
@@ -636,22 +633,22 @@ You have provided an object of class: logical</code></pre>
 
 <h3 id="generalizing-our-function-1">Generalizing our Function</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb41-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb41-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb41-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb41-5"><a aria-label="5"></a>  }</span>
-<span id="cb41-6"><a aria-label="6"></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb41-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb41-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb41-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb41-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb41-5"><a></a>  }</span>
+<span id="cb41-6"><a></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb41-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <p><strong>A generalization</strong>: allow user to choose to remove NAs or not</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-label="1"></a><span class="fu">sd</span>(pdxTrees<span class="sc">$</span>Tree_Height, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) <span class="sc">/</span> <span class="fu">mean</span>(pdxTrees<span class="sc">$</span>Tree_Height, <span class="at">na.rm =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">sd</span>(pdxTrees<span class="sc">$</span>Tree_Height, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) <span class="sc">/</span> <span class="fu">mean</span>(pdxTrees<span class="sc">$</span>Tree_Height, <span class="at">na.rm =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-label="1"></a><span class="fu">sd</span>(pdxTrees<span class="sc">$</span>Tree_Height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(pdxTrees<span class="sc">$</span>Tree_Height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">sd</span>(pdxTrees<span class="sc">$</span>Tree_Height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(pdxTrees<span class="sc">$</span>Tree_Height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6129159</code></pre>
 </div>
@@ -661,24 +658,24 @@ You have provided an object of class: logical</code></pre>
 
 <h3 id="add-an-argument-to-the-function">Add an argument to the function</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, na.rm){</span>
-<span id="cb46-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb46-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb46-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb46-5"><a aria-label="5"></a>  }</span>
-<span id="cb46-6"><a aria-label="6"></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb46-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, na.rm){</span>
+<span id="cb46-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb46-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb46-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb46-5"><a></a>  }</span>
+<span id="cb46-6"><a></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb46-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
 <h3 id="test-it">Test it</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> pdxTrees<span class="sc">$</span>DBH, <span class="at">na.rm =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> pdxTrees<span class="sc">$</span>DBH, <span class="at">na.rm =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6496634</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> pdxTrees<span class="sc">$</span>DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> pdxTrees<span class="sc">$</span>DBH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6496634</code></pre>
 </div>
@@ -689,26 +686,26 @@ You have provided an object of class: logical</code></pre>
 <div class="fragment">
 <p>Wrong:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, na.rm){</span>
-<span id="cb51-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb51-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb51-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb51-5"><a aria-label="5"></a>  }</span>
-<span id="cb51-6"><a aria-label="6"></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb51-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, na.rm){</span>
+<span id="cb51-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb51-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb51-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb51-5"><a></a>  }</span>
+<span id="cb51-6"><a></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb51-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p><br></p>
 <div class="fragment">
 <p>Fixed:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, na.rm){</span>
-<span id="cb52-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb52-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb52-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb52-5"><a aria-label="5"></a>  }</span>
-<span id="cb52-6"><a aria-label="6"></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm)</span>
-<span id="cb52-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, na.rm){</span>
+<span id="cb52-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb52-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb52-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb52-5"><a></a>  }</span>
+<span id="cb52-6"><a></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm)</span>
+<span id="cb52-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -716,22 +713,22 @@ You have provided an object of class: logical</code></pre>
 
 <h3 id="set-default-values">Set Default Values</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>){</span>
-<span id="cb53-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb53-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb53-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb53-5"><a aria-label="5"></a>  }</span>
-<span id="cb53-6"><a aria-label="6"></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm)</span>
-<span id="cb53-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>){</span>
+<span id="cb53-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb53-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb53-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb53-5"><a></a>  }</span>
+<span id="cb53-6"><a></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm)</span>
+<span id="cb53-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <p>Test them:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> pdxTrees<span class="sc">$</span>DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> pdxTrees<span class="sc">$</span>DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6496634</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> pdxTrees<span class="sc">$</span>DBH, <span class="at">na.rm =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a><span class="fu">coef_of_var</span>(<span class="at">x =</span> pdxTrees<span class="sc">$</span>DBH, <span class="at">na.rm =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6496634</code></pre>
 </div>
@@ -746,13 +743,13 @@ You have provided an object of class: logical</code></pre>
 <h3 id="set-default-values-1">Set Default Values</h3>
 <p>What are our required arguments? Optional arguments?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>){</span>
-<span id="cb58-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb58-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb58-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb58-5"><a aria-label="5"></a>  }</span>
-<span id="cb58-6"><a aria-label="6"></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm)</span>
-<span id="cb58-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>){</span>
+<span id="cb58-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb58-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb58-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb58-5"><a></a>  }</span>
+<span id="cb58-6"><a></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm)</span>
+<span id="cb58-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li class="fragment">Required: No default</li>
@@ -767,13 +764,13 @@ You have provided an object of class: logical</code></pre>
 <h3 id="naming-arguments">Naming Arguments</h3>
 <p><strong>Bad function:</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a aria-label="1"></a>coef_of_var_bad <span class="ot">&lt;-</span> <span class="cf">function</span>(thing1, <span class="at">thing2 =</span> <span class="cn">TRUE</span>){</span>
-<span id="cb59-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(thing1)) {</span>
-<span id="cb59-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb59-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(thing1))</span>
-<span id="cb59-5"><a aria-label="5"></a>  }</span>
-<span id="cb59-6"><a aria-label="6"></a>  <span class="fu">sd</span>(thing1, <span class="at">na.rm =</span> thing2) <span class="sc">/</span> <span class="fu">mean</span>(thing1, <span class="at">na.rm =</span> thing2)</span>
-<span id="cb59-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>coef_of_var_bad <span class="ot">&lt;-</span> <span class="cf">function</span>(thing1, <span class="at">thing2 =</span> <span class="cn">TRUE</span>){</span>
+<span id="cb59-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(thing1)) {</span>
+<span id="cb59-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb59-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(thing1))</span>
+<span id="cb59-5"><a></a>  }</span>
+<span id="cb59-6"><a></a>  <span class="fu">sd</span>(thing1, <span class="at">na.rm =</span> thing2) <span class="sc">/</span> <span class="fu">mean</span>(thing1, <span class="at">na.rm =</span> thing2)</span>
+<span id="cb59-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li class="fragment">Painting the walls is a simple way to decorate a room.
@@ -798,25 +795,25 @@ You have provided an object of class: logical</code></pre>
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> <span class="dv">0</span>){</span>
-<span id="cb60-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb60-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb60-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb60-5"><a aria-label="5"></a>  }</span>
-<span id="cb60-6"><a aria-label="6"></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim)</span>
-<span id="cb60-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> <span class="dv">0</span>){</span>
+<span id="cb60-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb60-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb60-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb60-5"><a></a>  }</span>
+<span id="cb60-6"><a></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim)</span>
+<span id="cb60-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
 <p>Maybe you think <code>na.rm</code> is an awful name</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">remove_nas =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> <span class="dv">0</span>){</span>
-<span id="cb61-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb61-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb61-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb61-5"><a aria-label="5"></a>  }</span>
-<span id="cb61-6"><a aria-label="6"></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> remove_nas) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> remove_nas, <span class="at">trim =</span> trim)</span>
-<span id="cb61-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">remove_nas =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> <span class="dv">0</span>){</span>
+<span id="cb61-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb61-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb61-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb61-5"><a></a>  }</span>
+<span id="cb61-6"><a></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> remove_nas) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> remove_nas, <span class="at">trim =</span> trim)</span>
+<span id="cb61-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -829,13 +826,13 @@ You have provided an object of class: logical</code></pre>
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> <span class="dv">0</span>){</span>
-<span id="cb62-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb62-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb62-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb62-5"><a aria-label="5"></a>  }</span>
-<span id="cb62-6"><a aria-label="6"></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim)</span>
-<span id="cb62-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> <span class="dv">0</span>){</span>
+<span id="cb62-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb62-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb62-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb62-5"><a></a>  }</span>
+<span id="cb62-6"><a></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim)</span>
+<span id="cb62-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <ul>
@@ -850,18 +847,18 @@ You have provided an object of class: logical</code></pre>
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> <span class="dv">0</span>){</span>
-<span id="cb63-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb63-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb63-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb63-5"><a aria-label="5"></a>  }</span>
-<span id="cb63-6"><a aria-label="6"></a>  </span>
-<span id="cb63-7"><a aria-label="7"></a>  std_dev <span class="ot">&lt;-</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm)</span>
-<span id="cb63-8"><a aria-label="8"></a>  </span>
-<span id="cb63-9"><a aria-label="9"></a>  avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim)</span>
-<span id="cb63-10"><a aria-label="10"></a>  </span>
-<span id="cb63-11"><a aria-label="11"></a>  std_dev <span class="sc">/</span> avg</span>
-<span id="cb63-12"><a aria-label="12"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> <span class="dv">0</span>){</span>
+<span id="cb63-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb63-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb63-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb63-5"><a></a>  }</span>
+<span id="cb63-6"><a></a>  </span>
+<span id="cb63-7"><a></a>  std_dev <span class="ot">&lt;-</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm)</span>
+<span id="cb63-8"><a></a>  </span>
+<span id="cb63-9"><a></a>  avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim)</span>
+<span id="cb63-10"><a></a>  </span>
+<span id="cb63-11"><a></a>  std_dev <span class="sc">/</span> avg</span>
+<span id="cb63-12"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -870,25 +867,25 @@ You have provided an object of class: logical</code></pre>
 <h3 id="function-output">Function Output</h3>
 <p>Default: Last line of code</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> <span class="dv">0</span>){</span>
-<span id="cb64-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb64-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb64-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb64-5"><a aria-label="5"></a>  }</span>
-<span id="cb64-6"><a aria-label="6"></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim)</span>
-<span id="cb64-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> <span class="dv">0</span>){</span>
+<span id="cb64-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb64-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb64-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb64-5"><a></a>  }</span>
+<span id="cb64-6"><a></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim)</span>
+<span id="cb64-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <p>Can also be explicit with <code>return()</code></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> <span class="dv">0</span>){</span>
-<span id="cb65-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb65-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb65-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb65-5"><a aria-label="5"></a>  }</span>
-<span id="cb65-6"><a aria-label="6"></a>  </span>
-<span id="cb65-7"><a aria-label="7"></a>  <span class="fu">return</span>(<span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim))</span>
-<span id="cb65-8"><a aria-label="8"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> <span class="dv">0</span>){</span>
+<span id="cb65-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb65-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb65-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb65-5"><a></a>  }</span>
+<span id="cb65-6"><a></a>  </span>
+<span id="cb65-7"><a></a>  <span class="fu">return</span>(<span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim))</span>
+<span id="cb65-8"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -897,19 +894,19 @@ You have provided an object of class: logical</code></pre>
 <h3 id="function-output-1">Function Output</h3>
 <p>If you want to output more than the last line, use a <code>list()</code>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> <span class="dv">0</span>){</span>
-<span id="cb66-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb66-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb66-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb66-5"><a aria-label="5"></a>  }</span>
-<span id="cb66-6"><a aria-label="6"></a>  std_dev <span class="ot">&lt;-</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm)</span>
-<span id="cb66-7"><a aria-label="7"></a>  avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim)</span>
-<span id="cb66-8"><a aria-label="8"></a>  stat <span class="ot">&lt;-</span> std_dev <span class="sc">/</span> avg</span>
-<span id="cb66-9"><a aria-label="9"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">stat =</span> stat,</span>
-<span id="cb66-10"><a aria-label="10"></a>              <span class="at">avg =</span> avg,</span>
-<span id="cb66-11"><a aria-label="11"></a>              <span class="at">std_dev =</span> std_dev))</span>
-<span id="cb66-12"><a aria-label="12"></a>}</span>
-<span id="cb66-13"><a aria-label="13"></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> <span class="dv">0</span>){</span>
+<span id="cb66-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb66-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb66-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb66-5"><a></a>  }</span>
+<span id="cb66-6"><a></a>  std_dev <span class="ot">&lt;-</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm)</span>
+<span id="cb66-7"><a></a>  avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim)</span>
+<span id="cb66-8"><a></a>  stat <span class="ot">&lt;-</span> std_dev <span class="sc">/</span> avg</span>
+<span id="cb66-9"><a></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">stat =</span> stat,</span>
+<span id="cb66-10"><a></a>              <span class="at">avg =</span> avg,</span>
+<span id="cb66-11"><a></a>              <span class="at">std_dev =</span> std_dev))</span>
+<span id="cb66-12"><a></a>}</span>
+<span id="cb66-13"><a></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$stat
 [1] 0.6496634
@@ -927,19 +924,19 @@ $std_dev
 <h3 id="function-output-2">Function Output</h3>
 <p>If possible, provide a <code>data.frame()</code>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">trim =</span> <span class="dv">0</span>, <span class="at">na.rm =</span> <span class="cn">FALSE</span>){</span>
-<span id="cb68-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb68-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb68-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb68-5"><a aria-label="5"></a>  }</span>
-<span id="cb68-6"><a aria-label="6"></a>  std_dev <span class="ot">&lt;-</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm)</span>
-<span id="cb68-7"><a aria-label="7"></a>  avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim)</span>
-<span id="cb68-8"><a aria-label="8"></a>  stat <span class="ot">&lt;-</span> std_dev <span class="sc">/</span> avg</span>
-<span id="cb68-9"><a aria-label="9"></a>  <span class="fu">return</span>(<span class="fu">data.frame</span>(<span class="at">stat =</span> stat,</span>
-<span id="cb68-10"><a aria-label="10"></a>              <span class="at">avg =</span> avg,</span>
-<span id="cb68-11"><a aria-label="11"></a>              <span class="at">std_dev =</span> std_dev))</span>
-<span id="cb68-12"><a aria-label="12"></a>}</span>
-<span id="cb68-13"><a aria-label="13"></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">trim =</span> <span class="dv">0</span>, <span class="at">na.rm =</span> <span class="cn">FALSE</span>){</span>
+<span id="cb68-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb68-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb68-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb68-5"><a></a>  }</span>
+<span id="cb68-6"><a></a>  std_dev <span class="ot">&lt;-</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm)</span>
+<span id="cb68-7"><a></a>  avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim)</span>
+<span id="cb68-8"><a></a>  stat <span class="ot">&lt;-</span> std_dev <span class="sc">/</span> avg</span>
+<span id="cb68-9"><a></a>  <span class="fu">return</span>(<span class="fu">data.frame</span>(<span class="at">stat =</span> stat,</span>
+<span id="cb68-10"><a></a>              <span class="at">avg =</span> avg,</span>
+<span id="cb68-11"><a></a>              <span class="at">std_dev =</span> std_dev))</span>
+<span id="cb68-12"><a></a>}</span>
+<span id="cb68-13"><a></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       stat      avg  std_dev
 1 0.6496634 20.61408 13.39221</code></pre>
@@ -956,11 +953,11 @@ $std_dev
 </ul></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a aria-label="1"></a><span class="fu">sd</span>(pdxTrees<span class="sc">$</span>Tree_Height)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a></a><span class="fu">sd</span>(pdxTrees<span class="sc">$</span>Tree_Height)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a aria-label="1"></a><span class="fu">mean</span>(pdxTrees<span class="sc">$</span>Tree_Height)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a><span class="fu">mean</span>(pdxTrees<span class="sc">$</span>Tree_Height)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
@@ -976,21 +973,21 @@ $std_dev
 
 <h3 id="handling-missingness-1">Handling Missingness</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>, <span class="at">trim =</span> <span class="dv">0</span>){</span>
-<span id="cb74-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb74-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb74-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb74-5"><a aria-label="5"></a>  }</span>
-<span id="cb74-6"><a aria-label="6"></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim)</span>
-<span id="cb74-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>, <span class="at">trim =</span> <span class="dv">0</span>){</span>
+<span id="cb74-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb74-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb74-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb74-5"><a></a>  }</span>
+<span id="cb74-6"><a></a>  <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm, <span class="at">trim =</span> trim)</span>
+<span id="cb74-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>Tree_Height)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>Tree_Height)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>Tree_Height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>Tree_Height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6129159</code></pre>
 </div>
@@ -1001,24 +998,24 @@ $std_dev
 
 <h3 id="inheriting-the-arguments-of-a-function">Inheriting the Arguments of a Function</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a aria-label="1"></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">trim =</span> <span class="dv">0</span>, ...){</span>
-<span id="cb79-2"><a aria-label="2"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb79-3"><a aria-label="3"></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
-<span id="cb79-4"><a aria-label="4"></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
-<span id="cb79-5"><a aria-label="5"></a>  }</span>
-<span id="cb79-6"><a aria-label="6"></a>  <span class="fu">sd</span>(x, ...) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">trim =</span> trim, ...)</span>
-<span id="cb79-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a></a>coef_of_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">trim =</span> <span class="dv">0</span>, ...){</span>
+<span id="cb79-2"><a></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb79-3"><a></a>    <span class="fu">stop</span>(<span class="st">'Unfortunately this function only works for numeric input.</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb79-4"><a></a>         <span class="st">'You have provided an object of class: '</span>, <span class="fu">class</span>(x))</span>
+<span id="cb79-5"><a></a>  }</span>
+<span id="cb79-6"><a></a>  <span class="fu">sd</span>(x, ...) <span class="sc">/</span> <span class="fu">mean</span>(x, <span class="at">trim =</span> trim, ...)</span>
+<span id="cb79-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>Tree_Height)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>Tree_Height)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>Tree_Height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>Tree_Height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6129159</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a aria-label="1"></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>Tree_Height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> .<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a></a><span class="fu">coef_of_var</span>(pdxTrees<span class="sc">$</span>Tree_Height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">trim =</span> .<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6587732</code></pre>
 </div>
@@ -1036,7 +1033,7 @@ $std_dev
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a aria-label="1"></a>pdxTrees[pdxTrees<span class="sc">$</span>Common_Name <span class="sc">==</span> <span class="st">"Douglas-Fir"</span> <span class="sc">&amp;</span> pdxTrees<span class="sc">$</span>Tree_Height <span class="sc">&gt;</span> <span class="dv">180</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a></a>pdxTrees[pdxTrees<span class="sc">$</span>Common_Name <span class="sc">==</span> <span class="st">"Douglas-Fir"</span> <span class="sc">&amp;</span> pdxTrees<span class="sc">$</span>Tree_Height <span class="sc">&gt;</span> <span class="dv">180</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 34
   Longitude Latitude UserID Genus       Family   DBH Inventory_Date      Species
@@ -1066,7 +1063,7 @@ $std_dev
 <li><p>To do that, we need to discuss <strong>tidy evaluation</strong>/<strong>non-standard evaluation</strong>.</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a aria-label="1"></a><span class="fu">filter</span>(pdxTrees, Common_Name <span class="sc">==</span> <span class="st">"Douglas-Fir"</span>, Tree_Height <span class="sc">&gt;</span> <span class="dv">180</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a></a><span class="fu">filter</span>(pdxTrees, Common_Name <span class="sc">==</span> <span class="st">"Douglas-Fir"</span>, Tree_Height <span class="sc">&gt;</span> <span class="dv">180</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 34
   Longitude Latitude UserID Genus       Family   DBH Inventory_Date      Species
@@ -1092,7 +1089,7 @@ $std_dev
 <h3 id="non-standard-evaluation-2">Non-Standard Evaluation</h3>
 <p><code>tidyverse</code> functions often use <strong>data masking</strong> so that you can use <strong>data variables</strong> as if they were <strong>environment variables</strong>.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a aria-label="1"></a><span class="fu">filter</span>(pdxTrees, Common_Name <span class="sc">==</span> <span class="st">"Douglas-Fir"</span>, Tree_Height <span class="sc">&gt;</span> <span class="dv">180</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a></a><span class="fu">filter</span>(pdxTrees, Common_Name <span class="sc">==</span> <span class="st">"Douglas-Fir"</span>, Tree_Height <span class="sc">&gt;</span> <span class="dv">180</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 34
   Longitude Latitude UserID Genus       Family   DBH Inventory_Date      Species
@@ -1121,12 +1118,12 @@ $std_dev
 <div class="column" style="width:50%;">
 <p>Env-variable: <code>pdxTrees</code></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a aria-label="1"></a>pdxTrees <span class="ot">&lt;-</span> <span class="fu">get_pdxTrees_parks</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a></a>pdxTrees <span class="ot">&lt;-</span> <span class="fu">get_pdxTrees_parks</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:50%;">
 <p>Data-variable: <code>Common_Name</code></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a aria-label="1"></a>pdxTrees<span class="sc">$</span>Common_Name</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a></a>pdxTrees<span class="sc">$</span>Common_Name</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    [1] "Douglas-Fir"                                         
     [2] "Douglas-Fir"                                         
@@ -26671,11 +26668,11 @@ $std_dev
 <h3 id="non-standard-evaluation-4">Non-Standard Evaluation</h3>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a aria-label="1"></a><span class="fu">library</span>(pdxTrees)</span>
-<span id="cb95-2"><a aria-label="2"></a>pdxTrees_parks <span class="ot">&lt;-</span> <span class="fu">get_pdxTrees_parks</span>()</span>
-<span id="cb95-3"><a aria-label="3"></a><span class="co"># Minimal viable product working code</span></span>
-<span id="cb95-4"><a aria-label="4"></a><span class="fu">ggplot</span>(<span class="at">data =</span> pdxTrees_parks, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> DBH)) <span class="sc">+</span></span>
-<span id="cb95-5"><a aria-label="5"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a></a><span class="fu">library</span>(pdxTrees)</span>
+<span id="cb95-2"><a></a>pdxTrees_parks <span class="ot">&lt;-</span> <span class="fu">get_pdxTrees_parks</span>()</span>
+<span id="cb95-3"><a></a><span class="co"># Minimal viable product working code</span></span>
+<span id="cb95-4"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> pdxTrees_parks, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> DBH)) <span class="sc">+</span></span>
+<span id="cb95-5"><a></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -26690,13 +26687,13 @@ $std_dev
 
 <h3 id="non-standard-evaluation-5">Non-Standard Evaluation</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a aria-label="1"></a><span class="co"># Shorthand histogram function</span></span>
-<span id="cb96-2"><a aria-label="2"></a>histo <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...){</span>
-<span id="cb96-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
-<span id="cb96-4"><a aria-label="4"></a>    <span class="fu">geom_histogram</span>()</span>
-<span id="cb96-5"><a aria-label="5"></a>}</span>
-<span id="cb96-6"><a aria-label="6"></a><span class="co"># Test it</span></span>
-<span id="cb96-7"><a aria-label="7"></a><span class="fu">histo</span>(pdxTrees_parks, DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a></a><span class="co"># Shorthand histogram function</span></span>
+<span id="cb96-2"><a></a>histo <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...){</span>
+<span id="cb96-3"><a></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb96-4"><a></a>    <span class="fu">geom_histogram</span>()</span>
+<span id="cb96-5"><a></a>}</span>
+<span id="cb96-6"><a></a><span class="co"># Test it</span></span>
+<span id="cb96-7"><a></a><span class="fu">histo</span>(pdxTrees_parks, DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `geom_histogram()`:
 ! Problem while computing aesthetics.
@@ -26710,13 +26707,13 @@ Caused by error:
 
 <h3 id="non-standard-evaluation-6">Non-Standard Evaluation</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a aria-label="1"></a><span class="co"># Shorthand histogram function</span></span>
-<span id="cb98-2"><a aria-label="2"></a>histo <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...){</span>
-<span id="cb98-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
-<span id="cb98-4"><a aria-label="4"></a>    <span class="fu">geom_histogram</span>()</span>
-<span id="cb98-5"><a aria-label="5"></a>}</span>
-<span id="cb98-6"><a aria-label="6"></a><span class="co"># Test it</span></span>
-<span id="cb98-7"><a aria-label="7"></a><span class="fu">histo</span>(pdxTrees_parks, <span class="st">"DBH"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a></a><span class="co"># Shorthand histogram function</span></span>
+<span id="cb98-2"><a></a>histo <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...){</span>
+<span id="cb98-3"><a></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb98-4"><a></a>    <span class="fu">geom_histogram</span>()</span>
+<span id="cb98-5"><a></a>}</span>
+<span id="cb98-6"><a></a><span class="co"># Test it</span></span>
+<span id="cb98-7"><a></a><span class="fu">histo</span>(pdxTrees_parks, <span class="st">"DBH"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `geom_histogram()`:
 ! Problem while computing stat.
@@ -26734,13 +26731,13 @@ Caused by error in `setup_params()`:
 <p><strong>Solution 1</strong>: Supply the column name as a character vector and then use the <code>.data</code> pronoun and <code>[[ ]]</code> to access the correct column.</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a aria-label="1"></a><span class="co"># Shorthand histogram function</span></span>
-<span id="cb100-2"><a aria-label="2"></a>histo <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...){</span>
-<span id="cb100-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> .data[[ x ]])) <span class="sc">+</span></span>
-<span id="cb100-4"><a aria-label="4"></a>    <span class="fu">geom_histogram</span>()</span>
-<span id="cb100-5"><a aria-label="5"></a>}</span>
-<span id="cb100-6"><a aria-label="6"></a><span class="co"># Test it</span></span>
-<span id="cb100-7"><a aria-label="7"></a><span class="fu">histo</span>(pdxTrees_parks, <span class="st">"DBH"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a></a><span class="co"># Shorthand histogram function</span></span>
+<span id="cb100-2"><a></a>histo <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...){</span>
+<span id="cb100-3"><a></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> .data[[ x ]])) <span class="sc">+</span></span>
+<span id="cb100-4"><a></a>    <span class="fu">geom_histogram</span>()</span>
+<span id="cb100-5"><a></a>}</span>
+<span id="cb100-6"><a></a><span class="co"># Test it</span></span>
+<span id="cb100-7"><a></a><span class="fu">histo</span>(pdxTrees_parks, <span class="st">"DBH"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -26757,14 +26754,14 @@ Caused by error in `setup_params()`:
 <p>Still good to check inputs! Notice I don’t use tidy evaluation there.</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a aria-label="1"></a><span class="co"># Shorthand histogram function</span></span>
-<span id="cb101-2"><a aria-label="2"></a>histo <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...){</span>
-<span id="cb101-3"><a aria-label="3"></a>  <span class="fu">stopifnot</span>(<span class="fu">is.numeric</span>(data[[x]]))</span>
-<span id="cb101-4"><a aria-label="4"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> .data[[ x ]])) <span class="sc">+</span></span>
-<span id="cb101-5"><a aria-label="5"></a>    <span class="fu">geom_histogram</span>()</span>
-<span id="cb101-6"><a aria-label="6"></a>}</span>
-<span id="cb101-7"><a aria-label="7"></a><span class="co"># Test it</span></span>
-<span id="cb101-8"><a aria-label="8"></a><span class="fu">histo</span>(pdxTrees_parks, <span class="st">"DBH"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a></a><span class="co"># Shorthand histogram function</span></span>
+<span id="cb101-2"><a></a>histo <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...){</span>
+<span id="cb101-3"><a></a>  <span class="fu">stopifnot</span>(<span class="fu">is.numeric</span>(data[[x]]))</span>
+<span id="cb101-4"><a></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> .data[[ x ]])) <span class="sc">+</span></span>
+<span id="cb101-5"><a></a>    <span class="fu">geom_histogram</span>()</span>
+<span id="cb101-6"><a></a>}</span>
+<span id="cb101-7"><a></a><span class="co"># Test it</span></span>
+<span id="cb101-8"><a></a><span class="fu">histo</span>(pdxTrees_parks, <span class="st">"DBH"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -26781,13 +26778,13 @@ Caused by error in `setup_params()`:
 <p><strong>Solution 2</strong>: Provide the column name as if it were an environment variable and then use the embrace operation <code>{{}}</code>.</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a aria-label="1"></a><span class="co"># Shorthand histogram function</span></span>
-<span id="cb102-2"><a aria-label="2"></a>histo <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...){</span>
-<span id="cb102-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> {{ x }})) <span class="sc">+</span></span>
-<span id="cb102-4"><a aria-label="4"></a>    <span class="fu">geom_histogram</span>()</span>
-<span id="cb102-5"><a aria-label="5"></a>}</span>
-<span id="cb102-6"><a aria-label="6"></a><span class="co"># Test it</span></span>
-<span id="cb102-7"><a aria-label="7"></a><span class="fu">histo</span>(pdxTrees_parks, DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a></a><span class="co"># Shorthand histogram function</span></span>
+<span id="cb102-2"><a></a>histo <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...){</span>
+<span id="cb102-3"><a></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> {{ x }})) <span class="sc">+</span></span>
+<span id="cb102-4"><a></a>    <span class="fu">geom_histogram</span>()</span>
+<span id="cb102-5"><a></a>}</span>
+<span id="cb102-6"><a></a><span class="co"># Test it</span></span>
+<span id="cb102-7"><a></a><span class="fu">histo</span>(pdxTrees_parks, DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -26803,12 +26800,12 @@ Caused by error in `setup_params()`:
 <h3 id="non-standard-evaluation-10">Non-Standard Evaluation</h3>
 <p>Why is the <code>stopifnot()</code> we used in <strong>Solution 1</strong> erroring for <strong>Solution 2</strong>?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a aria-label="1"></a>histo <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...){</span>
-<span id="cb103-2"><a aria-label="2"></a>  <span class="fu">stopifnot</span>(<span class="fu">is.numeric</span>(data[[x]]))</span>
-<span id="cb103-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> {{ x }})) <span class="sc">+</span></span>
-<span id="cb103-4"><a aria-label="4"></a>    <span class="fu">geom_histogram</span>()</span>
-<span id="cb103-5"><a aria-label="5"></a>}</span>
-<span id="cb103-6"><a aria-label="6"></a><span class="fu">histo</span>(pdxTrees_parks, DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a></a>histo <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...){</span>
+<span id="cb103-2"><a></a>  <span class="fu">stopifnot</span>(<span class="fu">is.numeric</span>(data[[x]]))</span>
+<span id="cb103-3"><a></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> {{ x }})) <span class="sc">+</span></span>
+<span id="cb103-4"><a></a>    <span class="fu">geom_histogram</span>()</span>
+<span id="cb103-5"><a></a>}</span>
+<span id="cb103-6"><a></a><span class="fu">histo</span>(pdxTrees_parks, DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error:
 ! object 'DBH' not found</code></pre>
@@ -26821,17 +26818,17 @@ Caused by error in `setup_params()`:
 <p>Need to embrace <code>x</code>!</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a aria-label="1"></a>histo <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...){</span>
-<span id="cb105-2"><a aria-label="2"></a>  <span class="co">#Determine if x is numeric</span></span>
-<span id="cb105-3"><a aria-label="3"></a>  x_class <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb105-4"><a aria-label="4"></a>    <span class="fu">pull</span>({{ x }}) <span class="sc">%&gt;%</span></span>
-<span id="cb105-5"><a aria-label="5"></a>    <span class="fu">is.numeric</span>()</span>
-<span id="cb105-6"><a aria-label="6"></a>  <span class="fu">stopifnot</span>(x_class)</span>
-<span id="cb105-7"><a aria-label="7"></a>  </span>
-<span id="cb105-8"><a aria-label="8"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> {{ x }})) <span class="sc">+</span></span>
-<span id="cb105-9"><a aria-label="9"></a>    <span class="fu">geom_histogram</span>()</span>
-<span id="cb105-10"><a aria-label="10"></a>}</span>
-<span id="cb105-11"><a aria-label="11"></a><span class="fu">histo</span>(pdxTrees_parks, DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a></a>histo <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...){</span>
+<span id="cb105-2"><a></a>  <span class="co">#Determine if x is numeric</span></span>
+<span id="cb105-3"><a></a>  x_class <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb105-4"><a></a>    <span class="fu">pull</span>({{ x }}) <span class="sc">%&gt;%</span></span>
+<span id="cb105-5"><a></a>    <span class="fu">is.numeric</span>()</span>
+<span id="cb105-6"><a></a>  <span class="fu">stopifnot</span>(x_class)</span>
+<span id="cb105-7"><a></a>  </span>
+<span id="cb105-8"><a></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> {{ x }})) <span class="sc">+</span></span>
+<span id="cb105-9"><a></a>    <span class="fu">geom_histogram</span>()</span>
+<span id="cb105-10"><a></a>}</span>
+<span id="cb105-11"><a></a><span class="fu">histo</span>(pdxTrees_parks, DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -26846,17 +26843,17 @@ Caused by error in `setup_params()`:
 
 <h3 id="non-standard-evaluation-12">Non-Standard Evaluation</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a aria-label="1"></a>histo <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...){</span>
-<span id="cb106-2"><a aria-label="2"></a>  <span class="co">#Determine if x is numeric</span></span>
-<span id="cb106-3"><a aria-label="3"></a>  x_class <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb106-4"><a aria-label="4"></a>    <span class="fu">pull</span>({{ x }}) <span class="sc">%&gt;%</span></span>
-<span id="cb106-5"><a aria-label="5"></a>    <span class="fu">is.numeric</span>()</span>
-<span id="cb106-6"><a aria-label="6"></a>  <span class="fu">stopifnot</span>(x_class)</span>
-<span id="cb106-7"><a aria-label="7"></a>  </span>
-<span id="cb106-8"><a aria-label="8"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> {{ x }})) <span class="sc">+</span></span>
-<span id="cb106-9"><a aria-label="9"></a>    <span class="fu">geom_histogram</span>()</span>
-<span id="cb106-10"><a aria-label="10"></a>}</span>
-<span id="cb106-11"><a aria-label="11"></a><span class="fu">histo</span>(pdxTrees_parks, Condition)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a></a>histo <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...){</span>
+<span id="cb106-2"><a></a>  <span class="co">#Determine if x is numeric</span></span>
+<span id="cb106-3"><a></a>  x_class <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb106-4"><a></a>    <span class="fu">pull</span>({{ x }}) <span class="sc">%&gt;%</span></span>
+<span id="cb106-5"><a></a>    <span class="fu">is.numeric</span>()</span>
+<span id="cb106-6"><a></a>  <span class="fu">stopifnot</span>(x_class)</span>
+<span id="cb106-7"><a></a>  </span>
+<span id="cb106-8"><a></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> {{ x }})) <span class="sc">+</span></span>
+<span id="cb106-9"><a></a>    <span class="fu">geom_histogram</span>()</span>
+<span id="cb106-10"><a></a>}</span>
+<span id="cb106-11"><a></a><span class="fu">histo</span>(pdxTrees_parks, Condition)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `histo()`:
 ! x_class is not TRUE</code></pre>
@@ -27073,7 +27070,7 @@ Caused by error in `setup_params()`:
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

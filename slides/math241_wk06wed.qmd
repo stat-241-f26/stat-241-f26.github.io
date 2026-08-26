@@ -51,7 +51,7 @@ theme_update(text = element_text(size = 20))
 
 [Grayson White]{.custom-subtitle}
 
-[Math 241 <br> Week 6 \| Spring 2026]{.custom-subtitle}
+[Stat 241 <br> Week 6 \| Fall 2026]{.custom-subtitle}
 :::
 :::::
 
@@ -231,7 +231,7 @@ shinyApp(ui = ui, server = server)
 
 Create a `DESCRIPTION` text file with this text:
 
-Title: Math 241 Names
+Title: Stat 241 Names
 
 Author: Grayson White
 
