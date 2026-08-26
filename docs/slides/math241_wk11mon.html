@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <title>Stat 241 – Local LLMs and ellmer Extensions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,10 +19,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -302,8 +305,8 @@
 <li>Check RAM:</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># install.packages("memuse")</span></span>
-<span id="cb1-2"><a></a>memuse<span class="sc">::</span><span class="fu">Sys.meminfo</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="co"># install.packages("memuse")</span></span>
+<span id="cb1-2"><a aria-label="2"></a>memuse<span class="sc">::</span><span class="fu">Sys.meminfo</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Totalram:   24.000 GiB 
 Freeram:   459.469 MiB </code></pre>
@@ -358,8 +361,8 @@ Freeram:   459.469 MiB </code></pre>
 <section id="connect-local-models-with-ellmer" class="slide level2">
 <h2>Connect local models with <code>ellmer</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(ellmer)</span>
-<span id="cb6-2"><a></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_ollama</span>(<span class="at">model =</span> <span class="st">"gemma4:e4b"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a><span class="fu">library</span>(ellmer)</span>
+<span id="cb6-2"><a aria-label="2"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_ollama</span>(<span class="at">model =</span> <span class="st">"gemma4:e4b"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="connect-local-models-with-ellmer-1" class="slide level2">
@@ -368,25 +371,25 @@ Freeram:   459.469 MiB </code></pre>
 <p>Complete the task from last time: parse names and ages (but now with a local LLM of your choice)</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>type_person <span class="ot">&lt;-</span> <span class="fu">type_object</span>(</span>
-<span id="cb7-2"><a></a>  <span class="at">name =</span> <span class="fu">type_string</span>(),</span>
-<span id="cb7-3"><a></a>  <span class="at">age =</span> <span class="fu">type_number</span>()</span>
-<span id="cb7-4"><a></a>)</span>
-<span id="cb7-5"><a></a></span>
-<span id="cb7-6"><a></a>prompts <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb7-7"><a></a>  <span class="st">"I go by Alex. 42 years on this planet and counting."</span>,</span>
-<span id="cb7-8"><a></a>  <span class="st">"Pleased to meet you! I'm Jamal, age 27."</span>,</span>
-<span id="cb7-9"><a></a>  <span class="st">"They call me Li Wei. Nineteen years young."</span>,</span>
-<span id="cb7-10"><a></a>  <span class="st">"Fatima here. Just celebrated my 35th birthday last week."</span>,</span>
-<span id="cb7-11"><a></a>  <span class="st">"The name's Robert - 51 years old and proud of it."</span>,</span>
-<span id="cb7-12"><a></a>  <span class="st">"Kwame here - just hit the big 5-0 this year."</span></span>
-<span id="cb7-13"><a></a>)</span>
-<span id="cb7-14"><a></a></span>
-<span id="cb7-15"><a></a><span class="fu">parallel_chat_structured</span>(</span>
-<span id="cb7-16"><a></a>  chat,</span>
-<span id="cb7-17"><a></a>  prompts,</span>
-<span id="cb7-18"><a></a>  <span class="at">type =</span> type_person</span>
-<span id="cb7-19"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a>type_person <span class="ot">&lt;-</span> <span class="fu">type_object</span>(</span>
+<span id="cb7-2"><a aria-label="2"></a>  <span class="at">name =</span> <span class="fu">type_string</span>(),</span>
+<span id="cb7-3"><a aria-label="3"></a>  <span class="at">age =</span> <span class="fu">type_number</span>()</span>
+<span id="cb7-4"><a aria-label="4"></a>)</span>
+<span id="cb7-5"><a aria-label="5"></a></span>
+<span id="cb7-6"><a aria-label="6"></a>prompts <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb7-7"><a aria-label="7"></a>  <span class="st">"I go by Alex. 42 years on this planet and counting."</span>,</span>
+<span id="cb7-8"><a aria-label="8"></a>  <span class="st">"Pleased to meet you! I'm Jamal, age 27."</span>,</span>
+<span id="cb7-9"><a aria-label="9"></a>  <span class="st">"They call me Li Wei. Nineteen years young."</span>,</span>
+<span id="cb7-10"><a aria-label="10"></a>  <span class="st">"Fatima here. Just celebrated my 35th birthday last week."</span>,</span>
+<span id="cb7-11"><a aria-label="11"></a>  <span class="st">"The name's Robert - 51 years old and proud of it."</span>,</span>
+<span id="cb7-12"><a aria-label="12"></a>  <span class="st">"Kwame here - just hit the big 5-0 this year."</span></span>
+<span id="cb7-13"><a aria-label="13"></a>)</span>
+<span id="cb7-14"><a aria-label="14"></a></span>
+<span id="cb7-15"><a aria-label="15"></a><span class="fu">parallel_chat_structured</span>(</span>
+<span id="cb7-16"><a aria-label="16"></a>  chat,</span>
+<span id="cb7-17"><a aria-label="17"></a>  prompts,</span>
+<span id="cb7-18"><a aria-label="18"></a>  <span class="at">type =</span> type_person</span>
+<span id="cb7-19"><a aria-label="19"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
@@ -416,16 +419,16 @@ Freeram:   459.469 MiB </code></pre>
 <h2>The <code>system.time({})</code> factor…</h2>
 <p>On my M4 Pro Macbook Pro with 24GB RAM,</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>chat_local <span class="ot">&lt;-</span> <span class="fu">chat_ollama</span>(<span class="at">model =</span> <span class="st">"gemma4:e4b"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a>chat_local <span class="ot">&lt;-</span> <span class="fu">chat_ollama</span>(<span class="at">model =</span> <span class="st">"gemma4:e4b"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">system.time</span>({</span>
-<span id="cb10-2"><a></a>  <span class="fu">parallel_chat_structured</span>(</span>
-<span id="cb10-3"><a></a>  chat_local,</span>
-<span id="cb10-4"><a></a>  prompts,</span>
-<span id="cb10-5"><a></a>  <span class="at">type =</span> type_person</span>
-<span id="cb10-6"><a></a>)</span>
-<span id="cb10-7"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">system.time</span>({</span>
+<span id="cb10-2"><a aria-label="2"></a>  <span class="fu">parallel_chat_structured</span>(</span>
+<span id="cb10-3"><a aria-label="3"></a>  chat_local,</span>
+<span id="cb10-4"><a aria-label="4"></a>  prompts,</span>
+<span id="cb10-5"><a aria-label="5"></a>  <span class="at">type =</span> type_person</span>
+<span id="cb10-6"><a aria-label="6"></a>)</span>
+<span id="cb10-7"><a aria-label="7"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
   0.068   0.020  52.077 </code></pre>
@@ -494,42 +497,42 @@ Freeram:   459.469 MiB </code></pre>
 <h2><code>btw</code>: copy-paste context</h2>
 <p>Provide <strong>context for a data.frame</strong>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>park_trees <span class="ot">&lt;-</span> pdxTrees<span class="sc">::</span><span class="fu">get_pdxTrees_parks</span>()</span>
-<span id="cb12-2"><a></a></span>
-<span id="cb12-3"><a></a><span class="co"># install.packagaes("btw")</span></span>
-<span id="cb12-4"><a></a><span class="fu">library</span>(btw)</span>
-<span id="cb12-5"><a></a></span>
-<span id="cb12-6"><a></a></span>
-<span id="cb12-7"><a></a><span class="fu">btw</span>(park_trees)</span>
-<span id="cb12-8"><a></a><span class="co">#&gt; ✔ btw copied to the clipboard!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a>park_trees <span class="ot">&lt;-</span> pdxTrees<span class="sc">::</span><span class="fu">get_pdxTrees_parks</span>()</span>
+<span id="cb12-2"><a aria-label="2"></a></span>
+<span id="cb12-3"><a aria-label="3"></a><span class="co"># install.packagaes("btw")</span></span>
+<span id="cb12-4"><a aria-label="4"></a><span class="fu">library</span>(btw)</span>
+<span id="cb12-5"><a aria-label="5"></a></span>
+<span id="cb12-6"><a aria-label="6"></a></span>
+<span id="cb12-7"><a aria-label="7"></a><span class="fu">btw</span>(park_trees)</span>
+<span id="cb12-8"><a aria-label="8"></a><span class="co">#&gt; ✔ btw copied to the clipboard!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <div class="fragment">
 <p>Provide context for a data.frame, <strong>and documentation</strong>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">btw</span>(park_trees, ?pdxTrees<span class="sc">::</span>get_pdxTrees_parks)</span>
-<span id="cb13-2"><a></a><span class="co">#&gt; ✔ btw copied to the clipboard!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a><span class="fu">btw</span>(park_trees, ?pdxTrees<span class="sc">::</span>get_pdxTrees_parks)</span>
+<span id="cb13-2"><a aria-label="2"></a><span class="co">#&gt; ✔ btw copied to the clipboard!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p><br></p>
 <div class="fragment">
 <p>Even provide the <strong>question</strong> you’d like to ask.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">btw</span>(park_trees, ?pdxTrees<span class="sc">::</span>get_pdxTrees_parks, <span class="st">"What does the Crown_Width_NS variable measure? And in what units?"</span>)</span>
-<span id="cb14-2"><a></a><span class="co">#&gt; ✔ btw copied to the clipboard!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a><span class="fu">btw</span>(park_trees, ?pdxTrees<span class="sc">::</span>get_pdxTrees_parks, <span class="st">"What does the Crown_Width_NS variable measure? And in what units?"</span>)</span>
+<span id="cb14-2"><a aria-label="2"></a><span class="co">#&gt; ✔ btw copied to the clipboard!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
 <section id="pass-context-to-ellmer-chats-with-btw" class="slide level2">
 <h2>Pass context to <code>ellmer</code> chats with <code>btw</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_ollama</span>(<span class="at">model =</span> <span class="st">"gemma4:e4b"</span>)</span>
-<span id="cb15-2"><a></a></span>
-<span id="cb15-3"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(</span>
-<span id="cb15-4"><a></a>  <span class="fu">btw</span>(park_trees, </span>
-<span id="cb15-5"><a></a>      ?pdxTrees<span class="sc">::</span>get_pdxTrees_parks, </span>
-<span id="cb15-6"><a></a>      <span class="st">"What does the Crown_Width_NS variable measure? And in what units?"</span>)</span>
-<span id="cb15-7"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_ollama</span>(<span class="at">model =</span> <span class="st">"gemma4:e4b"</span>)</span>
+<span id="cb15-2"><a aria-label="2"></a></span>
+<span id="cb15-3"><a aria-label="3"></a>chat<span class="sc">$</span><span class="fu">chat</span>(</span>
+<span id="cb15-4"><a aria-label="4"></a>  <span class="fu">btw</span>(park_trees, </span>
+<span id="cb15-5"><a aria-label="5"></a>      ?pdxTrees<span class="sc">::</span>get_pdxTrees_parks, </span>
+<span id="cb15-6"><a aria-label="6"></a>      <span class="st">"What does the Crown_Width_NS variable measure? And in what units?"</span>)</span>
+<span id="cb15-7"><a aria-label="7"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Based on the documentation provided for the `pdxTrees_parks` dataset, the 
 variable **Crown_Width** measures:
@@ -550,28 +553,28 @@ tree.</code></pre>
 <section id="provide-context-in-ellmer-with-btw" class="slide level2">
 <h2>Provide context in <code>ellmer</code> with <code>btw</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_ollama</span>(<span class="at">model =</span> <span class="st">"gemma4:e4b"</span>)</span>
-<span id="cb17-2"><a></a></span>
-<span id="cb17-3"><a></a>chat<span class="sc">$</span><span class="fu">register_tools</span>(</span>
-<span id="cb17-4"><a></a>  <span class="fu">btw_tools</span>(<span class="st">"env"</span>)</span>
-<span id="cb17-5"><a></a>  <span class="co"># alternatively, call:</span></span>
-<span id="cb17-6"><a></a>  <span class="co"># btw_tools()</span></span>
-<span id="cb17-7"><a></a>  <span class="co"># to allow btw to use all of its built-in tools</span></span>
-<span id="cb17-8"><a></a>)</span>
-<span id="cb17-9"><a></a></span>
-<span id="cb17-10"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"What is in my global environment?"</span>)</span>
-<span id="cb17-11"><a></a><span class="co">#&gt; ◯ [tool call] btw_tool_env_describe_environment(`_intent` = "list global environment</span></span>
-<span id="cb17-12"><a></a><span class="co">#&gt; contents")</span></span>
-<span id="cb17-13"><a></a><span class="co">#&gt; ● #&gt; ## Context</span></span>
-<span id="cb17-14"><a></a><span class="co">#&gt;   #&gt;</span></span>
-<span id="cb17-15"><a></a><span class="co">#&gt;   #&gt;</span></span>
-<span id="cb17-16"><a></a><span class="co">#&gt;   #&gt; park_trees</span></span>
-<span id="cb17-17"><a></a><span class="co">#&gt;   #&gt; ```json</span></span>
-<span id="cb17-18"><a></a><span class="co">#&gt;   #&gt; …</span></span>
-<span id="cb17-19"><a></a><span class="co">#&gt; The global environment contains one data frame named `park_trees`.</span></span>
-<span id="cb17-20"><a></a><span class="co">#&gt; </span></span>
-<span id="cb17-21"><a></a><span class="co">#&gt; This data frame contains **25,534 rows** and **34 columns**. It appears to be an inventory of</span></span>
-<span id="cb17-22"><a></a><span class="co">#&gt; ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_ollama</span>(<span class="at">model =</span> <span class="st">"gemma4:e4b"</span>)</span>
+<span id="cb17-2"><a aria-label="2"></a></span>
+<span id="cb17-3"><a aria-label="3"></a>chat<span class="sc">$</span><span class="fu">register_tools</span>(</span>
+<span id="cb17-4"><a aria-label="4"></a>  <span class="fu">btw_tools</span>(<span class="st">"env"</span>)</span>
+<span id="cb17-5"><a aria-label="5"></a>  <span class="co"># alternatively, call:</span></span>
+<span id="cb17-6"><a aria-label="6"></a>  <span class="co"># btw_tools()</span></span>
+<span id="cb17-7"><a aria-label="7"></a>  <span class="co"># to allow btw to use all of its built-in tools</span></span>
+<span id="cb17-8"><a aria-label="8"></a>)</span>
+<span id="cb17-9"><a aria-label="9"></a></span>
+<span id="cb17-10"><a aria-label="10"></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"What is in my global environment?"</span>)</span>
+<span id="cb17-11"><a aria-label="11"></a><span class="co">#&gt; ◯ [tool call] btw_tool_env_describe_environment(`_intent` = "list global environment</span></span>
+<span id="cb17-12"><a aria-label="12"></a><span class="co">#&gt; contents")</span></span>
+<span id="cb17-13"><a aria-label="13"></a><span class="co">#&gt; ● #&gt; ## Context</span></span>
+<span id="cb17-14"><a aria-label="14"></a><span class="co">#&gt;   #&gt;</span></span>
+<span id="cb17-15"><a aria-label="15"></a><span class="co">#&gt;   #&gt;</span></span>
+<span id="cb17-16"><a aria-label="16"></a><span class="co">#&gt;   #&gt; park_trees</span></span>
+<span id="cb17-17"><a aria-label="17"></a><span class="co">#&gt;   #&gt; ```json</span></span>
+<span id="cb17-18"><a aria-label="18"></a><span class="co">#&gt;   #&gt; …</span></span>
+<span id="cb17-19"><a aria-label="19"></a><span class="co">#&gt; The global environment contains one data frame named `park_trees`.</span></span>
+<span id="cb17-20"><a aria-label="20"></a><span class="co">#&gt; </span></span>
+<span id="cb17-21"><a aria-label="21"></a><span class="co">#&gt; This data frame contains **25,534 rows** and **34 columns**. It appears to be an inventory of</span></span>
+<span id="cb17-22"><a aria-label="22"></a><span class="co">#&gt; ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li class="fragment"><p>Providing a tool group (in this case: “env”) stops the local model from getting overwhelmed by too much context.</p></li>
@@ -582,8 +585,8 @@ tree.</code></pre>
 
 <h3 id="theres-also-an-interactive-ide-chat">There’s also an interactive IDE chat</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_google_gemini</span>()</span>
-<span id="cb18-2"><a></a><span class="fu">btw_app</span>(<span class="at">client =</span> chat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_google_gemini</span>()</span>
+<span id="cb18-2"><a aria-label="2"></a><span class="fu">btw_app</span>(<span class="at">client =</span> chat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <div class="quarto-figure quarto-figure-center">
@@ -617,22 +620,22 @@ tree.</code></pre>
 <section id="installing-gander" class="slide level2">
 <h2>Installing <code>gander</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># first, install `gander`:</span></span>
-<span id="cb19-2"><a></a><span class="fu">install.packages</span>(<span class="st">"gander"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a><span class="co"># first, install `gander`:</span></span>
+<span id="cb19-2"><a aria-label="2"></a><span class="fu">install.packages</span>(<span class="st">"gander"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <p>Next, pick a model to power <code>gander</code>:</p>
 <p>(a): for your <strong>current <code>R</code> session</strong>,</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">options</span>(<span class="at">gander.chat =</span> ellmer<span class="sc">::</span><span class="fu">chat_ollama</span>(<span class="at">model =</span> <span class="st">"gemma4:e4b"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a><span class="fu">options</span>(<span class="at">gander.chat =</span> ellmer<span class="sc">::</span><span class="fu">chat_ollama</span>(<span class="at">model =</span> <span class="st">"gemma4:e4b"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <p>or (b): as your <strong>default for all <code>R</code> session</strong>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>usethis<span class="sc">::</span><span class="fu">edit_r_profile</span>()</span>
-<span id="cb21-2"><a></a><span class="co"># and then paste: </span></span>
-<span id="cb21-3"><a></a><span class="co"># options(gander.chat = ellmer::chat_ollama(model = "gemma4:e4b"))</span></span>
-<span id="cb21-4"><a></a><span class="co"># into the loaded file. Restart R for this to take effect.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_profile</span>()</span>
+<span id="cb21-2"><a aria-label="2"></a><span class="co"># and then paste: </span></span>
+<span id="cb21-3"><a aria-label="3"></a><span class="co"># options(gander.chat = ellmer::chat_ollama(model = "gemma4:e4b"))</span></span>
+<span id="cb21-4"><a aria-label="4"></a><span class="co"># into the loaded file. Restart R for this to take effect.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -881,7 +884,7 @@ tree.</code></pre>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

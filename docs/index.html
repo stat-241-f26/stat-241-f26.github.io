@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -41,10 +44,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7599aaf2c8f21ee9010738cb0cbaae3f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-4ffc9315a0e0aea7fb861ee41eb61485.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e2b7814d8b5bfa47aa574b76b383cea9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-54a5b06e4003a380399c24045e21fd6c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -103,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -268,7 +271,7 @@ window.Quarto = {
     
   
     <div class="date-cell">
-    <p>Thursday, Sep 3 9:00am</p>
+    <p>Thursday, Sep 3 @ noon</p>
     </div>
     <div class="materials-cell">
     <p><span class="daily-topic">Problem Set 0 Released</span><br>
@@ -325,26 +328,16 @@ window.Quarto = {
           <button type="button" class="btn btn-success" disabled="">Slides</button>
         
       
-        
-          <button type="button" class="btn btn-success" disabled="">Slides (PDF)</button>
-        
-      
     
     </p>
     </div>
     
   
     <div class="date-cell">
-    <p>Thursday, Sep 10 9:00am</p>
+    <p>Thursday, Sep 10 @ noon</p>
     </div>
     <div class="materials-cell">
     <p><span class="daily-topic">Problem Set 0 Due</span><br>
-    
-      
-        
-          <button type="button" class="btn btn-success" disabled="">Problem Set 1</button>
-        
-      
     
     </p>
     </div>
@@ -380,10 +373,6 @@ window.Quarto = {
       
         
           <button type="button" class="btn btn-success" disabled="">Slides</button>
-        
-      
-        
-          <button type="button" class="btn btn-success" disabled="">Slides (PDF)</button>
         
       
     
@@ -471,10 +460,6 @@ window.Quarto = {
           <button type="button" class="btn btn-success" disabled="">Slides</button>
         
       
-        
-          <button type="button" class="btn btn-success" disabled="">Slides (PDF)</button>
-        
-      
     
     </p>
     </div>
@@ -505,10 +490,6 @@ window.Quarto = {
       
         
           <button type="button" class="btn btn-success" disabled="">Slides</button>
-        
-      
-        
-          <button type="button" class="btn btn-success" disabled="">Slides (PDF)</button>
         
       
     
@@ -546,10 +527,6 @@ window.Quarto = {
       
         
           <button type="button" class="btn btn-success" disabled="">Slides</button>
-        
-      
-        
-          <button type="button" class="btn btn-success" disabled="">Slides (PDF)</button>
         
       
         
@@ -592,10 +569,6 @@ window.Quarto = {
           <button type="button" class="btn btn-success" disabled="">Slides</button>
         
       
-        
-          <button type="button" class="btn btn-success" disabled="">Slides (PDF)</button>
-        
-      
     
     </p>
     </div>
@@ -631,10 +604,6 @@ window.Quarto = {
       
         
           <button type="button" class="btn btn-success" disabled="">Slides</button>
-        
-      
-        
-          <button type="button" class="btn btn-success" disabled="">Slides (PDF)</button>
         
       
         
@@ -681,16 +650,6 @@ window.Quarto = {
           <button type="button" class="btn btn-success" disabled="">Project I Groups</button>
         
       
-    
-    </p>
-    </div>
-    
-  
-    <div class="date-cell">
-    <p>Thursday, Oct 8 9:00am</p>
-    </div>
-    <div class="materials-cell">
-    <p><span class="daily-topic">Problem Set 4 Due</span><br>
     
     </p>
     </div>
@@ -787,6 +746,454 @@ window.Quarto = {
     <p><span class="daily-topic">No Class</span><br>
     
     </p>
+    </div>
+    
+  
+  
+  </div>
+  <div class="resources">
+  <p><span">Resources</span"></p>
+  <ul>
+  
+    <li>None this week</li>
+  
+  </ul>
+  </div>
+  </div>
+
+  <h4 class="anchored">Week 8</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Oct 26</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Different classes in R</span><br>
+    
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Slides</button>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Oct 28</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">string manipulation and regular expressions</span><br>
+    
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Reading</button>
+        
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Slides</button>
+        
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Activity (Download)</button>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  <div class="resources">
+  <p><span">Resources</span"></p>
+  <ul>
+  
+    <li>None this week</li>
+  
+  </ul>
+  </div>
+  </div>
+
+  <h4 class="anchored">Week 9</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Nov 2</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Project 1 Peer Feedback Day (Project 1 DRAFT due)</span><br>
+    
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Project I Peer Feedback</button>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Tuesday, Nov 3 @ 10pm</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Project I Written Peer Feedback Due</span><br>
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Nov 4</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Control flow</span><br>
+    
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Slides</button>
+        
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Activity (Download)</button>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  <div class="resources">
+  <p><span">Resources</span"></p>
+  <ul>
+  
+    <li>None this week</li>
+  
+  </ul>
+  </div>
+  </div>
+
+  <h4 class="anchored">Week 10</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Nov 9</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Functions</span><br>
+    
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Slides</button>
+        
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Activity (Download)</button>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Nov 11</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Iteration: loops and functional programming</span><br>
+    
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Slides</button>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Sunday, Nov 15 @ 10pm</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Project I Final Product and Data Scientist Statement Due</span><br>
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  <div class="resources">
+  <p><span">Resources</span"></p>
+  <ul>
+  
+    <li>None this week</li>
+  
+  </ul>
+  </div>
+  </div>
+
+  <h4 class="anchored">Week 11</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Nov 16</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Parallel computing, ethics, and generative AI</span><br>
+    
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Reading</button>
+        
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Slides</button>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Tuesday, Nov 17 @ noon</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Problem Set 5 Released</span><br>
+    
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Problem Set 5</button>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Nov 18</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Local LLMs and `ellmer` Extensions</span><br>
+    
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Slides</button>
+        
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Activity (Download)</button>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  <div class="resources">
+  <p><span">Resources</span"></p>
+  <ul>
+  
+    <li>None this week</li>
+  
+  </ul>
+  </div>
+  </div>
+
+  <h4 class="anchored">Week 12</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Nov 23</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">R packages: introduction</span><br>
+    
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Slides</button>
+        
+      
+        
+          <button type="button" class="btn btn-success" disabled="">R Packages Handout</button>
+        
+      
+        
+          <button type="button" class="btn btn-success" disabled="">PDX Potholes Data</button>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Tuesday, Nov 24 @ noon</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Problem Set 6 Released and Problem Set 5 Due</span><br>
+    
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Problem Set 6</button>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Nov 25</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">R packages: documentation</span><br>
+    
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Reading</button>
+        
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Slides</button>
+        
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Project II Groups</button>
+        
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Project II Instructions</button>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  <div class="resources">
+  <p><span">Resources</span"></p>
+  <ul>
+  
+    <li>None this week</li>
+  
+  </ul>
+  </div>
+  </div>
+
+  <h4 class="anchored">Week 13</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Nov 30</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">R packages: testing and dissemination (Problem Set 6 Due at 10pm)</span><br>
+    
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Reading</button>
+        
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Slides</button>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Dec 2</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Project II Work Day</span><br>
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  <div class="resources">
+  <p><span">Resources</span"></p>
+  <ul>
+  
+    <li>None this week</li>
+  
+  </ul>
+  </div>
+  </div>
+
+  <h4 class="anchored">Week 14</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Dec 7</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Building your data science portfolio</span><br>
+    
+      
+        
+          <button type="button" class="btn btn-success" disabled="">Slides</button>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  <div class="resources">
+  <p><span">Resources</span"></p>
+  <ul>
+  
+    <li>None this week</li>
+  
+  </ul>
+  </div>
+  </div>
+
+  <h4 class="anchored">Week Finals</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>TBD</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic"></span></p><p>Final Project Presentations</p> <p>All projects materials due at noon, presentations starting at 1pm.</p><br>
+    
+    <p></p>
     </div>
     
   
