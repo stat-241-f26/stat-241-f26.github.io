@@ -16,8 +16,6 @@ scheduled-docs:
           docs:
             - type: Slides
               href: slides/math241_wk01mon.qmd
-            - type: Slides (PDF)
-              href: pdfs/math241_wk01mon.pdf
         - topic: "Data Visualization I: Principles"
           display-date: Wednesday, Sep 2
           date: 9/2/26
@@ -26,8 +24,6 @@ scheduled-docs:
               href: readings/readings_wk01wed.qmd
             - type: Slides
               href: slides/math241_wk01wed.qmd
-            - type: Slides (PDF)
-              href: pdfs/math241_wk01wed.pdf
             - type: Activity
               href: in_class/activity1.qmd
         - topic: "Problem Set 0 Released"
@@ -84,8 +80,6 @@ scheduled-docs:
               href: readings/readings_wk03mon.qmd
             - type: Slides
               href: slides/math241_wk03mon.qmd
-            - type: Slides (PDF)
-              href: pdfs/math241_wk03mon.pdf
             - type: Activity (instructions)
               href: in_class/activity2.qmd
             - type: Activity (download)
@@ -252,6 +246,12 @@ scheduled-docs:
               href: slides/math241_wk09wed.qmd
             - type: Activity (Download)
               href: in_class/activity6_download.qmd
+        - topic: "Problem Set 5 Released"
+          display-date: Tuesday, Nov 10 @ noon
+          date: 11/10/26
+          docs:
+            - type: Problem Set 5
+              href: psets/pset05.qmd
         - topic: "Iteration: loops and functional programming"
           display-date: Wednesday, Nov 11
           date: 11/11/26
@@ -273,12 +273,12 @@ scheduled-docs:
               href: readings/readings_wk10wed.qmd
             - type: Slides
               href: slides/math241_wk10wed.qmd
-        - topic: "Problem Set 5 Released"
+        - topic: "Problem Set 6 Released and Problem Set 5 Due"
           display-date: Tuesday, Nov 17 @ noon
           date: 11/17/26
           docs:
-            - type: Problem Set 5
-              href: psets/pset05.qmd
+            - type: Problem Set 6
+              href: psets/pset06.qmd
         - topic: "Local LLMs and `ellmer` Extensions"
           display-date: Wednesday, Nov 18
           date: 11/18/26
@@ -301,12 +301,9 @@ scheduled-docs:
               href: in_class/R_Package.qmd
             - type: PDX Potholes Data
               href: slides/data/potholes.geojson
-        - topic: "Problem Set 6 Released and Problem Set 5 Due"
+        - topic: "Problem Set 6 Due"
           display-date: Tuesday, Nov 24 @ noon
           date: 11/24/26
-          docs:
-            - type: Problem Set 6
-              href: psets/pset06.qmd
         - topic: "R packages: documentation"
           display-date: Wednesday, Nov 25
           date: 11/25/26
@@ -323,7 +320,7 @@ scheduled-docs:
       #   - 'Some text'
     - week: 13
       days:
-        - topic: "R packages: testing and dissemination (Problem Set 6 Due at 10pm)"
+        - topic: "R packages: testing and dissemination"
           display-date: Monday, Nov 30
           date: 11/30/26
           docs:
