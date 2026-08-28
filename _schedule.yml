@@ -20,8 +20,8 @@ scheduled-docs:
           display-date: Wednesday, Sep 2
           date: 9/2/26
           docs:
-            - type: Reading
-              href: readings/readings_wk01wed.qmd
+            # - type: Reading
+            #   href: readings/readings_wk01wed.qmd
             - type: Slides
               href: slides/math241_wk01wed.qmd
             - type: Activity
@@ -32,9 +32,10 @@ scheduled-docs:
           docs:
             - type: Problem Set 0
               href: psets/pset00.qmd
-      # resources:
-      #   - '<a href="https://join.slack.com/t/reed-data-science/shared_invite/zt-3m9hhwi5f-javjb99NvUzwcC8r1MCXjg">Join Slack</a>'
-      #   - 'Gradescope course entry code: ZJPD33'
+      resources:
+        - '<a href="https://join.slack.com/t/stat241f26/shared_invite/zt-47z9ekhus-Wx6aaxgECQN6FwdDTAVdGQ">Join Slack</a>'
+        - 'Gradescope course entry code: D82YW2'
+        - 'For Wednesday: MDSR Chapter 2'
     - week: 2
       days:
         - topic: "No Class: Holiday"
@@ -44,8 +45,8 @@ scheduled-docs:
           display-date: Wednesday, Sep 9
           date: 9/9/26
           docs:
-            - type: Reading
-              href: readings/readings_wk02mon.qmd
+            # - type: Reading
+            #   href: readings/readings_wk02mon.qmd
             - type: Slides
               href: slides/math241_wk02mon.qmd
         - topic: "Problem Set 0 Due"
@@ -54,16 +55,16 @@ scheduled-docs:
           docs:
             # - type: Problem Set 1
             #   href: psets/pset01.qmd
-      # resources:
-      #   - 'Some text'
+      resources:
+        - 'For Wednesday: MDSR Chapter 3'
     - week: 3
       days:
         - topic: "Data Visualization III: Advanced ggplot2 and customization"
           display-date: Monday, Sep 14
           date: 9/14/26
           docs:
-            - type: Reading
-              href: readings/readings_wk02wed.qmd
+            # - type: Reading
+            #   href: readings/readings_wk02wed.qmd
             - type: Slides
               href: slides/math241_wk02wed.qmd
         - topic: "Problem Set 1 Released"
@@ -76,24 +77,25 @@ scheduled-docs:
           display-date: Wednesday, Sep 16
           date: 9/16/26
           docs:
-            - type: Reading
-              href: readings/readings_wk03mon.qmd
+            # - type: Reading
+            #   href: readings/readings_wk03mon.qmd
             - type: Slides
               href: slides/math241_wk03mon.qmd
             - type: Activity (instructions)
               href: in_class/activity2.qmd
             - type: Activity (download)
               href: in_class/activity2_download.qmd
-      # resources:
-      #   - 'Some text'
+      resources:
+        - 'For Monday: Review MDSR Chapter 3'
+        - 'For Wednesday: MDSR Chapter 4'
     - week: 4
       days:
         - topic: "Animation and interactivity"
           display-date: Monday, Sep 21
           date: 9/21/26
           docs:
-            - type: Reading
-              href: readings/readings_wk03wed.qmd
+            # - type: Reading
+            #   href: readings/readings_wk03wed.qmd
             - type: Slides
               href: slides/math241_wk03wed.qmd
         - topic: "Problem Set 1 Due, Problem Set 2 Released"
@@ -108,16 +110,16 @@ scheduled-docs:
           docs:
             - type: Slides
               href: slides/math241_wk04mon.qmd
-      # resources:
-      #   - 'Some text'
+      resources:
+        - 'For Monday: Review MDSR Chapter 4'
     - week: 5
       days:
         - topic: "Joins and reshaping data"
           display-date: Monday, Sep 28
           date: 9/28/26
           docs:
-            - type: Reading
-              href: readings/readings_wk04wed.qmd
+            # - type: Reading
+            #   href: readings/readings_wk04wed.qmd
             - type: Slides
               href: slides/math241_wk04wed.qmd
             - type: Activity
@@ -132,11 +134,13 @@ scheduled-docs:
           display-date: Wednesday, Sep 30
           date: 9/30/26
           docs:
-            - type: Reading
-              href: readings/readings_wk05mon.qmd
+            # - type: Reading
+            #   href: readings/readings_wk05mon.qmd
             - type: Slides
               href: slides/math241_wk05mon.qmd
       resources:
+        - 'For Monday: MDSR Chapters 5 and 6'
+        - 'For Wednesday: MDSR Chapters 17 and 18'
         # - 'Fill out the <a href="https://forms.gle/Q3pk5LhZAJohpbHT6">Project 1 Preferences Form</a>'
     - week: 6
       days:
@@ -144,8 +148,8 @@ scheduled-docs:
           display-date: Monday, Oct 5
           date: 10/5/26
           docs:
-            - type: Reading
-              href: readings/readings_wk05wed.qmd
+            # - type: Reading
+            #   href: readings/readings_wk05wed.qmd
             - type: Slides
               href: slides/math241_wk05wed.qmd
             - type: Activity (Download)
@@ -160,22 +164,23 @@ scheduled-docs:
           display-date: Wednesday, Oct 7
           date: 10/7/26
           docs:
-            - type: Reading
-              href: readings/readings_wk06.qmd
+            # - type: Reading
+            #   href: readings/readings_wk06.qmd
             - type: Slides
               href: slides/math241_wk06mon.qmd
             - type: Project I Groups
               href: projects/proj01_groups.qmd
-      # resources:
-      #   - 'Some text'
+      resources:
+        - 'For Monday: MDSR Chapters 17 and 18'
+        - 'For shiny reference: <a href="https://mastering-shiny.org/"> Mastering Shiny, by Hadley Wickham</a>'
     - week: 7
       days:
         - topic: "shiny II (Project I Instructions Released)"
           display-date: Monday, Oct 12
           date: 10/12/26
           docs:
-            - type: Reading
-              href: readings/readings_wk06.qmd
+            # - type: Reading
+            #   href: readings/readings_wk06.qmd
             - type: Slides
               href: slides/math241_wk06wed.qmd
             - type: Project I Instructions
@@ -189,8 +194,8 @@ scheduled-docs:
           docs:
             - type: Slides
               href: slides/math241_wk07wed.qmd
-      # resources:
-      #   - 'Some text'
+      resources:
+        - 'For shiny reference: <a href="https://mastering-shiny.org/"> Mastering Shiny, by Hadley Wickham</a>'
     - week: Fall Break
       days:
         - topic: "No Class"
@@ -207,14 +212,14 @@ scheduled-docs:
           display-date: Wednesday, Oct 28
           date: 10/28/26
           docs:
-            - type: Reading
-              href: readings/readings_wk08mon.qmd
+            # - type: Reading
+            #   href: readings/readings_wk08mon.qmd
             - type: Slides
               href: slides/math241_wk08mon.qmd
             - type: Activity (Download)
               href: in_class/activity4_download.qmd
-      # resources:
-      #   - 'Some text'
+      resources:
+        - 'For Wednesday: MDSR Chapter 19'
     - week: 9
       days:
         - topic: "Project 1 Peer Feedback Day (Project 1 DRAFT due)"
@@ -269,8 +274,8 @@ scheduled-docs:
           display-date: Monday, Nov 16
           date: 11/16/26
           docs:
-            - type: Reading
-              href: readings/readings_wk10wed.qmd
+            # - type: Reading
+            #   href: readings/readings_wk10wed.qmd
             - type: Slides
               href: slides/math241_wk10wed.qmd
         - topic: "Problem Set 6 Released and Problem Set 5 Due"
@@ -287,8 +292,8 @@ scheduled-docs:
               href: slides/math241_wk11mon.qmd
             - type: Activity (Download)
               href: in_class/activity7_download.qmd
-      # resources:
-      #   - 'Some text'
+      resources:
+        - 'For Monday: TBD'
     - week: 12
       days:
         - topic: "R packages: introduction"
@@ -308,31 +313,31 @@ scheduled-docs:
           display-date: Wednesday, Nov 25
           date: 11/25/26
           docs:
-            - type: Reading
-              href: readings/readings_wk12.qmd
+            # - type: Reading
+            #   href: readings/readings_wk12.qmd
             - type: Slides
               href: slides/math241_wk12mon.qmd
             - type: Project II Groups
               href: projects/proj02_groups.qmd
             - type: Project II Instructions
               href: projects/proj02.qmd
-      # resources:
-      #   - 'Some text'
+      resources:
+        - 'For R packages reference: <a href="https://r-pkgs.org/"> R Packages, by Hadley Wickham and Jenny Bryan</a>'
     - week: 13
       days:
         - topic: "R packages: testing and dissemination"
           display-date: Monday, Nov 30
           date: 11/30/26
           docs:
-            - type: Reading
-              href: readings/readings_wk12.qmd
+            # - type: Reading
+            #   href: readings/readings_wk12.qmd
             - type: Slides
               href: slides/math241_wk12wed.qmd
         - topic: "Project II Work Day"
           display-date: Wednesday, Dec 2
           date: 12/2/26
-      # resources:
-      #   - 'Some text'
+      resources:
+        - 'For R packages reference: <a href="https://r-pkgs.org/"> R Packages, by Hadley Wickham and Jenny Bryan</a>'
     - week: 14
       days:
         - topic: "Building your data science portfolio"
