@@ -20,7 +20,7 @@ editor:
 -   Office: Library 386
 -   Office hours: Available [here](office_hours.qmd). 
 
-**Course Assistant**:  TBD
+**Course Assistant**:  Fae Monahan
 
 -   Email: TBD 
 -   Office: ETC 105B
@@ -83,7 +83,7 @@ By the end of the course, you will be able to:
 We'll have a few types of assignments, activities, and projects for this course. In particular: 
 
 -   **Problem sets**:
-    - Most weeks, we will have a problem set. The problem sets will be assigned on Thursday by 5pm and due the following week on Thursday by 5pm. 
+    - Most weeks, we will have a problem set. The problem sets will be assigned on Tuesday at noon and due the following week on Tuesday at noon. 
     - Problem sets will be turned in via Gradescope. 
     - To help with various circumstances (expected and unexpected), you have up to 4 additional extensions days that you can use as you need (e.g., 1 additional day for 4 problem sets, 4 additional days for 1 problem set, ...) but the extension days must be rounded up to the nearest day (e.g., 2 extra hours = 1 extension day). There is no need to notify me of your use of extension days. 
         - Note: if you use more than your allotted extension days for a problem set in and, no credit will be received for that problem set (e.g., if you have already used 3 extension days, and then turn in a problem set 2 days late, you will receive 0 credit for that problem set). 
@@ -98,7 +98,7 @@ We'll have a few types of assignments, activities, and projects for this course.
     - No late projects are accepted.
     
 -   **Code reviews**:
-    - Outside of class, for each project and problem set, we will do a one-on-one code review to discuss the assignment, your choices in how to approach the problem, and any problems you encountered with the material. These are an opportunity for you to improve your verbal communication skills, and to learn about how code is reviewed in industry. 
+    - Outside of class, for each project and problem set (except for Problem Set 0), we will do a one-on-one code review to discuss the assignment, your choices in how to approach the problem, and any problems you encountered with the material. These are an opportunity for you to improve your verbal communication skills, and to learn about how code is reviewed in industry. 
     
 ## Participation and Attendance
 

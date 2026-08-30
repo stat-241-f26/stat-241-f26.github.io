@@ -16,7 +16,7 @@ scheduled-docs:
           docs:
             - type: Slides
               href: slides/math241_wk01mon.qmd
-        - topic: "Data Visualization I: Principles"
+        - topic: "Data Visualization I: Principles. Problem Set 0 Released."
           display-date: Wednesday, Sep 2
           date: 9/2/26
           docs:
@@ -26,10 +26,6 @@ scheduled-docs:
               href: slides/math241_wk01wed.qmd
             - type: Activity
               href: in_class/activity1.qmd
-        - topic: "Problem Set 0 Released"
-          display-date: Thursday, Sep 3 @ noon
-          date: 9/3/26
-          docs:
             - type: Problem Set 0
               href: psets/pset00.qmd
       resources:
@@ -49,12 +45,6 @@ scheduled-docs:
             #   href: readings/readings_wk02mon.qmd
             - type: Slides
               href: slides/math241_wk02mon.qmd
-        - topic: "Problem Set 0 Due"
-          display-date: Thursday, Sep 10 @ noon
-          date: 9/10/26
-          docs:
-            # - type: Problem Set 1
-            #   href: psets/pset01.qmd
       resources:
         - 'For Wednesday: MDSR Chapter 3'
     - week: 3
@@ -67,7 +57,7 @@ scheduled-docs:
             #   href: readings/readings_wk02wed.qmd
             - type: Slides
               href: slides/math241_wk02wed.qmd
-        - topic: "Problem Set 1 Released"
+        - topic: "Problem Set 0 Due, Problem Set 1 Released"
           display-date: Tuesday, Sep 15 @ noon
           date: 9/15/26
           docs:
