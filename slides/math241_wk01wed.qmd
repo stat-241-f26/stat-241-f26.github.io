@@ -88,6 +88,21 @@ theme_update(text = element_text(size = 20))
 
 # First: P-set 0
 
+## Task: GitHub usernames
+
+**You must complete Problem 1, part a of Problem Set 0 before Thursday 9/3 (tomorrow) at noon**
+
+<br> <br>
+
+::: {.fragment .blockquote}
+
+**Problem 1, part a**:
+
+We'll use GitHub for collaboration and portfolio building, so each of you need to have a GitHub profile. If you don't have a GitHub profile already, go to [https://github.com/](https://github.com/) and sign up for one. Once you've signed up for an account, please add it to the [Google Sheet](https://docs.google.com/spreadsheets/d/1yhQfUwGpKj1bQYg3rmDybKobVkh-tjnY-GcYn4LTf7c/edit?usp=sharing) so that I can add you to the stat-241-f26 organization. Note: you'll need to be logged in to your Reed Google account to edit the Google Sheet.
+
+
+:::
+
 
 # Let's start with the language we will use to describe the components of a graph:
 
