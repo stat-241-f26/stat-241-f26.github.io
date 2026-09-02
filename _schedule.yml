@@ -20,8 +20,6 @@ scheduled-docs:
           display-date: Wednesday, Sep 2
           date: 9/2/26
           docs:
-            # - type: Reading
-            #   href: readings/readings_wk01wed.qmd
             - type: Slides
               href: slides/math241_wk01wed.qmd
             - type: Activity
