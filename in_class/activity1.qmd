@@ -1,18 +1,18 @@
 ---
 title: "Activity: Data Viz Principles"
+editor: source
 ---
-
 
 In the article "[One Dataset, Visualized 25 Ways](https://flowingdata.com/2017/01/24/one-dataset-visualized-25-ways/)", Nathan Yau presents several graphs of life expectancy data from the World Health Organization.
 
-1) Get into groups of two or three. In your groups, take a look at the graphs from the article. 
+1)  Get into groups of two or three. In your groups, take a look at the graphs from the article.
 
-2) Once you've familiarized yourself with the graphs, select three graphs. One that conveys the clearest story, another that is the most memorable, and another that is the best overall. Be ready to share with the class. 
+2)  Once you've familiarized yourself with the graphs, select three graphs. One that conveys the clearest story, another that is the most memorable, and another that is the best overall. Be ready to share with the class.
 
-3) With your three graphs, identify how the variables are mapped to the aesthetics of the geometric objects (i.e. shapes) and to consider how well (or not well) it is at telling a story. Here’s an example: 
+3)  With your three graphs, identify how the variables are mapped to the aesthetics of the geometric objects (i.e. shapes) and to consider how well (or not well) it is at telling a story. Here’s an example:
 
     - **Graph Number:** 1
     - **Geometric Object:** line
     - **Mapping:** Year to x axis, life expectancy at birth to y axis
-    - **Story?:** The life expectancy of all (most?) countries have increased over time.  Those with lower initial life expectancies in 2000 have seen greater marginal improvements than those who started with a higher life expectancy.
+    - **Story?:** The life expectancy of all (most?) countries have increased over time. Those with lower initial life expectancies in 2000 have seen greater marginal improvements than those who started with a higher life expectancy.
     - **Effective at telling the story?:** Generally yes but it leaves several questions (which countries correspond to each line) and room for improvement (use of transparency to better see stacking/density).

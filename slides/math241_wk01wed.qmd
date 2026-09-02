@@ -103,6 +103,124 @@ We'll use GitHub for collaboration and portfolio building, so each of you need t
 
 :::
 
+# P-set 0, Problem 3: Data from your life!
+
+**Goal**: Start collecting data from your life so that you can visualize it!
+
+------------------------------------------------------------------------
+
+## Hand-Drawn Data Viz
+
+-   Once we have collected data, a common next step is to visualize it.
+
+-   Two key aspects of data visualization:
+
+    -   Determining how you want to display the data.
+
+    -   Figuring out how to tell the computer to do that mapping.
+
+-   Hand-drawn data visualizations allow us to focus on the first part with full control over the **creative** process!
+
+------------------------------------------------------------------------
+
+## Hand-Drawn Data Viz Examples
+
+[Dear Data](http://www.dear-data.com/theproject)
+
+::: blockquote
+*"Each week, and for a year, we collected and measured a particular type of data about our lives, used this data to make a drawing on a postcard-sized sheet of paper, and then dropped the postcard in an English"postbox" (Stefanie) or an American "mailbox" (Giorgia)!"*
+:::
+
+------------------------------------------------------------------------
+
+### Dear Data Examples
+
+:::: {.columns}
+
+::: {.column width = "10%"}
+
+:::
+
+::: {.column width = "80%"}
+
+![](img/complaints.png){width="100%" fig-align="center"}
+
+:::
+
+::: {.column width = "10%"}
+
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+### Dear Data Examples
+
+:::: {.columns}
+
+::: {.column width = "10%"}
+
+:::
+
+::: {.column width = "80%"}
+
+![](img/complaints.png){width="100%" fig-align="center"}
+
+:::
+
+::: {.column width = "10%"}
+
+:::
+
+::::
+------------------------------------------------------------------------
+
+### More Dear Data Examples
+
+-   Becky Cooper handed out hand-drawn maps of Manhattan to strangers and asked them to ["map their Manhattan."](https://www.goodreads.com/book/show/15842664-mapping-manhattan?from_search=true)
+
+![Map drawn by New Yorker staff writer Patricia Marx](img/mapmanhattan.png){width="80%" fig-align="center"}
+
+-   What would the data frame for this visualization look like?
+
+------------------------------------------------------------------------
+
+### More Dear Data Examples
+
+![](img/postcards_stat100s22.001.jpeg){width="90%" fig-align="center"}
+
+-   What would the data frame for this visualization look like?
+
+------------------------------------------------------------------------
+
+### More Dear Data Examples
+
+![](img/postcards_stat100s22.002.jpeg){width="80%" fig-align="center"}
+
+-   What would the data frame for this visualization look like?
+
+------------------------------------------------------------------------
+
+## Goal: Over the next few days / weeks, collect data from your life so that you can visualize it on Pset-0.
+
+<br>
+
+::: fragment
+#### Recommendations
+:::
+
+-   Store the data in your favorite spreadsheet program (Google Sheets, Numbers, Excel).
+
+-   Determine what your cases/observations will be.
+
+-   Collect data on **more** variables than you will likely visualize. It is hard to know beforehand what the interesting relationships will be.
+
+-   Come to my office (Library 386) to borrow art supplies (colored pencils and felt-tip markers)! 
+
+
+# Now: Decomposing graphics
+
 
 # Let's start with the language we will use to describe the components of a graph:
 
@@ -510,7 +628,7 @@ Our ability to perceive differences varies by aesthetic!
 ::: {.column width='50%'}
 
 ```{r, echo = FALSE}
-math241_form <- read_csv("data/Background Survey for Math 241_ Data Science (Responses) - Form Responses 1.csv") %>%
+math241_form <- read_csv("data/Background Survey for Stat 241_ Data Science (Responses) - Form Responses 1.csv") %>%
   rename(ggplot2 = `For each R package or activity, rate what you think your proficiency level is. (For many of these, I am guessing the answer is "No experience" and that is completely fine!) [ggplot2]`,
          dplyr = `For each R package or activity, rate what you think your proficiency level is. (For many of these, I am guessing the answer is "No experience" and that is completely fine!) [dplyr]`,
          tidyr = `For each R package or activity, rate what you think your proficiency level is. (For many of these, I am guessing the answer is "No experience" and that is completely fine!) [tidyr]`) %>%
