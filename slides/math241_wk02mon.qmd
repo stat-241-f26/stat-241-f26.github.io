@@ -61,23 +61,25 @@ theme_update(text = element_text(size = 20))
 
 ::: {.nonincremental}
 
-* [Office Hours Schedule](https://reed-data-science.github.io/office_hours.html) is now posted on the course website.
+* [Office Hours Schedule](https://stat-241-f26.github.io/office_hours.html) is now posted on the course website.
     + We will try to stick to this schedule, but if one of us has to reschedule, we will send a Slack message and update the schedule.
-* P-Set 0 due at 9am on **WEDNESDAY** (all other p-sets will be due on Thursdays).
+* P-Set 0 due at noon on Tuesday, Sep 15.
 
 :::
 
 ------------------------------------------------------------------------
 
-## Week 2 Goals
+## Upcoming Goals
 
 :::: {.columns}
 
 ::: {.column width='50%' .nonincremental .fragment}
 
-**Mon Lecture**
+**Today**
 
-* Basics of `ggplot2`
+* An activity.
+
+* Basics of `ggplot2`.
 
 * Explore several `geoms`.
 
@@ -87,7 +89,7 @@ theme_update(text = element_text(size = 20))
 
 ::: {.column width='50%' .nonincremental .fragment}
 
-**Wed Lecture**
+**Next Week**
 
 
 * GitHub workflow overview
@@ -104,6 +106,10 @@ theme_update(text = element_text(size = 20))
 :::
 
 ::::
+
+
+
+# First: Activity
 
 ------------------------------------------------------------------------
 
@@ -922,9 +928,9 @@ ggplot(movies, aes(x = binary,
 
 ::: {.nonincremental}
 
-* [Office Hours Schedule](https://reed-data-science.github.io/office_hours.html)
-* P-Set 1 released at 9am on Thursday.
-    + Will discuss how to access the p-sets through GitHub on Wednesday.
+* [Office Hours Schedule](https://stat-241-f26.github.io/office_hours.html).
+* P-Set 0 due at noon on Tuesday, Sep 15.
+* P-Set 1 will also be released at noon on Tuesday, Sep 15. 
     
 :::
 

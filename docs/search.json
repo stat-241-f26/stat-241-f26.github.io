@@ -2685,7 +2685,7 @@
     "href": "slides/math241_wk02mon.html#announcements",
     "title": "Stat 241",
     "section": "Announcements",
-    "text": "Announcements\n\nOffice Hours Schedule is now posted on the course website.\n\nWe will try to stick to this schedule, but if one of us has to reschedule, we will send a Slack message and update the schedule.\n\nP-Set 0 due at 9am on WEDNESDAY (all other p-sets will be due on Thursdays)."
+    "text": "Announcements\n\nOffice Hours Schedule is now posted on the course website.\n\nWe will try to stick to this schedule, but if one of us has to reschedule, we will send a Slack message and update the schedule.\n\nP-Set 0 due at noon on Tuesday, Sep 15."
   },
   {
     "objectID": "slides/math241_wk02mon.html#week-2-goals",
@@ -3014,7 +3014,7 @@
     "href": "slides/math241_wk02mon.html#reminders",
     "title": "Stat 241",
     "section": "Reminders",
-    "text": "Reminders\n\nOffice Hours Schedule\nP-Set 1 released at 9am on Thursday.\n\nWill discuss how to access the p-sets through GitHub on Wednesday."
+    "text": "Reminders\n\nOffice Hours Schedule.\nP-Set 0 due at noon on Tuesday, Sep 15.\nP-Set 1 will also be released at noon on Tuesday, Sep 15."
   },
   {
     "objectID": "slides/math241_wk03mon.html#announcements",
@@ -4394,5 +4394,12 @@
     "title": "Stat 241",
     "section": "More customization resources",
     "text": "More customization resources\nI am just scratching the surface when it comes to customizing your website.\nSome of my favorite resources for Quarto website customization:\n\nThe Quarto.org HTML Themes Documentation\nFor a deep dive into customization, see Sam Shanny-Csik’s slides on Customizing Quarto Websites\n\nThese are a great next step from where you are now if you want even more customization options!"
+  },
+  {
+    "objectID": "slides/math241_wk02mon.html#upcoming-goals",
+    "href": "slides/math241_wk02mon.html#upcoming-goals",
+    "title": "Stat 241",
+    "section": "Upcoming Goals",
+    "text": "Upcoming Goals\n\n\nToday\n\nAn activity.\nBasics of ggplot2.\nExplore several geoms.\nAnd a little data wrangling with dplyr as needed!\n\n\nNext Week\n\nGitHub workflow overview\nGraphing context!\n\nLabels\nHighlighting\nUseful text\n\nLook at more geoms.\nExplore further customizations.\n\nColor\nThemes\n\nLearn how to ask coding questions well."
   }
 ]
