@@ -111,6 +111,12 @@ theme_update(text = element_text(size = 20))
 
 # First: Activity
 
+```{r}
+#| echo: false
+countdown::countdown(10)
+```
+
+
 ------------------------------------------------------------------------
 
 ## Recall: The Grammar of Graphics
