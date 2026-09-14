@@ -61,8 +61,8 @@ theme_update(text = element_text(size = 20))
 
 ::: {.nonincremental}
 
-* [Office Hours Schedule](https://reed-data-science.github.io/office_hours.html)
-    - Problem Set 1 due Thursday 9am.
+* [Office Hours Schedule](https://stat-241-f26.github.io/office_hours.html)
+    - Problem Set 1 due Tuesday @ noon.
 
 :::
 
@@ -77,9 +77,7 @@ theme_update(text = element_text(size = 20))
 
 **Mon Lecture**
 
-* Think about reproducibility and learn how to ask coding questions well.
-
-* Motivate and work on data wrangling.
+* Advanced `ggplot2`
 
 :::
 
@@ -87,8 +85,9 @@ theme_update(text = element_text(size = 20))
 
 **Wed Lecture**
 
-* Plot animation and interactivity.
-* GitHub workflow review.
+* Think about reproducibility and learn how to ask coding questions well.
+
+* Motivate and work on data wrangling.
 
 
 :::

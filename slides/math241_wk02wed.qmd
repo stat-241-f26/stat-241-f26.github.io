@@ -51,7 +51,7 @@ theme_update(text = element_text(size = 20))
 
 [Grayson White]{.custom-subtitle}
 
-[Stat 241 <br> Week 2 \| Fall 2026]{.custom-subtitle}
+[Stat 241 <br> Week 3 \| Fall 2026]{.custom-subtitle}
 :::
 :::::
 
@@ -61,36 +61,34 @@ theme_update(text = element_text(size = 20))
 
 ::: {.nonincremental}
 
-* [Office Hours Schedule](https://reed-data-science.github.io/office_hours.html)
+* [Office Hours Schedule](https://stat-241-f26.github.io/office_hours.html)
 * P-Set 1 available now.
     + Will discuss how to access the p-sets today!
-    + Due at 9am the following Thursday
-* My [Undergraduate Forestry Data Science summer research program](https://ufds-lab.com/) application deadline is **THIS FRIDAY!**
+    + Due at noon on Tuesday 9/22.
 
 :::
 
 ------------------------------------------------------------------------
 
 
-## Week 2 Goals
+## First goal: accept the invite to `stat-241-f26`
+
+
+* You should have received an email from me / GitHub on Sunday.
+
+
+
+------------------------------------------------------------------------
+
+
+
+## Week 3 Goals
 
 :::: {.columns}
 
 ::: {.column width='50%' .nonincremental .fragment}
 
 **Mon Lecture**
-
-* Basics of `ggplot2`
-
-* Explore several `geoms`.
-
-* And a little data wrangling with `dplyr` as needed!
-
-:::
-
-::: {.column width='50%' .nonincremental .fragment}
-
-**Wed Lecture**
 
 * GitHub workflow overview
 * Learn how to ask coding questions well.
@@ -102,6 +100,16 @@ theme_update(text = element_text(size = 20))
 * Explore further customizations.
     + Color
     + Themes
+
+:::
+
+::: {.column width='50%' .nonincremental .fragment}
+
+**Wed Lecture**
+
+* Think about reproducibility and learn how to ask coding questions well.
+
+* Motivate and work on data wrangling.
 
 :::
 
@@ -1268,7 +1276,7 @@ penguins %>%
 
 (5) An md file will pop up. Copy all the contents of that file.  
 
-(6) Head over to the `#coding-qa` channel and paste in the contents as a reply to the `reprex` practice message.  A text box will pop-up and select "Apply". 
+(6) Head over to the `#q-and-a` channel and paste in the contents as a reply to the `reprex` practice message.  A text box will pop-up and select "Apply". 
 
 (7) Above your code, type your question.  Then hit "Send".
 
@@ -1278,17 +1286,17 @@ penguins %>%
 
 
 
-### Next week
+### Next time
 
 
 ::: {.nonincremental}
 
 
-* Learn to make animated figures!
+* Learn to ask good coding questions!
 
 * Hone our data wrangling skills
 
-* P-set 1 due on Thursday 2/12
+* P-set 1 due on Tuesday 9/22 @ noon
 
 
 

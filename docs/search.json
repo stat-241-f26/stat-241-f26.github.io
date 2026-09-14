@@ -1341,14 +1341,21 @@
     "href": "slides/math241_wk02wed.html#announcements",
     "title": "Stat 241",
     "section": "Announcements",
-    "text": "Announcements\n\nOffice Hours Schedule\nP-Set 1 available now.\n\nWill discuss how to access the p-sets today!\nDue at 9am the following Thursday\n\nMy Undergraduate Forestry Data Science summer research program application deadline is THIS FRIDAY!"
+    "text": "Announcements\n\nOffice Hours Schedule\nP-Set 1 available now.\n\nWill discuss how to access the p-sets today!\nDue at noon on Tuesday 9/22."
   },
   {
-    "objectID": "slides/math241_wk02wed.html#week-2-goals",
-    "href": "slides/math241_wk02wed.html#week-2-goals",
+    "objectID": "slides/math241_wk02wed.html#first-goal-accept-the-invite-to-stat-241-f26",
+    "href": "slides/math241_wk02wed.html#first-goal-accept-the-invite-to-stat-241-f26",
     "title": "Stat 241",
-    "section": "Week 2 Goals",
-    "text": "Week 2 Goals\n\n\nMon Lecture\n\nBasics of ggplot2\nExplore several geoms.\nAnd a little data wrangling with dplyr as needed!\n\n\nWed Lecture\n\nGitHub workflow overview\nLearn how to ask coding questions well.\nGraphing context!\n\nLabels\nHighlighting\nUseful text\n\nLook at more geoms.\nExplore further customizations.\n\nColor\nThemes"
+    "section": "First goal: accept the invite to stat-241-f26",
+    "text": "First goal: accept the invite to stat-241-f26\n\nYou should have received an email from me / GitHub on Sunday."
+  },
+  {
+    "objectID": "slides/math241_wk02wed.html#week-3-goals",
+    "href": "slides/math241_wk02wed.html#week-3-goals",
+    "title": "Stat 241",
+    "section": "Week 3 Goals",
+    "text": "Week 3 Goals\n\n\nMon Lecture\n\nGitHub workflow overview\nLearn how to ask coding questions well.\nGraphing context!\n\nLabels\nHighlighting\nUseful text\n\nLook at more geoms.\nExplore further customizations.\n\nColor\nThemes\n\n\n\nWed Lecture\n\nThink about reproducibility and learn how to ask coding questions well.\nMotivate and work on data wrangling."
   },
   {
     "objectID": "slides/math241_wk02wed.html#p-set-tips",
@@ -1705,7 +1712,7 @@
     "href": "slides/math241_wk02wed.html#reprex-practice-time-1",
     "title": "Stat 241",
     "section": "reprex Practice Time!",
-    "text": "reprex Practice Time!\n\nIn Session, select “Clear Workspace” and then “Restart R”.\nOpen a script file and include in the top line:\n\n\nlibrary(reprex)\n\n\nPut the code you want to use in the script file and make sure it runs.\n\n\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\npenguins %&gt;%\n  ggplot(mapping = aes(x = factor(species))) +\n  geom_bar()\n\n\nSurround the code with reprex({ ... }, venue = \"slack\") and run it.\nAn md file will pop up. Copy all the contents of that file.\nHead over to the #coding-qa channel and paste in the contents as a reply to the reprex practice message. A text box will pop-up and select “Apply”.\nAbove your code, type your question. Then hit “Send”."
+    "text": "reprex Practice Time!\n\nIn Session, select “Clear Workspace” and then “Restart R”.\nOpen a script file and include in the top line:\n\n\nlibrary(reprex)\n\n\nPut the code you want to use in the script file and make sure it runs.\n\n\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\npenguins %&gt;%\n  ggplot(mapping = aes(x = factor(species))) +\n  geom_bar()\n\n\nSurround the code with reprex({ ... }, venue = \"slack\") and run it.\nAn md file will pop up. Copy all the contents of that file.\nHead over to the #q-and-a channel and paste in the contents as a reply to the reprex practice message. A text box will pop-up and select “Apply”.\nAbove your code, type your question. Then hit “Send”."
   },
   {
     "objectID": "slides/math241_wk01wed.html#week-1-goals",
@@ -3021,14 +3028,14 @@
     "href": "slides/math241_wk03mon.html#announcements",
     "title": "Stat 241",
     "section": "Announcements",
-    "text": "Announcements\n\nOffice Hours Schedule\n\nProblem Set 1 due Thursday 9am."
+    "text": "Announcements\n\nOffice Hours Schedule\n\nProblem Set 1 due Tuesday @ noon."
   },
   {
     "objectID": "slides/math241_wk03mon.html#week-3-goals",
     "href": "slides/math241_wk03mon.html#week-3-goals",
     "title": "Stat 241",
     "section": "Week 3 Goals",
-    "text": "Week 3 Goals\n\n\nMon Lecture\n\nThink about reproducibility and learn how to ask coding questions well.\nMotivate and work on data wrangling.\n\n\nWed Lecture\n\nPlot animation and interactivity.\nGitHub workflow review."
+    "text": "Week 3 Goals\n\n\nMon Lecture\n\nAdvanced ggplot2\n\n\nWed Lecture\n\nThink about reproducibility and learn how to ask coding questions well.\nMotivate and work on data wrangling."
   },
   {
     "objectID": "slides/math241_wk03mon.html#reproducible-workflow",
