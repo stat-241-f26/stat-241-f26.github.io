@@ -583,7 +583,7 @@ knitr::include_graphics("img/data_wrangling_packages.010.jpeg")
 ## Stat 241 `dplyr` Experience
 
 ```{r, echo=FALSE, out.width='60%'}
-math241_form <- read_csv("data/Background Survey for Math 241_ Data Science (Responses) - Form Responses 1.csv") %>%
+math241_form <- read_csv("data/Background Survey for Stat 241_ Data Science (Responses) - Form Responses 1.csv") %>%
   rename(ggplot2 = `For each R package or activity, rate what you think your proficiency level is. (For many of these, I am guessing the answer is "No experience" and that is completely fine!) [ggplot2]`,
          dplyr = `For each R package or activity, rate what you think your proficiency level is. (For many of these, I am guessing the answer is "No experience" and that is completely fine!) [dplyr]`,
          tidyr = `For each R package or activity, rate what you think your proficiency level is. (For many of these, I am guessing the answer is "No experience" and that is completely fine!) [tidyr]`) %>%
@@ -1070,12 +1070,12 @@ my_pets %>%
 
 
 
-# Activity
+<!-- # Activity -->
 
-```{r}
-#| echo: false
-countdown::countdown(15)
-```
+<!-- ```{r} -->
+<!-- #| echo: false -->
+<!-- countdown::countdown(15) -->
+<!-- ``` -->
 
 
 

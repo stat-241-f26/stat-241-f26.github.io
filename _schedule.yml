@@ -69,10 +69,10 @@ scheduled-docs:
             #   href: readings/readings_wk03mon.qmd
             - type: Slides
               href: slides/math241_wk03mon.qmd
-            - type: Activity (instructions)
-              href: in_class/activity2.qmd
-            - type: Activity (download)
-              href: in_class/activity2_download.qmd
+            # - type: Activity (instructions)
+            #   href: in_class/activity2.qmd
+            # - type: Activity (download)
+            #   href: in_class/activity2_download.qmd
       resources:
         - 'For Monday: Review MDSR Chapter 3'
         - 'For Wednesday: MDSR Chapter 4'
