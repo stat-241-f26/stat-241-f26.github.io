@@ -194,8 +194,6 @@
       margin-right: 0; 
     }
   </style>
-  <link href="../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
-  <script src="../site_libs/countdown-0.4.0/countdown.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -215,36 +213,18 @@
 <p><span class="custom-subtitle">Stat 241 <br> Week 4 | Fall 2026</span></p>
 </div></div>
 </section>
-<section id="announcements" class="slide level2">
-<h2>Announcements</h2>
-<ul>
-<li><p>Welcome to the newly admitted students!</p></li>
-<li><p><a href="https://reed-data-science.github.io/office_hours.html">Office hours</a> time change going forward.</p></li>
-</ul>
-<div class="fragment">
-<ul>
-<li><a href="https://forms.gle/kUti3ERaBfU4qCyd7">Course Interest Form</a></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/course_interest_form.jpg" class="quarto-figure quarto-figure-center" style="width:30.0%"></p>
-</figure>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="countdown" id="timer_fcac9fc9" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-</div>
-</section>
 <section id="week-4-goals" class="slide level2">
 <h2>Week 4 Goals</h2>
 <div class="columns">
 <div class="column fragment" style="width:50%;">
 <p><strong>Mon Lecture</strong></p>
+<ul>
+<li>Recall some ideas about inheriting aesthetics.</li>
+<li>Plot animation and interactivity.</li>
+<li>Formalize some ideas about GitHub workflow and RStudio Projects / Positron folders.</li>
+</ul>
+</div><div class="column fragment" style="width:50%;">
+<p><strong>Wed Lecture</strong></p>
 <ul>
 <li><p>Different types of data in <code>R</code></p>
 <ul>
@@ -254,31 +234,13 @@
 <li><p>Talk more about logical statements</p></li>
 <li><p>More practice with <code>dplyr</code> verbs and data wrangling</p></li>
 </ul>
-</div><div class="column fragment" style="width:50%;">
-<p><strong>Wed Lecture</strong></p>
-<ul>
-<li>Joining multiple data frames</li>
-<li>“Tidy” data</li>
-<li>Reshaping data frames</li>
-</ul>
 </div></div>
 </section>
 <section class="slide level2">
 
 <h3 id="looking-ahead-to-project-1">Looking Ahead to Project 1</h3>
-<p><strong>Goal</strong>: Create interactive dashboards with <code>shinydashboard</code> and <code>flexdashboard</code>.</p>
-<div class="columns fragment">
-<div class="column" style="width:25%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/flexdashboard.png" class="quarto-figure quarto-figure-center" width="840"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:75%;">
+<p><strong>Goal</strong>: Create interactive dashboards with <code>shiny</code>.</p>
+<div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -288,7 +250,7 @@
 </div>
 </div>
 </div>
-</div></div>
+</div>
 <ul>
 <li class="fragment"><a href="https://ncasi-shiny-tools.shinyapps.io/Counties/">Link to example dashboard</a></li>
 </ul>
@@ -1092,7 +1054,7 @@
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb141"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a aria-label="1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -4.4109965  0.4945386  4.5288123</code></pre>
+<pre><code>[1] -4.469885 -1.119215  5.048589</code></pre>
 </div>
 </div>
 </div></div>
@@ -1428,12 +1390,9 @@ $holidays
 </section>
 <section class="slide level2">
 
-<h3 id="next-time">Next time</h3>
-<ul>
-<li>Joining, reshaping, and tidying data!</li>
-</ul>
 <h3 id="next-week">Next Week</h3>
 <ul>
+<li>Joining, reshaping, and tidying data!</li>
 <li>Spatial data in <code>R</code></li>
 </ul>
 

@@ -9,7 +9,7 @@ dplyr
 stringr
 forcats
 lubridate
+mosaicData
 babynames
 gganimate
 palmerpenguins
-mosaicData

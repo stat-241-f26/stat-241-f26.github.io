@@ -60,18 +60,18 @@ theme_update(text = element_text(size = 20))
 ## Announcements
 
 ::: {.nonincremental}
-
-* [Office Hours Schedule](https://reed-data-science.github.io/office_hours.html)
-    - This week, my Friday office hours have been moved to Thursday. 
     
-* Problem Set 1 due **tomorrow** at 9am.
+* Problem Set 1 due date moved!
+    * New date: **Wednesday 9/23** at 10pm.
+    
+* Problem 5 supplemental instructions on Slack. 
 
 :::
 
 ------------------------------------------------------------------------
 
 
-## Week 3 Goals
+## Week 4 Goals
 
 :::: {.columns}
 
@@ -79,9 +79,9 @@ theme_update(text = element_text(size = 20))
 
 **Mon Lecture**
 
-* Think about reproducibility and learn how to ask coding questions well.
-
-* Motivate and work on data wrangling.
+* Recall some ideas about inheriting aesthetics.
+* Plot animation and interactivity.
+* Formalize some ideas about GitHub workflow and RStudio Projects / Positron folders.
 
 :::
 
@@ -89,9 +89,13 @@ theme_update(text = element_text(size = 20))
 
 **Wed Lecture**
 
-* Recall some ideas about inheriting aesthetics.
-* Plot animation and interactivity.
-* Formalize some ideas about GitHub workflow and RStudio Projects / Positron folders.
+* Different types of data in `R`
+    - atomic and generic vectors
+    - subsetting objects
+    
+* Talk more about logical statements
+
+* More practice with `dplyr` verbs and data wrangling
 
 
 :::
@@ -419,8 +423,10 @@ head(babynames)
 
 ```{r}
 babynames_math241 <- babynames %>%
-  filter(name %in% c("Grayson", "Michael",
-                     "Megan", "Lenny")) %>%
+  filter(name %in% c("Maeve", "Panya",
+                     "Ezra", "Ida", "Fuxing", "Fae",
+                     "John", "Roseth", "Tianrun", "Vasiliy",
+                     "Grayson")) %>%
   group_by(year, name) %>%
   summarize(n = sum(n)) %>%
   ungroup() %>%
@@ -632,17 +638,21 @@ animate(p2_anim)
 ```{r anim4}
 #| output-location: column
 #| cache: true
-stats_profs_anim <- p + 
+stat241_anim <- p + 
   transition_filter(
-    Lenny = name == "Lenny",
-    Grayson = name == "Grayson",
-    Michael = name == "Michael",
-    Megan = name == "Megan",
+    Maeve = name == "Maeve",
+    Panya = name == "Panya",
+    Ezra = name == "Ezra",
+    Ida = name == "Ida",
+    Fae = name == "Fae",
+    John = name == "John", 
+    Vasiliy = name == "Vasiliy",
+    Grayson = name == "Grayson"
   ) +
   enter_fade() +
   exit_fade()
 
-animate(stats_profs_anim) 
+animate(stat241_anim) 
 ```
 
 
@@ -655,18 +665,22 @@ animate(stats_profs_anim)
 ```{r anim5}
 #| output-location: column
 #| cache: true
-stats_profs_anim <- p + 
+stat241_anim <- p + 
   transition_filter(
-    Lenny = name == "Lenny",
-    Grayson = name == "Grayson",
-    Michael = name == "Michael",
-    Megan = name == "Megan",
+    Maeve = name == "Maeve",
+    Panya = name == "Panya",
+    Ezra = name == "Ezra",
+    Ida = name == "Ida",
+    Fae = name == "Fae",
+    John = name == "John", 
+    Vasiliy = name == "Vasiliy",
+    Grayson = name == "Grayson"
   ) + 
   enter_grow() +
   exit_fade() + 
   view_follow()
 
-animate(stats_profs_anim) 
+animate(stat241_anim) 
 ```
 
 
@@ -677,7 +691,7 @@ animate(stats_profs_anim)
 
 ```{r}
 #| eval: false
-anim_save("my_plots/stats_profs_an.gif", animate(stats_profs_anim))
+anim_save("my_plots/stat241_an.gif", animate(stat241_anim))
 ```
 
 
@@ -940,7 +954,7 @@ getwd()
 
 ::: {.fragment .nonincremental}
 
-* **Question**: My RStudio Project is `Reed-Data-Science.github.io`. Why does the file path end a folder furhter there when I run the following?
+* **Question**: My RStudio Project is `stat-241-f26.github.io`. Why does the file path end a folder further there when I run the following?
 
 ```{r}
 getwd()
@@ -1012,7 +1026,7 @@ getwd()
 
 ::: {.fragment .nonincremental}
 
-* If you end up with a mess of errors, then don't worry but come see one of the instructors for help.
+* If you end up with a mess of errors, then don't worry but come see me or the course assistant for help.
     + It happens to [everyone](https://xkcd.com/1597/).
     
 :::
@@ -1029,8 +1043,8 @@ getwd()
 
 ::: {.fragment .nonincremental}
  
-* Under the **Reed-Data-Science** GitHub Organization you currently have 1 repo:
-    + `pset01-username`: Just you and the Stat 241 teaching team (me, course assistant, graders) can access
+* Under the **stat-241-f26** GitHub Organization you currently have 1 repo:
+    + `pset01-username`: Just you and the Stat 241 teaching team can access
     + Soon, you'll have `pset02-username`
     
 :::
@@ -1041,13 +1055,12 @@ getwd()
 ------------------------------------------------------------------------
 
 
-### Next Week
+### Next Time
 
 ::: {.nonincremental}
 
--   Big data wrangling week: 
-    - **Monday**: reshaping and joining data. 
-    - **Wednesday**: learn about different data types in `R` (beyond `data.frames`)
+-   More data wrangling
+-   Learn about different data types in `R` (beyond `data.frames`)
     
 :::
 
@@ -1058,10 +1071,11 @@ getwd()
 
 ::: {.nonincremental}
 
+-   data joins and reshaping data
 
--   **Week 5**: spatial data
+-   spatial data
 
--   **Week 6**: Interactive dashboards with `shiny` (and Project 1 assigned!)
+-   Interactive dashboards with `shiny` (the subject of Project 1!)
 
 
 :::

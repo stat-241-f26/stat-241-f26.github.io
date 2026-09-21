@@ -57,31 +57,6 @@ theme_update(text = element_text(size = 20))
 
 ------------------------------------------------------------------------
 
-## Announcements
-
-::: {.nonincremental}
-
-* Welcome to the newly admitted students!
-
-* [Office hours](https://reed-data-science.github.io/office_hours.html) time change going forward.
-
-:::
-
-::: {.fragment .nonincremental}
-
-* [Course Interest Form](https://forms.gle/kUti3ERaBfU4qCyd7)
-
-
-![](img/course_interest_form.jpg){fig-align='center' width='30%'}
-
-```{r}
-#| echo: false
-countdown::countdown(4)
-```
-
-:::
-------------------------------------------------------------------------
-
 
 ## Week 4 Goals
 
@@ -91,13 +66,10 @@ countdown::countdown(4)
 
 **Mon Lecture**
 
-* Different types of data in `R`
-    - atomic and generic vectors
-    - subsetting objects
-    
-* Talk more about logical statements
+* Recall some ideas about inheriting aesthetics.
+* Plot animation and interactivity.
+* Formalize some ideas about GitHub workflow and RStudio Projects / Positron folders.
 
-* More practice with `dplyr` verbs and data wrangling
 
 :::
 
@@ -105,9 +77,13 @@ countdown::countdown(4)
 
 **Wed Lecture**
 
-* Joining multiple data frames
-* "Tidy" data
-* Reshaping data frames
+* Different types of data in `R`
+    - atomic and generic vectors
+    - subsetting objects
+    
+* Talk more about logical statements
+
+* More practice with `dplyr` verbs and data wrangling
 
 
 
@@ -123,29 +99,15 @@ countdown::countdown(4)
 
 
 
-**Goal**: Create interactive dashboards with `shinydashboard` and `flexdashboard`.
+**Goal**: Create interactive dashboards with `shiny`.
 
-:::: {.columns .fragment}
+:::: { .fragment}
 
-::: {.column width="25%"}
-
-```{r}
-#| echo: false
-knitr::include_graphics("img/flexdashboard.png")
-```
-
-:::
-
-
-::: {.column width="75%"}
 
 ```{r}
 #| echo: false
 knitr::include_graphics("img/fia_dash.png")
 ```
-
-
-:::
 
 
 ::::
@@ -1000,23 +962,18 @@ my_pets[1, ]
 
 ------------------------------------------------------------------------
 
-### Next time
+### Next Week
 
 
 ::: {.nonincremental}
 
 -   Joining, reshaping, and tidying data!
-
-:::
-
-
-### Next Week
-
-::: {.nonincremental}
-
 -   Spatial data in `R`
-    
+
+
 :::
+
+
 
 
     

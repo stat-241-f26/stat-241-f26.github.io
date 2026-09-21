@@ -1075,14 +1075,14 @@
     "href": "slides/math241_wk03wed.html#announcements",
     "title": "Stat 241",
     "section": "Announcements",
-    "text": "Announcements\n\nOffice Hours Schedule\n\nThis week, my Friday office hours have been moved to Thursday.\n\nProblem Set 1 due tomorrow at 9am."
+    "text": "Announcements\n\nProblem Set 1 due date moved!\n\nNew date: Wednesday 9/23 at 10pm.\n\nProblem 5 supplemental instructions on Slack."
   },
   {
-    "objectID": "slides/math241_wk03wed.html#week-3-goals",
-    "href": "slides/math241_wk03wed.html#week-3-goals",
+    "objectID": "slides/math241_wk03wed.html#week-4-goals",
+    "href": "slides/math241_wk03wed.html#week-4-goals",
     "title": "Stat 241",
-    "section": "Week 3 Goals",
-    "text": "Week 3 Goals\n\n\nMon Lecture\n\nThink about reproducibility and learn how to ask coding questions well.\nMotivate and work on data wrangling.\n\n\nWed Lecture\n\nRecall some ideas about inheriting aesthetics.\nPlot animation and interactivity.\nFormalize some ideas about GitHub workflow and RStudio Projects / Positron folders."
+    "section": "Week 4 Goals",
+    "text": "Week 4 Goals\n\n\nMon Lecture\n\nRecall some ideas about inheriting aesthetics.\nPlot animation and interactivity.\nFormalize some ideas about GitHub workflow and RStudio Projects / Positron folders.\n\n\nWed Lecture\n\nDifferent types of data in R\n\natomic and generic vectors\nsubsetting objects\n\nTalk more about logical statements\nMore practice with dplyr verbs and data wrangling"
   },
   {
     "objectID": "slides/math241_wk03wed.html#inheriting-aes-from-ggplot",
@@ -1166,7 +1166,7 @@
     "href": "slides/math241_wk03wed.html#and-our-data-wrangling",
     "title": "Stat 241",
     "section": "And our data wrangling",
-    "text": "And our data wrangling\n\nbabynames_math241 &lt;- babynames %&gt;%\n  filter(name %in% c(\"Grayson\", \"Michael\",\n                     \"Megan\", \"Lenny\")) %&gt;%\n  group_by(year, name) %&gt;%\n  summarize(n = sum(n)) %&gt;%\n  ungroup() %&gt;%\n  arrange(desc(year))\n\nbabynames_math241\n\n# A tibble: 431 × 3\n    year name        n\n   &lt;dbl&gt; &lt;chr&gt;   &lt;int&gt;\n 1  2017 Grayson  8767\n 2  2017 Lenny     118\n 3  2017 Megan     624\n 4  2017 Michael 12612\n 5  2016 Grayson  8817\n 6  2016 Lenny     134\n 7  2016 Megan     744\n 8  2016 Michael 14091\n 9  2015 Grayson  8071\n10  2015 Lenny     177\n# ℹ 421 more rows"
+    "text": "And our data wrangling\n\nbabynames_math241 &lt;- babynames %&gt;%\n  filter(name %in% c(\"Maeve\", \"Panya\",\n                     \"Ezra\", \"Ida\", \"Fuxing\", \"Fae\",\n                     \"John\", \"Roseth\", \"Tianrun\", \"Vasiliy\",\n                     \"Grayson\")) %&gt;%\n  group_by(year, name) %&gt;%\n  summarize(n = sum(n)) %&gt;%\n  ungroup() %&gt;%\n  arrange(desc(year))\n\nbabynames_math241\n\n# A tibble: 714 × 3\n    year name        n\n   &lt;dbl&gt; &lt;chr&gt;   &lt;int&gt;\n 1  2017 Ezra     5495\n 2  2017 Fae        24\n 3  2017 Grayson  8767\n 4  2017 Ida       177\n 5  2017 John     9444\n 6  2017 Maeve     860\n 7  2016 Ezra     5055\n 8  2016 Fae        29\n 9  2016 Grayson  8817\n10  2016 Ida       194\n# ℹ 704 more rows"
   },
   {
     "objectID": "slides/math241_wk03wed.html#now-lets-make-a-plot",
@@ -1180,7 +1180,7 @@
     "href": "slides/math241_wk03wed.html#sidebar-saving-plots-to-your-computer",
     "title": "Stat 241",
     "section": "Sidebar: saving plots to your computer",
-    "text": "Sidebar: saving plots to your computer\nHere, I have an empty folder called “my_plots” in my working directory.\n\nlist.files(\"my_plots\")\n\n[1] \"stats_profs_an.gif\"\n\n\n\n\nNow, I save the plot in my R environment as the object p\n\np &lt;- ggplot(data = babynames_math241, \n       mapping = aes(x = year, y = n)) +\n  geom_line(aes(color = name), size = 2) + \n  theme(legend.position = \"bottom\", \n        text = element_text(size = 20)) +\n  guides(color = guide_legend(nrow = 2)) +\n  labs(y = \"Number of Births\",\n       x = \"Year\", \n       color = \"Baby Name\")\n\n\n\n\n\nFinally, I use ggsave() to save the object to my computer\n\nggsave(filename = \"my_plots/stats_names.png\", \n       width = 10, \n       height = 6)\n\n\n\n\nChecking for files in “my_plots” directory\n\nlist.files(\"my_plots\")\n\n[1] \"stats_names.png\"    \"stats_profs_an.gif\""
+    "text": "Sidebar: saving plots to your computer\nHere, I have an empty folder called “my_plots” in my working directory.\n\nlist.files(\"my_plots\")\n\ncharacter(0)\n\n\n\n\nNow, I save the plot in my R environment as the object p\n\np &lt;- ggplot(data = babynames_math241, \n       mapping = aes(x = year, y = n)) +\n  geom_line(aes(color = name), size = 2) + \n  theme(legend.position = \"bottom\", \n        text = element_text(size = 20)) +\n  guides(color = guide_legend(nrow = 2)) +\n  labs(y = \"Number of Births\",\n       x = \"Year\", \n       color = \"Baby Name\")\n\n\n\n\n\nFinally, I use ggsave() to save the object to my computer\n\nggsave(filename = \"my_plots/stats_names.png\", \n       width = 10, \n       height = 6)\n\n\n\n\nChecking for files in “my_plots” directory\n\nlist.files(\"my_plots\")\n\n[1] \"stats_names.png\""
   },
   {
     "objectID": "slides/math241_wk03wed.html#back-to-animation",
@@ -1222,21 +1222,21 @@
     "href": "slides/math241_wk03wed.html#other-transition_-functions-3",
     "title": "Stat 241",
     "section": "Other transition_***() functions",
-    "text": "Other transition_***() functions\ntransition_filter(): display graph for multiple filtering conditions\n\n\nstats_profs_anim &lt;- p + \n  transition_filter(\n    Lenny = name == \"Lenny\",\n    Grayson = name == \"Grayson\",\n    Michael = name == \"Michael\",\n    Megan = name == \"Megan\",\n  ) +\n  enter_fade() +\n  exit_fade()\n\nanimate(stats_profs_anim)"
+    "text": "Other transition_***() functions\ntransition_filter(): display graph for multiple filtering conditions\n\n\nstat241_anim &lt;- p + \n  transition_filter(\n    Maeve = name == \"Maeve\",\n    Panya = name == \"Panya\",\n    Ezra = name == \"Ezra\",\n    Ida = name == \"Ida\",\n    Fae = name == \"Fae\",\n    John = name == \"John\", \n    Vasiliy = name == \"Vasiliy\",\n    Grayson = name == \"Grayson\"\n  ) +\n  enter_fade() +\n  exit_fade()\n\nanimate(stat241_anim)"
   },
   {
     "objectID": "slides/math241_wk03wed.html#other-transition_-functions-4",
     "href": "slides/math241_wk03wed.html#other-transition_-functions-4",
     "title": "Stat 241",
     "section": "Other transition_***() functions",
-    "text": "Other transition_***() functions\nview_follow(): let’s us adjust the axis as we view\n\n\nstats_profs_anim &lt;- p + \n  transition_filter(\n    Lenny = name == \"Lenny\",\n    Grayson = name == \"Grayson\",\n    Michael = name == \"Michael\",\n    Megan = name == \"Megan\",\n  ) + \n  enter_grow() +\n  exit_fade() + \n  view_follow()\n\nanimate(stats_profs_anim)"
+    "text": "Other transition_***() functions\nview_follow(): let’s us adjust the axis as we view\n\n\nstat241_anim &lt;- p + \n  transition_filter(\n    Maeve = name == \"Maeve\",\n    Panya = name == \"Panya\",\n    Ezra = name == \"Ezra\",\n    Ida = name == \"Ida\",\n    Fae = name == \"Fae\",\n    John = name == \"John\", \n    Vasiliy = name == \"Vasiliy\",\n    Grayson = name == \"Grayson\"\n  ) + \n  enter_grow() +\n  exit_fade() + \n  view_follow()\n\nanimate(stat241_anim)"
   },
   {
     "objectID": "slides/math241_wk03wed.html#how-do-i-save-an-animation",
     "href": "slides/math241_wk03wed.html#how-do-i-save-an-animation",
     "title": "Stat 241",
     "section": "How do I save an animation?",
-    "text": "How do I save an animation?\n\nanim_save(\"my_plots/stats_profs_an.gif\", animate(stats_profs_anim))"
+    "text": "How do I save an animation?\n\nanim_save(\"my_plots/stat241_an.gif\", animate(stat241_anim))"
   },
   {
     "objectID": "slides/math241_wk03wed.html#why-add-animation-to-a-graph",
@@ -1306,7 +1306,7 @@
     "href": "slides/math241_wk03wed.html#rstudio-projects-and-positron-folders",
     "title": "Stat 241",
     "section": "RStudio Projects and Positron Folders",
-    "text": "RStudio Projects and Positron Folders\nRStudio Projects and Positron Folders: Feature that helps you organize your work.\n\nEach problem set will get it’s own RStudio Project or Positron Folder\nThe working directory is the home directory of the project.\n\n\n\nQuestion: My RStudio Project is Reed-Data-Science.github.io. Why does the file path end a folder furhter there when I run the following?\n\n\ngetwd()\n\n[1] \"/Users/grwhite/courses/f26/stat-241/stat-241-f26.github.io/slides\"\n\n\n\n\nR code executed in Quarto documents gets the working directory where that document lives, not the project directory\n\nConfusing! But sometimes nice…"
+    "text": "RStudio Projects and Positron Folders\nRStudio Projects and Positron Folders: Feature that helps you organize your work.\n\nEach problem set will get it’s own RStudio Project or Positron Folder\nThe working directory is the home directory of the project.\n\n\n\nQuestion: My RStudio Project is stat-241-f26.github.io. Why does the file path end a folder further there when I run the following?\n\n\ngetwd()\n\n[1] \"/Users/grwhite/courses/f26/stat-241/stat-241-f26.github.io/slides\"\n\n\n\n\nR code executed in Quarto documents gets the working directory where that document lives, not the project directory\n\nConfusing! But sometimes nice…"
   },
   {
     "objectID": "slides/math241_wk03wed.html#projects-and-workflow",
@@ -1327,14 +1327,14 @@
     "href": "slides/math241_wk03wed.html#git-real",
     "title": "Stat 241",
     "section": "Git Real",
-    "text": "Git Real\n\n\nGit is a decentralized version control system.\n\nEach collaborator has a complete version of the repo.\nEveryone can work offline and simultaneously.\nGitHub holds the master copy.\n\n\n\n\n\ngit is not friendly and can be frustrating. + BUT, the version control and collaborative rewards are big!\n\n\n\n\nGitHub.com is a great place to develop an online presence.\n\n\n\n\nIf you end up with a mess of errors, then don’t worry but come see one of the instructors for help.\n\nIt happens to everyone."
+    "text": "Git Real\n\n\nGit is a decentralized version control system.\n\nEach collaborator has a complete version of the repo.\nEveryone can work offline and simultaneously.\nGitHub holds the master copy.\n\n\n\n\n\ngit is not friendly and can be frustrating. + BUT, the version control and collaborative rewards are big!\n\n\n\n\nGitHub.com is a great place to develop an online presence.\n\n\n\n\nIf you end up with a mess of errors, then don’t worry but come see me or the course assistant for help.\n\nIt happens to everyone."
   },
   {
     "objectID": "slides/math241_wk03wed.html#main-message",
     "href": "slides/math241_wk03wed.html#main-message",
     "title": "Stat 241",
     "section": "Main Message:",
-    "text": "Main Message:\nGithub Repo = RStudio Project or Positron Folder\n\nA repo, short for repository, is the folder that contains all of the files for the project on GitHub.com.\n\n\n\nUnder the Reed-Data-Science GitHub Organization you currently have 1 repo:\n\npset01-username: Just you and the Stat 241 teaching team (me, course assistant, graders) can access\nSoon, you’ll have pset02-username\n\n\n\n\nFor each repo, you should create an RStudio Project or Positron folder (with version control)."
+    "text": "Main Message:\nGithub Repo = RStudio Project or Positron Folder\n\nA repo, short for repository, is the folder that contains all of the files for the project on GitHub.com.\n\n\n\nUnder the stat-241-f26 GitHub Organization you currently have 1 repo:\n\npset01-username: Just you and the Stat 241 teaching team can access\nSoon, you’ll have pset02-username\n\n\n\n\nFor each repo, you should create an RStudio Project or Positron folder (with version control)."
   },
   {
     "objectID": "slides/math241_wk02wed.html#announcements",
@@ -3213,18 +3213,11 @@
     "text": "Next time\n\nUse some of our data wrangling skills to make animated and interactive graphics!"
   },
   {
-    "objectID": "slides/math241_wk04mon.html#announcements",
-    "href": "slides/math241_wk04mon.html#announcements",
-    "title": "Stat 241",
-    "section": "Announcements",
-    "text": "Announcements\n\nWelcome to the newly admitted students!\nOffice hours time change going forward.\n\n\n\nCourse Interest Form\n\n\n\n\n\n\n\n\n\n−+\n04:00"
-  },
-  {
     "objectID": "slides/math241_wk04mon.html#week-4-goals",
     "href": "slides/math241_wk04mon.html#week-4-goals",
     "title": "Stat 241",
     "section": "Week 4 Goals",
-    "text": "Week 4 Goals\n\n\nMon Lecture\n\nDifferent types of data in R\n\natomic and generic vectors\nsubsetting objects\n\nTalk more about logical statements\nMore practice with dplyr verbs and data wrangling\n\n\nWed Lecture\n\nJoining multiple data frames\n“Tidy” data\nReshaping data frames"
+    "text": "Week 4 Goals\n\n\nMon Lecture\n\nRecall some ideas about inheriting aesthetics.\nPlot animation and interactivity.\nFormalize some ideas about GitHub workflow and RStudio Projects / Positron folders.\n\n\nWed Lecture\n\nDifferent types of data in R\n\natomic and generic vectors\nsubsetting objects\n\nTalk more about logical statements\nMore practice with dplyr verbs and data wrangling"
   },
   {
     "objectID": "slides/math241_wk04mon.html#what-we-need-first",
@@ -3357,7 +3350,7 @@
     "href": "slides/math241_wk04mon.html#vectorized",
     "title": "Stat 241",
     "section": "Vectorized",
-    "text": "Vectorized\n\nR is built to work with vectors.\nMany operations are vectorized: will happen component-wise when given a vector as input.\n\n\n\n\ny &lt;- c(4, 1, 7)\ny + 4\n\n[1]  8  5 11\n\ny * 2\n\n[1]  8  2 14\n\n\n\n\nx &lt;- c(-4, 0, 2)\ny + x\n\n[1] 0 1 9\n\nrnorm(n = 3, mean = c(-5, 0, 5))\n\n[1] -4.4109965  0.4945386  4.5288123"
+    "text": "Vectorized\n\nR is built to work with vectors.\nMany operations are vectorized: will happen component-wise when given a vector as input.\n\n\n\n\ny &lt;- c(4, 1, 7)\ny + 4\n\n[1]  8  5 11\n\ny * 2\n\n[1]  8  2 14\n\n\n\n\nx &lt;- c(-4, 0, 2)\ny + x\n\n[1] 0 1 9\n\nrnorm(n = 3, mean = c(-5, 0, 5))\n\n[1] -4.469885 -1.119215  5.048589"
   },
   {
     "objectID": "slides/math241_wk04mon.html#vectorized-caution",
