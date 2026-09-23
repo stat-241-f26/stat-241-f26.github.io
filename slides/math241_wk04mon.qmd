@@ -817,9 +817,9 @@ groceries
 ------------------------------------------------------------------------
 
 ```{r}
-holidays <- c("Valentine's", "President's")
-feb <- list(groceries = groceries, holidays = holidays)
-feb
+holidays <- c("Thanksgiving", "Halloween")
+fall <- list(groceries = groceries, holidays = holidays)
+fall
 ```
 
 ------------------------------------------------------------------------
@@ -831,7 +831,7 @@ Distinguishing between `[ ]` and `[[]]`
 ::: {.fragment}
 
 ```{r}
-thing1 <- feb$groceries[3]
+thing1 <- fall$groceries[3]
 thing1
 class(thing1)
 ```
@@ -843,7 +843,7 @@ class(thing1)
 ::: {.fragment}
 
 ```{r}
-thing2 <- feb$groceries[[3]]
+thing2 <- fall$groceries[[3]]
 thing2
 class(thing2)
 ```

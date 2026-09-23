@@ -1054,7 +1054,7 @@
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb141"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a aria-label="1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -4.469885 -1.119215  5.048589</code></pre>
+<pre><code>[1] -5.4479873  0.5325268  4.2330749</code></pre>
 </div>
 </div>
 </div></div>
@@ -1199,9 +1199,9 @@ $budget
 <section class="slide level2">
 
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb161"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a aria-label="1"></a>holidays <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Valentine's"</span>, <span class="st">"President's"</span>)</span>
-<span id="cb161-2"><a aria-label="2"></a>feb <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">groceries =</span> groceries, <span class="at">holidays =</span> holidays)</span>
-<span id="cb161-3"><a aria-label="3"></a>feb</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb161"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a aria-label="1"></a>holidays <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Thanksgiving"</span>, <span class="st">"Halloween"</span>)</span>
+<span id="cb161-2"><a aria-label="2"></a>fall <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">groceries =</span> groceries, <span class="at">holidays =</span> holidays)</span>
+<span id="cb161-3"><a aria-label="3"></a>fall</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$groceries
 $groceries$new_seasons
@@ -1221,7 +1221,7 @@ $groceries$budget
 
 
 $holidays
-[1] "Valentine's" "President's"</code></pre>
+[1] "Thanksgiving" "Halloween"   </code></pre>
 </div>
 </div>
 </section>
@@ -1231,7 +1231,7 @@ $holidays
 <p>Distinguishing between <code>[ ]</code> and <code>[[]]</code></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb163"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a aria-label="1"></a>thing1 <span class="ot">&lt;-</span> feb<span class="sc">$</span>groceries[<span class="dv">3</span>]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb163"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a aria-label="1"></a>thing1 <span class="ot">&lt;-</span> fall<span class="sc">$</span>groceries[<span class="dv">3</span>]</span>
 <span id="cb163-2"><a aria-label="2"></a>thing1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$peoples_food_coop
@@ -1246,7 +1246,7 @@ $holidays
 <p><br></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb167"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb167-1"><a aria-label="1"></a>thing2 <span class="ot">&lt;-</span> feb<span class="sc">$</span>groceries[[<span class="dv">3</span>]]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb167"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb167-1"><a aria-label="1"></a>thing2 <span class="ot">&lt;-</span> fall<span class="sc">$</span>groceries[[<span class="dv">3</span>]]</span>
 <span id="cb167-2"><a aria-label="2"></a>thing2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "squash"       "tea"          "fresh greens"</code></pre>
