@@ -51,7 +51,7 @@ theme_update(text = element_text(size = 20))
 
 [Grayson White]{.custom-subtitle}
 
-[Stat 241 <br> Week 4 \| Fall 2026]{.custom-subtitle}
+[Stat 241 <br> Week 5 \| Fall 2026]{.custom-subtitle}
 :::
 :::::
 
@@ -61,7 +61,7 @@ theme_update(text = element_text(size = 20))
 
 ::: {.nonincremental}
 
-* Problem Set 2 is due **tomorrow** at 9am on Gradescope and Github!
+* Problem Set 2 is due **tomorrow** at noon on Gradescope and Github!
 
 :::
 
@@ -77,13 +77,9 @@ theme_update(text = element_text(size = 20))
 
 **Mon Lecture**
 
-* Different types of data in `R`
-    - atomic and generic vectors
-    - subsetting objects
-    
-* Talk more about logical statements
-
-* More practice with `dplyr` verbs and data wrangling
+* Joining multiple data frames
+* "Tidy" data
+* Reshaping data frames
 
 :::
 
@@ -91,9 +87,16 @@ theme_update(text = element_text(size = 20))
 
 **Wed Lecture**
 
-* Joining multiple data frames
-* "Tidy" data
-* Reshaping data frames
+* Introduction to spatial data
+    - point data
+    - polygon data
+    
+* Static and interactive maps with point and polygon data
+    - base layers (almost as good as merino)
+    - coordinate reference systems / projections
+    - popups and additional context
+    - static graphs with `sf` and `ggplot2`
+    - interactive graphs with `leaflet`
 
 
 
@@ -314,7 +317,7 @@ knitr::include_graphics("img/imdb_schema.png")
 * Typically use a SQL server for storing and managing that data.
 
 * We are going to learn to how to join relational data in `R` using `dplyr`.
-    + Towards the end of the semester, we'll learn some SQL. It is very similar to `dplyr`. 
+    + Towards the end of the semester, we might learn some SQL (depending on interest). It is very similar to `dplyr`. 
     
 :::
 
@@ -428,7 +431,7 @@ But what's that message about?
 
 ## We need to specify a *key* `r emo::ji("key")`
 
-A *key* is can just be thought of the name(s) of the column(s) you're joining by. In the `left_join()` from the last slide, `R` assumed we were joining by the column `spp_code` since both `x` and `y` have a column with that name.
+A **key** is can just be thought of the name(s) of the column(s) you're joining by. In the `left_join()` from the last slide, `R` assumed we were joining by the column `spp_code` since both `x` and `y` have a column with that name.
 
 - Keys are important, especially when the columns you are joining by have different names, or you are joining by multiple columns.
 
@@ -964,7 +967,7 @@ face_long %>%
 ------------------------------------------------------------------------
 
 
-### Next Week
+### Next time
 
 ::: {.nonincremental}
 

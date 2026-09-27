@@ -67,6 +67,16 @@ theme_update(text = element_text(size = 20))
 
 **Mon Lecture**
 
+* Joining multiple data frames
+* "Tidy" data
+* Reshaping data frames
+
+:::
+
+::: {.column width='50%' .nonincremental .fragment}
+
+**Wed Lecture**
+
 * Introduction to spatial data
     - point data
     - polygon data
@@ -78,19 +88,6 @@ theme_update(text = element_text(size = 20))
     - static graphs with `sf` and `ggplot2`
     - interactive graphs with `leaflet`
 
-:::
-
-::: {.column width='50%' .nonincremental .fragment}
-
-**Wed Lecture**
-
-* Geospatial computations
-    - distance
-    - spatial joins
-
-* Raster data
-    - what is it? 
-    - extracting values by polygons
 
 
 :::
@@ -613,13 +610,13 @@ head(wa)
 
 ------------------------------------------------------------------------
 
-### Solution: use the `stringr` package!
+### Solution: our trick from last time!
 
 ```{r}
 wa <- wa %>%
-  mutate(short_name = str_replace_all(NAME, 
-                                      pattern = " County, Washington",
-                                      replacement = ""))
+  separate_wider_delim(cols = "NAME", 
+                       delim = " County",
+                       names = c("short_name", NA)) 
 head(wa$short_name)
 ```
 
@@ -647,16 +644,6 @@ left_join(forested_props,
 
 
 ### Some mapping suggestions
-
-```{r}
-wa <- wa %>%
-  mutate(short_name = str_replace_all(NAME, 
-                                      pattern = " County, Washington",
-                                      replacement = ""))
-head(wa$short_name)
-```
-
-<br>
 
 
 
@@ -779,15 +766,15 @@ ggplot(data = wa,
 
 ------------------------------------------------------------------------
 
-### Again, use the `stringr` Package
+### This time, use the `stringr` Package
 
-This time, for fun, a different function for the same result:
+This time, for fun, we will use the `stringr` package to get the same result as we did with the `tidyr` package:
 
 :::: columns
 
 ::: {.column width='50%'}
 
-Last time:
+One way:
 
 ```{r}
 wa <- wa %>%
@@ -805,7 +792,7 @@ head(wa$short_name)
 
 ::: {.column width='50%' .fragment}
 
-This time:
+Another way:
 
 ```{r}
 wa <- wa %>%
@@ -1020,9 +1007,8 @@ ggplot() +
 Often scaled by a population size type variable.
 
 ```{r}
-#| eval: false
 wa_pop <- get_decennial(state = "WA", geography = "county",
-                        variables = "P001001", year = 2010, api_key = api_key)
+                        variables = "P001001", year = 2010, key = api_key)
 
 wa_transf_pop <- inner_join(wa_transf, wa_pop, by = c("GEOID" = "GEOID"))
 wa_transf_pop
@@ -1036,7 +1022,6 @@ Often scaled by a population size type variable.
 
 ```{r}
 #| output-location: column-fragment
-#| eval: false
 
 wa_transf_pop <- wa_transf_pop %>%
   rename(population_size = value, 
@@ -1413,7 +1398,7 @@ leaflet() %>%
           lat = 45.4811,
           zoom = 15) %>%     
  addProviderTiles(
-   providers$CartoDB.Positron) %>%
+   providers$Stadia.StamenTerrain) %>%
   addMiniMap()
 ```
 
@@ -1511,7 +1496,7 @@ wa %>%
 
 ------------------------------------------------------------------------
 
-### Next time
+### Next week
 
 ::: {.nonincremental}
 
@@ -1523,8 +1508,6 @@ wa %>%
 
 
 ::: {.fragment}
-
-### Next Week
 
 ::: {.nonincremental}
 

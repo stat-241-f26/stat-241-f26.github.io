@@ -655,7 +655,7 @@
     "href": "slides/math241_wk05mon.html#week-5-goals",
     "title": "Stat 241",
     "section": "Week 5 Goals",
-    "text": "Week 5 Goals\n\n\nMon Lecture\n\nIntroduction to spatial data\n\npoint data\npolygon data\n\nStatic and interactive maps with point and polygon data\n\nbase layers (almost as good as merino)\ncoordinate reference systems / projections\npopups and additional context\nstatic graphs with sf and ggplot2\ninteractive graphs with leaflet\n\n\n\nWed Lecture\n\nGeospatial computations\n\ndistance\nspatial joins\n\nRaster data\n\nwhat is it?\nextracting values by polygons"
+    "text": "Week 5 Goals\n\n\nMon Lecture\n\nJoining multiple data frames\n“Tidy” data\nReshaping data frames\n\n\nWed Lecture\n\nIntroduction to spatial data\n\npoint data\npolygon data\n\nStatic and interactive maps with point and polygon data\n\nbase layers (almost as good as merino)\ncoordinate reference systems / projections\npopups and additional context\nstatic graphs with sf and ggplot2\ninteractive graphs with leaflet"
   },
   {
     "objectID": "slides/math241_wk05mon.html#spatial-data-structures",
@@ -669,14 +669,14 @@
     "href": "slides/math241_wk04wed.html#announcements",
     "title": "Stat 241",
     "section": "Announcements",
-    "text": "Announcements\n\nProblem Set 2 is due tomorrow at 9am on Gradescope and Github!"
+    "text": "Announcements\n\nProblem Set 2 is due tomorrow at noon on Gradescope and Github!"
   },
   {
     "objectID": "slides/math241_wk04wed.html#week-4-goals",
     "href": "slides/math241_wk04wed.html#week-4-goals",
     "title": "Stat 241",
     "section": "Week 4 Goals",
-    "text": "Week 4 Goals\n\n\nMon Lecture\n\nDifferent types of data in R\n\natomic and generic vectors\nsubsetting objects\n\nTalk more about logical statements\nMore practice with dplyr verbs and data wrangling\n\n\nWed Lecture\n\nJoining multiple data frames\n“Tidy” data\nReshaping data frames"
+    "text": "Week 4 Goals\n\n\nMon Lecture\n\nJoining multiple data frames\n“Tidy” data\nReshaping data frames\n\n\nWed Lecture\n\nIntroduction to spatial data\n\npoint data\npolygon data\n\nStatic and interactive maps with point and polygon data\n\nbase layers (almost as good as merino)\ncoordinate reference systems / projections\npopups and additional context\nstatic graphs with sf and ggplot2\ninteractive graphs with leaflet"
   },
   {
     "objectID": "slides/math241_wk04wed.html#first-coding-style",
@@ -718,7 +718,7 @@
     "href": "slides/math241_wk04wed.html#relational-data",
     "title": "Stat 241",
     "section": "Relational Data",
-    "text": "Relational Data\n\n\n\nMost organizations that have a fair amount of data don’t store that data in a single table.\n\nThink Google, Facebook, LinkedIn, …\n\nInstead, they use a relational database: collection of linkable tables that are linked together by keys.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTypically use a SQL server for storing and managing that data.\nWe are going to learn to how to join relational data in R using dplyr.\n\nTowards the end of the semester, we’ll learn some SQL. It is very similar to dplyr."
+    "text": "Relational Data\n\n\n\nMost organizations that have a fair amount of data don’t store that data in a single table.\n\nThink Google, Facebook, LinkedIn, …\n\nInstead, they use a relational database: collection of linkable tables that are linked together by keys.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTypically use a SQL server for storing and managing that data.\nWe are going to learn to how to join relational data in R using dplyr.\n\nTowards the end of the semester, we might learn some SQL (depending on interest). It is very similar to dplyr."
   },
   {
     "objectID": "slides/math241_wk04wed.html#data-joins-in-r",

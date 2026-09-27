@@ -210,13 +210,13 @@
 <p><span class="custom-title">Joining and Reshaping Data</span></p>
 <p><br> <br></p>
 <p><span class="custom-subtitle">Grayson White</span></p>
-<p><span class="custom-subtitle">Stat 241 <br> Week 4 | Fall 2026</span></p>
+<p><span class="custom-subtitle">Stat 241 <br> Week 5 | Fall 2026</span></p>
 </div></div>
 </section>
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Problem Set 2 is due <strong>tomorrow</strong> at 9am on Gradescope and Github!</li>
+<li>Problem Set 2 is due <strong>tomorrow</strong> at noon on Gradescope and Github!</li>
 </ul>
 </section>
 <section id="week-4-goals" class="slide level2">
@@ -225,20 +225,26 @@
 <div class="column fragment" style="width:50%;">
 <p><strong>Mon Lecture</strong></p>
 <ul>
-<li><p>Different types of data in <code>R</code></p>
-<ul>
-<li>atomic and generic vectors</li>
-<li>subsetting objects</li>
-</ul></li>
-<li><p>Talk more about logical statements</p></li>
-<li><p>More practice with <code>dplyr</code> verbs and data wrangling</p></li>
+<li>Joining multiple data frames</li>
+<li>“Tidy” data</li>
+<li>Reshaping data frames</li>
 </ul>
 </div><div class="column fragment" style="width:50%;">
 <p><strong>Wed Lecture</strong></p>
 <ul>
-<li>Joining multiple data frames</li>
-<li>“Tidy” data</li>
-<li>Reshaping data frames</li>
+<li>Introduction to spatial data
+<ul>
+<li>point data</li>
+<li>polygon data</li>
+</ul></li>
+<li>Static and interactive maps with point and polygon data
+<ul>
+<li>base layers (almost as good as merino)</li>
+<li>coordinate reference systems / projections</li>
+<li>popups and additional context</li>
+<li>static graphs with <code>sf</code> and <code>ggplot2</code></li>
+<li>interactive graphs with <code>leaflet</code></li>
+</ul></li>
 </ul>
 </div></div>
 </section>
@@ -432,7 +438,7 @@
 <li class="fragment"><p>Typically use a SQL server for storing and managing that data.</p></li>
 <li class="fragment"><p>We are going to learn to how to join relational data in <code>R</code> using <code>dplyr</code>.</p>
 <ul>
-<li class="fragment">Towards the end of the semester, we’ll learn some SQL. It is very similar to <code>dplyr</code>.</li>
+<li class="fragment">Towards the end of the semester, we might learn some SQL (depending on interest). It is very similar to <code>dplyr</code>.</li>
 </ul></li>
 </ul>
 </div></div>
@@ -548,7 +554,7 @@
 </section>
 <section id="we-need-to-specify-a-key" class="slide level2">
 <h2>We need to specify a <em>key</em> 🔑</h2>
-<p>A <em>key</em> is can just be thought of the name(s) of the column(s) you’re joining by. In the <code>left_join()</code> from the last slide, <code>R</code> assumed we were joining by the column <code>spp_code</code> since both <code>x</code> and <code>y</code> have a column with that name.</p>
+<p>A <strong>key</strong> is can just be thought of the name(s) of the column(s) you’re joining by. In the <code>left_join()</code> from the last slide, <code>R</code> assumed we were joining by the column <code>spp_code</code> since both <code>x</code> and <code>y</code> have a column with that name.</p>
 <ul>
 <li class="fragment">Keys are important, especially when the columns you are joining by have different names, or you are joining by multiple columns.</li>
 </ul>
@@ -1228,7 +1234,7 @@ $ `2005_Height` &lt;dbl&gt; NA, 817, 323, 738, 366, 669, 647, 269, NA, 270, NA, 
 </section>
 <section class="slide level2">
 
-<h3 id="next-week">Next Week</h3>
+<h3 id="next-time">Next time</h3>
 <ul>
 <li>Spatial data in <code>R</code></li>
 </ul>
