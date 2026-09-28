@@ -120,7 +120,7 @@ scheduled-docs:
               href: psets/pset03.qmd
         - topic: "Spatial data I"
           display-date: Wednesday, Sep 30
-          date: 9/30/26
+          date: 9/28/26
           docs:
             # - type: Reading
             #   href: readings/readings_wk05mon.qmd
