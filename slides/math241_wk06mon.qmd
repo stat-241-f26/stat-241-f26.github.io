@@ -65,20 +65,29 @@ theme_update(text = element_text(size = 20))
 
 ::: {.column width='50%' .nonincremental .fragment}
 
-**Mon Lecture**
+**Mon Lecture: Wrapped up spatial data**
 
-* Introduction to `shiny` applications
-* Get Project 1 group assignments
+
+* Geospatial computations
+    - distance
+    - spatial joins
+
+* Raster data
+    - what is it? 
+    - rasters as base layers
+    - rasters as data
+    - extracting values by polygons
+
 
 
 :::
 
 ::: {.column width='50%' .nonincremental .fragment}
 
-**Wed Lecture**
+**Wed Lecture: shiny, shiny, shiny!**
 
-* `shiny` dashboards with Quarto
-* Get all the details about Project 1
+* Introduction to `shiny` applications
+* Get Project 1 group assignments
 
 
 :::

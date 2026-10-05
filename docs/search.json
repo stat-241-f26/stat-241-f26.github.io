@@ -487,7 +487,7 @@
     "href": "slides/math241_wk06mon.html#week-6-goals",
     "title": "Stat 241",
     "section": "Week 6 Goals",
-    "text": "Week 6 Goals\n\n\nMon Lecture\n\nIntroduction to shiny applications\nGet Project 1 group assignments\n\n\nWed Lecture\n\nshiny dashboards with Quarto\nGet all the details about Project 1"
+    "text": "Week 6 Goals\n\n\nMon Lecture: Wrapped up spatial data\n\nGeospatial computations\n\ndistance\nspatial joins\n\nRaster data\n\nwhat is it?\nrasters as base layers\nrasters as data\nextracting values by polygons\n\n\n\nWed Lecture: shiny, shiny, shiny!\n\nIntroduction to shiny applications\nGet Project 1 group assignments"
   },
   {
     "objectID": "slides/math241_wk06mon.html#interactivity-with-shiny",
@@ -3605,11 +3605,11 @@
     "text": "Q10. Write the code to get this output (hint: use a filtering join)\n\nanti_join(y, x, by = \"spp_code\")\n\n  spp_code     latin_name\n1     LALA Larix laricina\n\n# or \nanti_join(y, z, by = c(\"spp_code\" = \"species_code\"))\n\n  spp_code     latin_name\n1     LALA Larix laricina"
   },
   {
-    "objectID": "slides/math241_wk05wed.html#week-5-goals",
-    "href": "slides/math241_wk05wed.html#week-5-goals",
+    "objectID": "slides/math241_wk05wed.html#week-6-goals",
+    "href": "slides/math241_wk05wed.html#week-6-goals",
     "title": "Stat 241",
-    "section": "Week 5 Goals",
-    "text": "Week 5 Goals\n\n\nMon Lecture\n\nIntroduction to spatial data\n\npoint data\npolygon data\n\nStatic and interactive maps with point and polygon data\n\nbase layers (almost as good as merino)\ncoordinate reference systems / projections\npopups and additional context\nstatic graphs with sf and ggplot2\ninteractive graphs with leaflet\n\n\n\nWed Lecture\n\nGeospatial computations\n\ndistance\nspatial joins\n\nRaster data\n\nwhat is it?\nrasters as base layers\nrasters as data\nextracting values by polygons"
+    "section": "Week 6 Goals",
+    "text": "Week 6 Goals\n\n\nMon Lecture: More Spatial Data!\n\nGeospatial computations\n\ndistance\nspatial joins\n\nRaster data\n\nwhat is it?\nrasters as base layers\nrasters as data\nextracting values by polygons\n\n\n\nWed Lecture: Shiny!\n\nIntroduction to shiny applications\nGet Project 1 group assignments"
   },
   {
     "objectID": "slides/math241_wk05wed.html#lengths-of-linesedges-st_length",

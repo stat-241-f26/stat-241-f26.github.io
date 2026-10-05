@@ -51,7 +51,7 @@ theme_update(text = element_text(size = 20))
 
 [Grayson White]{.custom-subtitle}
 
-[Stat 241 <br> Week 5 \| Fall 2026]{.custom-subtitle}
+[Stat 241 <br> Week 6 \| Fall 2026]{.custom-subtitle}
 :::
 :::::
 
@@ -59,30 +59,13 @@ theme_update(text = element_text(size = 20))
 ------------------------------------------------------------------------
 
 
-## Week 5 Goals
+## Week 6 Goals
 
 :::: {.columns}
 
 ::: {.column width='50%' .nonincremental .fragment}
 
-**Mon Lecture**
-
-* Introduction to spatial data
-    - point data
-    - polygon data
-    
-* Static and interactive maps with point and polygon data
-    - base layers (almost as good as merino)
-    - coordinate reference systems / projections
-    - popups and additional context
-    - static graphs with `sf` and `ggplot2`
-    - interactive graphs with `leaflet`
-
-:::
-
-::: {.column width='50%' .nonincremental .fragment}
-
-**Wed Lecture**
+**Mon Lecture: More Spatial Data!**
 
 * Geospatial computations
     - distance
@@ -93,6 +76,15 @@ theme_update(text = element_text(size = 20))
     - rasters as base layers
     - rasters as data
     - extracting values by polygons
+
+:::
+
+::: {.column width='50%' .nonincremental .fragment}
+
+**Wed Lecture: Shiny!**
+
+* Introduction to `shiny` applications
+* Get Project 1 group assignments
 
 
 :::
@@ -563,7 +555,7 @@ countdown::countdown(1)
 
 :::: columns
 
-::: {.column}
+::: {.column .center}
 
 ![](img/thesamepicture.jpg){fig-align='center'}
 
@@ -1105,7 +1097,7 @@ ggplot() +
 
 ------------------------------------------------------------------------
 
-### Next week
+### Next time
 
 - Learn how to create interactive dashboards with `shiny`! (a great way to disseminate all of these interactive plots we've learned about)
 
