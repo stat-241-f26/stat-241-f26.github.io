@@ -239,7 +239,7 @@ scheduled-docs:
               href: slides/math241_wk09wed.qmd
             - type: Activity (Download)
               href: in_class/activity6_download.qmd
-        - topic: "Problem Set 5 Released"
+        - topic: "Problem Set 5 Released. Project I Final Product and Data Scientist Statement Due."
           display-date: Tuesday, Nov 10 @ noon
           date: 11/10/26
           docs:
@@ -251,9 +251,6 @@ scheduled-docs:
           docs:
             - type: Slides
               href: slides/math241_wk10mon.qmd
-        - topic: "Project I Final Product and Data Scientist Statement Due"
-          display-date: Sunday, Nov 15 @ 10pm
-          date: 11/15/26
       # resources:
       #   - 'Some text'
     - week: 11
