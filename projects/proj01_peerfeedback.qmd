@@ -1,0 +1,23 @@
+---
+editor: source
+title: "Peer Feedback Instructions"
+subtitle: "Stat 241: Project 1"
+---
+
+You are required to provide written feedback for two `shiny` apps presented to you in class today. Please be conscious to the fact that we are looking for both positive and constructive feedback, and everyone has put a great deal of time and effort into their project. The feedback should go something like this:
+
+## Stage 1: Groups present their draft projects
+
+At this stage, you should be paying attention to their dashboard, jotting down any questions you might have, and starting to think about both what you like about the groups dashboard and any constructive criticism you may have.
+
+## Stage 2: Speed sharing
+
+After every group has presented, we'll pair up in groups of 2 to discuss dashboard impressions. This is a great time to ask questions you may have had about the project, learn about the group's plan for the final product, and start to discuss feedback. After about 5 minutes, we'll pivot to different groups of 2. 
+
+## Stage 3: Writing up feedback
+
+We'll have time towards the end of class to spend some time writing up feedback while it is fresh in your mind. Click the link below to download a Quarto template for writing feedback. Note that you'll need two copies, one for each group. 
+
+
+[Template Download](proj01_peerfeedbacktemplate_download.qmd)
+

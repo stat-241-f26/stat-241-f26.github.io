@@ -1,0 +1,76 @@
+---
+editor: source
+---
+
+## Project Guidelines
+
+In this project, your group will create an interactive dashboard using `R` `shiny` or Quarto `shiny` dashboards. Additionally, each group member will individually write a "data scientist's statement" (400-800 words) that communicates the intention behind the created work.
+
+### Requirements of the dashboard:
+
+* Relies on at least one real-world dataset.
+* At least three user inputs.
+* At least two reactive graph or maps.
+* At least one reactive table.
+* A tab/page which includes relevant meta information about the data along with a data citation and link to the data source.
+* Relevant text for your users to navigate your dashboard and extract knowledge from it.
+
+### Requirements of the data scientist's statement:
+
+* Addresses the purpose of the dashboard, including your motivations for focusing on the selected data and the intended audience.
+* Discusses how you hope users will engage with the dashboard.
+* Articulates why certain design choices, especially with respect to the interactivity, were made.
+* Presents your desired take-away messages.
+
+
+### Other considerations:
+
+* Along with the dashboard and data scientist's statement, you will be submitting group member evaluations once the project is complete. 
+* To facilitate feedback (and for resume building!), we will be posting the dashboards to Posit's app server: [Posit Connect Cloud](https://connect.posit.cloud/).
+    + Therefore, I recommend utilizing non-sensitive data for your dashboard.
+    
+### Data
+
+I encourage you to use a data source that interests you and your group members for your project.  If you are looking for data sources, here are a few good places to look:
+
+* [Data is Plural](https://docs.google.com/spreadsheets/d/1wZhPLMCHKJvwOkP4juclhjFgqIY8fQFMemwKL2c64vk/edit#gid=0)
+* [Data.gov](https://data.gov/)
+* [TidyTuesday](https://github.com/rfordatascience/tidytuesday/tree/master/data)
+* [Opportunity Insights](https://opportunityinsights.org/data/)
+* [The ASA SSDSE Dataset Repository](https://docs.google.com/spreadsheets/d/1tuCXok_y_zQpSDGssaypETf9lnB6nCh9XVoCiMaPCuc/edit?gid=591469695#gid=591469695)
+
+
+### Tips for getting started
+
+Once you have chosen a data source, the next step is to plan out your dashboard. 
+
+* Explore the data to get a sense of the variables and relationships between variables that you find most interesting/important. 
+* Make some static plots that you think convey key messages/findings from the data. Use these as a jumping off point for curating the reactive graphs/maps you will put on your dashboard. 
+* Create some wrangled data tables; this can help you identify what data would be useful to display to a user in a tabular format. Think about how you intend for users to interact with a data table. 
+* One suggestion for getting started: do the initial data exploration individually and then meet to discuss what each person learned. You may have each discovered different angles on the data to incorporate into the dashboard!
+* Then as we discussed in class, create an ugly, basic dashboard that has the main types of interactivity/reactivity that you want.
+* Slowly add customizations or more advanced reactivity.  
+
+
+## Timeline
+
+* 10/7: Receive project groups released
+* 10/12: Receive project instructions and invite to your group's GitHub repo.
+    + Please use your assigned Stat 241 GitHub repo for this project.
+* 10/14: In-class project work day
+* 11/2 (noon): Post a working draft of your dashboard to [Posit Connect Cloud](https://connect.posit.cloud/)
+    + Working draft must:
+        + Make use of at least one real-world dataset.
+        + Have at least one user input.
+        + Have at least one reactive graph (or map) and at least one reactive table.
+        + Have relevant text so that your peers can navigate around the dashboard independently.
+    + Only one group member needs to post the group's app to Posit Connect Cloud.
+* 11/2 (noon): Post the link to the group's dashboard to [this spreadsheet](https://docs.google.com/spreadsheets/d/1JkO2L7kkGXQYz4L999C-2JLNqwvYBn8hndshy_Ntqvo/edit?usp=sharing).
+* 11/2 - 11/3: Peer feedback period
+    + Each person will provide feedback on the dashboards of **two** groups.
+    + More guidance on providing feedback will be given in class that week.
+    + Peer feedback is due 11/3 at 10pm.
+* 11/10 10pm: Link for the final version of dashboard should be added to [this spreadsheet](https://docs.google.com/spreadsheets/d/1JkO2L7kkGXQYz4L999C-2JLNqwvYBn8hndshy_Ntqvo/edit?usp=sharing) and PDF of your data scientist's statement should be submitted on Gradescope.
+* 11/12 10pm: Group member feedback form due.
+
+
