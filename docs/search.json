@@ -648,7 +648,7 @@
     "href": "slides/math241_wk06mon.html#next-steps",
     "title": "Stat 241",
     "section": "Next Steps",
-    "text": "Next Steps\nTroubleshooting common issues:\n\nMust comma separate all the elements in the ui.\nBut don’t add a comma after the last element in the ui.\n\nUp Next on Wednesday:\n\nUploading apps to www.shinyapps.io\nshiny with leaflet maps\nDisplaying the code in your app\nModifying the layout and adding HTML components\nQuarto-based shiny dashboards\nMore practice"
+    "text": "Next Steps\nTroubleshooting common issues:\n\nMust comma separate all the elements in the ui.\nBut don’t add a comma after the last element in the ui.\n\nUp Next on Wednesday:\n\nUploading apps to Posit Connect Cloud\nshiny with leaflet maps\nDisplaying the code in your app\nModifying the layout and adding HTML components\nQuarto-based shiny dashboards\nMore practice"
   },
   {
     "objectID": "slides/math241_wk05mon.html#math-stats-cs-hike",
@@ -2139,28 +2139,28 @@
     "href": "psets/pset04.html",
     "title": "Spatial Data",
     "section": "",
-    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 2 Wednesday. If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
+    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 3 Monday If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
   },
   {
-    "objectID": "psets/pset04.html#due-thursday-mar-5th-9am-pt-on-gradescope.",
-    "href": "psets/pset04.html#due-thursday-mar-5th-9am-pt-on-gradescope.",
+    "objectID": "psets/pset04.html#due-tuesday-oct-13th-8pm-pt-on-gradescope.",
+    "href": "psets/pset04.html#due-tuesday-oct-13th-8pm-pt-on-gradescope.",
     "title": "Spatial Data",
     "section": "",
-    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 2 Wednesday. If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
+    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 3 Monday If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
   },
   {
     "objectID": "psets/pset02.html",
     "href": "psets/pset02.html",
     "title": "Interactive Data Visualization and Data Wrangling",
     "section": "",
-    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 2 Wednesday. If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
+    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 3 Monday If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
   },
   {
-    "objectID": "psets/pset02.html#due-thursday-feb-19th-9am-pt-on-gradescope.",
-    "href": "psets/pset02.html#due-thursday-feb-19th-9am-pt-on-gradescope.",
+    "objectID": "psets/pset02.html#due-tuesday-september-29th-noon-pt-on-gradescope.",
+    "href": "psets/pset02.html#due-tuesday-september-29th-noon-pt-on-gradescope.",
     "title": "Interactive Data Visualization and Data Wrangling",
     "section": "",
-    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 2 Wednesday. If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
+    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 3 Monday If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
   },
   {
     "objectID": "psets/pset00.html#problem-1-setup",
@@ -2335,28 +2335,28 @@
     "href": "psets/pset01.html",
     "title": "Data Visualization",
     "section": "",
-    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 2 Wednesday. If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
+    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 3 Monday If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
   },
   {
-    "objectID": "psets/pset01.html#due-thursday-feb-12th-9am-pt-on-gradescope.",
-    "href": "psets/pset01.html#due-thursday-feb-12th-9am-pt-on-gradescope.",
+    "objectID": "psets/pset01.html#due-wednesday-september-23rd-10pm-pt-on-gradescope.",
+    "href": "psets/pset01.html#due-wednesday-september-23rd-10pm-pt-on-gradescope.",
     "title": "Data Visualization",
     "section": "",
-    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 2 Wednesday. If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
+    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 3 Monday If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
   },
   {
     "objectID": "psets/pset03.html",
     "href": "psets/pset03.html",
     "title": "Data Wrangling",
     "section": "",
-    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 2 Wednesday. If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
+    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 3 Monday If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
   },
   {
-    "objectID": "psets/pset03.html#due-thursday-feb-26th-9am-pt-on-gradescope.",
-    "href": "psets/pset03.html#due-thursday-feb-26th-9am-pt-on-gradescope.",
+    "objectID": "psets/pset03.html#due-tuesday-october-6th-noon-pt-on-gradescope.",
+    "href": "psets/pset03.html#due-tuesday-october-6th-noon-pt-on-gradescope.",
     "title": "Data Wrangling",
     "section": "",
-    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 2 Wednesday. If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
+    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 3 Monday If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
   },
   {
     "objectID": "psets/pset05.html",

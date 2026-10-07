@@ -246,7 +246,7 @@
 <ul>
 <li class="fragment">You are going to do some live coding with me.
 <ul>
-<li class="fragment">If you miss a step, get stuck, or just need some help, raise your hand and Chris will come help, or type your question into the #in-class Slack channel.</li>
+<li class="fragment">If you miss a step, get stuck, or just need some help, raise your hand and Fae will come help, or type your question into the <code>#q-and-a</code> Slack channel.</li>
 </ul></li>
 <li class="fragment">If you do miss anything:
 <ul>
@@ -387,7 +387,7 @@
 <span id="cb2-3"><a aria-label="3"></a><span class="co"># Smaller dataset</span></span>
 <span id="cb2-4"><a aria-label="4"></a>babynames241 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/babynames_math241.csv"</span>)</span>
 <span id="cb2-5"><a aria-label="5"></a></span>
-<span id="cb2-6"><a aria-label="6"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Chris"</span>)</span>
+<span id="cb2-6"><a aria-label="6"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Grayson"</span>, <span class="st">"Fae"</span>)</span>
 <span id="cb2-7"><a aria-label="7"></a></span>
 <span id="cb2-8"><a aria-label="8"></a>dat_names <span class="ot">&lt;-</span> babynames241 <span class="sc">%&gt;%</span></span>
 <span id="cb2-9"><a aria-label="9"></a>  <span class="fu">group_by</span>(year, name) <span class="sc">%&gt;%</span></span>
@@ -401,14 +401,14 @@
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
 # Groups:   year [3]
-   year name        n    prop
-  &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-1  2015 Chris     573 0.00709
-2  2015 Grayson  8071 0.0999 
-3  2016 Chris     519 0.00645
-4  2016 Grayson  8817 0.110  
-5  2017 Chris     459 0.00586
-6  2017 Grayson  8767 0.112  </code></pre>
+   year name        n     prop
+  &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+1  2015 Fae        22 0.000568
+2  2015 Grayson  8071 0.208   
+3  2016 Fae        29 0.000728
+4  2016 Grayson  8817 0.221   
+5  2017 Fae        24 0.000613
+6  2017 Grayson  8767 0.224   </code></pre>
 </div>
 </div></div>
 </div>
@@ -963,7 +963,7 @@
 </ul>
 <p><strong>Up Next on Wednesday</strong>:</p>
 <ul>
-<li class="fragment">Uploading apps to <a href="https://www.shinyapps.io/">www.shinyapps.io</a></li>
+<li class="fragment">Uploading apps to <a href="https://connect.posit.cloud/">Posit Connect Cloud</a></li>
 <li class="fragment"><code>shiny</code> with <code>leaflet</code> maps</li>
 <li class="fragment">Displaying the code in your app</li>
 <li class="fragment">Modifying the layout and adding HTML components</li>

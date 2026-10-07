@@ -100,7 +100,7 @@ theme_update(text = element_text(size = 20))
 ### Live Coding... Together
 
 + You are going to do some live coding with me.
-    + If you miss a step, get stuck, or just need some help, raise your hand and Chris will come help, or type your question into the #in-class Slack channel.
+    + If you miss a step, get stuck, or just need some help, raise your hand and Fae will come help, or type your question into the `#q-and-a` Slack channel.
 
 * If you do miss anything:
     * I will post the app we create today on Github.
@@ -247,12 +247,13 @@ We want to create an app where someone can type in names from Stat 241 and see h
 #| eval: false
 library(babynames)
 
-names241 <- read_csv("data/Background Survey for Math 241_ Data Science (Responses) - Form Responses 1.csv") %>%
+names241 <- read_csv("data/Background Survey for Stat 241_ Data Science (Responses) - Form Responses 1.csv") %>%
   pull(`First Name`)
 
-names241 <- sort(unique(c(names241, "Alex", "Kaishin", "Tyler", "Brendan", 'Emily', 'Kenta', 'Eddie'))[-16])
+names241 <- sort(unique(c(names241, "Vasiliy", "John", "James", "Zo")))
+names241[6] <- "Panya"
 
-names241 <- sort(c(names241, "Chris", "Grayson"))
+names241 <- sort(c(names241, "Fae", "Grayson"))
 
 babynames241 <- babynames::babynames %>% filter(name %in% names241)
 
@@ -268,7 +269,7 @@ library(tidyverse)
 # Smaller dataset
 babynames241 <- read_csv("data/babynames_math241.csv")
 
-names <- c("Grayson", "Chris")
+names <- c("Grayson", "Fae")
 
 dat_names <- babynames241 %>%
   group_by(year, name) %>%
@@ -918,7 +919,7 @@ server <- function(input, output, session){
 
 **Up Next on Wednesday**:
 
-* Uploading apps to [www.shinyapps.io](https://www.shinyapps.io/)
+* Uploading apps to [Posit Connect Cloud](https://connect.posit.cloud/)
 * `shiny` with `leaflet` maps 
 * Displaying the code in your app
 * Modifying the layout and adding HTML components
