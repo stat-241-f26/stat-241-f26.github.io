@@ -515,7 +515,7 @@
     "href": "slides/math241_wk06mon.html#app-building-workflow",
     "title": "Stat 241",
     "section": "App Building Workflow",
-    "text": "App Building Workflow\nStarting a New App:\n\nFor today and Wednesday, clone the repo “Reed-Data-Science/learn-shiny”\nWithin the “ShinyApps” folder, there is a folder called “my_first_app”.\nYou will see a script file (not a .qmd) called “app.r” within the “my_first_app” folder.\nFollowing this folder and file structure is best practice for creating shiny apps.\n\n\n\nRevising an App:\n\nWrite some code in “app.r”.\nClick “Run App”.\n\nNotice what happens in the console.\n\nExperiment with the app.\nStop the app.\nRepeat.\n\n\nGood habit early on:\n\nWrite static code somewhere (in a .r or .qmd) before you start the app.\n\nModify to be reactive when put in “app.r”.\n\n\n\nLet’s practice together!"
+    "text": "App Building Workflow\nStarting a New App:\n\nFor today and Wednesday, clone the repo “stat-241-f26/learn-shiny”\nWithin the “ShinyApps” folder, there is a folder called “my_first_app”.\nYou will see a script file (not a .qmd) called “app.r” within the “my_first_app” folder.\nFollowing this folder and file structure is best practice for creating shiny apps.\n\n\n\nRevising an App:\n\nWrite some code in “app.r”.\nClick “Run App”.\n\nNotice what happens in the console.\n\nExperiment with the app.\nStop the app.\nRepeat.\n\n\nGood habit early on:\n\nWrite static code somewhere (in a .r or .qmd) before you start the app.\n\nModify to be reactive when put in “app.r”.\n\n\n\nLet’s practice together!"
   },
   {
     "objectID": "slides/math241_wk06mon.html#base-components",
