@@ -3773,11 +3773,11 @@
     "text": "Raster as data: example\n90m x 90m elevation data in M333 “ecoprovince” (NE Washington, N Idaho, W Montana)\n\n\n\n\n\n\n\n\n\n\nEach pixel is a 90m x 90m square and has an elevation value assigned to it."
   },
   {
-    "objectID": "slides/math241_wk06wed.html#week-6-goals",
-    "href": "slides/math241_wk06wed.html#week-6-goals",
+    "objectID": "slides/math241_wk06wed.html#shiny-goals",
+    "href": "slides/math241_wk06wed.html#shiny-goals",
     "title": "Stat 241",
-    "section": "Week 6 Goals",
-    "text": "Week 6 Goals\n\n\nMon Lecture\n\nIntroduction to shiny applications\nGet Project 1 group assignments\n\n\nWed Lecture\n\nshiny dashboards with Quarto\nGet all the details about Project 1"
+    "section": "shiny Goals",
+    "text": "shiny Goals\n\n\nLast time\n\nIntroduction to shiny applications\nGet Project 1 group assignments\n\n\nThis time\n\nshiny dashboards with Quarto\nGet all the details about Project 1\nshiny practice"
   },
   {
     "objectID": "slides/math241_wk06wed.html#more-reactivity-observe",

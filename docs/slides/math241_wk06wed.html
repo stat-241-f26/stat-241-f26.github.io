@@ -210,37 +210,30 @@
 <p><span class="custom-title">More <code>shiny</code></span></p>
 <p><br> <br> <br> <br> <br> <br> <br> <br></p>
 <p><span class="custom-subtitle">Grayson White</span></p>
-<p><span class="custom-subtitle">Stat 241 <br> Week 6 | Fall 2026</span></p>
+<p><span class="custom-subtitle">Stat 241 <br> Week 7 | Fall 2026</span></p>
 </div></div>
 </section>
-<section id="week-6-goals" class="slide level2">
-<h2>Week 6 Goals</h2>
+<section id="shiny-goals" class="slide level2">
+<h2><code>shiny</code> Goals</h2>
 <div class="columns">
 <div class="column fragment" style="width:50%;">
-<p><strong>Mon Lecture</strong></p>
+<p><strong>Last time</strong></p>
 <ul>
 <li>Introduction to <code>shiny</code> applications</li>
 <li>Get Project 1 group assignments</li>
 </ul>
 </div><div class="column fragment" style="width:50%;">
-<p><strong>Wed Lecture</strong></p>
+<p><strong>This time</strong></p>
 <ul>
 <li><code>shiny</code> dashboards with Quarto</li>
 <li>Get all the details about Project 1</li>
+<li><code>shiny</code> practice</li>
 </ul>
 </div></div>
 </section>
 <section class="slide level2">
 
-<h3 id="annoucements">Annoucements</h3>
-<div class="fragment">
-<ul>
-<li><a href="https://my.willamette.edu/site/computer-science/data-fest">DataFest 2026 @ Willamette</a>
-<ul>
-<li>Great opportunity to meet folks and show off your data science skills!</li>
-</ul></li>
-</ul>
-</div>
+<h3 id="announcements">Announcements</h3>
 <div class="fragment">
 <ul>
 <li>Updated Instructions for turning in Problem Set 4
@@ -251,6 +244,14 @@
 </ul></li>
 <li>Also Render your document to <strong>HTML</strong> (with <code>#| eval: true</code> for the <code>leaflet</code> map chunks)</li>
 <li>Push the .qmd and .html to GitHub so the graders can grade your <code>leaflet</code> maps and interact with them easily</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Updated <strong>deadline</strong> for Problem Set 4:
+<ul>
+<li>Now due on Friday 10/16 at 8pm.</li>
 </ul></li>
 </ul>
 </div>
@@ -364,19 +365,9 @@
 </section>
 <section class="slide level2">
 
-<h3 id="adding-source-code-to-the-dashboard">Adding Source Code to the Dashboard</h3>
-<p>Create a <code>DESCRIPTION</code> text file with this text:</p>
-<p>Title: Stat 241 Names</p>
-<p>Author: Grayson White</p>
-<p>AuthorUrl: https://graysonwhite.shinyapps.io/my_first_app/</p>
-<p>DisplayMode: Showcase</p>
-<p>Type: Shiny</p>
-</section>
-<section class="slide level2">
-
-<h3 id="uploading-to-shinyapps.io">Uploading to ShinyApps.io</h3>
+<h3 id="uploading-to-posit-connect-cloud">Uploading to Posit Connect Cloud</h3>
 <ul>
-<li class="fragment">Go to <a href="https://www.shinyapps.io/">https://www.shinyapps.io/</a></li>
+<li class="fragment">Go to <a href="https://connect.posit.cloud/graysonwhite">https://connect.posit.cloud/graysonwhite</a></li>
 <li class="fragment">Create an account or sign in via your GitHub username.</li>
 </ul>
 <div class="fragment">
@@ -395,12 +386,12 @@
 <li>Configure <code>rsconnect</code>.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a><span class="fu">setAccountInfo</span>(<span class="at">name=</span><span class="st">"&lt;ACCOUNT&gt;"</span>, <span class="at">token=</span><span class="st">"&lt;TOKEN&gt;"</span>, <span class="at">secret=</span><span class="st">"&lt;SECRET&gt;"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>rsconnect<span class="sc">::</span><span class="fu">connectCloudUser</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
 <ul>
-<li>Deploy app. (This will take a couple minutes.)</li>
+<li>Deploy app. (This might take a couple minutes.)</li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="co"># Include correct file path</span></span>
@@ -414,7 +405,7 @@
 <ul>
 <li class="fragment"><p>Will allow you to create dashboards that harness the power of <code>shiny</code> but also the simplicity of <code>Quarto</code>.</p></li>
 <li class="fragment"><p>Can also been used to create stand-alone HTML files with some interactivity.</p></li>
-<li class="fragment"><p>I <a href="https://graysonwhite.shinyapps.io/quarto_dashboard/">converted the Shiny App we created last time into a Quarto shiny dashboard</a>.</p>
+<li class="fragment"><p>I <a href="https://graysonwhite-stat241-names.share.connect.posit.cloud/">converted the Shiny App we created last time into a Quarto shiny dashboard</a>.</p>
 <ul>
 <li class="fragment">Let’s focus on some of the changes.</li>
 </ul></li>

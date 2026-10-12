@@ -51,7 +51,7 @@ theme_update(text = element_text(size = 20))
 
 [Grayson White]{.custom-subtitle}
 
-[Stat 241 <br> Week 6 \| Fall 2026]{.custom-subtitle}
+[Stat 241 <br> Week 7 \| Fall 2026]{.custom-subtitle}
 :::
 :::::
 
@@ -59,13 +59,13 @@ theme_update(text = element_text(size = 20))
 ------------------------------------------------------------------------
 
 
-## Week 6 Goals
+## `shiny` Goals
 
 :::: {.columns}
 
 ::: {.column width='50%' .nonincremental .fragment}
 
-**Mon Lecture**
+**Last time**
 
 * Introduction to `shiny` applications
 * Get Project 1 group assignments
@@ -75,10 +75,11 @@ theme_update(text = element_text(size = 20))
 
 ::: {.column width='50%' .nonincremental .fragment}
 
-**Wed Lecture**
+**This time**
 
 * `shiny` dashboards with Quarto
 * Get all the details about Project 1
+* `shiny` practice
 
 
 :::
@@ -89,14 +90,7 @@ theme_update(text = element_text(size = 20))
 ------------------------------------------------------------------------
 
 
-### Annoucements 
-
-::: {.fragment .nonincremental}
-
-- [DataFest 2026 @ Willamette](https://my.willamette.edu/site/computer-science/data-fest)
-    - Great opportunity to meet folks and show off your data science skills! 
-    
-:::
+### Announcements 
     
 ::: {.fragment .nonincremental}
     
@@ -106,6 +100,15 @@ theme_update(text = element_text(size = 20))
     - Also Render your document to **HTML** (with `#| eval: true` for the `leaflet` map chunks)
     - Push the .qmd and .html to GitHub so the graders can grade your `leaflet` maps and interact with them easily
     
+:::
+
+
+::: {.fragment .nonincremental}
+
+
+- Updated **deadline** for Problem Set 4:
+    - Now due on Friday 10/16 at 8pm. 
+
 :::
 
 
@@ -225,27 +228,12 @@ shinyApp(ui = ui, server = server)
 
 * Need to use `leafletProxy()` so that the entire map isn't redrawn with each update to the inputs.
 
-------------------------------------------------------------------------
-
-### Adding Source Code to the Dashboard
-
-Create a `DESCRIPTION` text file with this text:
-
-Title: Stat 241 Names
-
-Author: Grayson White
-
-AuthorUrl: https://graysonwhite.shinyapps.io/my_first_app/
-
-DisplayMode: Showcase
-
-Type: Shiny
 
 ------------------------------------------------------------------------
 
-### Uploading to ShinyApps.io
+### Uploading to Posit Connect Cloud
 
-* Go to [https://www.shinyapps.io/](https://www.shinyapps.io/)
+* Go to [https://connect.posit.cloud/graysonwhite](https://connect.posit.cloud/graysonwhite)
 * Create an account or sign in via your GitHub username.
 
 ::: {.fragment .nonincremental}
@@ -267,14 +255,14 @@ library(rsconnect)
 * Configure `rsconnect`.
 
 ```{r, eval=FALSE}
-setAccountInfo(name="<ACCOUNT>", token="<TOKEN>", secret="<SECRET>")
+rsconnect::connectCloudUser()
 ```
 
 :::
 
 ::: {.fragment .nonincremental}
 
-* Deploy app. (This will take a couple minutes.)
+* Deploy app. (This might take a couple minutes.)
 
 ```{r, eval=FALSE}
 # Include correct file path
@@ -291,7 +279,7 @@ deployApp("ShinyApps/biketown")
 
 * Can also been used to create stand-alone HTML files with some interactivity.
 
-* I [converted the Shiny App we created last time into a Quarto shiny dashboard](https://graysonwhite.shinyapps.io/quarto_dashboard/).
+* I [converted the Shiny App we created last time into a Quarto shiny dashboard](https://graysonwhite-stat241-names.share.connect.posit.cloud/).
     + Let's focus on some of the changes.
     
 
