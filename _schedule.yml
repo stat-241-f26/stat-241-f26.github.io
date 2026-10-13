@@ -173,15 +173,15 @@ scheduled-docs:
               href: slides/math241_wk06wed.qmd
             - type: Project I Instructions
               href: projects/proj01.qmd
-        - topic: "Problem Set 4 Due"
-          display-date: Tuesday, Oct 13 @ noon
-          date: 10/13/26
         - topic: "Project 1 Work Day"
           display-date: Wednesday, Oct 14
           date: 10/14/26
           docs:
-            - type: Slides
-              href: slides/math241_wk07wed.qmd
+            # - type: Slides
+            #   href: slides/math241_wk07wed.qmd
+        - topic: "Problem Set 4 Due"
+          display-date: Friday, Oct 16 @ 8pm
+          date: 10/13/26
       resources:
         - 'For shiny reference: <a href="https://mastering-shiny.org/"> Mastering Shiny, by Hadley Wickham</a>'
     - week: Fall Break

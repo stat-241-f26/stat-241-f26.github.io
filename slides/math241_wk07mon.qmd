@@ -59,34 +59,8 @@ theme_update(text = element_text(size = 20))
 ------------------------------------------------------------------------
 
 
-### Annoucements 
 
-::: {.fragment .nonincremental}
-
-
-- **Welcome** to the admitted students!!
-
-:::
-
-::: {.fragment .nonincremental}
-
-- [DataFest 2026 @ Willamette](https://my.willamette.edu/site/computer-science/data-fest)
-    - Great opportunity to meet folks and show off your data science skills! 
-    
-:::
-
-::: {.fragment .nonincremental}
-
-- Surveys
-    - [General check-in (names/emails **NOT** collected)](https://forms.gle/2jMBRoWVqnZFbUFW7)
-    - [Project 1 check-in (names/emails collected)](https://forms.gle/d1UKZRL521Vj9VoG6)
-
-:::
-
-
-------------------------------------------------------------------------
-
-## Week 7 Goals
+## Week 8 Goals
 
 :::: {.columns}
 
@@ -103,7 +77,7 @@ theme_update(text = element_text(size = 20))
 
 **Wed Lecture**
 
-* Project 1 work day
+* Pattern matching with regular expressions (and some text analysis!)
 
 
 :::

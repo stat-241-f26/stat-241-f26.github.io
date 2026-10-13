@@ -58,25 +58,6 @@ theme_update(text = element_text(size = 20))
 
 ------------------------------------------------------------------------
 
-
-### Annoucements 
-
-::: {.fragment .nonincremental}
-
-- [DataFest 2026 @ Willamette](https://my.willamette.edu/site/computer-science/data-fest)
-    - Great opportunity to meet folks and show off your data science skills! 
-    
-:::
-
-::: {.fragment .nonincremental}
-
-- Project 1 Rough Draft **Due Wednesday**
-    - Check the course website for instructions
-
-:::
-
-------------------------------------------------------------------------
-
 ## Week 8 Goals
 
 :::: {.columns}
@@ -85,7 +66,7 @@ theme_update(text = element_text(size = 20))
 
 **Mon Lecture**
 
-* Pattern matching with regular expressions (and some text analysis!)
+* Learn more about strings, factors, dates, and times in `R`!
 
 
 :::
@@ -94,9 +75,7 @@ theme_update(text = element_text(size = 20))
 
 **Wed Lecture**
 
-* Project 1 Rough Draft Presentations and Feedback
-    - Aim for ~5 min presentations from each group
-    - Info on group feedback coming soon
+* Pattern matching with regular expressions (and some text analysis!)
 
 
 :::
