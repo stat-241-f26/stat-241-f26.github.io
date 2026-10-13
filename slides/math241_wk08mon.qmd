@@ -689,5 +689,5 @@ run_it_off %>%
 
 ## Next time
 
-* Don't forget to add your dashboard to shinyapps.io!
+* Don't forget to add your dashboard to Posit Connect Cloud!
     - Good to try to put an incomplete version up now to make sure you can get it working. 
