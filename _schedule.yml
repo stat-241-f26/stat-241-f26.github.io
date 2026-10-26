@@ -190,7 +190,7 @@ scheduled-docs:
           display-date: Saturday, Oct 17 - Sunday, Oct 25
     - week: 8
       days:
-        - topic: "Different classes in R"
+        - topic: "Different classes in R (Grayson out, Megan sub)"
           display-date: Monday, Oct 26
           date: 10/26/26
           docs:
