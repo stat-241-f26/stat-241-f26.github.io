@@ -1,0 +1,109 @@
+---
+title: "Activity 5: Control Flow"
+editor: source
+---
+
+# Activity: Control Flow Practice
+
+## Problem 1: Element-wise vs. single-element comparisons
+
+
+```{r}
+a <- TRUE
+b <- c(FALSE, TRUE)
+```
+
+a. Consider the two expressions below. Why might the first expression evaluate but the second one throw an error? Shouldn't the first one throw an error as well because these are single-element comparisons?? Discuss what might be going on with your group.
+
+```{r}
+a || b
+
+a && b
+```
+
+ANSWER:
+
+
+b. Now, take a look at the documentation for these operators by running ?`&&` in the console. Based on the documentation, why does the first line from part (a) run while the second line throws an error?
+
+
+ANSWER:
+
+
+
+
+## Problem 2: Missing Values
+
+As we know, missing values are important in data science and statistics. An interesting thing about `NA` in `R` is that the class of the `NA` depends on the atomic vector:
+
+```{r}
+class(NA)
+class(c(NA, TRUE))
+class(NA + 1)
+class(c(NA, "cat"))
+```
+
+Further, `NA`s and logicals can exhibit interesting behavior.
+
+```{r}
+TRUE & NA
+FALSE & NA
+TRUE | NA
+FALSE | NA
+```
+
+a. Discuss with your group what is going on with the code in the above chunk. Try to understand why these expressions return what they return. Then, summarize your understanding of the why these values are returned below
+
+ANSWER:
+
+
+b. Now, we will consider an exam score. Write some code to print "Passed! :)" if the object `score` is greater than 60. Test it out for different values of `scores` to make sure it is working. 
+
+```{r}
+# make sure to try other values of scores
+score <- 82
+
+# write some code here
+
+```
+
+
+c. Now, let us consider multiple exam scores. Write some code that prints "Everyone passed! :)" if all the `scores` are greater than 60. Test it out for different values of `scores` to make sure it is working. 
+
+
+```{r}
+# make sure to try other values of scores
+scores <- c(95, 77, 82)
+
+# write some code here
+
+```
+
+
+
+d. Now, write some code that the prints "Everyone passed! :)" if all the `scores` are greater than 60, and prints "Everyone tried! :)" otherwise. Test it out for different values of `scores` to make sure it is working. 
+
+
+```{r}
+# make sure to try other values of scores
+scores <- c(55, 77, 82)
+
+# write some code here
+
+```
+
+
+e. Finally, let us consider a vector of scores where some students haven't yet taken the exam (coded as `NA`). Write some code that prints "No one has taken the exam yet" if no one has taken the exam yet, "Some people haven't taken the exam yet" is some people/a person hasn't taken the exam yet, prints "Everyone passed! :)" if everyone took the exam and got over a 60, and prints "Everyone tried! :)" if everyone has taken the exam, but some people/a person got below at 60. Try this out for many different values in `scores` to make sure your code is working. 
+
+
+```{r}
+# make sure to try other values of scores
+scores <- c(55, NA, 82)
+
+# write some code here
+
+```
+
+
+
+

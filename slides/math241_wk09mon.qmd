@@ -58,77 +58,77 @@ ggplot2::theme_update(text = ggplot2::element_text(size = 20))
 ------------------------------------------------------------------------
 
 
-### Annoucements 
+<!-- ### Annoucements  -->
 
-::: {.fragment .nonincremental}
+<!-- ::: {.fragment .nonincremental} -->
 
-- [DataFest 2026 @ Willamette](https://my.willamette.edu/site/computer-science/data-fest)
-    - Great opportunity to meet folks and show off your data science skills! 
-    
-:::
+<!-- - [DataFest 2026 @ Willamette](https://my.willamette.edu/site/computer-science/data-fest) -->
+<!--     - Great opportunity to meet folks and show off your data science skills!  -->
 
-::: {.fragment .nonincremental}
+<!-- ::: -->
 
-- Project 1 Timeline Updates
-    - Final product and Data Scientist Statement due **Sunday April 5th at 10pm** instead of Friday April 3rd at 10pm.
-    - Group member feedback form is now due **Tuesday April 7th at 10pm** instead of Sunday April 5th at 10pm. 
+<!-- ::: {.fragment .nonincremental} -->
 
-:::
+<!-- - Project 1 Timeline Updates -->
+<!--     - Final product and Data Scientist Statement due **Sunday April 5th at 10pm** instead of Friday April 3rd at 10pm. -->
+<!--     - Group member feedback form is now due **Tuesday April 7th at 10pm** instead of Sunday April 5th at 10pm.  -->
 
-::: {.fragment .nonincremental}
+<!-- ::: -->
 
-- [AI Policy](https://reed-data-science.github.io/syllabus.html#policies) 
+<!-- ::: {.fragment .nonincremental} -->
 
-:::
+<!-- - [AI Policy](https://reed-data-science.github.io/syllabus.html#policies)  -->
 
-------------------------------------------------------------------------
+<!-- ::: -->
 
-## Post Spring Break: Big Picture Goals
+<!-- ------------------------------------------------------------------------ -->
 
-- **Three days**: Core `R` programming skills: control flow, functions, iteration (loops and functional programming)
-    - Problem set 5 on this material
+<!-- ## Post Spring Break: Big Picture Goals -->
 
-- **Two days** on ethics and AI
-    - Problem set 6 on this material
+<!-- - **Three days**: Core `R` programming skills: control flow, functions, iteration (loops and functional programming) -->
+<!--     - Problem set 5 on this material -->
 
-- **Three days** on writing your own R packages
-    - Project 2 will be centrally focused on writing your own R package
-    - We'll have a project work day during the last week of class
+<!-- - **Two days** on ethics and AI -->
+<!--     - Problem set 6 on this material -->
 
-- **Last day of class**: Building your data science profile: Github and personal professional website
+<!-- - **Three days** on writing your own R packages -->
+<!--     - Project 2 will be centrally focused on writing your own R package -->
+<!--     - We'll have a project work day during the last week of class -->
+
+<!-- - **Last day of class**: Building your data science profile: Github and personal professional website -->
 
 
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-## Post Spring Break: Assignments / deadlines
+## Post Fall Break: Assignments / deadlines
 
 ::: {.fragment .nonincremental}
 
 - **Project 1**
-    - Final product and Data Scientist Statement due **Sunday April 5th at 10pm**
-    - Group member feedback form due **Tuesday April 7th at 10pm** 
+    - Final product and Data Scientist Statement due **Tuesday November 10th at 10pm**
+    - Group member feedback form due **Thursday November 12th at 10pm** 
     
 :::
 
 ::: {.fragment .nonincremental}
 
 - **Problem Set 5**
-    - Released Tuesday April 7th at 9am, due Wednesday April 15th at 10pm
+    - Released Tuesday November 10th at noon, due Tuesday November 17th at noon
     
 :::
 
 ::: {.fragment .nonincremental}
 
 - **Problem Set 6**
-    - Released Tuesday April 14th at 9am, due Wednesday April 21st at 10pm
+    - Released Tuesday November 17th at noon, due Tuesday November 24th at noon
     
 :::
 
 ::: {.fragment .nonincremental}
 
 - **Project 2**
-    - Released Tuesday April 21st, Due Wednesday May 13th at noon
+    - Released Wednesday November 25th, Due Finals Week
     
 :::
 

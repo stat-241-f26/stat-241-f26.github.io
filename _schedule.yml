@@ -196,16 +196,14 @@ scheduled-docs:
           docs:
             - type: Slides
               href: slides/math241_wk07mon.qmd
-        - topic: "string manipulation and regular expressions"
+        - topic: "Control flow"
           display-date: Wednesday, Oct 28
           date: 10/28/26
           docs:
-            # - type: Reading
-            #   href: readings/readings_wk08mon.qmd
             - type: Slides
-              href: slides/math241_wk08mon.qmd
+              href: slides/math241_wk09mon.qmd
             - type: Activity (Download)
-              href: in_class/activity4_download.qmd
+              href: in_class/activity5_download.qmd
       resources:
         - 'For Wednesday: MDSR Chapter 19'
     - week: 9
@@ -219,14 +217,16 @@ scheduled-docs:
         - topic: "Project I Written Peer Feedback Due"
           display-date: Tuesday, Nov 3 @ 10pm
           date: 11/3/26
-        - topic: "Control flow"
+        - topic: "string manipulation and regular expressions"
           display-date: Wednesday, Nov 4
           date: 11/4/26
           docs:
+            # - type: Reading
+            #   href: readings/readings_wk08mon.qmd
             - type: Slides
-              href: slides/math241_wk09mon.qmd
+              href: slides/math241_wk08mon.qmd
             - type: Activity (Download)
-              href: in_class/activity5_download.qmd
+              href: in_class/activity4_download.qmd
       # resources:
       #   - 'Some text'
     - week: 10
