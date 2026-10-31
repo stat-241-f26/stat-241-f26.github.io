@@ -59,50 +59,50 @@ ggplot2::theme_update(text = ggplot2::element_text(size = 20))
 ------------------------------------------------------------------------
 
 
-### Annoucements 
+<!-- ### Annoucements  -->
 
 
-- **Welcome** to the visitors!
+<!-- - **Welcome** to the visitors! -->
 
-- Peer / Self Feedback due **tomorrow**!
-    - I also extended the deadline for the data scientist statement until tomorrow.
+<!-- - Peer / Self Feedback due **tomorrow**! -->
+<!--     - I also extended the deadline for the data scientist statement until tomorrow. -->
 
-- Problem Set 5 released tomorrow.
-
-
-------------------------------------------------------------------------
-
-## Week 10 Goals
-
-:::: {.columns}
+<!-- - Problem Set 5 released tomorrow. -->
 
 
-::: {.column .nonincremental}
+<!-- ------------------------------------------------------------------------ -->
 
-**Monday Lecture**: 
+<!-- ## Week 10 Goals -->
 
-- Iteration
-    - `for()` and `while()` loops
-    - Functional programming
-
-:::
+<!-- :::: {.columns} -->
 
 
-::: {.column .fragment .nonincremental}
+<!-- ::: {.column .nonincremental} -->
 
-**Wednesday Lecture**: 
+<!-- **Monday Lecture**:  -->
 
-- Parallelism
-- Ethics
-- AI
+<!-- - Iteration -->
+<!--     - `for()` and `while()` loops -->
+<!--     - Functional programming -->
 
-:::
-
-::::
+<!-- ::: -->
 
 
+<!-- ::: {.column .fragment .nonincremental} -->
 
-------------------------------------------------------------------------
+<!-- **Wednesday Lecture**:  -->
+
+<!-- - Parallelism -->
+<!-- - Ethics -->
+<!-- - AI -->
+
+<!-- ::: -->
+
+<!-- :::: -->
+
+
+
+<!-- ------------------------------------------------------------------------ -->
 
 
 ### Reducing Code Duplication

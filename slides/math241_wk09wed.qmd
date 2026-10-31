@@ -59,39 +59,39 @@ ggplot2::theme_update(text = ggplot2::element_text(size = 20))
 ------------------------------------------------------------------------
 
 
-### Annoucements 
+<!-- ### Annoucements  -->
 
 
-- [Posit internships](https://tidyverse.org/blog/2026/03/2026-internships/)
+<!-- - [Posit internships](https://tidyverse.org/blog/2026/03/2026-internships/) -->
 
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-## Week 9 Goals
+<!-- ## Week 9 Goals -->
 
-:::: {.columns}
-
-
-::: {.column}
-
-**Monday**: Control flow
-
-:::
+<!-- :::: {.columns} -->
 
 
-::: {.column .fragment}
+<!-- ::: {.column} -->
 
-**Wednesday**: Learn to write your own 
+<!-- **Monday**: Control flow -->
 
-`r emo::ji("sparkles")` functions `r emo::ji("sparkles")`!
-
-:::
-
-::::
+<!-- ::: -->
 
 
+<!-- ::: {.column .fragment} -->
 
-------------------------------------------------------------------------
+<!-- **Wednesday**: Learn to write your own  -->
+
+<!-- `r emo::ji("sparkles")` functions `r emo::ji("sparkles")`! -->
+
+<!-- ::: -->
+
+<!-- :::: -->
+
+
+
+<!-- ------------------------------------------------------------------------ -->
 
 
 ## Mac and Cheese

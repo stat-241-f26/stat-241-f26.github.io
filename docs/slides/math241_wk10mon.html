@@ -215,39 +215,28 @@
 </section>
 <section class="slide level2">
 
-<h3 id="annoucements">Annoucements</h3>
-<ul>
-<li class="fragment"><p><strong>Welcome</strong> to the visitors!</p></li>
-<li class="fragment"><p>Peer / Self Feedback due <strong>tomorrow</strong>!</p>
-<ul>
-<li class="fragment">I also extended the deadline for the data scientist statement until tomorrow.</li>
-</ul></li>
-<li class="fragment"><p>Problem Set 5 released tomorrow.</p></li>
-</ul>
-</section>
-<section id="week-10-goals" class="slide level2">
-<h2>Week 10 Goals</h2>
-<div class="columns">
-<div class="column">
-<p><strong>Monday Lecture</strong>:</p>
-<ul>
-<li>Iteration
-<ul>
-<li><code>for()</code> and <code>while()</code> loops</li>
-<li>Functional programming</li>
-</ul></li>
-</ul>
-</div><div class="column fragment">
-<p><strong>Wednesday Lecture</strong>:</p>
-<ul>
-<li>Parallelism</li>
-<li>Ethics</li>
-<li>AI</li>
-</ul>
-</div></div>
-</section>
-<section class="slide level2">
-
+<!-- ### Annoucements  -->
+<!-- - **Welcome** to the visitors! -->
+<!-- - Peer / Self Feedback due **tomorrow**! -->
+<!--     - I also extended the deadline for the data scientist statement until tomorrow. -->
+<!-- - Problem Set 5 released tomorrow. -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Week 10 Goals -->
+<!-- :::: {.columns} -->
+<!-- ::: {.column .nonincremental} -->
+<!-- **Monday Lecture**:  -->
+<!-- - Iteration -->
+<!--     - `for()` and `while()` loops -->
+<!--     - Functional programming -->
+<!-- ::: -->
+<!-- ::: {.column .fragment .nonincremental} -->
+<!-- **Wednesday Lecture**:  -->
+<!-- - Parallelism -->
+<!-- - Ethics -->
+<!-- - AI -->
+<!-- ::: -->
+<!-- :::: -->
+<!-- ------------------------------------------------------------------------ -->
 <h3 id="reducing-code-duplication">Reducing Code Duplication</h3>
 <p>Last time, we reduced code duplication by creating <strong>functions</strong>:</p>
 <div class="cell" data-layout-align="center">
@@ -587,7 +576,7 @@
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-label="1"></a><span class="fu">mean</span>(<span class="fu">sample</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 20.66442</code></pre>
+<pre><code>[1] 20.68191</code></pre>
 </div>
 </div>
 </div>
@@ -615,7 +604,7 @@
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-label="1"></a><span class="fu">mean</span>(<span class="fu">sample</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 20.49086</code></pre>
+<pre><code>[1] 20.5883</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -627,13 +616,13 @@
 <span id="cb40-5"><a aria-label="5"></a>boot[i, ] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sample</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb40-6"><a aria-label="6"></a>boot[i, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 20.57264</code></pre>
+<pre><code>[1] 20.72004</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-label="1"></a><span class="co"># Option 2</span></span>
 <span id="cb42-2"><a aria-label="2"></a>boot<span class="sc">$</span>avg[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sample</span>(pdxTrees<span class="sc">$</span>DBH, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb42-3"><a aria-label="3"></a>boot<span class="sc">$</span>avg[i]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 20.65612</code></pre>
+<pre><code>[1] 20.69052</code></pre>
 </div>
 </div>
 </div>
@@ -690,9 +679,9 @@
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,000
 Columns: 3
-$ avg_n_20  &lt;dbl&gt; 19.740, 17.840, 21.990, 22.330, 21.370, 17.880, 18.685, 20.5…
-$ avg_n_50  &lt;dbl&gt; 22.106, 21.458, 20.198, 21.460, 20.124, 18.776, 21.890, 18.6…
-$ avg_n_100 &lt;dbl&gt; 19.377, 21.026, 21.653, 20.461, 22.344, 23.303, 24.811, 20.4…</code></pre>
+$ avg_n_20  &lt;dbl&gt; 17.380, 20.210, 17.405, 19.330, 17.460, 17.875, 17.640, 17.9…
+$ avg_n_50  &lt;dbl&gt; 23.9160, 21.8580, 20.2038, 19.7586, 21.5432, 22.6580, 24.852…
+$ avg_n_100 &lt;dbl&gt; 21.502, 22.230, 22.377, 21.176, 21.311, 22.662, 23.372, 18.9…</code></pre>
 </div>
 </div>
 </section>
@@ -769,7 +758,7 @@ $ avg_n_100 &lt;dbl&gt; 19.377, 21.026, 21.653, 20.461, 22.344, 23.303, 24.811, 
 <span id="cb49-15"><a aria-label="15"></a></span>
 <span id="cb49-16"><a aria-label="16"></a><span class="fu">glimpse</span>(norm_pos)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> num [1:20] 0.3184 0.991 0.0783 0.3249 0.6261 ...</code></pre>
+<pre><code> num [1:20] 0.0391 0.69 1.1733 0.0583 1.5873 ...</code></pre>
 </div>
 </div>
 </div>
@@ -1048,12 +1037,12 @@ $ Native    &lt;fct&gt; Yes, Yes, No, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No,
 <span id="cb77-5"><a aria-label="5"></a></span>
 <span id="cb77-6"><a aria-label="6"></a><span class="fu">boot_mean</span>(pdxTrees<span class="sc">$</span>DBH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 20.63899</code></pre>
+<pre><code>[1] 20.76797</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a aria-label="1"></a><span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="sc">~</span> <span class="fu">boot_mean</span>(pdxTrees<span class="sc">$</span>DBH))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 20.50328 20.49479 20.46123 20.47088 20.64615 20.50519 20.60880 20.57294
- [9] 20.43831 20.51224</code></pre>
+<pre><code> [1] 20.50280 20.62113 20.70551 20.73743 20.47062 20.71070 20.53047 20.66694
+ [9] 20.59220 20.67958</code></pre>
 </div>
 </div>
 </section></section>
@@ -3769,7 +3758,7 @@ $alive
 <span id="cb128-3"><a aria-label="3"></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-      0       0       0 </code></pre>
+  0.000   0.000   0.001 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a aria-label="1"></a><span class="fu">system.time</span>({</span>
 <span id="cb130-2"><a aria-label="2"></a>  got_chars_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">30</span>),</span>
@@ -3788,7 +3777,7 @@ $alive
 <span id="cb130-15"><a aria-label="15"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  0.003   0.000   0.002 </code></pre>
+  0.002   0.000   0.002 </code></pre>
 </div>
 </div>
 </section>

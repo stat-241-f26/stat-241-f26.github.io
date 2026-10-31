@@ -58,33 +58,33 @@ theme_update(text = element_text(size = 20))
 
 ------------------------------------------------------------------------
 
-## Week 8 Goals
+<!-- ## Week 8 Goals -->
 
-:::: {.columns}
+<!-- :::: {.columns} -->
 
-::: {.column width='50%' .nonincremental .fragment}
+<!-- ::: {.column width='50%' .nonincremental .fragment} -->
 
-**Mon Lecture**
+<!-- **Mon Lecture** -->
 
-* Learn more about strings, factors, dates, and times in `R`!
-
-
-:::
-
-::: {.column width='50%' .nonincremental .fragment}
-
-**Wed Lecture**
-
-* Pattern matching with regular expressions (and some text analysis!)
+<!-- * Learn more about strings, factors, dates, and times in `R`! -->
 
 
-:::
+<!-- ::: -->
 
-::::
+<!-- ::: {.column width='50%' .nonincremental .fragment} -->
+
+<!-- **Wed Lecture** -->
+
+<!-- * Pattern matching with regular expressions (and some text analysis!) -->
+
+
+<!-- ::: -->
+
+<!-- :::: -->
 
 
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
 ### Recap:
 
@@ -685,9 +685,9 @@ run_it_off %>%
 
 <!-- * Issue with word-based sentiment analysis? -->
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-## Next time
+<!-- ## Next time -->
 
-* Don't forget to add your dashboard to Posit Connect Cloud!
-    - Good to try to put an incomplete version up now to make sure you can get it working. 
+<!-- * Don't forget to add your dashboard to Posit Connect Cloud! -->
+<!--     - Good to try to put an incomplete version up now to make sure you can get it working.  -->

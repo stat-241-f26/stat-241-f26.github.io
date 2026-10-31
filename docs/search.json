@@ -126,11 +126,11 @@
     "text": "R Packages\nWhat is an R package?\n\n\n“R packages are the fundamental unit of R-ness”. – Jenny Bryan\n\n\n\n\nContains (usually) functions, (possibly) datasets, documentation, and tests.\n“base R”: a handful of base packages that are preloaded.\nCRAN has &gt; 23,000 more packages\n\ninstall.packages(\"dplyr\")\nlibrary(dplyr)\n\nAnd then there are all the packages on GitHub:\n\ndevtools::install_github(\"hadley/genzplyr\")\nlibrary(genzplyr)"
   },
   {
-    "objectID": "slides/math241_wk10wed.html#week-10-goals",
-    "href": "slides/math241_wk10wed.html#week-10-goals",
+    "objectID": "slides/math241_wk10wed.html#goals",
+    "href": "slides/math241_wk10wed.html#goals",
     "title": "Stat 241",
-    "section": "Week 10 Goals",
-    "text": "Week 10 Goals\n\n\nMonday Lecture:\n\nIteration\n\nfor() and while() loops\nFunctional programming\n\n\n\nWednesday Lecture:\n\nParallelism\nEthics\nAI"
+    "section": "Goals",
+    "text": "Goals\n\n\nLast Time:\n\nIteration\n\nfor() and while() loops\nFunctional programming\n\n\n\nToday:\n\nParallel Computing\nEthics"
   },
   {
     "objectID": "slides/math241_wk10wed.html#integrity-of-data-and-methods",
@@ -145,167 +145,6 @@
     "title": "Stat 241",
     "section": "Ethical considerations of using LLMs…",
     "text": "Ethical considerations of using LLMs…\n\n\nEthical considerations:\n\nAlgorithmic bias\nFair use / copyright considerations\n\n\n\nEnvironmental concerns:\n\nWater\nElectricity\nCarbon emissions\n\n\n\n\nOthers?\n\nOne of my biggest worries: learning\n\n\n\nHelpful context: our readings for today\n\nExplained: Generative AI’s environmental impact\nA software engineer’s “typical” electricity useage from LLMs\nGruelling, low-paid human work behind generative AI curtain\n\n\nGood for understanding environmental and human welfare concerns. Algorithmic bias and fair use on the other hand…"
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#ethical-considerations-of-using-llms-1",
-    "href": "slides/math241_wk10wed.html#ethical-considerations-of-using-llms-1",
-    "title": "Stat 241",
-    "section": "Ethical considerations of using LLMs…",
-    "text": "Ethical considerations of using LLMs…\n\nData Science is a uniquely humanistic field situated behind a laptop. We have responsibility to understand and mitigate algorithmic bias by asking questions such as:\n\n\n\nWho are represented in the sample?\nWho are not represented in the sample?\nWhat biases might my methods (including generative AI!) introduce?\nHow can I safeguard against those biases?"
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#ethical-considerations-of-using-llms-2",
-    "href": "slides/math241_wk10wed.html#ethical-considerations-of-using-llms-2",
-    "title": "Stat 241",
-    "section": "Ethical considerations of using LLMs…",
-    "text": "Ethical considerations of using LLMs…\n\nGenerative AI tools are being used in horrific and unethical ways as we speak (e.g., Flock cameras). Not to mentioned they are trained on people’s intellectual content without their consent.\n\n\n\nMy goals:\n\nTeach how to use generative AI as an ethical data scientist\n\nConsider productive (and unproductive) use-cases for this technology\n\nHelp you be informed on the current state of generative AI and large language models\n\nOnly informed people can help change policy."
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#what-is-a-large-language-model-1",
-    "href": "slides/math241_wk10wed.html#what-is-a-large-language-model-1",
-    "title": "Stat 241",
-    "section": "What is a large language model?",
-    "text": "What is a large language model?\n\nA large language model (LLM) is a predictive model designed to predict the next token of text, conditional on the given context.\nJust like any statistical model, one must train the model and you can use the model to make new predictions\n\nThink: Linear regression. You fit / train your linear regression model to obtain \\(\\hat{\\beta}\\)’s that you can make new predictions with.\n\nCompanies like OpenAI, Anthropic, and Google host trained models on their servers, and charge users to use them.\nWhy can’t you run these locally?\n\nYou can! But only smaller models…\nTrained LLMs are large. The “weight matrices” associated with a given training output take extremely large amounts of computing power to use.\nNeed enough RAM + computing power to do matrix multiplication on these weight matrices."
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#local-vs.-cloud-based-llms",
-    "href": "slides/math241_wk10wed.html#local-vs.-cloud-based-llms",
-    "title": "Stat 241",
-    "section": "Local vs. cloud-based LLMs",
-    "text": "Local vs. cloud-based LLMs\n\n\nLocal LLMs:\n\n\nSmaller.\n\nGenerally, 1GB RAM = 1 billion model parameters\n\n\n\n\n\nMore secure.\n\nYou are not sending your data off to someone else’s server.\n\n\n\n\n\n“Open” weights.\n\nYou host the weights matrix.\nAll computing happens on your machine.\n\n\n\n\n\nRequires decent computing power.\n\n\n\nCloud-based LLMs:\n\nBig!\n\nGenerally: larger model –&gt; better predictions\n\n\n\n\nLess secure.\n\nIf it is free, you are the product.\n\n\n\n\n\nOften closed-weights.\n\nComputing happens at a data center.\n\n\n\n\n\nCan use these on anything that can access the internet."
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#local-vs.-cloud-based-llms-1",
-    "href": "slides/math241_wk10wed.html#local-vs.-cloud-based-llms-1",
-    "title": "Stat 241",
-    "section": "Local vs. cloud-based LLMs",
-    "text": "Local vs. cloud-based LLMs\n\nFor our purposes, we will use a cloud-based LLM.\nI encourage you to explore what can be done with local LLM’s if it interests you.\n\nStart with: Ollama"
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#ellmer",
-    "href": "slides/math241_wk10wed.html#ellmer",
-    "title": "Stat 241",
-    "section": "ellmer",
-    "text": "ellmer\nAn R package for interacting with LLMs in R\n\n  \n\nToday, we’ll use ellmer to do three different types of tasks one may want to with an LLM:\n\n\nStructured data\nTool calling\nCoding"
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#ellmer-setup",
-    "href": "slides/math241_wk10wed.html#ellmer-setup",
-    "title": "Stat 241",
-    "section": "ellmer: Setup",
-    "text": "ellmer: Setup\nIn order to interact with LLMs hosted on a server, we need to first set up an API key.\n\nCerebras provides “free” access to some LLMs they host, but you still need to get an API key.\n\nThis “free” access has rate limits\n\n\n\nSteps:\n\nGo to https://www.cerebras.ai/ and click “Get Started” to create an account.\n\n\n\n\nOnce your account is created, find your API key and set it in your R environment:\n\n\n# This will open a file called .Renviron\nusethis::edit_r_environ()\n\nThen add:\nOPENAI_API_KEY=INSERT_YOUR_KEY_HERE\nto your .Renviron file. Save it.\n\n\nRestart R."
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#ellmer-basics",
-    "href": "slides/math241_wk10wed.html#ellmer-basics",
-    "title": "Stat 241",
-    "section": "ellmer: basics",
-    "text": "ellmer: basics\n\nlibrary(ellmer)\n\nchat &lt;- chat_openai_compatible(\n  base_url = \"https://api.cerebras.ai/v1\",\n  model    = \"qwen-3-235b-a22b-instruct-2507\"\n)\n\nchat$chat(\"Who are you?\")\n#&gt; Hello! I'm Qwen, a large-scale language model independently developed by the \n#&gt; Tongyi Lab under Alibaba Group. I can assist you with answering questions, \n#&gt; writing, logical reasoning, programming, and more. I aim to provide helpful and \n#&gt; accurate information. Feel free to let me know if you have any questions or need\n#&gt; assistance!\n\n\n\n\n“qwen-3-235b-a22b-instruct-2507” has the following rate limits:\n\nup to 30 requests per minute,\n900 requests per hour, and\n14,400 requests per day."
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#ellmer-structured-data",
-    "href": "slides/math241_wk10wed.html#ellmer-structured-data",
-    "title": "Stat 241",
-    "section": "ellmer: Structured data",
-    "text": "ellmer: Structured data\nHow would you extract name and age from this data?\n\nprompts &lt;- list(\n  \"I go by Alex. 42 years on this planet and counting.\",\n  \"Pleased to meet you! I'm Jamal, age 27.\",\n  \"They call me Li Wei. Nineteen years young.\",\n  \"Fatima here. Just celebrated my 35th birthday last week.\",\n  \"The name's Robert - 51 years old and proud of it.\",\n  \"Kwame here - just hit the big 5-0 this year.\"\n)\n\n\nRegular expressions?"
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#ellmer-structured-data-1",
-    "href": "slides/math241_wk10wed.html#ellmer-structured-data-1",
-    "title": "Stat 241",
-    "section": "ellmer: Structured data",
-    "text": "ellmer: Structured data\nLLMs are generally good at this sort of task\n\nchat &lt;- chat_openai_compatible(\n  base_url = \"https://api.cerebras.ai/v1\",\n  model    = \"qwen-3-235b-a22b-instruct-2507\",\n)\nchat$chat(\"Extract the name and age from each sentence I give you\")\nchat$chat(prompts[[1]])\n#&gt; **Name: Alex, Age: 42**\nchat$chat(prompts[[2]])\n#&gt; **Name: Jamal, Age: 27**\nchat$chat(prompts[[3]])\n#&gt; **Name: Li Wei, Age: 19**"
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#ellmer-structured-data-2",
-    "href": "slides/math241_wk10wed.html#ellmer-structured-data-2",
-    "title": "Stat 241",
-    "section": "ellmer: Structured data",
-    "text": "ellmer: Structured data\nBut wouldn’t it be nice to get an R data structure?\n\nchat$chat(prompts[[3]])\n\n# Want this:\n#&gt; list(\n#&gt;   name = \"Li Wei\",\n#&gt;   age = 19\n#&gt; )\n\n# Instead of:\n#&gt; **Name: Li Wei, Age: 19**\n\n\n\nellmer let’s us do this with chat_structured()!\n\ntype_person &lt;- type_object(\n  name = type_string(),\n  age = type_number()\n)\n\nchat$chat_structured(prompts[[1]], type = type_person)\n#&gt; List of 2\n#&gt;  $ name: chr \"Alex\"\n#&gt;  $ age : int 42"
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#ellmer-structured-data-3",
-    "href": "slides/math241_wk10wed.html#ellmer-structured-data-3",
-    "title": "Stat 241",
-    "section": "ellmer: Structured data",
-    "text": "ellmer: Structured data\nparallel_chat_structured(): many prompts at once\n\nchat &lt;- chat_openai_compatible(\n  base_url = \"https://api.cerebras.ai/v1\",\n  model    = \"qwen-3-235b-a22b-instruct-2507\",\n  params   = params(max_tokens = 500)\n)\nparallel_chat_structured(chat, prompts, type = type_person, rpm = 30)\n#&gt;     name age\n#&gt; 1   Alex  42\n#&gt; 2  Jamal  27\n#&gt; 3 Li Wei  19\n#&gt; 4 Fatima  35\n#&gt; 5 Robert  51\n#&gt; 6  Kwame  50\n\n\nNot parallel in the sense of parallelized R code: just sending many API calls at once.\nHave to set params in order to avoid getting rate-limited automatically."
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#ellmer-structured-data-4",
-    "href": "slides/math241_wk10wed.html#ellmer-structured-data-4",
-    "title": "Stat 241",
-    "section": "ellmer: Structured data",
-    "text": "ellmer: Structured data\nCan also send attach images or other files by pointing to their directory on your computer.\n\npaths &lt;- dir(\"animals\", full.names = TRUE)\nimages &lt;- map(paths, ~ list(content_image_file(.x)))\n\ntype_animal_photo &lt;- type_object(\n  animal = type_string(),\n  background_colour = type_string()\n)\n\nparallel_chat_structured(chat, images, type = type_animal_photo)"
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#ellmer-tool-calling",
-    "href": "slides/math241_wk10wed.html#ellmer-tool-calling",
-    "title": "Stat 241",
-    "section": "ellmer: Tool calling",
-    "text": "ellmer: Tool calling\n\n\nchat &lt;- chat_openai_compatible(\n  base_url = \"https://api.cerebras.ai/v1\",\n  model    = \"qwen-3-235b-a22b-instruct-2507\"\n)\n\nchat$chat(\"What day is it?\")\n#&gt; I don't have access to real-time information, so I can't tell you today's\n#&gt; date. You can check the current date on your device's calendar or by \n#&gt; asking a voice assistant like Siri, Google Assistant, or Alexa."
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#ellmer-tool-calling-1",
-    "href": "slides/math241_wk10wed.html#ellmer-tool-calling-1",
-    "title": "Stat 241",
-    "section": "ellmer: Tool calling",
-    "text": "ellmer: Tool calling\n\ntoday &lt;- tool(\n  function() Sys.Date(),\n  name = \"today\",\n  description = \"Get the current date\",\n  arguments = list()\n)\nchat$register_tool(today)"
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#ellmer-tool-calling-2",
-    "href": "slides/math241_wk10wed.html#ellmer-tool-calling-2",
-    "title": "Stat 241",
-    "section": "ellmer: Tool calling",
-    "text": "ellmer: Tool calling\n\n\nchat$chat(\"What day is it today?\")\n#&gt; ◯ [tool call] today()\n#&gt; ● #&gt; \"2026-04-05\"\n#&gt; Today is Sunday, April 5, 2026."
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#coding-agent-llm-calling-tools-in-a-loop",
-    "href": "slides/math241_wk10wed.html#coding-agent-llm-calling-tools-in-a-loop",
-    "title": "Stat 241",
-    "section": "Coding agent = LLM calling tools in a loop",
-    "text": "Coding agent = LLM calling tools in a loop\n…usually giving models the ability to read and write state"
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#coding-agents-1",
-    "href": "slides/math241_wk10wed.html#coding-agents-1",
-    "title": "Stat 241",
-    "section": "Coding agents",
-    "text": "Coding agents\n\nchat &lt;- chat_openai_compatible(\n  base_url = \"https://api.cerebras.ai/v1\",\n  model    = \"qwen-3-235b-a22b-instruct-2507\"\n)\nchat$chat(\"Delete the csv files in my working directory\")\n#&gt; I **cannot** delete files from your computer or working directory. I don't have \n#&gt; access to your file system for security reasons.\n#&gt; \n#&gt; However, here are safe ways you can delete CSV files in your working directory \n#&gt; depending on your environment:\n#&gt; \n#&gt; ### Option 1: Using Python\n#&gt; If you're using Python and want to delete all `.csv` files in the current \n#&gt; directory:\n#&gt; ..."
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#coding-agents-2",
-    "href": "slides/math241_wk10wed.html#coding-agents-2",
-    "title": "Stat 241",
-    "section": "Coding agents",
-    "text": "Coding agents\n\nchat &lt;- chat_openai_compatible(\n  base_url = \"https://api.cerebras.ai/v1\",\n  model    = \"qwen-3-235b-a22b-instruct-2507\"\n)\nchat$chat(\"Delete the csv files in my working directory\")\n#&gt; To delete all CSV files in your current working directory, you can use one of the\n#&gt; following methods depending on your operating system:\n#&gt; \n#&gt; ### **Method 1: Using Command Line / Terminal**\n#&gt; \n#&gt; #### **On Windows (Command Prompt):**\n#&gt; ```cmd\n#&gt; del *.csv\n#&gt; ```\n#&gt; \n#&gt; #### **On macOS or Linux (Terminal):**\n#&gt; ```bash\n#&gt; rm *.csv\n#&gt; ```\n#&gt; \n#&gt; &gt; ⚠️ **Warning**: This permanently deletes all `.csv` files in the current \n#&gt; directory. Make sure you don’t need any of them!\n\nNeeds to be able to:\n\nFind files (read state)\nDelete files (write state)"
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#coding-agents-3",
-    "href": "slides/math241_wk10wed.html#coding-agents-3",
-    "title": "Stat 241",
-    "section": "Coding agents",
-    "text": "Coding agents\nThe LLM needs to be able to read our working directory:\n\nchat$register_tool(tool(\n  function() dir(),\n  name = \"ls\",\n  description = \"Lists the files in the current directory\"\n))\n\n\n\nAnd be able to remove files:\n\nchat$register_tool(tool(\n  function(path) unlink(path),\n  name = \"rm\",\n  description = \"Delete one or more files\",\n  arguments = list(\n    path = type_array(type_string())\n  )\n))"
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#coding-agents-4",
-    "href": "slides/math241_wk10wed.html#coding-agents-4",
-    "title": "Stat 241",
-    "section": "Coding agents",
-    "text": "Coding agents\nCreate some dummy .csv files\n\nfile.create(c(\"a.csv\", \"a_please_dont_delete_me.csv\", \"b.csv\"))\n\n[1] TRUE TRUE TRUE\n\ndir()\n\n [1] \"a_please_dont_delete_me.csv\"   \"a.csv\"                        \n [3] \"b.csv\"                         \"custom.scss\"                  \n [5] \"data\"                          \"img\"                          \n [7] \"math241_wk01mon_files\"         \"math241_wk01mon.html\"         \n [9] \"math241_wk01mon.qmd\"           \"math241_wk01wed_files\"        \n[11] \"math241_wk01wed.html\"          \"math241_wk01wed.qmd\"          \n[13] \"math241_wk02mon_files\"         \"math241_wk02mon.html\"         \n[15] \"math241_wk02mon.qmd\"           \"math241_wk02wed_files\"        \n[17] \"math241_wk02wed.html\"          \"math241_wk02wed.qmd\"          \n[19] \"math241_wk03mon_files\"         \"math241_wk03mon.html\"         \n[21] \"math241_wk03mon.qmd\"           \"math241_wk03wed_cache\"        \n[23] \"math241_wk03wed_files\"         \"math241_wk03wed.html\"         \n[25] \"math241_wk03wed.qmd\"           \"math241_wk04mon.html\"         \n[27] \"math241_wk04mon.qmd\"           \"math241_wk04wed_activity.html\"\n[29] \"math241_wk04wed_activity.qmd\"  \"math241_wk04wed.html\"         \n[31] \"math241_wk04wed.qmd\"           \"math241_wk05mon_files\"        \n[33] \"math241_wk05mon.html\"          \"math241_wk05mon.qmd\"          \n[35] \"math241_wk05wed_files\"         \"math241_wk05wed.html\"         \n[37] \"math241_wk05wed.qmd\"           \"math241_wk06mon_files\"        \n[39] \"math241_wk06mon.html\"          \"math241_wk06mon.qmd\"          \n[41] \"math241_wk06wed.html\"          \"math241_wk06wed.qmd\"          \n[43] \"math241_wk07mon_files\"         \"math241_wk07mon.html\"         \n[45] \"math241_wk07mon.qmd\"           \"math241_wk07wed_files\"        \n[47] \"math241_wk07wed.html\"          \"math241_wk07wed.qmd\"          \n[49] \"math241_wk08mon_files\"         \"math241_wk08mon.html\"         \n[51] \"math241_wk08mon.qmd\"           \"math241_wk09mon.html\"         \n[53] \"math241_wk09mon.qmd\"           \"math241_wk09wed_files\"        \n[55] \"math241_wk09wed.html\"          \"math241_wk09wed.qmd\"          \n[57] \"math241_wk10mon_files\"         \"math241_wk10mon.html\"         \n[59] \"math241_wk10mon.qmd\"           \"math241_wk10wed_cache\"        \n[61] \"math241_wk10wed_files\"         \"math241_wk10wed.qmd\"          \n[63] \"math241_wk10wed.rmarkdown\"     \"math241_wk11mon_cache\"        \n[65] \"math241_wk11mon.qmd\"           \"math241_wk11wed.qmd\"          \n[67] \"math241_wk12mon_cache\"         \"math241_wk12mon.qmd\"          \n[69] \"math241_wk12wed.qmd\"           \"math241_wk13wed.qmd\"          \n[71] \"my_plots\"                      \"rosm.cache\""
-  },
-  {
-    "objectID": "slides/math241_wk10wed.html#coding-agents-5",
-    "href": "slides/math241_wk10wed.html#coding-agents-5",
-    "title": "Stat 241",
-    "section": "Coding agents",
-    "text": "Coding agents\nNow ask it to delete csv’s that\n\nchat$chat(\"Delete all the csv files in the current directory, unless they ask to not be deleted.\")\n#&gt; ◯ [tool call] ls()\n#&gt; ● #&gt; a_please_dont_delete_me.csv\n#&gt;   #&gt; a.csv\n#&gt;   #&gt; b.csv\n#&gt;   #&gt; custom.scss\n#&gt;   #&gt; data\n#&gt;   #&gt; …\n#&gt; ◯ [tool call] rm(path = c(\"a.csv\", \"b.csv\"))\n#&gt; ● #&gt; 0\n#&gt; The CSV files `a.csv` and `b.csv` have been deleted.  \n#&gt; \n#&gt; The file `a_please_dont_delete_me.csv` was not deleted, as it appears to be a \n#&gt; file you wish to keep based on its name.  \n#&gt; \n#&gt; Let me know if you'd like to keep or remove any other files!\n\n\n\n\ndir()\n\n [1] \"a_please_dont_delete_me.csv\"   \"custom.scss\"                  \n [3] \"data\"                          \"img\"                          \n [5] \"math241_wk01mon_files\"         \"math241_wk01mon.html\"         \n [7] \"math241_wk01mon.qmd\"           \"math241_wk01wed_files\"        \n [9] \"math241_wk01wed.html\"          \"math241_wk01wed.qmd\"          \n[11] \"math241_wk02mon_files\"         \"math241_wk02mon.html\"         \n[13] \"math241_wk02mon.qmd\"           \"math241_wk02wed_files\"        \n[15] \"math241_wk02wed.html\"          \"math241_wk02wed.qmd\"          \n[17] \"math241_wk03mon_files\"         \"math241_wk03mon.html\"         \n[19] \"math241_wk03mon.qmd\"           \"math241_wk03wed_cache\"        \n[21] \"math241_wk03wed_files\"         \"math241_wk03wed.html\"         \n[23] \"math241_wk03wed.qmd\"           \"math241_wk04mon.html\"         \n[25] \"math241_wk04mon.qmd\"           \"math241_wk04wed_activity.html\"\n[27] \"math241_wk04wed_activity.qmd\"  \"math241_wk04wed.html\"         \n[29] \"math241_wk04wed.qmd\"           \"math241_wk05mon_files\"        \n[31] \"math241_wk05mon.html\"          \"math241_wk05mon.qmd\"          \n[33] \"math241_wk05wed_files\"         \"math241_wk05wed.html\"         \n[35] \"math241_wk05wed.qmd\"           \"math241_wk06mon_files\"        \n[37] \"math241_wk06mon.html\"          \"math241_wk06mon.qmd\"          \n[39] \"math241_wk06wed.html\"          \"math241_wk06wed.qmd\"          \n[41] \"math241_wk07mon_files\"         \"math241_wk07mon.html\"         \n[43] \"math241_wk07mon.qmd\"           \"math241_wk07wed_files\"        \n[45] \"math241_wk07wed.html\"          \"math241_wk07wed.qmd\"          \n[47] \"math241_wk08mon_files\"         \"math241_wk08mon.html\"         \n[49] \"math241_wk08mon.qmd\"           \"math241_wk09mon.html\"         \n[51] \"math241_wk09mon.qmd\"           \"math241_wk09wed_files\"        \n[53] \"math241_wk09wed.html\"          \"math241_wk09wed.qmd\"          \n[55] \"math241_wk10mon_files\"         \"math241_wk10mon.html\"         \n[57] \"math241_wk10mon.qmd\"           \"math241_wk10wed_cache\"        \n[59] \"math241_wk10wed_files\"         \"math241_wk10wed.qmd\"          \n[61] \"math241_wk10wed.rmarkdown\"     \"math241_wk11mon_cache\"        \n[63] \"math241_wk11mon.qmd\"           \"math241_wk11wed.qmd\"          \n[65] \"math241_wk12mon_cache\"         \"math241_wk12mon.qmd\"          \n[67] \"math241_wk12wed.qmd\"           \"math241_wk13wed.qmd\"          \n[69] \"my_plots\"                      \"rosm.cache\""
-  },
-  {
-    "objectID": "slides/math241_wk09wed.html#week-9-goals",
-    "href": "slides/math241_wk09wed.html#week-9-goals",
-    "title": "Stat 241",
-    "section": "Week 9 Goals",
-    "text": "Week 9 Goals\n\n\nMonday: Control flow\n\nWednesday: Learn to write your own\n✨ functions ✨!"
   },
   {
     "objectID": "slides/math241_wk09wed.html#mac-and-cheese",
@@ -327,13 +166,6 @@
     "title": "Stat 241",
     "section": "Mac and Cheese",
     "text": "Mac and Cheese"
-  },
-  {
-    "objectID": "slides/math241_wk08mon.html#week-8-goals",
-    "href": "slides/math241_wk08mon.html#week-8-goals",
-    "title": "Stat 241",
-    "section": "Week 8 Goals",
-    "text": "Week 8 Goals\n\n\nMon Lecture\n\nLearn more about strings, factors, dates, and times in R!\n\n\nWed Lecture\n\nPattern matching with regular expressions (and some text analysis!)"
   },
   {
     "objectID": "slides/math241_wk08mon.html#regular-expressions",
@@ -446,13 +278,6 @@
     "title": "Stat 241",
     "section": "Replace",
     "text": "Replace\n\nrun_it_off &lt;- shake_it_off %&gt;%\n  mutate(Lyric = str_replace_all(Lyric, \"shake\",\n                                 \"run\")) \nrun_it_off %&gt;%\n  filter(str_detect(Lyric, \"run\"))\n\n# A tibble: 21 × 3\n   Song                            Album                   Lyric                \n   &lt;chr&gt;                           &lt;chr&gt;                   &lt;chr&gt;                \n 1 Shake It Off (Taylor's Version) 1989 (Taylor's Version) \"Baby, I'm just gonn…\n 2 Shake It Off (Taylor's Version) 1989 (Taylor's Version) \"Shake it off, I run…\n 3 Shake It Off (Taylor's Version) 1989 (Taylor's Version) \"Baby, I'm just gonn…\n 4 Shake It Off (Taylor's Version) 1989 (Taylor's Version) \"I run it off, I run…\n 5 Shake It Off (Taylor's Version) 1989 (Taylor's Version) \"I run it off, I run…\n 6 Shake It Off (Taylor's Version) 1989 (Taylor's Version) \"I, I, I run it off,…\n 7 Shake It Off (Taylor's Version) 1989 (Taylor's Version) \"I, I, I run it off,…\n 8 Shake It Off (Taylor's Version) 1989 (Taylor's Version) \"I, I, I run it off,…\n 9 Shake It Off (Taylor's Version) 1989 (Taylor's Version) \"She's like, \\\"Oh, m…\n10 Shake It Off (Taylor's Version) 1989 (Taylor's Version) \"We could run, run, …\n# ℹ 11 more rows"
-  },
-  {
-    "objectID": "slides/math241_wk08mon.html#next-time",
-    "href": "slides/math241_wk08mon.html#next-time",
-    "title": "Stat 241",
-    "section": "Next time",
-    "text": "Next time\n\nDon’t forget to add your dashboard to Posit Connect Cloud!\n\nGood to try to put an incomplete version up now to make sure you can get it working."
   },
   {
     "objectID": "slides/math241_wk07mon.html#week-8-goals",
@@ -2125,14 +1950,14 @@
     "href": "psets/pset06.html",
     "title": "The Final Problem Set",
     "section": "",
-    "text": "To be released on Wednesday April 15th before 10pm PT.\nPlease access the problem set through our GitHub organization by following the directions given in class on Week 2 Wednesday. If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
+    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 2 Wednesday. If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
   },
   {
-    "objectID": "psets/pset06.html#due-wednesday-apr-22nd-10pm-pt-on-gradescope.",
-    "href": "psets/pset06.html#due-wednesday-apr-22nd-10pm-pt-on-gradescope.",
+    "objectID": "psets/pset06.html#due-tuesday-nov-24th-noon-pt-on-gradescope.",
+    "href": "psets/pset06.html#due-tuesday-nov-24th-noon-pt-on-gradescope.",
     "title": "The Final Problem Set",
     "section": "",
-    "text": "To be released on Wednesday April 15th before 10pm PT.\nPlease access the problem set through our GitHub organization by following the directions given in class on Week 2 Wednesday. If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
+    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 2 Wednesday. If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
   },
   {
     "objectID": "psets/pset04.html",
@@ -2272,7 +2097,7 @@
     "href": "index.html",
     "title": "Stat 241",
     "section": "",
-    "text": "Data Science\n\nStat 241 Reed College, Fall 2026\n\n\n\n\n\n\n  Week 1\n  \n  \n\n  \n    \n    Monday, Aug 31\n    \n    \n    Course Introduction & Statistical Computing\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Sep 2\n    \n    \n    Data Visualization I: Principles. Problem Set 0 Released.\n    \n      \n        \n          Slides\n        \n      \n        \n          Activity\n        \n      \n        \n          Problem Set 0\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      Join Slack\n    \n      Gradescope course entry code: D82YW2\n    \n      For Wednesday: MDSR Chapter 2\n    \n  \n  \n  \n  \n\n  Week 2\n  \n  \n\n  \n    \n    Monday, Sep 7\n    \n    \n    No Class: Holiday\n    \n    \n    \n    \n  \n    \n    Wednesday, Sep 9\n    \n    \n    Data Visualization II: Plotting with ggplot2\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For Wednesday: MDSR Chapter 3\n    \n  \n  \n  \n  \n\n  Week 3\n  \n  \n\n  \n    \n    Monday, Sep 14\n    \n    \n    Data Visualization III: Advanced ggplot2 and customization\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n    \n    Tuesday, Sep 15 @ noon\n    \n    \n    Problem Set 0 Due, Problem Set 1 Released\n    \n      \n        \n          Problem Set 1\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Sep 16\n    \n    \n    Data Wrangling and asking good questions\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For Monday: Review MDSR Chapter 3\n    \n      For Wednesday: MDSR Chapter 4\n    \n  \n  \n  \n  \n\n  Week 4\n  \n  \n\n  \n    \n    Monday, Sep 21\n    \n    \n    Animation and interactivity\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n    \n    Tuesday, Sep 22 @ noon\n    \n    \n    Problem Set 1 Due, Problem Set 2 Released\n    \n      \n        \n          Problem Set 2\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Sep 23\n    \n    \n    Data types and more wrangling\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For Monday: Review MDSR Chapter 4\n    \n  \n  \n  \n  \n\n  Week 5\n  \n  \n\n  \n    \n    Monday, Sep 28\n    \n    \n    Joins and reshaping data\n    \n      \n        \n          Slides\n        \n      \n        \n          Activity\n        \n      \n    \n    \n    \n    \n  \n    \n    Tuesday, Sep 29 @ noon\n    \n    \n    Problem Set 2 Due, Problem Set 3 Released\n    \n      \n        \n          Problem Set 3\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Sep 30\n    \n    \n    Spatial data I\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For Monday: MDSR Chapters 5 and 6\n    \n      For Wednesday: MDSR Chapters 17 and 18\n    \n  \n  \n  \n  \n\n  Week 6\n  \n  \n\n  \n    \n    Monday, Oct 5\n    \n    \n    Spatial data II\n    \n      \n        \n          Slides\n        \n      \n        \n          Activity (Download)\n        \n      \n    \n    \n    \n    \n  \n    \n    Tuesday, Oct 6 @ noon\n    \n    \n    Problem Set 3 Due, Problem Set 4 Released\n    \n      \n        \n          Problem Set 4\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Oct 7\n    \n    \n    shiny I (Project I Groups Assigned)\n    \n      \n        \n          Slides\n        \n      \n        \n          Project I Groups\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For Monday: MDSR Chapters 17 and 18\n    \n      For shiny reference:  Mastering Shiny, by Hadley Wickham\n    \n  \n  \n  \n  \n\n  Week 7\n  \n  \n\n  \n    \n    Monday, Oct 12\n    \n    \n    shiny II (Project I Instructions Released)\n    \n      \n        \n          Slides\n        \n      \n        \n          Project I Instructions\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Oct 14\n    \n    \n    Project 1 Work Day\n    \n    \n    \n    \n  \n    \n    Friday, Oct 16 @ 8pm\n    \n    \n    Problem Set 4 Due\n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For shiny reference:  Mastering Shiny, by Hadley Wickham\n    \n  \n  \n  \n  \n\n  Week Fall Break\n  \n  \n\n  \n    \n    Saturday, Oct 17 - Sunday, Oct 25\n    \n    \n    No Class\n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    None this week\n  \n  \n  \n  \n\n  Week 8\n  \n  \n\n  \n    \n    Monday, Oct 26\n    \n    \n    Different classes in R (Grayson out, Megan sub)\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Oct 28\n    \n    \n    Control flow\n    \n      \n        \n          Slides\n        \n      \n        \n          Activity (Download)\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For Wednesday: MDSR Chapter 19\n    \n  \n  \n  \n  \n\n  Week 9\n  \n  \n\n  \n    \n    Monday, Nov 2\n    \n    \n    Project 1 Peer Feedback Day (Project 1 DRAFT due)\n    \n      \n        \n          Project I Peer Feedback\n        \n      \n    \n    \n    \n    \n  \n    \n    Tuesday, Nov 3 @ 10pm\n    \n    \n    Project I Written Peer Feedback Due\n    \n    \n    \n    \n  \n    \n    Wednesday, Nov 4\n    \n    \n    string manipulation and regular expressions\n    \n      \n        \n          Slides\n        \n      \n        \n          Activity (Download)\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    None this week\n  \n  \n  \n  \n\n  Week 10\n  \n  \n\n  \n    \n    Monday, Nov 9\n    \n    \n    Functions\n    \n      \n        \n          Slides\n        \n      \n        \n          Activity (Download)\n        \n      \n    \n    \n    \n    \n  \n    \n    Tuesday, Nov 10 @ noon\n    \n    \n    Problem Set 5 Released. Project I Final Product and Data Scientist Statement Due.\n    \n      \n        \n          Problem Set 5\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Nov 11\n    \n    \n    Iteration: loops and functional programming\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    None this week\n  \n  \n  \n  \n\n  Week 11\n  \n  \n\n  \n    \n    Monday, Nov 16\n    \n    \n    Parallel computing, ethics, and generative AI\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n    \n    Tuesday, Nov 17 @ noon\n    \n    \n    Problem Set 6 Released and Problem Set 5 Due\n    \n      \n        \n          Problem Set 6\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Nov 18\n    \n    \n    Local LLMs and `ellmer` Extensions\n    \n      \n        \n          Slides\n        \n      \n        \n          Activity (Download)\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For Monday: TBD\n    \n  \n  \n  \n  \n\n  Week 12\n  \n  \n\n  \n    \n    Monday, Nov 23\n    \n    \n    R packages: introduction\n    \n      \n        \n          Slides\n        \n      \n        \n          R Packages Handout\n        \n      \n        \n          PDX Potholes Data\n        \n      \n    \n    \n    \n    \n  \n    \n    Tuesday, Nov 24 @ noon\n    \n    \n    Problem Set 6 Due\n    \n    \n    \n    \n  \n    \n    Wednesday, Nov 25\n    \n    \n    R packages: documentation\n    \n      \n        \n          Slides\n        \n      \n        \n          Project II Groups\n        \n      \n        \n          Project II Instructions\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For R packages reference:  R Packages, by Hadley Wickham and Jenny Bryan\n    \n  \n  \n  \n  \n\n  Week 13\n  \n  \n\n  \n    \n    Monday, Nov 30\n    \n    \n    R packages: testing and dissemination\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Dec 2\n    \n    \n    Project II Work Day\n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For R packages reference:  R Packages, by Hadley Wickham and Jenny Bryan\n    \n  \n  \n  \n  \n\n  Week 14\n  \n  \n\n  \n    \n    Monday, Dec 7\n    \n    \n    Building your data science portfolio\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    None this week\n  \n  \n  \n  \n\n  Week Finals\n  \n  \n\n  \n    \n    TBD\n    \n    \n    Final Project Presentations All projects materials due at noon, presentations starting at 1pm.\n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    None this week\n  \n  \n  \n  \n\nNo matching items"
+    "text": "Data Science\n\nStat 241 Reed College, Fall 2026\n\n\n\n\n\n\n  Week 1\n  \n  \n\n  \n    \n    Monday, Aug 31\n    \n    \n    Course Introduction & Statistical Computing\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Sep 2\n    \n    \n    Data Visualization I: Principles. Problem Set 0 Released.\n    \n      \n        \n          Slides\n        \n      \n        \n          Activity\n        \n      \n        \n          Problem Set 0\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      Join Slack\n    \n      Gradescope course entry code: D82YW2\n    \n      For Wednesday: MDSR Chapter 2\n    \n  \n  \n  \n  \n\n  Week 2\n  \n  \n\n  \n    \n    Monday, Sep 7\n    \n    \n    No Class: Holiday\n    \n    \n    \n    \n  \n    \n    Wednesday, Sep 9\n    \n    \n    Data Visualization II: Plotting with ggplot2\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For Wednesday: MDSR Chapter 3\n    \n  \n  \n  \n  \n\n  Week 3\n  \n  \n\n  \n    \n    Monday, Sep 14\n    \n    \n    Data Visualization III: Advanced ggplot2 and customization\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n    \n    Tuesday, Sep 15 @ noon\n    \n    \n    Problem Set 0 Due, Problem Set 1 Released\n    \n      \n        \n          Problem Set 1\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Sep 16\n    \n    \n    Data Wrangling and asking good questions\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For Monday: Review MDSR Chapter 3\n    \n      For Wednesday: MDSR Chapter 4\n    \n  \n  \n  \n  \n\n  Week 4\n  \n  \n\n  \n    \n    Monday, Sep 21\n    \n    \n    Animation and interactivity\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n    \n    Tuesday, Sep 22 @ noon\n    \n    \n    Problem Set 1 Due, Problem Set 2 Released\n    \n      \n        \n          Problem Set 2\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Sep 23\n    \n    \n    Data types and more wrangling\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For Monday: Review MDSR Chapter 4\n    \n  \n  \n  \n  \n\n  Week 5\n  \n  \n\n  \n    \n    Monday, Sep 28\n    \n    \n    Joins and reshaping data\n    \n      \n        \n          Slides\n        \n      \n        \n          Activity\n        \n      \n    \n    \n    \n    \n  \n    \n    Tuesday, Sep 29 @ noon\n    \n    \n    Problem Set 2 Due, Problem Set 3 Released\n    \n      \n        \n          Problem Set 3\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Sep 30\n    \n    \n    Spatial data I\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For Monday: MDSR Chapters 5 and 6\n    \n      For Wednesday: MDSR Chapters 17 and 18\n    \n  \n  \n  \n  \n\n  Week 6\n  \n  \n\n  \n    \n    Monday, Oct 5\n    \n    \n    Spatial data II\n    \n      \n        \n          Slides\n        \n      \n        \n          Activity (Download)\n        \n      \n    \n    \n    \n    \n  \n    \n    Tuesday, Oct 6 @ noon\n    \n    \n    Problem Set 3 Due, Problem Set 4 Released\n    \n      \n        \n          Problem Set 4\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Oct 7\n    \n    \n    shiny I (Project I Groups Assigned)\n    \n      \n        \n          Slides\n        \n      \n        \n          Project I Groups\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For Monday: MDSR Chapters 17 and 18\n    \n      For shiny reference:  Mastering Shiny, by Hadley Wickham\n    \n  \n  \n  \n  \n\n  Week 7\n  \n  \n\n  \n    \n    Monday, Oct 12\n    \n    \n    shiny II (Project I Instructions Released)\n    \n      \n        \n          Slides\n        \n      \n        \n          Project I Instructions\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Oct 14\n    \n    \n    Project 1 Work Day\n    \n    \n    \n    \n  \n    \n    Friday, Oct 16 @ 8pm\n    \n    \n    Problem Set 4 Due\n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For shiny reference:  Mastering Shiny, by Hadley Wickham\n    \n  \n  \n  \n  \n\n  Week Fall Break\n  \n  \n\n  \n    \n    Saturday, Oct 17 - Sunday, Oct 25\n    \n    \n    No Class\n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    None this week\n  \n  \n  \n  \n\n  Week 8\n  \n  \n\n  \n    \n    Monday, Oct 26\n    \n    \n    Different classes in R (Grayson out, Megan sub)\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Oct 28\n    \n    \n    Control flow\n    \n      \n        \n          Slides\n        \n      \n        \n          Activity (Download)\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For Wednesday: MDSR Chapter 19\n    \n  \n  \n  \n  \n\n  Week 9\n  \n  \n\n  \n    \n    Monday, Nov 2\n    \n    \n    Project 1 Peer Feedback Day (Project 1 DRAFT due)\n    \n      \n        \n          Project I Peer Feedback\n        \n      \n    \n    \n    \n    \n  \n    \n    Tuesday, Nov 3 @ 10pm\n    \n    \n    Project I Written Peer Feedback Due\n    \n    \n    \n    \n  \n    \n    Wednesday, Nov 4\n    \n    \n    string manipulation and regular expressions\n    \n      \n        \n          Slides\n        \n      \n        \n          Activity (Download)\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    None this week\n  \n  \n  \n  \n\n  Week 10\n  \n  \n\n  \n    \n    Monday, Nov 9\n    \n    \n    Functions\n    \n      \n        \n          Slides\n        \n      \n        \n          Activity (Download)\n        \n      \n    \n    \n    \n    \n  \n    \n    Tuesday, Nov 10 @ noon\n    \n    \n    Problem Set 5 Released. Project I Final Product and Data Scientist Statement Due.\n    \n      \n        \n          Problem Set 5\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Nov 11\n    \n    \n    Iteration: loops and functional programming\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    None this week\n  \n  \n  \n  \n\n  Week 11\n  \n  \n\n  \n    \n    Monday, Nov 16\n    \n    \n    Parallel computing, ethics, and generative AI\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n    \n    Tuesday, Nov 17 @ noon\n    \n    \n    Problem Set 6 Released and Problem Set 5 Due\n    \n      \n        \n          Problem Set 6\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Nov 18\n    \n    \n    Buffer Day\n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For Monday: TBD\n    \n  \n  \n  \n  \n\n  Week 12\n  \n  \n\n  \n    \n    Monday, Nov 23\n    \n    \n    R packages: introduction\n    \n      \n        \n          Slides\n        \n      \n        \n          R Packages Handout\n        \n      \n        \n          PDX Potholes Data\n        \n      \n    \n    \n    \n    \n  \n    \n    Tuesday, Nov 24 @ noon\n    \n    \n    Problem Set 6 Due\n    \n    \n    \n    \n  \n    \n    Wednesday, Nov 25\n    \n    \n    R packages: documentation\n    \n      \n        \n          Slides\n        \n      \n        \n          Project II Groups\n        \n      \n        \n          Project II Instructions\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For R packages reference:  R Packages, by Hadley Wickham and Jenny Bryan\n    \n  \n  \n  \n  \n\n  Week 13\n  \n  \n\n  \n    \n    Monday, Nov 30\n    \n    \n    R packages: testing and dissemination\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n    \n    Wednesday, Dec 2\n    \n    \n    Project II Work Day\n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    \n      For R packages reference:  R Packages, by Hadley Wickham and Jenny Bryan\n    \n  \n  \n  \n  \n\n  Week 14\n  \n  \n\n  \n    \n    Monday, Dec 7\n    \n    \n    Building your data science portfolio\n    \n      \n        \n          Slides\n        \n      \n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    None this week\n  \n  \n  \n  \n\n  Week Finals\n  \n  \n\n  \n    \n    TBD\n    \n    \n    Final Project Presentations All projects materials due at noon, presentations starting at 1pm.\n    \n    \n    \n    \n  \n  \n  \n  \n  Readings\n  \n  \n    None this week\n  \n  \n  \n  \n\nNo matching items"
   },
   {
     "objectID": "projects/proj01.html",
@@ -2363,14 +2188,14 @@
     "href": "psets/pset05.html",
     "title": "Control Flow, Functions, and Iteration",
     "section": "",
-    "text": "To be released on Tuesday April 7th at 9am.\nPlease access the problem set through our GitHub organization by following the directions given in class on Week 2 Wednesday. If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
+    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 2 Wednesday. If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
   },
   {
-    "objectID": "psets/pset05.html#due-wednesday-apr-15th-10pm-pt-on-gradescope.",
-    "href": "psets/pset05.html#due-wednesday-apr-15th-10pm-pt-on-gradescope.",
+    "objectID": "psets/pset05.html#due-tuesday-nov-17th-noon-pt-on-gradescope.",
+    "href": "psets/pset05.html#due-tuesday-nov-17th-noon-pt-on-gradescope.",
     "title": "Control Flow, Functions, and Iteration",
     "section": "",
-    "text": "To be released on Tuesday April 7th at 9am.\nPlease access the problem set through our GitHub organization by following the directions given in class on Week 2 Wednesday. If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
+    "text": "Please access the problem set through our GitHub organization by following the directions given in class on Week 2 Wednesday. If you have any trouble accessing the problem set, please reach out on Slack, come to office hours, or otherwise seek help from a peer. We are here to help! :)"
   },
   {
     "objectID": "readings/readings_wk01wed.html",
@@ -3813,13 +3638,6 @@
     "title": "Stat 241",
     "section": "Post Fall Break: Assignments / deadlines",
     "text": "Post Fall Break: Assignments / deadlines\n\n\nProject 1\n\nFinal product and Data Scientist Statement due Tuesday November 10th at 10pm\nGroup member feedback form due Thursday November 12th at 10pm\n\n\n\n\n\nProblem Set 5\n\nReleased Tuesday November 10th at noon, due Tuesday November 17th at noon\n\n\n\n\n\nProblem Set 6\n\nReleased Tuesday November 17th at noon, due Tuesday November 24th at noon\n\n\n\n\n\nProject 2\n\nReleased Wednesday November 25th, Due Finals Week"
-  },
-  {
-    "objectID": "slides/math241_wk10mon.html#week-10-goals",
-    "href": "slides/math241_wk10mon.html#week-10-goals",
-    "title": "Stat 241",
-    "section": "Week 10 Goals",
-    "text": "Week 10 Goals\n\n\nMonday Lecture:\n\nIteration\n\nfor() and while() loops\nFunctional programming\n\n\n\nWednesday Lecture:\n\nParallelism\nEthics\nAI"
   },
   {
     "objectID": "slides/math241_wk11mon.html#announcements",

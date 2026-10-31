@@ -1,5 +1,5 @@
 ---
-pagetitle: "Parallelism, Ethics, and AI"
+pagetitle: "Parallel Computing and Ethics"
 editor: source
 format: 
   revealjs:
@@ -45,13 +45,13 @@ ggplot2::theme_update(text = ggplot2::element_text(size = 20))
 ::: {.column .center width="40%"}
 <br>
 
-[Parallelism, Ethics, and AI]{.custom-title}
+[Parallel Computing and Ethics]{.custom-title}
 
 <br> <br>
 
 [Grayson White]{.custom-subtitle}
 
-[Stat 241 <br> Week 10 \| Fall 2026]{.custom-subtitle}
+[Stat 241 <br> Week 11 \| Fall 2026]{.custom-subtitle}
 :::
 :::::
 
@@ -59,14 +59,14 @@ ggplot2::theme_update(text = ggplot2::element_text(size = 20))
 ------------------------------------------------------------------------
 
 
-## Week 10 Goals
+## Goals
 
 :::: {.columns}
 
 
 ::: {.column .nonincremental}
 
-**Monday Lecture**: 
+**Last Time**: 
 
 - Iteration
     - `for()` and `while()` loops
@@ -77,11 +77,10 @@ ggplot2::theme_update(text = ggplot2::element_text(size = 20))
 
 ::: {.column .fragment .nonincremental}
 
-**Wednesday Lecture**: 
+**Today**: 
 
-- Parallelism
+- Parallel Computing
 - Ethics
-- AI
 
 :::
 
@@ -592,608 +591,608 @@ knitr::include_graphics("img/compas.png")
 
 # Discussion time
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-## Ethical considerations of using LLMs...
+<!-- ## Ethical considerations of using LLMs... -->
 
 
-::: {.blockquote}
+<!-- ::: {.blockquote} -->
 
-*Data Science* is a uniquely **humanistic** field situated behind a laptop. We have responsibility to understand and mitigate **algorithmic bias** by asking questions such as:
+<!-- *Data Science* is a uniquely **humanistic** field situated behind a laptop. We have responsibility to understand and mitigate **algorithmic bias** by asking questions such as: -->
 
-:::
+<!-- ::: -->
 
-<br>
+<!-- <br> -->
 
-- Who are represented in the sample? 
+<!-- - Who are represented in the sample?  -->
 
-- Who are **not** represented in the sample? 
+<!-- - Who are **not** represented in the sample?  -->
 
-- What biases might my methods (including generative AI!) introduce? 
+<!-- - What biases might my methods (including generative AI!) introduce?  -->
 
-- How can I safeguard against those biases? 
+<!-- - How can I safeguard against those biases?  -->
 
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
 
-## Ethical considerations of using LLMs...
+<!-- ## Ethical considerations of using LLMs... -->
 
 
-::: {.blockquote}
+<!-- ::: {.blockquote} -->
 
-Generative AI tools are being used in horrific and unethical ways as we speak (e.g., [Flock cameras](https://www.youtube.com/watch?v=Pp9MwZkHiMQ)). Not to mentioned they are trained on people's intellectual content without their consent.
+<!-- Generative AI tools are being used in horrific and unethical ways as we speak (e.g., [Flock cameras](https://www.youtube.com/watch?v=Pp9MwZkHiMQ)). Not to mentioned they are trained on people's intellectual content without their consent. -->
 
-:::
+<!-- ::: -->
 
-<br>
+<!-- <br> -->
 
 
-::: {.fragment}
+<!-- ::: {.fragment} -->
 
-**My goals**: 
+<!-- **My goals**:  -->
 
-- Teach how to use generative AI as an ethical data scientist
-    - Consider productive (and unproductive) use-cases for this technology
+<!-- - Teach how to use generative AI as an ethical data scientist -->
+<!--     - Consider productive (and unproductive) use-cases for this technology -->
 
-- Help you be **informed** on the current state of generative AI and large language models
-    - Only informed people can help change policy.   
-    
+<!-- - Help you be **informed** on the current state of generative AI and large language models -->
+<!--     - Only informed people can help change policy.    -->
 
-:::
 
+<!-- ::: -->
 
-# What is a large language model? `r emo::ji("thinking")`
 
-------------------------------------------------------------------------
+<!-- # What is a large language model? `r emo::ji("thinking")` -->
 
+<!-- ------------------------------------------------------------------------ -->
 
-## What is a large language model?
 
-- A large language model (LLM) is a **predictive model** designed to predict the next token of text, conditional on the given context.
+<!-- ## What is a large language model? -->
 
-- Just like any statistical model, one must **train** the model and you can use the model to **make new predictions**
-    - Think: Linear regression. You **fit / train** your linear regression model to obtain $\hat{\beta}$'s that you can make new predictions with. 
-    
-- Companies like OpenAI, Anthropic, and Google host trained models on their servers, and charge users to use them. 
+<!-- - A large language model (LLM) is a **predictive model** designed to predict the next token of text, conditional on the given context. -->
 
-- Why can't you run these locally? 
-    - You can! But only smaller models...
-    - Trained LLMs are **large**. The "weight matrices" associated with a given training output take extremely large amounts of computing power to use. 
-    - Need enough RAM + computing power to do matrix multiplication on these weight matrices. 
-    
-------------------------------------------------------------------------
+<!-- - Just like any statistical model, one must **train** the model and you can use the model to **make new predictions** -->
+<!--     - Think: Linear regression. You **fit / train** your linear regression model to obtain $\hat{\beta}$'s that you can make new predictions with.  -->
 
+<!-- - Companies like OpenAI, Anthropic, and Google host trained models on their servers, and charge users to use them.  -->
 
-## Local vs. cloud-based LLMs
+<!-- - Why can't you run these locally?  -->
+<!--     - You can! But only smaller models... -->
+<!--     - Trained LLMs are **large**. The "weight matrices" associated with a given training output take extremely large amounts of computing power to use.  -->
+<!--     - Need enough RAM + computing power to do matrix multiplication on these weight matrices.  -->
 
+<!-- ------------------------------------------------------------------------ -->
 
-:::: {.columns}
 
+<!-- ## Local vs. cloud-based LLMs -->
 
-::: {.column}
 
-**Local LLMs**:
+<!-- :::: {.columns} -->
 
-::: {.fragment .nonincremental}
 
-- Smaller.
-    - Generally, 1GB RAM = 1 billion model parameters
-:::
+<!-- ::: {.column} -->
 
-::: {.fragment .nonincremental}
-    
-- More secure.
-    - You are not sending your data off to someone else's server.
-    
-:::
+<!-- **Local LLMs**: -->
 
-::: {.fragment .nonincremental}
-    
-- "Open" weights.
-    - You host the weights matrix. 
-    - All computing happens on your machine.
+<!-- ::: {.fragment .nonincremental} -->
 
-:::
+<!-- - Smaller. -->
+<!--     - Generally, 1GB RAM = 1 billion model parameters -->
+<!-- ::: -->
 
-::: {.fragment .nonincremental}
+<!-- ::: {.fragment .nonincremental} -->
 
-- Requires decent computing power. 
+<!-- - More secure. -->
+<!--     - You are not sending your data off to someone else's server. -->
 
-:::
+<!-- ::: -->
 
-:::
+<!-- ::: {.fragment .nonincremental} -->
 
-::: {.column .fragment}
+<!-- - "Open" weights. -->
+<!--     - You host the weights matrix.  -->
+<!--     - All computing happens on your machine. -->
 
-**Cloud-based LLMs**:
+<!-- ::: -->
 
+<!-- ::: {.fragment .nonincremental} -->
 
-::: {.nonincremental}
+<!-- - Requires decent computing power.  -->
 
-- Big!
-    - Generally: larger model --> better predictions
+<!-- ::: -->
 
-:::
+<!-- ::: -->
 
+<!-- ::: {.column .fragment} -->
 
-::: {.fragment .nonincremental}
+<!-- **Cloud-based LLMs**: -->
 
-- Less secure. 
-    - If it is free, **you** are the product.
 
-:::
+<!-- ::: {.nonincremental} -->
 
+<!-- - Big! -->
+<!--     - Generally: larger model --> better predictions -->
 
-::: {.fragment .nonincremental}
+<!-- ::: -->
 
-- Often closed-weights. 
-    - Computing happens at a data center.
 
-:::
+<!-- ::: {.fragment .nonincremental} -->
 
+<!-- - Less secure.  -->
+<!--     - If it is free, **you** are the product. -->
 
-::: {.fragment .nonincremental}
+<!-- ::: -->
 
-- Can use these on anything that can access the internet. 
 
-:::
+<!-- ::: {.fragment .nonincremental} -->
 
+<!-- - Often closed-weights.  -->
+<!--     - Computing happens at a data center. -->
 
+<!-- ::: -->
 
-:::
 
-::::
+<!-- ::: {.fragment .nonincremental} -->
 
-    
-------------------------------------------------------------------------
+<!-- - Can use these on anything that can access the internet.  -->
 
-## Local vs. cloud-based LLMs
+<!-- ::: -->
 
-- For our purposes, we will use a cloud-based LLM.
 
-- I encourage you to explore what can be done with local LLM's if it interests you.
-    - Start with: [Ollama](https://ollama.com/)
 
+<!-- ::: -->
 
+<!-- :::: -->
 
 
+<!-- ------------------------------------------------------------------------ -->
 
-# LLMs from a Data Scientist's Perspective
+<!-- ## Local vs. cloud-based LLMs -->
 
+<!-- - For our purposes, we will use a cloud-based LLM. -->
 
-![](img/ellmer.png){fig-align='center' width='20%'}
+<!-- - I encourage you to explore what can be done with local LLM's if it interests you. -->
+<!--     - Start with: [Ollama](https://ollama.com/) -->
 
-------------------------------------------------------------------------
 
-## `ellmer`
 
-An `R` package for interacting with LLMs in `R`
 
-![](img/ellmer.png){.absolute height="250px" right="0" top="0" fig-alt="The ellmer hex sticker, a colorful elephant in a patchwork of fabrics."}
 
-<br> <br> <br>
+<!-- # LLMs from a Data Scientist's Perspective -->
 
-::: {.fragment}
 
-Today, we'll use `ellmer` to do three different types of tasks one may want to with an LLM:
+<!-- ![](img/ellmer.png){fig-align='center' width='20%'} -->
 
-:::
+<!-- ------------------------------------------------------------------------ -->
 
+<!-- ## `ellmer` -->
 
-1. Structured data
+<!-- An `R` package for interacting with LLMs in `R` -->
 
-2. Tool calling
+<!-- ![](img/ellmer.png){.absolute height="250px" right="0" top="0" fig-alt="The ellmer hex sticker, a colorful elephant in a patchwork of fabrics."} -->
 
-3. Coding
+<!-- <br> <br> <br> -->
 
-------------------------------------------------------------------------
+<!-- ::: {.fragment} -->
 
-## `ellmer`: Setup
+<!-- Today, we'll use `ellmer` to do three different types of tasks one may want to with an LLM: -->
 
-In order to interact with LLMs hosted on a server, we need to first set up an API key.
+<!-- ::: -->
 
-- [Cerebras](https://www.cerebras.ai/) provides "free" access to some LLMs they host, but you still need to get an API key.
-    - This "free" access has **rate limits**
 
+<!-- 1. Structured data -->
 
-::: {.fragment}
+<!-- 2. Tool calling -->
 
-**Steps**:
+<!-- 3. Coding -->
 
-1. Go to [https://www.cerebras.ai/](https://www.cerebras.ai/) and click "Get Started" to create an account. 
+<!-- ------------------------------------------------------------------------ -->
 
-:::
+<!-- ## `ellmer`: Setup -->
 
-::: {.fragment .nonincremental}
+<!-- In order to interact with LLMs hosted on a server, we need to first set up an API key. -->
 
-2. Once your account is created, find your API key and set it in your `R` environment:
+<!-- - [Cerebras](https://www.cerebras.ai/) provides "free" access to some LLMs they host, but you still need to get an API key. -->
+<!--     - This "free" access has **rate limits** -->
 
-```{r}
-#| eval: false
-# This will open a file called .Renviron
-usethis::edit_r_environ()
-```
 
-Then add: 
+<!-- ::: {.fragment} -->
 
-`OPENAI_API_KEY=INSERT_YOUR_KEY_HERE`
+<!-- **Steps**: -->
 
-to your .Renviron file. Save it. 
+<!-- 1. Go to [https://www.cerebras.ai/](https://www.cerebras.ai/) and click "Get Started" to create an account.  -->
 
+<!-- ::: -->
 
-:::
+<!-- ::: {.fragment .nonincremental} -->
 
-3. Restart R.
+<!-- 2. Once your account is created, find your API key and set it in your `R` environment: -->
 
-------------------------------------------------------------------------
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- # This will open a file called .Renviron -->
+<!-- usethis::edit_r_environ() -->
+<!-- ``` -->
 
+<!-- Then add:  -->
 
-## `ellmer`: basics
+<!-- `OPENAI_API_KEY=INSERT_YOUR_KEY_HERE` -->
 
-```{r}
-#| eval: false
-library(ellmer)
+<!-- to your .Renviron file. Save it.  -->
 
-chat <- chat_openai_compatible(
-  base_url = "https://api.cerebras.ai/v1",
-  model    = "qwen-3-235b-a22b-instruct-2507"
-)
 
-chat$chat("Who are you?")
-#> Hello! I'm Qwen, a large-scale language model independently developed by the 
-#> Tongyi Lab under Alibaba Group. I can assist you with answering questions, 
-#> writing, logical reasoning, programming, and more. I aim to provide helpful and 
-#> accurate information. Feel free to let me know if you have any questions or need
-#> assistance!
-```
+<!-- ::: -->
 
-![](img/ellmer.png){.absolute height="250px" right="0" top="0" fig-alt="The ellmer hex sticker, a colorful elephant in a patchwork of fabrics."}
+<!-- 3. Restart R. -->
 
-::: {.fragment .nonincremental}
+<!-- ------------------------------------------------------------------------ -->
 
-- "qwen-3-235b-a22b-instruct-2507" has the following rate limits:
-    - up to 30 requests per minute,
-    - 900 requests per hour, and
-    - 14,400 requests per day.
 
-:::
-  
-------------------------------------------------------------------------
-  
-## `ellmer`: Structured data
-  
-How would you extract name and age from this data?
-  
-```{r}
-#| eval: false
-prompts <- list(
-  "I go by Alex. 42 years on this planet and counting.",
-  "Pleased to meet you! I'm Jamal, age 27.",
-  "They call me Li Wei. Nineteen years young.",
-  "Fatima here. Just celebrated my 35th birthday last week.",
-  "The name's Robert - 51 years old and proud of it.",
-  "Kwame here - just hit the big 5-0 this year."
-)
-```
+<!-- ## `ellmer`: basics -->
 
-- Regular expressions?
-  
-------------------------------------------------------------------------
-  
-## `ellmer`: Structured data
-  
-LLMs are generally good at this sort of task
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- library(ellmer) -->
 
-```{r}
-#| eval: false
-chat <- chat_openai_compatible(
-  base_url = "https://api.cerebras.ai/v1",
-  model    = "qwen-3-235b-a22b-instruct-2507",
-)
-chat$chat("Extract the name and age from each sentence I give you")
-chat$chat(prompts[[1]])
-#> **Name: Alex, Age: 42**
-chat$chat(prompts[[2]])
-#> **Name: Jamal, Age: 27**
-chat$chat(prompts[[3]])
-#> **Name: Li Wei, Age: 19**
-```
+<!-- chat <- chat_openai_compatible( -->
+<!--   base_url = "https://api.cerebras.ai/v1", -->
+<!--   model    = "qwen-3-235b-a22b-instruct-2507" -->
+<!-- ) -->
 
-------------------------------------------------------------------------
-  
-## `ellmer`: Structured data
-  
-But wouldn't it be nice to get an R data structure?
+<!-- chat$chat("Who are you?") -->
+<!-- #> Hello! I'm Qwen, a large-scale language model independently developed by the  -->
+<!-- #> Tongyi Lab under Alibaba Group. I can assist you with answering questions,  -->
+<!-- #> writing, logical reasoning, programming, and more. I aim to provide helpful and  -->
+<!-- #> accurate information. Feel free to let me know if you have any questions or need -->
+<!-- #> assistance! -->
+<!-- ``` -->
 
-```{r}
-#| eval: false
-chat$chat(prompts[[3]])
+<!-- ![](img/ellmer.png){.absolute height="250px" right="0" top="0" fig-alt="The ellmer hex sticker, a colorful elephant in a patchwork of fabrics."} -->
 
-# Want this:
-#> list(
-#>   name = "Li Wei",
-#>   age = 19
-#> )
+<!-- ::: {.fragment .nonincremental} -->
 
-# Instead of:
-#> **Name: Li Wei, Age: 19**
-```
+<!-- - "qwen-3-235b-a22b-instruct-2507" has the following rate limits: -->
+<!--     - up to 30 requests per minute, -->
+<!--     - 900 requests per hour, and -->
+<!--     - 14,400 requests per day. -->
 
-<br>
+<!-- ::: -->
 
+<!-- ------------------------------------------------------------------------ -->
 
-::: {.fragment}
+<!-- ## `ellmer`: Structured data -->
 
-`ellmer` let's us do this with `chat_structured()`!
-  
-```{r}
-#| eval: false
-type_person <- type_object(
-  name = type_string(),
-  age = type_number()
-)
+<!-- How would you extract name and age from this data? -->
 
-chat$chat_structured(prompts[[1]], type = type_person)
-#> List of 2
-#>  $ name: chr "Alex"
-#>  $ age : int 42
-```
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- prompts <- list( -->
+<!--   "I go by Alex. 42 years on this planet and counting.", -->
+<!--   "Pleased to meet you! I'm Jamal, age 27.", -->
+<!--   "They call me Li Wei. Nineteen years young.", -->
+<!--   "Fatima here. Just celebrated my 35th birthday last week.", -->
+<!--   "The name's Robert - 51 years old and proud of it.", -->
+<!--   "Kwame here - just hit the big 5-0 this year." -->
+<!-- ) -->
+<!-- ``` -->
 
-:::
-  
-------------------------------------------------------------------------
-  
-## `ellmer`: Structured data
-  
-`parallel_chat_structured()`: many prompts at once
+<!-- - Regular expressions? -->
 
-```{r}
-#| eval: false
-chat <- chat_openai_compatible(
-  base_url = "https://api.cerebras.ai/v1",
-  model    = "qwen-3-235b-a22b-instruct-2507",
-  params   = params(max_tokens = 500)
-)
-parallel_chat_structured(chat, prompts, type = type_person, rpm = 30)
-#>     name age
-#> 1   Alex  42
-#> 2  Jamal  27
-#> 3 Li Wei  19
-#> 4 Fatima  35
-#> 5 Robert  51
-#> 6  Kwame  50
-```
+<!-- ------------------------------------------------------------------------ -->
 
-- Not parallel in the sense of parallelized R code: just sending many API calls at once. 
+<!-- ## `ellmer`: Structured data -->
 
-- Have to set `params` in order to avoid getting rate-limited automatically.
+<!-- LLMs are generally good at this sort of task -->
 
-------------------------------------------------------------------------
-  
-## `ellmer`: Structured data
-  
-Can also send attach images or other files by pointing to their directory on your computer. 
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat <- chat_openai_compatible( -->
+<!--   base_url = "https://api.cerebras.ai/v1", -->
+<!--   model    = "qwen-3-235b-a22b-instruct-2507", -->
+<!-- ) -->
+<!-- chat$chat("Extract the name and age from each sentence I give you") -->
+<!-- chat$chat(prompts[[1]]) -->
+<!-- #> **Name: Alex, Age: 42** -->
+<!-- chat$chat(prompts[[2]]) -->
+<!-- #> **Name: Jamal, Age: 27** -->
+<!-- chat$chat(prompts[[3]]) -->
+<!-- #> **Name: Li Wei, Age: 19** -->
+<!-- ``` -->
 
-```{r}
-#| eval: false
-paths <- dir("animals", full.names = TRUE)
-images <- map(paths, ~ list(content_image_file(.x)))
+<!-- ------------------------------------------------------------------------ -->
 
-type_animal_photo <- type_object(
-  animal = type_string(),
-  background_colour = type_string()
-)
+<!-- ## `ellmer`: Structured data -->
 
-parallel_chat_structured(chat, images, type = type_animal_photo)
-```
+<!-- But wouldn't it be nice to get an R data structure? -->
 
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat$chat(prompts[[3]]) -->
 
-------------------------------------------------------------------------
-  
-  
-## `ellmer`: Tool calling
-  
-<!-- LLMs don't have access to live data about the world -->
+<!-- # Want this: -->
+<!-- #> list( -->
+<!-- #>   name = "Li Wei", -->
+<!-- #>   age = 19 -->
+<!-- #> ) -->
 
-```{r}
-#| eval: false
-chat <- chat_openai_compatible(
-  base_url = "https://api.cerebras.ai/v1",
-  model    = "qwen-3-235b-a22b-instruct-2507"
-)
+<!-- # Instead of: -->
+<!-- #> **Name: Li Wei, Age: 19** -->
+<!-- ``` -->
 
-chat$chat("What day is it?")
-#> I don't have access to real-time information, so I can't tell you today's
-#> date. You can check the current date on your device's calendar or by 
-#> asking a voice assistant like Siri, Google Assistant, or Alexa.
-```
+<!-- <br> -->
 
-------------------------------------------------------------------------
-  
-## `ellmer`: Tool calling
-  
-  
-```{r}
-#| eval: false
-today <- tool(
-  function() Sys.Date(),
-  name = "today",
-  description = "Get the current date",
-  arguments = list()
-)
-chat$register_tool(today)
-```
 
-------------------------------------------------------------------------
-  
-## `ellmer`: Tool calling
-  
-<!-- Now the model can know what day it is -->
-  
-```{r}
-#| eval: false
-chat$chat("What day is it today?")
-#> ◯ [tool call] today()
-#> ● #> "2026-04-05"
-#> Today is Sunday, April 5, 2026.
-```
+<!-- ::: {.fragment} -->
 
+<!-- `ellmer` let's us do this with `chat_structured()`! -->
 
-# Coding (agents)
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- type_person <- type_object( -->
+<!--   name = type_string(), -->
+<!--   age = type_number() -->
+<!-- ) -->
 
-## Coding agent = LLM calling tools in a loop
+<!-- chat$chat_structured(prompts[[1]], type = type_person) -->
+<!-- #> List of 2 -->
+<!-- #>  $ name: chr "Alex" -->
+<!-- #>  $ age : int 42 -->
+<!-- ``` -->
 
-...usually giving models the ability to read and write state
+<!-- ::: -->
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-## Coding agents
+<!-- ## `ellmer`: Structured data -->
 
-```{r}
-#| eval: false
-chat <- chat_openai_compatible(
-  base_url = "https://api.cerebras.ai/v1",
-  model    = "qwen-3-235b-a22b-instruct-2507"
-)
-chat$chat("Delete the csv files in my working directory")
-#> I **cannot** delete files from your computer or working directory. I don't have 
-#> access to your file system for security reasons.
-#> 
-#> However, here are safe ways you can delete CSV files in your working directory 
-#> depending on your environment:
-#> 
-#> ### Option 1: Using Python
-#> If you're using Python and want to delete all `.csv` files in the current 
-#> directory:
-#> ...
-```
+<!-- `parallel_chat_structured()`: many prompts at once -->
 
-------------------------------------------------------------------------
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat <- chat_openai_compatible( -->
+<!--   base_url = "https://api.cerebras.ai/v1", -->
+<!--   model    = "qwen-3-235b-a22b-instruct-2507", -->
+<!--   params   = params(max_tokens = 500) -->
+<!-- ) -->
+<!-- parallel_chat_structured(chat, prompts, type = type_person, rpm = 30) -->
+<!-- #>     name age -->
+<!-- #> 1   Alex  42 -->
+<!-- #> 2  Jamal  27 -->
+<!-- #> 3 Li Wei  19 -->
+<!-- #> 4 Fatima  35 -->
+<!-- #> 5 Robert  51 -->
+<!-- #> 6  Kwame  50 -->
+<!-- ``` -->
 
-## Coding agents
+<!-- - Not parallel in the sense of parallelized R code: just sending many API calls at once.  -->
 
-```{r}
-#| eval: false
-chat <- chat_openai_compatible(
-  base_url = "https://api.cerebras.ai/v1",
-  model    = "qwen-3-235b-a22b-instruct-2507"
-)
-chat$chat("Delete the csv files in my working directory")
-#> To delete all CSV files in your current working directory, you can use one of the
-#> following methods depending on your operating system:
-#> 
-#> ### **Method 1: Using Command Line / Terminal**
-#> 
-#> #### **On Windows (Command Prompt):**
-#> ```cmd
-#> del *.csv
-#> ```
-#> 
-#> #### **On macOS or Linux (Terminal):**
-#> ```bash
-#> rm *.csv
-#> ```
-#> 
-#> > ⚠️ **Warning**: This permanently deletes all `.csv` files in the current 
-#> directory. Make sure you don’t need any of them!
+<!-- - Have to set `params` in order to avoid getting rate-limited automatically. -->
 
-```
+<!-- ------------------------------------------------------------------------ -->
 
-Needs to be able to:
-  
-* Find files (read state)
-* Delete files (write state)
+<!-- ## `ellmer`: Structured data -->
 
-------------------------------------------------------------------------
+<!-- Can also send attach images or other files by pointing to their directory on your computer.  -->
 
-## Coding agents
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- paths <- dir("animals", full.names = TRUE) -->
+<!-- images <- map(paths, ~ list(content_image_file(.x))) -->
 
-The LLM needs to be able to **read** our working directory:
-  
-```{r}
-#| eval: false
-chat$register_tool(tool(
-  function() dir(),
-  name = "ls",
-  description = "Lists the files in the current directory"
-))
-```
+<!-- type_animal_photo <- type_object( -->
+<!--   animal = type_string(), -->
+<!--   background_colour = type_string() -->
+<!-- ) -->
 
+<!-- parallel_chat_structured(chat, images, type = type_animal_photo) -->
+<!-- ``` -->
 
-<br>
-  
-::: {.fragment}
 
-And be able to remove files:
-  
-```{r}
-#| eval: false
-chat$register_tool(tool(
-  function(path) unlink(path),
-  name = "rm",
-  description = "Delete one or more files",
-  arguments = list(
-    path = type_array(type_string())
-  )
-))
-```
+<!-- ------------------------------------------------------------------------ -->
 
-:::
-  
-  
-------------------------------------------------------------------------
-  
-## Coding agents
-  
-Create some dummy `.csv` files
 
-```{r}
-file.create(c("a.csv", "a_please_dont_delete_me.csv", "b.csv"))
-dir()
-```
+<!-- ## `ellmer`: Tool calling -->
 
-------------------------------------------------------------------------
+<!-- <!-- LLMs don't have access to live data about the world --> -->
 
-## Coding agents
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat <- chat_openai_compatible( -->
+<!--   base_url = "https://api.cerebras.ai/v1", -->
+<!--   model    = "qwen-3-235b-a22b-instruct-2507" -->
+<!-- ) -->
 
-Now ask it to delete csv's that 
+<!-- chat$chat("What day is it?") -->
+<!-- #> I don't have access to real-time information, so I can't tell you today's -->
+<!-- #> date. You can check the current date on your device's calendar or by  -->
+<!-- #> asking a voice assistant like Siri, Google Assistant, or Alexa. -->
+<!-- ``` -->
 
-```{r}
-#| eval: false
-chat$chat("Delete all the csv files in the current directory, unless they ask to not be deleted.")
-#> ◯ [tool call] ls()
-#> ● #> a_please_dont_delete_me.csv
-#>   #> a.csv
-#>   #> b.csv
-#>   #> custom.scss
-#>   #> data
-#>   #> …
-#> ◯ [tool call] rm(path = c("a.csv", "b.csv"))
-#> ● #> 0
-#> The CSV files `a.csv` and `b.csv` have been deleted.  
-#> 
-#> The file `a_please_dont_delete_me.csv` was not deleted, as it appears to be a 
-#> file you wish to keep based on its name.  
-#> 
-#> Let me know if you'd like to keep or remove any other files!
-```
+<!-- ------------------------------------------------------------------------ -->
 
-```{r}
-#| echo: false
-unlink("a.csv")
-unlink("b.csv")
-```
+<!-- ## `ellmer`: Tool calling -->
 
-<br>
 
-::: {.fragment}
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- today <- tool( -->
+<!--   function() Sys.Date(), -->
+<!--   name = "today", -->
+<!--   description = "Get the current date", -->
+<!--   arguments = list() -->
+<!-- ) -->
+<!-- chat$register_tool(today) -->
+<!-- ``` -->
 
-```{r}
-dir()
-```
+<!-- ------------------------------------------------------------------------ -->
 
-:::
+<!-- ## `ellmer`: Tool calling -->
+
+<!-- <!-- Now the model can know what day it is --> -->
+
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat$chat("What day is it today?") -->
+<!-- #> ◯ [tool call] today() -->
+<!-- #> ● #> "2026-04-05" -->
+<!-- #> Today is Sunday, April 5, 2026. -->
+<!-- ``` -->
+
+
+<!-- # Coding (agents) -->
+
+<!-- ## Coding agent = LLM calling tools in a loop -->
+
+<!-- ...usually giving models the ability to read and write state -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ## Coding agents -->
+
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat <- chat_openai_compatible( -->
+<!--   base_url = "https://api.cerebras.ai/v1", -->
+<!--   model    = "qwen-3-235b-a22b-instruct-2507" -->
+<!-- ) -->
+<!-- chat$chat("Delete the csv files in my working directory") -->
+<!-- #> I **cannot** delete files from your computer or working directory. I don't have  -->
+<!-- #> access to your file system for security reasons. -->
+<!-- #>  -->
+<!-- #> However, here are safe ways you can delete CSV files in your working directory  -->
+<!-- #> depending on your environment: -->
+<!-- #>  -->
+<!-- #> ### Option 1: Using Python -->
+<!-- #> If you're using Python and want to delete all `.csv` files in the current  -->
+<!-- #> directory: -->
+<!-- #> ... -->
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ## Coding agents -->
+
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat <- chat_openai_compatible( -->
+<!--   base_url = "https://api.cerebras.ai/v1", -->
+<!--   model    = "qwen-3-235b-a22b-instruct-2507" -->
+<!-- ) -->
+<!-- chat$chat("Delete the csv files in my working directory") -->
+<!-- #> To delete all CSV files in your current working directory, you can use one of the -->
+<!-- #> following methods depending on your operating system: -->
+<!-- #>  -->
+<!-- #> ### **Method 1: Using Command Line / Terminal** -->
+<!-- #>  -->
+<!-- #> #### **On Windows (Command Prompt):** -->
+<!-- #> ```cmd -->
+<!-- #> del *.csv -->
+<!-- #> ``` -->
+<!-- #>  -->
+<!-- #> #### **On macOS or Linux (Terminal):** -->
+<!-- #> ```bash -->
+<!-- #> rm *.csv -->
+<!-- #> ``` -->
+<!-- #>  -->
+<!-- #> > ⚠️ **Warning**: This permanently deletes all `.csv` files in the current  -->
+<!-- #> directory. Make sure you don’t need any of them! -->
+
+<!-- ``` -->
+
+<!-- Needs to be able to: -->
+
+<!-- * Find files (read state) -->
+<!-- * Delete files (write state) -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ## Coding agents -->
+
+<!-- The LLM needs to be able to **read** our working directory: -->
+
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat$register_tool(tool( -->
+<!--   function() dir(), -->
+<!--   name = "ls", -->
+<!--   description = "Lists the files in the current directory" -->
+<!-- )) -->
+<!-- ``` -->
+
+
+<!-- <br> -->
+
+<!-- ::: {.fragment} -->
+
+<!-- And be able to remove files: -->
+
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat$register_tool(tool( -->
+<!--   function(path) unlink(path), -->
+<!--   name = "rm", -->
+<!--   description = "Delete one or more files", -->
+<!--   arguments = list( -->
+<!--     path = type_array(type_string()) -->
+<!--   ) -->
+<!-- )) -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ## Coding agents -->
+
+<!-- Create some dummy `.csv` files -->
+
+<!-- ```{r} -->
+<!-- file.create(c("a.csv", "a_please_dont_delete_me.csv", "b.csv")) -->
+<!-- dir() -->
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ## Coding agents -->
+
+<!-- Now ask it to delete csv's that  -->
+
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat$chat("Delete all the csv files in the current directory, unless they ask to not be deleted.") -->
+<!-- #> ◯ [tool call] ls() -->
+<!-- #> ● #> a_please_dont_delete_me.csv -->
+<!-- #>   #> a.csv -->
+<!-- #>   #> b.csv -->
+<!-- #>   #> custom.scss -->
+<!-- #>   #> data -->
+<!-- #>   #> … -->
+<!-- #> ◯ [tool call] rm(path = c("a.csv", "b.csv")) -->
+<!-- #> ● #> 0 -->
+<!-- #> The CSV files `a.csv` and `b.csv` have been deleted.   -->
+<!-- #>  -->
+<!-- #> The file `a_please_dont_delete_me.csv` was not deleted, as it appears to be a  -->
+<!-- #> file you wish to keep based on its name.   -->
+<!-- #>  -->
+<!-- #> Let me know if you'd like to keep or remove any other files! -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- #| echo: false -->
+<!-- unlink("a.csv") -->
+<!-- unlink("b.csv") -->
+<!-- ``` -->
+
+<!-- <br> -->
+
+<!-- ::: {.fragment} -->
+
+<!-- ```{r} -->
+<!-- dir() -->
+<!-- ``` -->
+
+<!-- ::: -->
 
 
 
@@ -1203,7 +1202,7 @@ dir()
 
 ::: {.nonincremental}
 
-- We'll explore how folks have expanded `ellmer` into some even more helpful tools for data science
+<!-- - We'll explore how folks have expanded `ellmer` into some even more helpful tools for data science -->
 
 - We'll start to learn how to write our own R packages!
 
