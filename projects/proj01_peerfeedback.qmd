@@ -10,9 +10,9 @@ You are required to provide written feedback for two `shiny` apps presented to y
 
 At this stage, you should be paying attention to their dashboard, jotting down any questions you might have, and starting to think about both what you like about the groups dashboard and any constructive criticism you may have.
 
-## Stage 2: Speed sharing
+## Stage 2: Inter-group 1-on-1 sharing
 
-After every group has presented, we'll pair up in groups of 2 to discuss dashboard impressions. This is a great time to ask questions you may have had about the project, learn about the group's plan for the final product, and start to discuss feedback. After about 5 minutes, we'll pivot to different groups of 2. 
+After every group has presented, we'll pair up in groups of 2 to discuss dashboard impressions. This is a great time to ask questions you may have had about the project, learn about the group's plan for the final product, and start to discuss feedback. After you have extensively talked about both of your dashboards, we'll pivot to a different group of 2. 
 
 ## Stage 3: Writing up feedback
 
