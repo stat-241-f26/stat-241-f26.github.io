@@ -208,7 +208,7 @@ scheduled-docs:
         - 'For Wednesday: MDSR Chapter 19'
     - week: 9
       days:
-        - topic: "Project 1 Peer Feedback Day (Project 1 DRAFT due)"
+        - topic: "Project 1 Peer Feedback Day (Project 1 DRAFT due) (Grayson out, Megan sub)"
           display-date: Monday, Nov 2
           date: 10/30/26
           docs:
@@ -217,7 +217,7 @@ scheduled-docs:
         - topic: "Project I Written Peer Feedback Due"
           display-date: Tuesday, Nov 3 @ 10pm
           date: 10/30/26
-        - topic: "string manipulation and regular expressions"
+        - topic: "string manipulation and regular expressions (Grayson out, Megan sub)"
           display-date: Wednesday, Nov 4
           date: 10/30/26
           docs:
@@ -231,7 +231,7 @@ scheduled-docs:
       #   - 'Some text'
     - week: 10
       days:
-        - topic: "Functions"
+        - topic: "Functions (Grayson out, Megan sub)"
           display-date: Monday, Nov 9
           date: 10/30/26
           docs:
@@ -245,7 +245,7 @@ scheduled-docs:
           docs:
             - type: Problem Set 5
               href: psets/pset05.qmd
-        - topic: "Iteration: loops and functional programming"
+        - topic: "Iteration: loops and functional programming (Grayson out, Megan sub)"
           display-date: Wednesday, Nov 11
           date: 10/30/26
           docs:
