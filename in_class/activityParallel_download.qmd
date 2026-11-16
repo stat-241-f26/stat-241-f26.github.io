@@ -1,0 +1,93 @@
+---
+title: "Activity: Parallel Computing"
+editor: source
+---
+
+# Activity: Parallel Computing Practice
+
+## Problem 1: Getting started
+
+Run the following code to check how much RAM your computer has
+
+
+```{r, eval = TRUE}
+# install.packages("memuse")
+memuse::Sys.meminfo()
+```
+
+
+Run the following code to check how many cores your computer has
+
+```{r}
+install.packages("parallel")
+parallel::detectCores(logical = FALSE)
+```
+
+What does setting the `logical` argument to `FALSE` do? 
+
+
+
+## Problem 2: loop de loop
+
+The following code computes a quantity based on a "generalized regression estimator" and estimates its variance by bootstrapping with 100,000 bootstrap samples. Here, we are estimating the average biomass (`DRYBIO_AG_TPA_live_ADJ`) in a particular county in Oregon. 
+
+
+```{r}
+library(mase)
+library(saeczi)
+data(pop)
+data(samp)
+
+samp_list <- samp %>%
+  group_by(COUNTYFIPS) %>%
+  group_split()
+pop_list <- pop %>%
+  group_by(COUNTYFIPS) %>%
+  group_split()
+
+greg(y = samp_list[[1]]$DRYBIO_AG_TPA_live_ADJ,
+     N = nrow(pop_list[[1]]),
+     xsample = samp_list[[1]][c("tcc16", "elev")],
+     xpop = pop_list[[1]][c("tcc16", "elev")],
+     var_est = TRUE,
+     var_method = "bootstrapSRS",
+     B = 10000,
+     datatype = "raw")
+```
+
+
+
+a.  Use code we learned in class today to figure out how long it takes your computer to run this code. 
+
+```{r}
+
+```
+
+
+b.  The example code computes the generalized regression estimator and its variance estimator for the first county in the list, but what if we'd like to do this estimation over many counties? Write a `for()` loop to compute these estimates and variance estimates across all 36 counties in Oregon. Make sure to save each object as a new element in a `list()`. How long did it take your computer to do this computation for all 36 counties?
+
+```{r}
+
+```
+
+
+c.  Now, parallelize your above code using the `foreach` library. Remember, you can only parallelize over up to as many cores as your computer has in it. Experiment with at least two different number of cores options. How long did it take your computer to run this parallel code for each number of cores option? Is this longer or shorter than you'd expect?
+
+```{r}
+
+```
+
+
+d.  Do parts (b) and (c), but with functional programming (i.e., with `purrr` and `furrr`). Make sure to report on the time it takes your computer to complete these operations. 
+
+```{r}
+
+```
+
+
+ 
+
+
+
+
+

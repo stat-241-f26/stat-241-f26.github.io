@@ -263,6 +263,8 @@ scheduled-docs:
             #   href: readings/readings_wk10wed.qmd
             - type: Slides
               href: slides/math241_wk10wed.qmd
+            - type: Activity (Download)
+              href: in_class/activityParallel_download.qmd
         - topic: "Problem Set 6 Released and Problem Set 5 Due"
           display-date: Tuesday, Nov 17 @ noon
           date: 11/17/26
