@@ -280,7 +280,8 @@ scheduled-docs:
             # - type: Activity (Download)
             #   href: in_class/activity7_download.qmd
       resources:
-        - 'For Monday: TBD'
+        - 'For Monday: none'
+        - 'For Wednesday: TBD'
     - week: 12
       days:
         - topic: "R packages: introduction"
