@@ -281,7 +281,7 @@ scheduled-docs:
             #   href: in_class/activity7_download.qmd
       resources:
         - 'For Monday: none'
-        - 'For Wednesday: TBD'
+        - 'For Wednesday: <a href="https://news.mit.edu/2025/explained-generative-ai-environmental-impact-0117">Explained: Generative AI’s environmental impact</a>, <a href="https://www.simonpcouch.com/blog/2026-01-20-cc-impact/">A software engineers "typical" electricity useage from LLMs</a>, and <a href="https://www.ctvnews.ca/sci-tech/article/gruelling-low-paid-human-work-behind-generative-ai-curtain/">Gruelling, low-paid human work behind generative AI curtain</a>.'
     - week: 12
       days:
         - topic: "R packages: introduction"
