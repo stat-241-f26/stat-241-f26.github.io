@@ -56,45 +56,45 @@ ggplot2::theme_update(text = ggplot2::element_text(size = 20))
 :::::
 
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-## Announcements
+<!-- ## Announcements -->
 
-::: {.nonincremental}
+<!-- ::: {.nonincremental} -->
 
-* Fill out [this form](https://forms.gle/6FBbcMFmbSpyEeHM7) to help me create the Project 2 groups.
-    + Groups and project instructions will be assigned on Monday.
+<!-- * Fill out [this form](https://forms.gle/6FBbcMFmbSpyEeHM7) to help me create the Project 2 groups. -->
+<!--     + Groups and project instructions will be assigned on Monday. -->
 
-:::
-
-
-------------------------------------------------------------------------
+<!-- ::: -->
 
 
-## Week 11 Goals
-
-:::: {.columns}
+<!-- ------------------------------------------------------------------------ -->
 
 
-::: {.column .nonincremental}
+<!-- ## Week 11 Goals -->
 
-**Monday Lecture**: 
-
-- Practice with Local LLMs
-- Extensions of `ellmer`
-
-:::
+<!-- :::: {.columns} -->
 
 
-::: {.column .fragment .nonincremental}
+<!-- ::: {.column .nonincremental} -->
 
-**Wednesday Lecture**: 
+<!-- **Monday Lecture**:  -->
 
-- Intro to writing `R` packages
+<!-- - Practice with Local LLMs -->
+<!-- - Extensions of `ellmer` -->
 
-:::
+<!-- ::: -->
 
-::::
+
+<!-- ::: {.column .fragment .nonincremental} -->
+
+<!-- **Wednesday Lecture**:  -->
+
+<!-- - Intro to writing `R` packages -->
+
+<!-- ::: -->
+
+<!-- :::: -->
 
 
 
