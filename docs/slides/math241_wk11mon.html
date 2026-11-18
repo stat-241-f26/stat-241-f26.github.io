@@ -33,72 +33,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-c529b4720787994cceb3b19d116aa975.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -331,156 +265,103 @@
 <section>
 <section id="discussion-time" class="title-slide slide level1 center">
 <h1>Discussion time</h1>
-
-</section>
-<section id="ethical-considerations-of-using-llms-1" class="slide level2">
-<h2>Ethical considerations of using LLMs…</h2>
-<div class="blockquote">
-<p><em>Data Science</em> is a uniquely <strong>humanistic</strong> field situated behind a laptop. We have responsibility to understand and mitigate <strong>algorithmic bias</strong> by asking questions such as:</p>
-</div>
-<p><br></p>
-<ul>
-<li class="fragment"><p>Who are represented in the sample?</p></li>
-<li class="fragment"><p>Who are <strong>not</strong> represented in the sample?</p></li>
-<li class="fragment"><p>What biases might my methods (including generative AI!) introduce?</p></li>
-<li class="fragment"><p>How can I safeguard against those biases?</p></li>
-</ul>
-</section>
-<section id="ethical-considerations-of-using-llms-2" class="slide level2">
-<h2>Ethical considerations of using LLMs…</h2>
-<div class="blockquote">
-<p>Generative AI tools are being used in horrific and unethical ways as we speak (e.g., <a href="https://www.youtube.com/watch?v=Pp9MwZkHiMQ">Flock cameras</a>). Not to mentioned they are trained on people’s intellectual content without their consent.</p>
-</div>
-<p><br></p>
-<div class="fragment">
-<p><strong>My goals</strong>:</p>
-<ul>
-<li class="fragment">Teach how to use generative AI as an ethical data scientist
-<ul>
-<li class="fragment">Consider productive (and unproductive) use-cases for this technology</li>
-</ul></li>
-<li class="fragment">Help you be <strong>informed</strong> on the current state of generative AI and large language models
-<ul>
-<li class="fragment">Only informed people can help change policy.</li>
-</ul></li>
-</ul>
-</div>
-</section></section>
-<section>
-<section id="what-is-a-large-language-model" class="title-slide slide level1 center">
-<h1>What is a large language model? 🤔</h1>
-
-</section>
-<section id="what-is-a-large-language-model-1" class="slide level2">
-<h2>What is a large language model?</h2>
-<ul>
-<li class="fragment"><p>A large language model (LLM) is a <strong>predictive model</strong> designed to predict the next token of text, conditional on the given context.</p></li>
-<li class="fragment"><p>Just like any statistical model, one must <strong>train</strong> the model and you can use the model to <strong>make new predictions</strong></p>
-<ul>
-<li class="fragment">Think: Linear regression. You <strong>fit / train</strong> your linear regression model to obtain <span class="math inline">\(\hat{\beta}\)</span>’s that you can make new predictions with.</li>
-</ul></li>
-<li class="fragment"><p>Companies like OpenAI, Anthropic, and Google host trained models on their servers, and charge users to use them.</p></li>
-<li class="fragment"><p>Why can’t you run these locally?</p>
-<ul>
-<li class="fragment">You can! But only smaller models…</li>
-<li class="fragment">Trained LLMs are <strong>large</strong>. The “weight matrices” associated with a given training output take extremely large amounts of computing power to use.</li>
-<li class="fragment">Need enough RAM + computing power to do matrix multiplication on these weight matrices.</li>
-</ul></li>
-</ul>
-</section>
-<section id="local-vs.-cloud-based-llms" class="slide level2">
-<h2>Local vs.&nbsp;cloud-based LLMs</h2>
-<div class="columns">
-<div class="column">
-<p><strong>Local LLMs</strong>:</p>
-<div class="fragment">
-<ul>
-<li>Smaller.
-<ul>
-<li>Generally, 1GB RAM = 1 billion model parameters</li>
-</ul></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>More secure.
-<ul>
-<li>You are not sending your data off to someone else’s server.</li>
-</ul></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>“Open” weights.
-<ul>
-<li>You host the weights matrix.</li>
-<li>All computing happens on your machine.</li>
-</ul></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>Requires decent computing power.</li>
-</ul>
-</div>
-</div><div class="column fragment">
-<p><strong>Cloud-based LLMs</strong>:</p>
-<ul>
-<li>Big!
-<ul>
-<li>Generally: larger model –&gt; better predictions</li>
-</ul></li>
-</ul>
-<div class="fragment">
-<ul>
-<li>Less secure.
-<ul>
-<li>If it is free, <strong>you</strong> are the product.</li>
-</ul></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>Often closed-weights.
-<ul>
-<li>Computing happens at a data center.</li>
-</ul></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>Can use these on anything that can access the internet.</li>
-</ul>
-</div>
-</div></div>
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Ethical considerations of using LLMs... -->
+<!-- ::: {.blockquote} -->
+<!-- *Data Science* is a uniquely **humanistic** field situated behind a laptop. We have responsibility to understand and mitigate **algorithmic bias** by asking questions such as: -->
+<!-- ::: -->
+<!-- <br> -->
+<!-- - Who are represented in the sample? -->
+<!-- - Who are **not** represented in the sample? -->
+<!-- - What biases might my methods (including generative AI!) introduce? -->
+<!-- - How can I safeguard against those biases? -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Ethical considerations of using LLMs... -->
+<!-- ::: {.blockquote} -->
+<!-- Generative AI tools are being used in horrific and unethical ways as we speak (e.g., [Flock cameras](https://www.youtube.com/watch?v=Pp9MwZkHiMQ)). Not to mentioned they are trained on people's intellectual content without their consent. -->
+<!-- ::: -->
+<!-- <br> -->
+<!-- ::: {.fragment} -->
+<!-- **My goals**: -->
+<!-- - Teach how to use generative AI as an ethical data scientist -->
+<!--     - Consider productive (and unproductive) use-cases for this technology -->
+<!-- - Help you be **informed** on the current state of generative AI and large language models -->
+<!--     - Only informed people can help change policy. -->
+<!-- ::: -->
+<!-- # What is a large language model? 🤔 -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## What is a large language model? -->
+<!-- - A large language model (LLM) is a **predictive model** designed to predict the next token of text, conditional on the given context. -->
+<!-- - Just like any statistical model, one must **train** the model and you can use the model to **make new predictions** -->
+<!--     - Think: Linear regression. You **fit / train** your linear regression model to obtain $\hat{\beta}$'s that you can make new predictions with. -->
+<!-- - Companies like OpenAI, Anthropic, and Google host trained models on their servers, and charge users to use them. -->
+<!-- - Why can't you run these locally? -->
+<!--     - You can! But only smaller models... -->
+<!--     - Trained LLMs are **large**. The "weight matrices" associated with a given training output take extremely large amounts of computing power to use. -->
+<!--     - Need enough RAM + computing power to do matrix multiplication on these weight matrices. -->
 <!-- ------------------------------------------------------------------------ -->
 <!-- ## Local vs. cloud-based LLMs -->
-<!-- - For our purposes, we will use a cloud-based LLM. -->
-<!-- - I encourage you to explore what can be done with local LLM's if it interests you. -->
-<!--     - Start with: [Ollama](https://ollama.com/) -->
-</section></section>
-<section>
-<section id="llms-from-a-data-scientists-perspective" class="title-slide slide level1 center">
-<h1>LLMs from a Data Scientist’s Perspective</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/ellmer.png" class="quarto-figure quarto-figure-center" style="width:20.0%"></p>
-</figure>
-</div>
-</section>
-<section id="ellmer" class="slide level2">
-<h2><code>ellmer</code></h2>
-<p>An <code>R</code> package for interacting with LLMs in <code>R</code></p>
-<p><img data-src="img/ellmer.png" class="absolute" style="top: 0px; right: 0px; height: 250px; " alt="The ellmer hex sticker, a colorful elephant in a patchwork of fabrics."></p>
-<p><br> <br> <br></p>
-<div class="fragment">
-<p>Today, we’ll explore <code>ellmer</code> to do three different types of tasks one may want to with an LLM:</p>
-</div>
-<ol type="1">
-<li class="fragment"><p>Structured data</p></li>
-<li class="fragment"><p>Tool calling</p></li>
-<li class="fragment"><p>Coding</p></li>
-</ol>
+<!-- :::: {.columns} -->
+<!-- ::: {.column} -->
+<!-- **Local LLMs**: -->
+<!-- ::: {.fragment .nonincremental} -->
+<!-- - Smaller. -->
+<!--     - Generally, 1GB RAM = 1 billion model parameters -->
+<!-- ::: -->
+<!-- ::: {.fragment .nonincremental} -->
+<!-- - More secure. -->
+<!--     - You are not sending your data off to someone else's server. -->
+<!-- ::: -->
+<!-- ::: {.fragment .nonincremental} -->
+<!-- - "Open" weights. -->
+<!--     - You host the weights matrix. -->
+<!--     - All computing happens on your machine. -->
+<!-- ::: -->
+<!-- ::: {.fragment .nonincremental} -->
+<!-- - Requires decent computing power. -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.column .fragment} -->
+<!-- **Cloud-based LLMs**: -->
+<!-- ::: {.nonincremental} -->
+<!-- - Big! -->
+<!--     - Generally: larger model -->
+<p>better predictions –&gt;</p>
+<!-- ::: -->
+<!-- ::: {.fragment .nonincremental} -->
+<!-- - Less secure. -->
+<!--     - If it is free, **you** are the product. -->
+<!-- ::: -->
+<!-- ::: {.fragment .nonincremental} -->
+<!-- - Often closed-weights. -->
+<!--     - Computing happens at a data center. -->
+<!-- ::: -->
+<!-- ::: {.fragment .nonincremental} -->
+<!-- - Can use these on anything that can access the internet. -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- :::: -->
+<!-- <!-- ------------------------------------------------------------------------ -->
+<p>–&gt;</p>
+<!-- <!-- ## Local vs. cloud-based LLMs -->
+<p>–&gt;</p>
+<!-- <!-- - For our purposes, we will use a cloud-based LLM. -->
+<p>–&gt;</p>
+<!-- <!-- - I encourage you to explore what can be done with local LLM's if it interests you. -->
+<p>–&gt; <!-- <!--     - Start with: [Ollama](https://ollama.com/) --> –&gt;</p>
+<!-- # LLMs from a Data Scientist's Perspective -->
+<!-- ![](img/ellmer.png){fig-align='center' width='20%'} -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## `ellmer` -->
+<!-- An `R` package for interacting with LLMs in `R` -->
+<!-- ![](img/ellmer.png){.absolute height="250px" right="0" top="0" fig-alt="The ellmer hex sticker, a colorful elephant in a patchwork of fabrics."} -->
+<!-- <br> <br> <br> -->
+<!-- ::: {.fragment} -->
+<!-- Today, we'll explore `ellmer` to do three different types of tasks one may want to with an LLM: -->
+<!-- ::: -->
+<!-- 1. Structured data -->
+<!-- 2. Tool calling -->
+<!-- 3. Coding -->
 <!-- ## `ellmer`: Setup -->
 <!-- In order to interact with LLMs hosted on a server, we need to first set up an API key. -->
 <!-- - [Cerebras](https://www.cerebras.ai/) provides "free" access to some LLMs they host, but you still need to get an API key. -->
@@ -502,347 +383,283 @@
 <!-- ::: -->
 <!-- 3. Restart R. -->
 <!-- ------------------------------------------------------------------------ -->
-</section>
-<section id="ellmer-setup" class="slide level2">
-<h2><code>ellmer</code>: Setup</h2>
-<p>In order to interact with LLMs hosted on a server (such as what I’ll show today), it takes some setup that is covered on the internet, but I won’t go over today.</p>
-</section>
-<section id="ellmer-basics" class="slide level2">
-<h2><code>ellmer</code>: basics</h2>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(ellmer)</span>
-<span id="cb1-2"><a aria-label="2"></a></span>
-<span id="cb1-3"><a aria-label="3"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
-<span id="cb1-4"><a aria-label="4"></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
-<span id="cb1-5"><a aria-label="5"></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span></span>
-<span id="cb1-6"><a aria-label="6"></a>)</span>
-<span id="cb1-7"><a aria-label="7"></a></span>
-<span id="cb1-8"><a aria-label="8"></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Who are you?"</span>)</span>
-<span id="cb1-9"><a aria-label="9"></a><span class="co">#&gt; Hello! I'm Qwen, a large-scale language model independently developed by the</span></span>
-<span id="cb1-10"><a aria-label="10"></a><span class="co">#&gt; Tongyi Lab under Alibaba Group. I can assist you with answering questions,</span></span>
-<span id="cb1-11"><a aria-label="11"></a><span class="co">#&gt; writing, logical reasoning, programming, and more. I aim to provide helpful and</span></span>
-<span id="cb1-12"><a aria-label="12"></a><span class="co">#&gt; accurate information. Feel free to let me know if you have any questions or need</span></span>
-<span id="cb1-13"><a aria-label="13"></a><span class="co">#&gt; assistance!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><img data-src="img/ellmer.png" class="absolute" style="top: 0px; right: 0px; height: 250px; " alt="The ellmer hex sticker, a colorful elephant in a patchwork of fabrics."></p>
-<!-- ::: {.fragment .nonincremental} -->
-<!-- - "qwen-3-235b-a22b-instruct-2507" has the following rate limits: -->
-<!--     - up to 30 requests per minute, -->
-<!--     - 900 requests per hour, and -->
-<!--     - 14,400 requests per day. -->
+<!-- ## `ellmer`: Setup -->
+<!-- In order to interact with LLMs hosted on a server (such as what I'll show today), it takes some setup that is covered on the internet, but I won't go over today. -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## `ellmer`: basics -->
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- library(ellmer) -->
+<!-- chat <- chat_openai_compatible( -->
+<!--   base_url = "https://api.cerebras.ai/v1", -->
+<!--   model    = "qwen-3-235b-a22b-instruct-2507" -->
+<!-- ) -->
+<!-- chat$chat("Who are you?") -->
+<!-- #> Hello! I'm Qwen, a large-scale language model independently developed by the -->
+<!-- #> Tongyi Lab under Alibaba Group. I can assist you with answering questions, -->
+<!-- #> writing, logical reasoning, programming, and more. I aim to provide helpful and -->
+<!-- #> accurate information. Feel free to let me know if you have any questions or need -->
+<!-- #> assistance! -->
+<!-- ``` -->
+<!-- ![](img/ellmer.png){.absolute height="250px" right="0" top="0" fig-alt="The ellmer hex sticker, a colorful elephant in a patchwork of fabrics."} -->
+<!-- <!-- ::: {.fragment .nonincremental} -->
+<p>–&gt;</p>
+<!-- <!-- - "qwen-3-235b-a22b-instruct-2507" has the following rate limits: -->
+<p>–&gt; <!-- <!--     - up to 30 requests per minute, --> –&gt; <!-- <!--     - 900 requests per hour, and --> –&gt; <!-- <!--     - 14,400 requests per day. --> –&gt;</p>
+<!-- <!-- ::: -->
+<p>–&gt;</p>
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## `ellmer`: Structured data -->
+<!-- How would you extract name and age from this data? -->
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- prompts <- list( -->
+<!--   "I go by Alex. 42 years on this planet and counting.", -->
+<!--   "Pleased to meet you! I'm Jamal, age 27.", -->
+<!--   "They call me Li Wei. Nineteen years young.", -->
+<!--   "Fatima here. Just celebrated my 35th birthday last week.", -->
+<!--   "The name's Robert - 51 years old and proud of it.", -->
+<!--   "Kwame here - just hit the big 5-0 this year." -->
+<!-- ) -->
+<!-- ``` -->
+<!-- - Regular expressions? -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## `ellmer`: Structured data -->
+<!-- LLMs are generally good at this sort of task -->
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat <- chat_openai_compatible( -->
+<!--   base_url = "https://api.cerebras.ai/v1", -->
+<!--   model    = "qwen-3-235b-a22b-instruct-2507", -->
+<!-- ) -->
+<!-- chat$chat("Extract the name and age from each sentence I give you") -->
+<!-- chat$chat(prompts[[1]]) -->
+<!-- #> **Name: Alex, Age: 42** -->
+<!-- chat$chat(prompts[[2]]) -->
+<!-- #> **Name: Jamal, Age: 27** -->
+<!-- chat$chat(prompts[[3]]) -->
+<!-- #> **Name: Li Wei, Age: 19** -->
+<!-- ``` -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## `ellmer`: Structured data -->
+<!-- But wouldn't it be nice to get an R data structure? -->
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat$chat(prompts[[3]]) -->
+<!-- # Want this: -->
+<!-- #> list( -->
+<!-- #>   name = "Li Wei", -->
+<!-- #>   age = 19 -->
+<!-- #> ) -->
+<!-- # Instead of: -->
+<!-- #> **Name: Li Wei, Age: 19** -->
+<!-- ``` -->
+<!-- <br> -->
+<!-- ::: {.fragment} -->
+<!-- `ellmer` let's us do this with `chat_structured()`! -->
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- type_person <- type_object( -->
+<!--   name = type_string(), -->
+<!--   age = type_number() -->
+<!-- ) -->
+<!-- chat$chat_structured(prompts[[1]], type = type_person) -->
+<!-- #> List of 2 -->
+<!-- #>  $ name: chr "Alex" -->
+<!-- #>  $ age : int 42 -->
+<!-- ``` -->
 <!-- ::: -->
-</section>
-<section id="ellmer-structured-data" class="slide level2">
-<h2><code>ellmer</code>: Structured data</h2>
-<p>How would you extract name and age from this data?</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a>prompts <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb2-2"><a aria-label="2"></a>  <span class="st">"I go by Alex. 42 years on this planet and counting."</span>,</span>
-<span id="cb2-3"><a aria-label="3"></a>  <span class="st">"Pleased to meet you! I'm Jamal, age 27."</span>,</span>
-<span id="cb2-4"><a aria-label="4"></a>  <span class="st">"They call me Li Wei. Nineteen years young."</span>,</span>
-<span id="cb2-5"><a aria-label="5"></a>  <span class="st">"Fatima here. Just celebrated my 35th birthday last week."</span>,</span>
-<span id="cb2-6"><a aria-label="6"></a>  <span class="st">"The name's Robert - 51 years old and proud of it."</span>,</span>
-<span id="cb2-7"><a aria-label="7"></a>  <span class="st">"Kwame here - just hit the big 5-0 this year."</span></span>
-<span id="cb2-8"><a aria-label="8"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ul>
-<li class="fragment">Regular expressions?</li>
-</ul>
-</section>
-<section id="ellmer-structured-data-1" class="slide level2">
-<h2><code>ellmer</code>: Structured data</h2>
-<p>LLMs are generally good at this sort of task</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
-<span id="cb3-2"><a aria-label="2"></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
-<span id="cb3-3"><a aria-label="3"></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span>,</span>
-<span id="cb3-4"><a aria-label="4"></a>)</span>
-<span id="cb3-5"><a aria-label="5"></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Extract the name and age from each sentence I give you"</span>)</span>
-<span id="cb3-6"><a aria-label="6"></a>chat<span class="sc">$</span><span class="fu">chat</span>(prompts[[<span class="dv">1</span>]])</span>
-<span id="cb3-7"><a aria-label="7"></a><span class="co">#&gt; **Name: Alex, Age: 42**</span></span>
-<span id="cb3-8"><a aria-label="8"></a>chat<span class="sc">$</span><span class="fu">chat</span>(prompts[[<span class="dv">2</span>]])</span>
-<span id="cb3-9"><a aria-label="9"></a><span class="co">#&gt; **Name: Jamal, Age: 27**</span></span>
-<span id="cb3-10"><a aria-label="10"></a>chat<span class="sc">$</span><span class="fu">chat</span>(prompts[[<span class="dv">3</span>]])</span>
-<span id="cb3-11"><a aria-label="11"></a><span class="co">#&gt; **Name: Li Wei, Age: 19**</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="ellmer-structured-data-2" class="slide level2">
-<h2><code>ellmer</code>: Structured data</h2>
-<p>But wouldn’t it be nice to get an R data structure?</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>chat<span class="sc">$</span><span class="fu">chat</span>(prompts[[<span class="dv">3</span>]])</span>
-<span id="cb4-2"><a aria-label="2"></a></span>
-<span id="cb4-3"><a aria-label="3"></a><span class="co"># Want this:</span></span>
-<span id="cb4-4"><a aria-label="4"></a><span class="co">#&gt; list(</span></span>
-<span id="cb4-5"><a aria-label="5"></a><span class="co">#&gt;   name = "Li Wei",</span></span>
-<span id="cb4-6"><a aria-label="6"></a><span class="co">#&gt;   age = 19</span></span>
-<span id="cb4-7"><a aria-label="7"></a><span class="co">#&gt; )</span></span>
-<span id="cb4-8"><a aria-label="8"></a></span>
-<span id="cb4-9"><a aria-label="9"></a><span class="co"># Instead of:</span></span>
-<span id="cb4-10"><a aria-label="10"></a><span class="co">#&gt; **Name: Li Wei, Age: 19**</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><br></p>
-<div class="fragment">
-<p><code>ellmer</code> let’s us do this with <code>chat_structured()</code>!</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>type_person <span class="ot">&lt;-</span> <span class="fu">type_object</span>(</span>
-<span id="cb5-2"><a aria-label="2"></a>  <span class="at">name =</span> <span class="fu">type_string</span>(),</span>
-<span id="cb5-3"><a aria-label="3"></a>  <span class="at">age =</span> <span class="fu">type_number</span>()</span>
-<span id="cb5-4"><a aria-label="4"></a>)</span>
-<span id="cb5-5"><a aria-label="5"></a></span>
-<span id="cb5-6"><a aria-label="6"></a>chat<span class="sc">$</span><span class="fu">chat_structured</span>(prompts[[<span class="dv">1</span>]], <span class="at">type =</span> type_person)</span>
-<span id="cb5-7"><a aria-label="7"></a><span class="co">#&gt; List of 2</span></span>
-<span id="cb5-8"><a aria-label="8"></a><span class="co">#&gt;  $ name: chr "Alex"</span></span>
-<span id="cb5-9"><a aria-label="9"></a><span class="co">#&gt;  $ age : int 42</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</section>
-<section id="ellmer-structured-data-3" class="slide level2">
-<h2><code>ellmer</code>: Structured data</h2>
-<p><code>parallel_chat_structured()</code>: many prompts at once</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
-<span id="cb6-2"><a aria-label="2"></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
-<span id="cb6-3"><a aria-label="3"></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span>,</span>
-<span id="cb6-4"><a aria-label="4"></a>  <span class="at">params   =</span> <span class="fu">params</span>(<span class="at">max_tokens =</span> <span class="dv">500</span>)</span>
-<span id="cb6-5"><a aria-label="5"></a>)</span>
-<span id="cb6-6"><a aria-label="6"></a><span class="fu">parallel_chat_structured</span>(chat, prompts, <span class="at">type =</span> type_person, <span class="at">rpm =</span> <span class="dv">30</span>)</span>
-<span id="cb6-7"><a aria-label="7"></a><span class="co">#&gt;     name age</span></span>
-<span id="cb6-8"><a aria-label="8"></a><span class="co">#&gt; 1   Alex  42</span></span>
-<span id="cb6-9"><a aria-label="9"></a><span class="co">#&gt; 2  Jamal  27</span></span>
-<span id="cb6-10"><a aria-label="10"></a><span class="co">#&gt; 3 Li Wei  19</span></span>
-<span id="cb6-11"><a aria-label="11"></a><span class="co">#&gt; 4 Fatima  35</span></span>
-<span id="cb6-12"><a aria-label="12"></a><span class="co">#&gt; 5 Robert  51</span></span>
-<span id="cb6-13"><a aria-label="13"></a><span class="co">#&gt; 6  Kwame  50</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ul>
-<li class="fragment"><p>Not parallel in the sense of parallelized R code: just sending many API calls at once.</p></li>
-<li class="fragment"><p>Have to set <code>params</code> in order to avoid getting rate-limited automatically.</p></li>
-</ul>
-</section>
-<section id="ellmer-structured-data-4" class="slide level2">
-<h2><code>ellmer</code>: Structured data</h2>
-<p>Can also send attach images or other files by pointing to their directory on your computer.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a>paths <span class="ot">&lt;-</span> <span class="fu">dir</span>(<span class="st">"animals"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb7-2"><a aria-label="2"></a>images <span class="ot">&lt;-</span> <span class="fu">map</span>(paths, <span class="sc">~</span> <span class="fu">list</span>(<span class="fu">content_image_file</span>(.x)))</span>
-<span id="cb7-3"><a aria-label="3"></a></span>
-<span id="cb7-4"><a aria-label="4"></a>type_animal_photo <span class="ot">&lt;-</span> <span class="fu">type_object</span>(</span>
-<span id="cb7-5"><a aria-label="5"></a>  <span class="at">animal =</span> <span class="fu">type_string</span>(),</span>
-<span id="cb7-6"><a aria-label="6"></a>  <span class="at">background_colour =</span> <span class="fu">type_string</span>()</span>
-<span id="cb7-7"><a aria-label="7"></a>)</span>
-<span id="cb7-8"><a aria-label="8"></a></span>
-<span id="cb7-9"><a aria-label="9"></a><span class="fu">parallel_chat_structured</span>(chat, images, <span class="at">type =</span> type_animal_photo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="ellmer-tool-calling" class="slide level2">
-<h2><code>ellmer</code>: Tool calling</h2>
-<!-- LLMs don't have access to live data about the world -->
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
-<span id="cb8-2"><a aria-label="2"></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
-<span id="cb8-3"><a aria-label="3"></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span></span>
-<span id="cb8-4"><a aria-label="4"></a>)</span>
-<span id="cb8-5"><a aria-label="5"></a></span>
-<span id="cb8-6"><a aria-label="6"></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"What day is it?"</span>)</span>
-<span id="cb8-7"><a aria-label="7"></a><span class="co">#&gt; I don't have access to real-time information, so I can't tell you today's</span></span>
-<span id="cb8-8"><a aria-label="8"></a><span class="co">#&gt; date. You can check the current date on your device's calendar or by</span></span>
-<span id="cb8-9"><a aria-label="9"></a><span class="co">#&gt; asking a voice assistant like Siri, Google Assistant, or Alexa.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="ellmer-tool-calling-1" class="slide level2">
-<h2><code>ellmer</code>: Tool calling</h2>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a>today <span class="ot">&lt;-</span> <span class="fu">tool</span>(</span>
-<span id="cb9-2"><a aria-label="2"></a>  <span class="cf">function</span>() <span class="fu">Sys.Date</span>(),</span>
-<span id="cb9-3"><a aria-label="3"></a>  <span class="at">name =</span> <span class="st">"today"</span>,</span>
-<span id="cb9-4"><a aria-label="4"></a>  <span class="at">description =</span> <span class="st">"Get the current date"</span>,</span>
-<span id="cb9-5"><a aria-label="5"></a>  <span class="at">arguments =</span> <span class="fu">list</span>()</span>
-<span id="cb9-6"><a aria-label="6"></a>)</span>
-<span id="cb9-7"><a aria-label="7"></a>chat<span class="sc">$</span><span class="fu">register_tool</span>(today)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="ellmer-tool-calling-2" class="slide level2">
-<h2><code>ellmer</code>: Tool calling</h2>
-<!-- Now the model can know what day it is -->
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"What day is it today?"</span>)</span>
-<span id="cb10-2"><a aria-label="2"></a><span class="co">#&gt; ◯ [tool call] today()</span></span>
-<span id="cb10-3"><a aria-label="3"></a><span class="co">#&gt; ● #&gt; "2026-04-05"</span></span>
-<span id="cb10-4"><a aria-label="4"></a><span class="co">#&gt; Today is Sunday, April 5, 2026.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section></section>
-<section>
-<section id="coding-agents" class="title-slide slide level1 center">
-<h1>Coding (agents)</h1>
-
-</section>
-<section id="coding-agent-llm-calling-tools-in-a-loop" class="slide level2">
-<h2>Coding agent = LLM calling tools in a loop</h2>
-<p>…usually giving models the ability to read and write state</p>
-</section>
-<section id="coding-agents-1" class="slide level2">
-<h2>Coding agents</h2>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
-<span id="cb11-2"><a aria-label="2"></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
-<span id="cb11-3"><a aria-label="3"></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span></span>
-<span id="cb11-4"><a aria-label="4"></a>)</span>
-<span id="cb11-5"><a aria-label="5"></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Delete the csv files in my working directory"</span>)</span>
-<span id="cb11-6"><a aria-label="6"></a><span class="co">#&gt; I **cannot** delete files from your computer or working directory. I don't have</span></span>
-<span id="cb11-7"><a aria-label="7"></a><span class="co">#&gt; access to your file system for security reasons.</span></span>
-<span id="cb11-8"><a aria-label="8"></a><span class="co">#&gt;</span></span>
-<span id="cb11-9"><a aria-label="9"></a><span class="co">#&gt; However, here are safe ways you can delete CSV files in your working directory</span></span>
-<span id="cb11-10"><a aria-label="10"></a><span class="co">#&gt; depending on your environment:</span></span>
-<span id="cb11-11"><a aria-label="11"></a><span class="co">#&gt;</span></span>
-<span id="cb11-12"><a aria-label="12"></a><span class="co">#&gt; </span><span class="al">###</span><span class="co"> Option 1: Using Python</span></span>
-<span id="cb11-13"><a aria-label="13"></a><span class="co">#&gt; If you're using Python and want to delete all `.csv` files in the current</span></span>
-<span id="cb11-14"><a aria-label="14"></a><span class="co">#&gt; directory:</span></span>
-<span id="cb11-15"><a aria-label="15"></a><span class="co">#&gt; ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="coding-agents-2" class="slide level2">
-<h2>Coding agents</h2>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai_compatible</span>(</span>
-<span id="cb12-2"><a aria-label="2"></a>  <span class="at">base_url =</span> <span class="st">"https://api.cerebras.ai/v1"</span>,</span>
-<span id="cb12-3"><a aria-label="3"></a>  <span class="at">model    =</span> <span class="st">"qwen-3-235b-a22b-instruct-2507"</span></span>
-<span id="cb12-4"><a aria-label="4"></a>)</span>
-<span id="cb12-5"><a aria-label="5"></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Delete the csv files in my working directory"</span>)</span>
-<span id="cb12-6"><a aria-label="6"></a><span class="co">#&gt; To delete all CSV files in your current working directory, you can use one of the</span></span>
-<span id="cb12-7"><a aria-label="7"></a><span class="co">#&gt; following methods depending on your operating system:</span></span>
-<span id="cb12-8"><a aria-label="8"></a><span class="co">#&gt;</span></span>
-<span id="cb12-9"><a aria-label="9"></a><span class="co">#&gt; </span><span class="al">###</span><span class="co"> **Method 1: Using Command Line / Terminal**</span></span>
-<span id="cb12-10"><a aria-label="10"></a><span class="co">#&gt;</span></span>
-<span id="cb12-11"><a aria-label="11"></a><span class="co">#&gt; #### **On Windows (Command Prompt):**</span></span>
-<span id="cb12-12"><a aria-label="12"></a><span class="co">#&gt; ```cmd</span></span>
-<span id="cb12-13"><a aria-label="13"></a><span class="co">#&gt; del *.csv</span></span>
-<span id="cb12-14"><a aria-label="14"></a><span class="co">#&gt; ```</span></span>
-<span id="cb12-15"><a aria-label="15"></a><span class="co">#&gt;</span></span>
-<span id="cb12-16"><a aria-label="16"></a><span class="co">#&gt; #### **On macOS or Linux (Terminal):**</span></span>
-<span id="cb12-17"><a aria-label="17"></a><span class="co">#&gt; ```bash</span></span>
-<span id="cb12-18"><a aria-label="18"></a><span class="co">#&gt; rm *.csv</span></span>
-<span id="cb12-19"><a aria-label="19"></a><span class="co">#&gt; ```</span></span>
-<span id="cb12-20"><a aria-label="20"></a><span class="co">#&gt;</span></span>
-<span id="cb12-21"><a aria-label="21"></a><span class="co">#&gt; &gt; ⚠️ **Warning**: This permanently deletes all `.csv` files in the current</span></span>
-<span id="cb12-22"><a aria-label="22"></a><span class="co">#&gt; directory. Make sure you don’t need any of them!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Needs to be able to:</p>
-<ul>
-<li class="fragment">Find files (read state)</li>
-<li class="fragment">Delete files (write state)</li>
-</ul>
-</section>
-<section id="coding-agents-3" class="slide level2">
-<h2>Coding agents</h2>
-<p>The LLM needs to be able to <strong>read</strong> our working directory:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a>chat<span class="sc">$</span><span class="fu">register_tool</span>(<span class="fu">tool</span>(</span>
-<span id="cb13-2"><a aria-label="2"></a>  <span class="cf">function</span>() <span class="fu">dir</span>(),</span>
-<span id="cb13-3"><a aria-label="3"></a>  <span class="at">name =</span> <span class="st">"ls"</span>,</span>
-<span id="cb13-4"><a aria-label="4"></a>  <span class="at">description =</span> <span class="st">"Lists the files in the current directory"</span></span>
-<span id="cb13-5"><a aria-label="5"></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><br></p>
-<div class="fragment">
-<p>And be able to remove files:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a>chat<span class="sc">$</span><span class="fu">register_tool</span>(<span class="fu">tool</span>(</span>
-<span id="cb14-2"><a aria-label="2"></a>  <span class="cf">function</span>(path) <span class="fu">unlink</span>(path),</span>
-<span id="cb14-3"><a aria-label="3"></a>  <span class="at">name =</span> <span class="st">"rm"</span>,</span>
-<span id="cb14-4"><a aria-label="4"></a>  <span class="at">description =</span> <span class="st">"Delete one or more files"</span>,</span>
-<span id="cb14-5"><a aria-label="5"></a>  <span class="at">arguments =</span> <span class="fu">list</span>(</span>
-<span id="cb14-6"><a aria-label="6"></a>    <span class="at">path =</span> <span class="fu">type_array</span>(<span class="fu">type_string</span>())</span>
-<span id="cb14-7"><a aria-label="7"></a>  )</span>
-<span id="cb14-8"><a aria-label="8"></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</section>
-<section id="coding-agents-4" class="slide level2">
-<h2>Coding agents</h2>
-<p>Create some dummy <code>.csv</code> files</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a><span class="fu">file.create</span>(<span class="fu">c</span>(<span class="st">"a.csv"</span>, <span class="st">"a_please_dont_delete_me.csv"</span>, <span class="st">"b.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE TRUE TRUE</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a><span class="fu">dir</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "a_please_dont_delete_me.csv"  "a.csv"                       
- [3] "b.csv"                        "custom.scss"                 
- [5] "data"                         "img"                         
- [7] "math241_wk01mon.qmd"          "math241_wk01wed.qmd"         
- [9] "math241_wk02mon.qmd"          "math241_wk02wed.qmd"         
-[11] "math241_wk03mon.qmd"          "math241_wk03wed_cache"       
-[13] "math241_wk03wed_files"        "math241_wk03wed.qmd"         
-[15] "math241_wk04mon.qmd"          "math241_wk04wed_activity.qmd"
-[17] "math241_wk04wed.qmd"          "math241_wk05mon.qmd"         
-[19] "math241_wk05wed.qmd"          "math241_wk06mon_files"       
-[21] "math241_wk06mon.qmd"          "math241_wk06wed.qmd"         
-[23] "math241_wk07mon.qmd"          "math241_wk07wed.qmd"         
-[25] "math241_wk08mon_files"        "math241_wk08mon.qmd"         
-[27] "math241_wk09mon.qmd"          "math241_wk09wed.qmd"         
-[29] "math241_wk10mon.qmd"          "math241_wk10wed_cache"       
-[31] "math241_wk10wed_files"        "math241_wk10wed.qmd"         
-[33] "math241_wk11mon_cache"        "math241_wk11mon.qmd"         
-[35] "math241_wk11mon.rmarkdown"    "math241_wk11wed_files"       
-[37] "math241_wk11wed.qmd"          "math241_wk12mon_cache"       
-[39] "math241_wk12mon.qmd"          "math241_wk12wed.qmd"         
-[41] "math241_wk13wed.qmd"          "my_plots"                    
-[43] "rosm.cache"                  </code></pre>
-</div>
-</div>
-</section>
-<section id="coding-agents-5" class="slide level2">
-<h2>Coding agents</h2>
-<p>Now ask it to delete csv’s that</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Delete all the csv files in the current directory, unless they ask to not be deleted."</span>)</span>
-<span id="cb19-2"><a aria-label="2"></a><span class="co">#&gt; ◯ [tool call] ls()</span></span>
-<span id="cb19-3"><a aria-label="3"></a><span class="co">#&gt; ● #&gt; a_please_dont_delete_me.csv</span></span>
-<span id="cb19-4"><a aria-label="4"></a><span class="co">#&gt;   #&gt; a.csv</span></span>
-<span id="cb19-5"><a aria-label="5"></a><span class="co">#&gt;   #&gt; b.csv</span></span>
-<span id="cb19-6"><a aria-label="6"></a><span class="co">#&gt;   #&gt; custom.scss</span></span>
-<span id="cb19-7"><a aria-label="7"></a><span class="co">#&gt;   #&gt; data</span></span>
-<span id="cb19-8"><a aria-label="8"></a><span class="co">#&gt;   #&gt; …</span></span>
-<span id="cb19-9"><a aria-label="9"></a><span class="co">#&gt; ◯ [tool call] rm(path = c("a.csv", "b.csv"))</span></span>
-<span id="cb19-10"><a aria-label="10"></a><span class="co">#&gt; ● #&gt; 0</span></span>
-<span id="cb19-11"><a aria-label="11"></a><span class="co">#&gt; The CSV files `a.csv` and `b.csv` have been deleted.</span></span>
-<span id="cb19-12"><a aria-label="12"></a><span class="co">#&gt;</span></span>
-<span id="cb19-13"><a aria-label="13"></a><span class="co">#&gt; The file `a_please_dont_delete_me.csv` was not deleted, as it appears to be a</span></span>
-<span id="cb19-14"><a aria-label="14"></a><span class="co">#&gt; file you wish to keep based on its name.</span></span>
-<span id="cb19-15"><a aria-label="15"></a><span class="co">#&gt;</span></span>
-<span id="cb19-16"><a aria-label="16"></a><span class="co">#&gt; Let me know if you'd like to keep or remove any other files!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><br></p>
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a><span class="fu">dir</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "a_please_dont_delete_me.csv"  "custom.scss"                 
- [3] "data"                         "img"                         
- [5] "math241_wk01mon.qmd"          "math241_wk01wed.qmd"         
- [7] "math241_wk02mon.qmd"          "math241_wk02wed.qmd"         
- [9] "math241_wk03mon.qmd"          "math241_wk03wed_cache"       
-[11] "math241_wk03wed_files"        "math241_wk03wed.qmd"         
-[13] "math241_wk04mon.qmd"          "math241_wk04wed_activity.qmd"
-[15] "math241_wk04wed.qmd"          "math241_wk05mon.qmd"         
-[17] "math241_wk05wed.qmd"          "math241_wk06mon_files"       
-[19] "math241_wk06mon.qmd"          "math241_wk06wed.qmd"         
-[21] "math241_wk07mon.qmd"          "math241_wk07wed.qmd"         
-[23] "math241_wk08mon_files"        "math241_wk08mon.qmd"         
-[25] "math241_wk09mon.qmd"          "math241_wk09wed.qmd"         
-[27] "math241_wk10mon.qmd"          "math241_wk10wed_cache"       
-[29] "math241_wk10wed_files"        "math241_wk10wed.qmd"         
-[31] "math241_wk11mon_cache"        "math241_wk11mon.qmd"         
-[33] "math241_wk11mon.rmarkdown"    "math241_wk11wed_files"       
-[35] "math241_wk11wed.qmd"          "math241_wk12mon_cache"       
-[37] "math241_wk12mon.qmd"          "math241_wk12wed.qmd"         
-[39] "math241_wk13wed.qmd"          "my_plots"                    
-[41] "rosm.cache"                  </code></pre>
-</div>
-</div>
-</div>
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## `ellmer`: Structured data -->
+<!-- `parallel_chat_structured()`: many prompts at once -->
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat <- chat_openai_compatible( -->
+<!--   base_url = "https://api.cerebras.ai/v1", -->
+<!--   model    = "qwen-3-235b-a22b-instruct-2507", -->
+<!--   params   = params(max_tokens = 500) -->
+<!-- ) -->
+<!-- parallel_chat_structured(chat, prompts, type = type_person, rpm = 30) -->
+<!-- #>     name age -->
+<!-- #> 1   Alex  42 -->
+<!-- #> 2  Jamal  27 -->
+<!-- #> 3 Li Wei  19 -->
+<!-- #> 4 Fatima  35 -->
+<!-- #> 5 Robert  51 -->
+<!-- #> 6  Kwame  50 -->
+<!-- ``` -->
+<!-- - Not parallel in the sense of parallelized R code: just sending many API calls at once. -->
+<!-- - Have to set `params` in order to avoid getting rate-limited automatically. -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## `ellmer`: Structured data -->
+<!-- Can also send attach images or other files by pointing to their directory on your computer. -->
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- paths <- dir("animals", full.names = TRUE) -->
+<!-- images <- map(paths, ~ list(content_image_file(.x))) -->
+<!-- type_animal_photo <- type_object( -->
+<!--   animal = type_string(), -->
+<!--   background_colour = type_string() -->
+<!-- ) -->
+<!-- parallel_chat_structured(chat, images, type = type_animal_photo) -->
+<!-- ``` -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## `ellmer`: Tool calling -->
+<!-- <!-- LLMs don't have access to live data about the world -->
+<p>–&gt;</p>
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat <- chat_openai_compatible( -->
+<!--   base_url = "https://api.cerebras.ai/v1", -->
+<!--   model    = "qwen-3-235b-a22b-instruct-2507" -->
+<!-- ) -->
+<!-- chat$chat("What day is it?") -->
+<!-- #> I don't have access to real-time information, so I can't tell you today's -->
+<!-- #> date. You can check the current date on your device's calendar or by -->
+<!-- #> asking a voice assistant like Siri, Google Assistant, or Alexa. -->
+<!-- ``` -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## `ellmer`: Tool calling -->
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- today <- tool( -->
+<!--   function() Sys.Date(), -->
+<!--   name = "today", -->
+<!--   description = "Get the current date", -->
+<!--   arguments = list() -->
+<!-- ) -->
+<!-- chat$register_tool(today) -->
+<!-- ``` -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## `ellmer`: Tool calling -->
+<!-- <!-- Now the model can know what day it is -->
+<p>–&gt;</p>
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat$chat("What day is it today?") -->
+<!-- #> ◯ [tool call] today() -->
+<!-- #> ● #> "2026-04-05" -->
+<!-- #> Today is Sunday, April 5, 2026. -->
+<!-- ``` -->
+<!-- # Coding (agents) -->
+<!-- ## Coding agent = LLM calling tools in a loop -->
+<!-- ...usually giving models the ability to read and write state -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Coding agents -->
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat <- chat_openai_compatible( -->
+<!--   base_url = "https://api.cerebras.ai/v1", -->
+<!--   model    = "qwen-3-235b-a22b-instruct-2507" -->
+<!-- ) -->
+<!-- chat$chat("Delete the csv files in my working directory") -->
+<!-- #> I **cannot** delete files from your computer or working directory. I don't have -->
+<!-- #> access to your file system for security reasons. -->
+<!-- #> -->
+<!-- #> However, here are safe ways you can delete CSV files in your working directory -->
+<!-- #> depending on your environment: -->
+<!-- #> -->
+<!-- #> ### Option 1: Using Python -->
+<!-- #> If you're using Python and want to delete all `.csv` files in the current -->
+<!-- #> directory: -->
+<!-- #> ... -->
+<!-- ``` -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Coding agents -->
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat <- chat_openai_compatible( -->
+<!--   base_url = "https://api.cerebras.ai/v1", -->
+<!--   model    = "qwen-3-235b-a22b-instruct-2507" -->
+<!-- ) -->
+<!-- chat$chat("Delete the csv files in my working directory") -->
+<!-- #> To delete all CSV files in your current working directory, you can use one of the -->
+<!-- #> following methods depending on your operating system: -->
+<!-- #> -->
+<!-- #> ### **Method 1: Using Command Line / Terminal** -->
+<!-- #> -->
+<!-- #> #### **On Windows (Command Prompt):** -->
+<!-- #> ```cmd -->
+<!-- #> del *.csv -->
+<!-- #> ``` -->
+<!-- #> -->
+<!-- #> #### **On macOS or Linux (Terminal):** -->
+<!-- #> ```bash -->
+<!-- #> rm *.csv -->
+<!-- #> ``` -->
+<!-- #> -->
+<!-- #> > ⚠️ **Warning**: This permanently deletes all `.csv` files in the current -->
+<!-- #> directory. Make sure you don’t need any of them! -->
+<!-- ``` -->
+<!-- Needs to be able to: -->
+<!-- * Find files (read state) -->
+<!-- * Delete files (write state) -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Coding agents -->
+<!-- The LLM needs to be able to **read** our working directory: -->
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat$register_tool(tool( -->
+<!--   function() dir(), -->
+<!--   name = "ls", -->
+<!--   description = "Lists the files in the current directory" -->
+<!-- )) -->
+<!-- ``` -->
+<!-- <br> -->
+<!-- ::: {.fragment} -->
+<!-- And be able to remove files: -->
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat$register_tool(tool( -->
+<!--   function(path) unlink(path), -->
+<!--   name = "rm", -->
+<!--   description = "Delete one or more files", -->
+<!--   arguments = list( -->
+<!--     path = type_array(type_string()) -->
+<!--   ) -->
+<!-- )) -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Coding agents -->
+<!-- Create some dummy `.csv` files -->
+<!-- ```{r} -->
+<!-- file.create(c("a.csv", "a_please_dont_delete_me.csv", "b.csv")) -->
+<!-- dir() -->
+<!-- ``` -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Coding agents -->
+<!-- Now ask it to delete csv's that -->
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- chat$chat("Delete all the csv files in the current directory, unless they ask to not be deleted.") -->
+<!-- #> ◯ [tool call] ls() -->
+<!-- #> ● #> a_please_dont_delete_me.csv -->
+<!-- #>   #> a.csv -->
+<!-- #>   #> b.csv -->
+<!-- #>   #> custom.scss -->
+<!-- #>   #> data -->
+<!-- #>   #> … -->
+<!-- #> ◯ [tool call] rm(path = c("a.csv", "b.csv")) -->
+<!-- #> ● #> 0 -->
+<!-- #> The CSV files `a.csv` and `b.csv` have been deleted. -->
+<!-- #> -->
+<!-- #> The file `a_please_dont_delete_me.csv` was not deleted, as it appears to be a -->
+<!-- #> file you wish to keep based on its name. -->
+<!-- #> -->
+<!-- #> Let me know if you'd like to keep or remove any other files! -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- #| echo: false -->
+<!-- unlink("a.csv") -->
+<!-- unlink("b.csv") -->
+<!-- ``` -->
+<!-- <br> -->
+<!-- ::: {.fragment} -->
+<!-- ```{r} -->
+<!-- dir() -->
+<!-- ``` -->
+<!-- ::: -->
 <!-- # Local LLMs -->
 <!-- ------------------------------------------------------------------------ -->
 <!-- ## Local LLMs -->
