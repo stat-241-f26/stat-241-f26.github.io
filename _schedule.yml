@@ -271,12 +271,12 @@ scheduled-docs:
           docs:
             - type: Problem Set 6
               href: psets/pset06.qmd
-        - topic: "Ethics and Generative AI"
+        - topic: "Data Ethics and Generative AI"
           display-date: Wednesday, Nov 18
           date: 11/18/26
           docs:
-            # - type: Slides
-            #   href: slides/math241_wk11mon.qmd
+            - type: Slides
+              href: slides/math241_wk11mon.qmd
             # - type: Activity (Download)
             #   href: in_class/activity7_download.qmd
       resources:
