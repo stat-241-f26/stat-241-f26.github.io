@@ -1,6 +1,6 @@
 ---
 title: "Creating an R Package"
-subtitle: "Math 241, Spring 2026"
+subtitle: "Stat 241, Fall 2026"
 format:
   html: default
   pdf:

@@ -88,21 +88,14 @@
     "href": "slides/math241_wk11wed.html#announcements",
     "title": "Stat 241",
     "section": "Announcements",
-    "text": "Announcements\n\nFill out this form ASAP to help me create the Project 2 groups.\n\nGroups and project instructions will be assigned on Monday."
+    "text": "Announcements\n\nFill out this form ASAP to help me create the Project 2 groups.\n\nGroups and project instructions will be assigned on Wednesday."
   },
   {
-    "objectID": "slides/math241_wk11wed.html#announcements-1",
-    "href": "slides/math241_wk11wed.html#announcements-1",
+    "objectID": "slides/math241_wk11wed.html#week-12-goals",
+    "href": "slides/math241_wk11wed.html#week-12-goals",
     "title": "Stat 241",
-    "section": "Announcements",
-    "text": "Announcements"
-  },
-  {
-    "objectID": "slides/math241_wk11wed.html#week-11-goals",
-    "href": "slides/math241_wk11wed.html#week-11-goals",
-    "title": "Stat 241",
-    "section": "Week 11 Goals",
-    "text": "Week 11 Goals\n\n\nMonday Lecture:\n\nPractice with local LLMs\n\n\nWednesday Lecture:\n\nIntro to writing R packages"
+    "section": "Week 12 Goals",
+    "text": "Week 12 Goals\n\n\nMonday Lecture:\n\nIntro to writing R packages\n\n\nWednesday Lecture:\n\nDetails regarding writing R packages"
   },
   {
     "objectID": "slides/math241_wk11wed.html#sharing-code-1",
@@ -2013,7 +2006,7 @@
     "href": "projects/proj02.html#timeline",
     "title": "Stat 241",
     "section": "Timeline",
-    "text": "Timeline\n\n4/20: Receive project instructions, group assignment, and invite to your group’s GitHub repo.\n4/27: Come to class for a project work day instead of lecture.\n5/13 (noon): Make sure the final version of your package is in your GitHub repo.\n5/13 (1pm): Give a 10 minute presentation of your package during our final exam time slot, in Library 389 (our classroom).\n5/13: Decide as a group whether or not you want to make your GitHub repo (and so R package) public.\n\nIf at least one group member does not want to make the repo public, you must leave it private.\nEmail me with your decision.\nYour grade on this project does not at all depend on this decision."
+    "text": "Timeline\n\n11/25: Receive project instructions, group assignment, and invite to your group’s GitHub repo.\n12/2: Come to class for a project work day instead of lecture.\n12/15 (5pm): Make sure the final version of your package is in your GitHub repo.\n12/15 (6pm): Give a 10 minute presentation of your package during our final exam time slot, in Eliot 207 (our classroom).\n12/15: Decide as a group whether or not you want to make your GitHub repo (and so R package) public.\n\nIf at least one group member does not want to make the repo public, you must leave it private.\nEmail me with your decision.\nYour grade on this project does not at all depend on this decision."
   },
   {
     "objectID": "projects/proj01_groups.html",
@@ -3644,7 +3637,7 @@
     "href": "slides/math241_wk12mon.html#weeks-goals",
     "title": "Stat 241",
     "section": "Week’s Goals",
-    "text": "Week’s Goals\n\n\nMon Lecture\n\nR package documentation and metadata\n\n\nWed Lecture\n\nR package testing\nR package dissemination:\n\nVignettes, and\npackage websites"
+    "text": "Week’s Goals\n\n\nMon Lecture\n\nIntro to writing R packages\n\n\nWed Lecture\n\nR package documentation and metadata"
   },
   {
     "objectID": "slides/math241_wk12mon.html#project-2",
@@ -3686,7 +3679,7 @@
     "href": "slides/math241_wk12mon.html#project-2-5",
     "title": "Stat 241",
     "section": "Project 2",
-    "text": "Project 2\nTimeline:\n\n4/20: Receive project instructions, group assignment, and invite to your group’s GitHub repo.\n4/27: Come to class for a project work day instead of lecture.\n5/13 (noon): Make sure the final version of your package is in your GitHub repo.\n5/13 (1pm): Give a 10 minute presentation of your package during our final exam time slot, in Library 389 (our classroom).\n5/13: Decide as a group whether or not you want to make your GitHub repo (and so R package) public.\n\nIf at least one group member does not want to make the repo public, you must leave it private.\nEmail me with your decision.\nYour grade on this project does not at all depend on this decision."
+    "text": "Project 2\nTimeline:\n\n11/25: Receive project instructions, group assignment, and invite to your group’s GitHub repo.\n12/2: Come to class for a project work day instead of lecture.\n12/15 (5pm): Make sure the final version of your package is in your GitHub repo.\n12/15 (6pm): Give a 10 minute presentation of your package during our final exam time slot, in Library 389 (our classroom).\n12/15: Decide as a group whether or not you want to make your GitHub repo (and so R package) public.\n\nIf at least one group member does not want to make the repo public, you must leave it private.\nEmail me with your decision.\nYour grade on this project does not at all depend on this decision."
   },
   {
     "objectID": "slides/math241_wk13wed.html#announcements",

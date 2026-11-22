@@ -51,7 +51,7 @@ ggplot2::theme_update(text = ggplot2::element_text(size = 20))
 
 [Grayson White]{.custom-subtitle}
 
-[Stat 241 <br> Week 11 \| Fall 2026]{.custom-subtitle}
+[Stat 241 <br> Week 12 \| Fall 2026]{.custom-subtitle}
 :::
 :::::
 
@@ -65,23 +65,15 @@ ggplot2::theme_update(text = ggplot2::element_text(size = 20))
 
 ::: {.nonincremental}
 
-* Fill out [this form](https://forms.gle/6FBbcMFmbSpyEeHM7) ASAP to help me create the Project 2 groups.
-    + Groups and project instructions will be assigned on Monday.
+* Fill out [this form](https://forms.gle/WtehKkh9WbsrXtmM7) ASAP to help me create the Project 2 groups.
+    + Groups and project instructions will be assigned on Wednesday.
 
 :::
 
 ------------------------------------------------------------------------
 
-## Announcements
 
-![](img/Advising Workshop - 041626.png){width="40%" fig-align='center'}
-
-
-
-------------------------------------------------------------------------
-
-
-## Week 11 Goals
+## Week 12 Goals
 
 :::: {.columns}
 
@@ -90,7 +82,7 @@ ggplot2::theme_update(text = ggplot2::element_text(size = 20))
 
 **Monday Lecture**: 
 
-- Practice with local LLMs
+- Intro to writing `R` packages
 
 :::
 
@@ -99,7 +91,7 @@ ggplot2::theme_update(text = ggplot2::element_text(size = 20))
 
 **Wednesday Lecture**: 
 
-- Intro to writing `R` packages
+- Details regarding writing `R` packages
 
 :::
 
@@ -347,7 +339,7 @@ Most common confusions when moving from **`R` scripts/Quarto docs** to **writing
 
 ------------------------------------------------------------------------
 
-### Next week
+### Next time
 
 ::: {.nonincremental}
 

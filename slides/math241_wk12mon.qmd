@@ -66,7 +66,7 @@ ggplot2::theme_update(text = ggplot2::element_text(size = 20))
 
 **Mon Lecture**
 
-* `R` package documentation and metadata
+* Intro to writing `R` packages
 
 :::
 
@@ -74,11 +74,7 @@ ggplot2::theme_update(text = ggplot2::element_text(size = 20))
 
 **Wed Lecture**
 
-* `R` package testing
-
-* `R` package dissemination:
-    - Vignettes, and
-    - package websites
+* `R` package documentation and metadata
 
 :::
 
@@ -218,11 +214,11 @@ In this project, your group will create an `R` package and give a 10 minute pres
 
 **Timeline**:
 
-* 4/20: Receive project instructions, [group assignment](../projects/proj02_groups.qmd), and invite to your group's GitHub repo.
-* 4/27: Come to class for a project work day instead of lecture.
-* 5/13 (noon): Make sure the final version of your package is in your GitHub repo.
-* 5/13 (1pm): Give a 10 minute presentation of your package during our final exam time slot, in Library 389 (our classroom).
-* 5/13: Decide as a group whether or not you want to make your GitHub repo (and so `R` package) public.  
+* 11/25: Receive project instructions, [group assignment](../projects/proj02_groups.qmd), and invite to your group's GitHub repo.
+* 12/2: Come to class for a project work day instead of lecture.
+* 12/15 (5pm): Make sure the final version of your package is in your GitHub repo.
+* 12/15 (6pm): Give a 10 minute presentation of your package during our final exam time slot, in Library 389 (our classroom).
+* 12/15: Decide as a group whether or not you want to make your GitHub repo (and so `R` package) public.  
     + If at least one group member does not want to make the repo public, you must leave it private.
     + Email me with your decision.
     + Your grade on this project does not at all depend on this decision. 
