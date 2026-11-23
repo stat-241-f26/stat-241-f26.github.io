@@ -311,7 +311,7 @@ plot_holes()
 
 * I will demo the process with the PDX pothole data.
 
-* If following along, clone this repo: [https://github.com/Reed-Data-Science/pkgDemo](https://github.com/Reed-Data-Science/pkgDemo)
+* If following along, clone this repo: [https://github.com/stat-241-f26/pkgDemo](https://github.com/stat-241-f26/pkgDemo)
 
 ------------------------------------------------------------------------
 
