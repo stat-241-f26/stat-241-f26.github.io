@@ -197,7 +197,7 @@ In this project, your group will create an `R` package and give a 10 minute pres
 * Remember to use class resources:
     + The Week 10 & Week 11 lecture slides
     + The [Creating an R Package handout](../in_class/R_Package.qmd) which outlines the initial steps.
-    + The [`pdxHoles` package](https://github.com/Reed-Data-Science/pdxHoles) we live-coded in lecture.  (Note: `pdxHoles` is still mostly the skeleton of a package.)
+    + The [`pdxHoles` package](https://github.com/stat-241-f26/pdxHoles) we live-coded in lecture.  (Note: `pdxHoles` is still mostly the skeleton of a package.)
 * Check out well-written and well-documented `R` packages.  Here are some examples:
     + [https://reprex.tidyverse.org/](https://reprex.tidyverse.org/) and the [`reprex` GitHub repo](https://github.com/tidyverse/reprex)
     + [https://glue.tidyverse.org/](https://glue.tidyverse.org/) and the [`glue` GitHub repo](https://github.com/tidyverse/glue)
@@ -251,7 +251,7 @@ In this project, your group will create an `R` package and give a 10 minute pres
 
 * Share the [Portland reported potholes dataset](http://www.arcgis.com/apps/webappviewer/index.html?id=1606bfad51a34a99a5d11d8016bd78ae&extent=-13669360.545%2C5682909.4098%2C-13595980.9978%2C5723803.2199%2C102100), along with documentation.
 * Includes, `plot_holes()`, a function that plots the location of the potholes along with their status.
-* Working copy can be found at [https://github.com/Reed-Data-Science/pdxHoles](https://github.com/Reed-Data-Science/pdxHoles)
+* Working copy can be found at [https://github.com/stat-241-f26/pdxHoles](https://github.com/stat-241-f26/pdxHoles)
 
 
 :::: {.columns}
@@ -299,7 +299,7 @@ In this project, your group will create an `R` package and give a 10 minute pres
 
 * **Source**
     + Directory of files with a specific structure
-    + State of [`pdxHoles` on GitHub](https://github.com/Reed-Data-Science/pdxHoles)
+    + State of [`pdxHoles` on GitHub](https://github.com/stat-241-f26/pdxHoles)
     
 :::
 
